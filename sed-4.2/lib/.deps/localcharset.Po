@@ -1,0 +1,116 @@
+localcharset.o: localcharset.c ../config.h localcharset.h \
+ /home/anushruth/tools/android-ndk-r9/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.6/include/stddef.h \
+ stdio.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/stdio.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/cdefs.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/android/api-level.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/types.h \
+ stdint.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/stdint.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/_types.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/machine/_types.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/limits.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/limits.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/limits.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/machine/internal_types.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/machine/limits.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/syslimits.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm/page.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/inttypes.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/posix_types.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/stddef.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/compiler.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm/posix_types.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm/types.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/types.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/machine/kernel.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h \
+ /home/anushruth/tools/android-ndk-r9/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.6/include/stdarg.h \
+ string.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/string.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/malloc.h \
+ stdlib.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/stdlib.h \
+ alloca.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/strings.h \
+ /home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/memory.h \
+ configmake.h
+
+../config.h:
+
+localcharset.h:
+
+/home/anushruth/tools/android-ndk-r9/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.6/include/stddef.h:
+
+stdio.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/stdio.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/cdefs.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/android/api-level.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/types.h:
+
+stdint.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/stdint.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/_types.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/machine/_types.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/limits.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/limits.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/limits.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/machine/internal_types.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/machine/limits.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/syslimits.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm/page.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/inttypes.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/posix_types.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/stddef.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/compiler.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm/posix_types.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/asm/types.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/linux/types.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/machine/kernel.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h:
+
+/home/anushruth/tools/android-ndk-r9/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.6/include/stdarg.h:
+
+string.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/string.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/malloc.h:
+
+stdlib.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/stdlib.h:
+
+alloca.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/strings.h:
+
+/home/anushruth/tools/android-ndk-r9/platforms/android-9/arch-arm/usr/include/memory.h:
+
+configmake.h:

@@ -21,12 +21,12 @@
 # we do not need nor want), the ability to build a shared library
 # (likewise), and a large number of heinous kludges.
 
-SHELL = /bin/bash
+SHELL = /bin/sh
 
 srcdir = .
 
 
-prefix = /home/anushruth/experiment/sysroot
+prefix = /Users/regnarts/Documents/experiment/system
 exec_prefix = ${prefix}
 transform = s,y,y,
 libdir = ${exec_prefix}/lib
@@ -40,13 +40,13 @@ AR = ar
 ACLOCAL = aclocal
 AUTOCONF = autoconf
 AUTOHEADER = autoheader
-CC = /home/anushruth/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc
+CC = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc
 RANLIB = true
 YACC = bison -y -d
 YFLAGS = --name-prefix=__gettext
 CPPFLAGS = 
-CFLAGS = -I. -I./../include -I/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include -Wno-error -g -O2
-LDFLAGS =  --sysroot=/home/anushruth/tools/android-ndk-r10d/platforms/android-9/arch-arm/
+CFLAGS = -g -O2 -I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ --sysroot=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/ -Wno-error
+LDFLAGS =  -L/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/lib/
 LIBS = 
 DEFS = -DHAVE_CONFIG_H
 
@@ -114,7 +114,7 @@ DEFS-localealias.o = -DLOCALE_ALIAS_PATH="\"$(aliaspath)\""
 DEFS-localcharset.o = -DLIBDIR="\"$(libdir)\""
 DEFS-relocatable.o = -DINSTALLDIR="\"$(libdir)\""
 
-all: all-no
+all: all-yes
 all-yes: libintl.a libintl.h config.intl
 all-no: # nothing
 

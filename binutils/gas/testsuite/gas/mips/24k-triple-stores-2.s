@@ -1,5 +1,6 @@
 # Check for range
 
+foo:
 	sb      $2,0($sp)
 	sb      $3,10($sp)
 	sb      $4,31($sp)
@@ -25,13 +26,6 @@
 	swl      $4,16($sp)
 	swl      $5,24($sp)
 	swl      $6,0($sp)
-	break
-
-	sc      $2,32($sp)
-	sc      $3,8($sp)
-	sc      $4,-8($sp)
-	sc      $5,0($sp)
-	sc      $6,32($sp)
 
 # Force at least 8 (non-delay-slot) zero bytes, to make 'objdump' print ...
 	.align	2

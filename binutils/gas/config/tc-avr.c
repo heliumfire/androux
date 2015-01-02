@@ -1,7 +1,6 @@
 /* tc-avr.c -- Assembler code for the ATMEL AVR
 
-   Copyright 1999, 2000, 2001, 2002, 2004, 2005, 2006, 2007, 2008, 2009,
-   2010  Free Software Foundation, Inc.
+   Copyright 1999-2013 Free Software Foundation, Inc.
    Contributed by Denis Chertykov <denisc@overta.ru>
 
    This file is part of GAS, the GNU Assembler.
@@ -24,6 +23,7 @@
 #include "as.h"
 #include "safe-ctype.h"
 #include "subsegs.h"
+#include "dwarf2dbg.h"
 #include "dw2gencfi.h"
 
 
@@ -65,19 +65,19 @@ static struct mcu_type_s mcu_types[] =
 {
   {"avr1",       AVR_ISA_AVR1,    bfd_mach_avr1},
 /* TODO: insruction set for avr2 architecture should be AVR_ISA_AVR2,
- but set to AVR_ISA_AVR25 for some following version 
- of GCC (from 4.3) for backward compatibility.  */  
+ but set to AVR_ISA_AVR25 for some following version
+ of GCC (from 4.3) for backward compatibility.  */
   {"avr2",       AVR_ISA_AVR25,   bfd_mach_avr2},
   {"avr25",      AVR_ISA_AVR25,   bfd_mach_avr25},
-/* TODO: insruction set for avr3 architecture should be AVR_ISA_AVR3, 
- but set to AVR_ISA_AVR3_ALL for some following version 
+/* TODO: insruction set for avr3 architecture should be AVR_ISA_AVR3,
+ but set to AVR_ISA_AVR3_ALL for some following version
  of GCC (from 4.3) for backward compatibility.  */
   {"avr3",       AVR_ISA_AVR3_ALL, bfd_mach_avr3},
   {"avr31",      AVR_ISA_AVR31,   bfd_mach_avr31},
   {"avr35",      AVR_ISA_AVR35,   bfd_mach_avr35},
   {"avr4",       AVR_ISA_AVR4,    bfd_mach_avr4},
-/* TODO: insruction set for avr5 architecture should be AVR_ISA_AVR5, 
- but set to AVR_ISA_AVR51 for some following version 
+/* TODO: insruction set for avr5 architecture should be AVR_ISA_AVR5,
+ but set to AVR_ISA_AVR51 for some following version
  of GCC (from 4.3) for backward compatibility.  */
   {"avr5",       AVR_ISA_AVR51,   bfd_mach_avr5},
   {"avr51",      AVR_ISA_AVR51,   bfd_mach_avr51},
@@ -131,7 +131,6 @@ static struct mcu_type_s mcu_types[] =
   {"attiny48",   AVR_ISA_AVR25,   bfd_mach_avr25},
   {"attiny88",   AVR_ISA_AVR25,   bfd_mach_avr25},
   {"at86rf401",  AVR_ISA_RF401,   bfd_mach_avr25},
-  {"ata6289",    AVR_ISA_AVR25,   bfd_mach_avr25},
   {"at43usb355", AVR_ISA_AVR3,    bfd_mach_avr3},
   {"at76c711",   AVR_ISA_AVR3,    bfd_mach_avr3},
   {"atmega103",  AVR_ISA_AVR31,   bfd_mach_avr31},
@@ -143,6 +142,7 @@ static struct mcu_type_s mcu_types[] =
   {"atmega16u2", AVR_ISA_AVR35,   bfd_mach_avr35},
   {"atmega32u2", AVR_ISA_AVR35,   bfd_mach_avr35},
   {"atmega8",    AVR_ISA_M8,      bfd_mach_avr4},
+  {"ata6289",    AVR_ISA_AVR4,    bfd_mach_avr4},
   {"atmega48",   AVR_ISA_AVR4,    bfd_mach_avr4},
   {"atmega48a",  AVR_ISA_AVR4,    bfd_mach_avr4},
   {"atmega48p",  AVR_ISA_AVR4,    bfd_mach_avr4},
@@ -218,6 +218,8 @@ static struct mcu_type_s mcu_types[] =
   {"atmega6490", AVR_ISA_AVR5,    bfd_mach_avr5},
   {"atmega6490a",AVR_ISA_AVR5,    bfd_mach_avr5},
   {"atmega6490p",AVR_ISA_AVR5,    bfd_mach_avr5},
+  {"atmega64rfr2",AVR_ISA_AVR5,   bfd_mach_avr5},
+  {"atmega644rfr2",AVR_ISA_AVR5,  bfd_mach_avr5},
   {"atmega16hva",AVR_ISA_AVR5,    bfd_mach_avr5},
   {"atmega16hva2",AVR_ISA_AVR5,    bfd_mach_avr5},
   {"atmega16hvb",AVR_ISA_AVR5,    bfd_mach_avr5},
@@ -248,11 +250,15 @@ static struct mcu_type_s mcu_types[] =
   {"atmega1281", AVR_ISA_AVR51,   bfd_mach_avr51},
   {"atmega1284p",AVR_ISA_AVR51,   bfd_mach_avr51},
   {"atmega128rfa1",AVR_ISA_AVR51, bfd_mach_avr51},
+  {"atmega128rfr2",AVR_ISA_AVR51, bfd_mach_avr51},
+  {"atmega1284rfr2",AVR_ISA_AVR51, bfd_mach_avr51},
   {"at90can128", AVR_ISA_AVR51,   bfd_mach_avr51},
   {"at90usb1286",AVR_ISA_AVR51,   bfd_mach_avr51},
   {"at90usb1287",AVR_ISA_AVR51,   bfd_mach_avr51},
   {"atmega2560", AVR_ISA_AVR6,    bfd_mach_avr6},
   {"atmega2561", AVR_ISA_AVR6,    bfd_mach_avr6},
+  {"atmega256rfr2", AVR_ISA_AVR6, bfd_mach_avr6},
+  {"atmega2564rfr2", AVR_ISA_AVR6, bfd_mach_avr6},
   {"atxmega16a4", AVR_ISA_XMEGA,  bfd_mach_avrxmega2},
   {"atxmega16d4", AVR_ISA_XMEGA,  bfd_mach_avrxmega2},
   {"atxmega16x1", AVR_ISA_XMEGA,  bfd_mach_avrxmega2},
@@ -262,18 +268,18 @@ static struct mcu_type_s mcu_types[] =
   {"atxmega64a3", AVR_ISA_XMEGA,  bfd_mach_avrxmega4},
   {"atxmega64d3", AVR_ISA_XMEGA,  bfd_mach_avrxmega4},
   {"atxmega64a1", AVR_ISA_XMEGA,  bfd_mach_avrxmega5},
-  {"atxmega64a1u",AVR_ISA_XMEGA,  bfd_mach_avrxmega5},
+  {"atxmega64a1u",AVR_ISA_XMEGAU, bfd_mach_avrxmega5},
   {"atxmega128a3", AVR_ISA_XMEGA, bfd_mach_avrxmega6},
-  {"atxmega128b1", AVR_ISA_XMEGA, bfd_mach_avrxmega6},
+  {"atxmega128b1", AVR_ISA_XMEGAU, bfd_mach_avrxmega6},
   {"atxmega128d3", AVR_ISA_XMEGA, bfd_mach_avrxmega6},
   {"atxmega192a3", AVR_ISA_XMEGA, bfd_mach_avrxmega6},
   {"atxmega192d3", AVR_ISA_XMEGA, bfd_mach_avrxmega6},
   {"atxmega256a3", AVR_ISA_XMEGA, bfd_mach_avrxmega6},
   {"atxmega256a3b",AVR_ISA_XMEGA, bfd_mach_avrxmega6},
-  {"atxmega256a3bu",AVR_ISA_XMEGA,bfd_mach_avrxmega6},
+  {"atxmega256a3bu",AVR_ISA_XMEGAU, bfd_mach_avrxmega6},
   {"atxmega256d3", AVR_ISA_XMEGA, bfd_mach_avrxmega6},
   {"atxmega128a1", AVR_ISA_XMEGA, bfd_mach_avrxmega7},
-  {"atxmega128a1u", AVR_ISA_XMEGA, bfd_mach_avrxmega7},
+  {"atxmega128a1u", AVR_ISA_XMEGAU, bfd_mach_avrxmega7},
   {NULL, 0, 0}
 };
 
@@ -450,6 +456,7 @@ md_show_usage (FILE *stream)
 	"                   avr5  - enhanced AVR core with up to 64K program memory\n"
 	"                   avr51 - enhanced AVR core with up to 128K program memory\n"
 	"                   avr6  - enhanced AVR core with up to 256K program memory\n"
+	"                   avrxmega2 - XMEGA, > 8K, < 64K FLASH, < 64K RAM\n"
 	"                   avrxmega3 - XMEGA, > 8K, <= 64K FLASH, > 64K RAM\n"
 	"                   avrxmega4 - XMEGA, > 64K, <= 128K FLASH, <= 64K RAM\n"
 	"                   avrxmega5 - XMEGA, > 64K, <= 128K FLASH, > 64K RAM\n"
@@ -1013,7 +1020,7 @@ avr_operand (struct avr_opcodes_s *opcode,
 	op_mask |= (x << 4);
       }
       break;
-    
+
     case '?':
       break;
 
@@ -1224,7 +1231,7 @@ md_apply_fix (fixS *fixP, valueT * valP, segT seg)
 	  break;
 
 	case BFD_RELOC_32:
-	  bfd_putl16 ((bfd_vma) value, where);
+	  bfd_putl32 ((bfd_vma) value, where);
 	  break;
 
 	case BFD_RELOC_16:
@@ -1334,7 +1341,19 @@ md_apply_fix (fixS *fixP, valueT * valP, segT seg)
 	  }
 	  break;
 
-	default:
+        case BFD_RELOC_AVR_8_LO:
+          *where = 0xff & value;
+          break;
+
+        case BFD_RELOC_AVR_8_HI:
+          *where = 0xff & (value >> 8);
+          break;
+
+        case BFD_RELOC_AVR_8_HLO:
+          *where = 0xff & (value >> 16);
+          break;
+
+        default:
 	  as_fatal (_("line %d: unknown relocation type: 0x%x"),
 		    fixP->fx_line, fixP->fx_r_type);
 	  break;
@@ -1373,29 +1392,9 @@ tc_gen_reloc (asection *seg ATTRIBUTE_UNUSED,
 {
   arelent *reloc;
 
-  if (fixp->fx_addsy && fixp->fx_subsy)
+  if (fixp->fx_subsy != NULL)
     {
-      long value = 0;
-
-      if ((S_GET_SEGMENT (fixp->fx_addsy) != S_GET_SEGMENT (fixp->fx_subsy))
-          || S_GET_SEGMENT (fixp->fx_addsy) == undefined_section)
-        {
-          as_bad_where (fixp->fx_file, fixp->fx_line,
-              "Difference of symbols in different sections is not supported");
-          return NULL;
-        }
-
-      /* We are dealing with two symbols defined in the same section.
-         Let us fix-up them here.  */
-      value += S_GET_VALUE (fixp->fx_addsy);
-      value -= S_GET_VALUE (fixp->fx_subsy);
-
-      /* When fx_addsy and fx_subsy both are zero, md_apply_fix
-         only takes it's second operands for the fixup value.  */
-      fixp->fx_addsy = NULL;
-      fixp->fx_subsy = NULL;
-      md_apply_fix (fixp, (valueT *) &value, NULL);
-
+      as_bad_where (fixp->fx_file, fixp->fx_line, _("expression too complex"));
       return NULL;
     }
 
@@ -1465,40 +1464,75 @@ md_assemble (char *str)
   }
 }
 
-/* Flag to pass `pm' mode between `avr_parse_cons_expression' and
-   `avr_cons_fix_new'.  */
-static int exp_mod_pm = 0;
+typedef struct
+{
+  /* Name of the expression modifier allowed with .byte, .word, etc.  */
+  const char *name;
 
-/* Parse special CONS expression: pm (expression)
-   or alternatively: gs (expression).
-   These are used for addressing program memory.
-   Relocation: BFD_RELOC_AVR_16_PM.  */
+  /* Only allowed with n bytes of data.  */
+  int nbytes;
+
+  /* Associated RELOC.  */
+  bfd_reloc_code_real_type reloc;
+
+  /* Part of the error message.  */
+  const char *error;
+} exp_mod_data_t;
+
+static const exp_mod_data_t exp_mod_data[] =
+{
+  /* Default, must be first.  */
+  { "", 0, BFD_RELOC_16, "" },
+  /* Divides by 2 to get word address.  Generate Stub.  */
+  { "gs", 2, BFD_RELOC_AVR_16_PM, "`gs' " },
+  { "pm", 2, BFD_RELOC_AVR_16_PM, "`pm' " },
+  /* The following are used together with avr-gcc's __memx address space
+     in order to initialize a 24-bit pointer variable with a 24-bit address.
+     For address in flash, hlo8 will contain the flash segment if the
+     symbol is located in flash. If the symbol is located in RAM; hlo8
+     will contain 0x80 which matches avr-gcc's notion of how 24-bit RAM/flash
+     addresses linearize address space.  */
+  { "lo8",  1, BFD_RELOC_AVR_8_LO,  "`lo8' "  },
+  { "hi8",  1, BFD_RELOC_AVR_8_HI,  "`hi8' "  },
+  { "hlo8", 1, BFD_RELOC_AVR_8_HLO, "`hlo8' " },
+  { "hh8",  1, BFD_RELOC_AVR_8_HLO, "`hh8' "  },
+  /* End of list.  */
+  { NULL, 0, 0, NULL }
+};
+
+/* Data to pass between `avr_parse_cons_expression' and `avr_cons_fix_new'.  */
+static const exp_mod_data_t *pexp_mod_data = &exp_mod_data[0];
+
+/* Parse special CONS expression: pm (expression) or alternatively
+   gs (expression).  These are used for addressing program memory.  Moreover,
+   define lo8 (expression), hi8 (expression) and hlo8 (expression).  */
 
 void
 avr_parse_cons_expression (expressionS *exp, int nbytes)
 {
+  const exp_mod_data_t *pexp = &exp_mod_data[0];
   char *tmp;
 
-  exp_mod_pm = 0;
+  pexp_mod_data = pexp;
 
   tmp = input_line_pointer = skip_space (input_line_pointer);
 
-  if (nbytes == 2)
-    {
-      char *pm_name1 = "pm";
-      char *pm_name2 = "gs";
-      int len = strlen (pm_name1);
-      /* len must be the same for both pm identifiers.  */
+  /* The first entry of exp_mod_data[] contains an entry if no
+     expression modifier is present.  Skip it.  */
 
-      if (strncasecmp (input_line_pointer, pm_name1, len) == 0
-          || strncasecmp (input_line_pointer, pm_name2, len) == 0)
+  for (pexp++; pexp->name; pexp++)
+    {
+      int len = strlen (pexp->name);
+
+      if (nbytes == pexp->nbytes
+          && strncasecmp (input_line_pointer, pexp->name, len) == 0)
 	{
 	  input_line_pointer = skip_space (input_line_pointer + len);
 
 	  if (*input_line_pointer == '(')
 	    {
 	      input_line_pointer = skip_space (input_line_pointer + 1);
-	      exp_mod_pm = 1;
+	      pexp_mod_data = pexp;
 	      expression (exp);
 
 	      if (*input_line_pointer == ')')
@@ -1506,13 +1540,15 @@ avr_parse_cons_expression (expressionS *exp, int nbytes)
 	      else
 		{
 		  as_bad (_("`)' required"));
-		  exp_mod_pm = 0;
+		  pexp_mod_data = &exp_mod_data[0];
 		}
 
 	      return;
 	    }
 
 	  input_line_pointer = tmp;
+
+          break;
 	}
     }
 
@@ -1525,8 +1561,11 @@ avr_cons_fix_new (fragS *frag,
 		  int nbytes,
 		  expressionS *exp)
 {
-  if (exp_mod_pm == 0)
+  int bad = 0;
+
+  switch (pexp_mod_data->reloc)
     {
+    default:
       if (nbytes == 1)
 	fix_new_exp (frag, where, nbytes, exp, FALSE, BFD_RELOC_8);
       else if (nbytes == 2)
@@ -1534,23 +1573,41 @@ avr_cons_fix_new (fragS *frag,
       else if (nbytes == 4)
 	fix_new_exp (frag, where, nbytes, exp, FALSE, BFD_RELOC_32);
       else
-	as_bad (_("illegal %srelocation size: %d"), "", nbytes);
-    }
-  else
-    {
-      if (nbytes == 2)
-	fix_new_exp (frag, where, nbytes, exp, FALSE, BFD_RELOC_AVR_16_PM);
+	bad = 1;
+      break;
+
+    case BFD_RELOC_AVR_16_PM:
+    case BFD_RELOC_AVR_8_LO:
+    case BFD_RELOC_AVR_8_HI:
+    case BFD_RELOC_AVR_8_HLO:
+      if (nbytes == pexp_mod_data->nbytes)
+        fix_new_exp (frag, where, nbytes, exp, FALSE, pexp_mod_data->reloc);
       else
-	as_bad (_("illegal %srelocation size: %d"), "`pm' ", nbytes);
-      exp_mod_pm = 0;
+        bad = 1;
+      break;
     }
+
+  if (bad)
+    as_bad (_("illegal %srelocation size: %d"), pexp_mod_data->error, nbytes);
+
+  pexp_mod_data = &exp_mod_data[0];
+}
+
+static bfd_boolean
+mcu_has_3_byte_pc (void)
+{
+  int mach = avr_mcu->mach; 
+
+  return mach == bfd_mach_avr6 
+    || mach == bfd_mach_avrxmega6 
+    || mach == bfd_mach_avrxmega7;
 }
 
 void
 tc_cfi_frame_initial_instructions (void)
 {
   /* AVR6 pushes 3 bytes for calls.  */
-  int return_size = (avr_mcu->mach == bfd_mach_avr6 ? 3 : 2);
+  int return_size = (mcu_has_3_byte_pc () ? 3 : 2);
 
   /* The CFA is the caller's stack location before the call insn.  */
   /* Note that the stack pointer is dwarf register number 32.  */

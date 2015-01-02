@@ -46,6 +46,7 @@ typedef int16_t flex_int16_t;
 typedef uint16_t flex_uint16_t;
 typedef int32_t flex_int32_t;
 typedef uint32_t flex_uint32_t;
+typedef uint64_t flex_uint64_t;
 #else
 typedef signed char flex_int8_t;
 typedef short int flex_int16_t;
@@ -354,7 +355,7 @@ static void yy_fatal_error (yyconst char msg[]  );
  */
 #define YY_DO_BEFORE_ACTION \
 	(yytext_ptr) = yy_bp; \
-	yyleng = (size_t) (yy_cp - yy_bp); \
+	yyleng = (yy_size_t) (yy_cp - yy_bp); \
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
@@ -836,7 +837,7 @@ int yylex (void);
    initial.  */
 
 
-#line 840 "bfin-lex.c"
+#line 841 "bfin-lex.c"
 
 #define INITIAL 0
 #define KEYWORD 1
@@ -1022,7 +1023,7 @@ YY_DECL
     
 #line 44 "bfin-lex.l"
 
-#line 1026 "bfin-lex.c"
+#line 1027 "bfin-lex.c"
 
 	if ( !(yy_init) )
 		{
@@ -2336,7 +2337,7 @@ YY_RULE_SETUP
 #line 339 "bfin-lex.l"
 ECHO;
 	YY_BREAK
-#line 2340 "bfin-lex.c"
+#line 2341 "bfin-lex.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(KEYWORD):
 case YY_STATE_EOF(FLAGS):

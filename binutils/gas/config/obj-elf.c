@@ -1,6 +1,6 @@
 /* ELF object file format
    Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
-   2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
+   2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
    Free Software Foundation, Inc.
 
    This file is part of GAS, the GNU Assembler.
@@ -62,6 +62,10 @@
 #include "elf/mep.h"
 #endif
 
+#ifdef TC_NIOS2
+#include "elf/nios2.h"
+#endif
+
 static void obj_elf_line (int);
 static void obj_elf_size (int);
 static void obj_elf_type (int);
@@ -72,6 +76,7 @@ static void obj_elf_visibility (int);
 static void obj_elf_symver (int);
 static void obj_elf_subsection (int);
 static void obj_elf_popsection (int);
+static void obj_elf_gnu_attribute (int);
 static void obj_elf_tls_common (int);
 static void obj_elf_lcomm (int);
 static void obj_elf_struct (int);
@@ -112,6 +117,9 @@ static const pseudo_typeS elf_pseudo_table[] =
   /* These are GNU extensions to aid in garbage collecting C++ vtables.  */
   {"vtable_inherit", (void (*) (int)) &obj_elf_vtable_inherit, 0},
   {"vtable_entry", (void (*) (int)) &obj_elf_vtable_entry, 0},
+
+  /* A GNU extension for object attributes.  */
+  {"gnu_attribute", obj_elf_gnu_attribute, 0},
 
   /* These are used for dwarf.  */
   {"2byte", cons, 2},
@@ -447,7 +455,6 @@ obj_elf_weak (int ignore ATTRIBUTE_UNUSED)
       symbolP = get_sym_from_input_line_and_check ();
       c = *input_line_pointer;
       S_SET_WEAK (symbolP);
-      symbol_get_obj (symbolP)->local = 1;
       if (c == ',')
 	{
 	  input_line_pointer++;
@@ -659,6 +666,14 @@ obj_elf_change_section (const char *name,
 	  else if ((attr & ~ssect->attr) == SHF_ALPHA_GPREL)
 	    override = TRUE;
 #endif
+#ifdef TC_RX
+	  else if (attr == (SHF_EXECINSTR | SHF_WRITE | SHF_ALLOC)
+		   && (ssect->type == SHT_INIT_ARRAY
+		       || ssect->type == SHT_FINI_ARRAY
+		       || ssect->type == SHT_PREINIT_ARRAY))
+	    /* RX init/fini arrays can and should have the "awx" attributes set.  */
+	    ;
+#endif
 	  else
 	    {
 	      if (group_name == NULL)
@@ -741,10 +756,10 @@ obj_elf_change_section (const char *name,
 }
 
 static bfd_vma
-obj_elf_parse_section_letters (char *str, size_t len, bfd_boolean *clone)
+obj_elf_parse_section_letters (char *str, size_t len, bfd_boolean *is_clone)
 {
   bfd_vma attr = 0;
-  *clone = FALSE;
+  *is_clone = FALSE;
 
   while (len > 0)
     {
@@ -775,7 +790,7 @@ obj_elf_parse_section_letters (char *str, size_t len, bfd_boolean *clone)
 	  attr |= SHF_TLS;
 	  break;
 	case '?':
-	  *clone = TRUE;
+	  *is_clone = TRUE;
 	  break;
 	/* Compatibility.  */
 	case 'm':
@@ -978,7 +993,7 @@ obj_elf_section (int push)
 
       if (*input_line_pointer == '"')
 	{
-	  bfd_boolean clone;
+	  bfd_boolean is_clone;
 
 	  beg = demand_copy_C_string (&dummy);
 	  if (beg == NULL)
@@ -986,7 +1001,7 @@ obj_elf_section (int push)
 	      ignore_rest_of_line ();
 	      return;
 	    }
-	  attr |= obj_elf_parse_section_letters (beg, strlen (beg), &clone);
+	  attr |= obj_elf_parse_section_letters (beg, strlen (beg), &is_clone);
 
 	  SKIP_WHITESPACE ();
 	  if (*input_line_pointer == ',')
@@ -1038,10 +1053,10 @@ obj_elf_section (int push)
 	      attr &= ~SHF_MERGE;
 	    }
 
-	  if ((attr & SHF_GROUP) != 0 && clone)
+	  if ((attr & SHF_GROUP) != 0 && is_clone)
 	    {
 	      as_warn (_("? section flag ignored with G present"));
-	      clone = FALSE;
+	      is_clone = FALSE;
 	    }
 	  if ((attr & SHF_GROUP) != 0 && *input_line_pointer == ',')
 	    {
@@ -1049,10 +1064,15 @@ obj_elf_section (int push)
 	      group_name = obj_elf_section_name ();
 	      if (group_name == NULL)
 		attr &= ~SHF_GROUP;
-	      else if (strncmp (input_line_pointer, ",comdat", 7) == 0)
+	      else if (*input_line_pointer == ',')
 		{
-		  input_line_pointer += 7;
-		  linkonce = 1;
+		  ++input_line_pointer;
+		  SKIP_WHITESPACE ();
+		  if (strncmp (input_line_pointer, "comdat", 6) == 0)
+		    {
+		      input_line_pointer += 6;
+		      linkonce = 1;
+		    }
 		}
 	      else if (strncmp (name, ".gnu.linkonce", 13) == 0)
 		linkonce = 1;
@@ -1063,7 +1083,7 @@ obj_elf_section (int push)
 	      attr &= ~SHF_GROUP;
 	    }
 
-	  if (clone)
+	  if (is_clone)
 	    {
 	      const char *now_group = elf_group_name (now_seg);
 	      if (now_group != NULL)
@@ -1425,6 +1445,138 @@ obj_elf_vtable_entry (int ignore ATTRIBUTE_UNUSED)
 		  BFD_RELOC_VTABLE_ENTRY);
 }
 
+#define skip_whitespace(str)  do { if (*(str) == ' ') ++(str); } while (0)
+
+static inline int
+skip_past_char (char ** str, char c)
+{
+  if (**str == c)
+    {
+      (*str)++;
+      return 0;
+    }
+  else
+    return -1;
+}
+#define skip_past_comma(str) skip_past_char (str, ',')
+
+/* Parse an attribute directive for VENDOR.
+   Returns the attribute number read, or zero on error.  */
+
+int
+obj_elf_vendor_attribute (int vendor)
+{
+  expressionS exp;
+  int type;
+  int tag;
+  unsigned int i = 0;
+  char *s = NULL;
+
+  /* Read the first number or name.  */
+  skip_whitespace (input_line_pointer);
+  s = input_line_pointer;
+  if (ISDIGIT (*input_line_pointer))
+    {
+      expression (& exp);
+      if (exp.X_op != O_constant)
+	goto bad;
+      tag = exp.X_add_number;
+    }
+  else
+    {
+      char *name;
+
+      /* A name may contain '_', but no other punctuation.  */
+      for (; ISALNUM (*input_line_pointer) || *input_line_pointer == '_';
+	   ++input_line_pointer)
+	i++;
+      if (i == 0)
+	goto bad;
+
+      name = (char *) alloca (i + 1);
+      memcpy (name, s, i);
+      name[i] = '\0';
+
+#ifndef CONVERT_SYMBOLIC_ATTRIBUTE
+#define CONVERT_SYMBOLIC_ATTRIBUTE(a) -1
+#endif
+
+      tag = CONVERT_SYMBOLIC_ATTRIBUTE (name);
+      if (tag == -1)
+	{
+	  as_bad (_("Attribute name not recognised: %s"), name);
+	  ignore_rest_of_line ();
+	  return 0;
+	}
+    }
+
+  type = _bfd_elf_obj_attrs_arg_type (stdoutput, vendor, tag);
+
+  if (skip_past_comma (&input_line_pointer) == -1)
+    goto bad;
+  if (type & 1)
+    {
+      expression (& exp);
+      if (exp.X_op != O_constant)
+	{
+	  as_bad (_("expected numeric constant"));
+	  ignore_rest_of_line ();
+	  return 0;
+	}
+      i = exp.X_add_number;
+    }
+  if ((type & 3) == 3
+      && skip_past_comma (&input_line_pointer) == -1)
+    {
+      as_bad (_("expected comma"));
+      ignore_rest_of_line ();
+      return 0;
+    }
+  if (type & 2)
+    {
+      int len;
+
+      skip_whitespace (input_line_pointer);
+      if (*input_line_pointer != '"')
+	goto bad_string;
+      s = demand_copy_C_string (&len);
+    }
+
+  switch (type & 3)
+    {
+    case 3:
+      bfd_elf_add_obj_attr_int_string (stdoutput, vendor, tag, i, s);
+      break;
+    case 2:
+      bfd_elf_add_obj_attr_string (stdoutput, vendor, tag, s);
+      break;
+    case 1:
+      bfd_elf_add_obj_attr_int (stdoutput, vendor, tag, i);
+      break;
+    default:
+      abort ();
+    }
+
+  demand_empty_rest_of_line ();
+  return tag;
+bad_string:
+  as_bad (_("bad string constant"));
+  ignore_rest_of_line ();
+  return 0;
+bad:
+  as_bad (_("expected <tag> , <value>"));
+  ignore_rest_of_line ();
+  return 0;
+}
+
+/* Parse a .gnu_attribute directive.  */
+
+static void
+obj_elf_gnu_attribute (int ignored ATTRIBUTE_UNUSED)
+{
+  obj_elf_vendor_attribute (OBJ_ATTR_GNU);
+}
+
 void
 elf_obj_read_begin_hook (void)
 {
@@ -1702,9 +1854,10 @@ obj_elf_type (int ignore ATTRIBUTE_UNUSED)
 
       bed = get_elf_backend_data (stdoutput);
       if (!(bed->elf_osabi == ELFOSABI_GNU
+	    || bed->elf_osabi == ELFOSABI_FREEBSD
 	    /* GNU is still using the default value 0.  */
 	    || bed->elf_osabi == ELFOSABI_NONE))
-	as_bad (_("symbol type \"%s\" is supported only by GNU targets"),
+	as_bad (_("symbol type \"%s\" is supported only by GNU and FreeBSD targets"),
 		type_name);
       type = BSF_FUNCTION | BSF_GNU_INDIRECT_FUNCTION;
     }

@@ -22,7 +22,7 @@ srcdir = .
 top_srcdir = ..
 
 
-prefix = /home/anushruth/experiment/sysroot
+prefix = /Users/regnarts/Documents/experiment/sysroot
 exec_prefix = ${prefix}
 datarootdir = ${prefix}/share
 datadir = ${datarootdir}
@@ -35,29 +35,29 @@ INSTALL_DATA = ${INSTALL} -m 644
 # We use $(mkdir_p).
 # In automake <= 1.9.x, $(mkdir_p) is defined either as "mkdir -p --" or as
 # "$(mkinstalldirs)" or as "$(install_sh) -d". For these automake versions,
-# ${SHELL} /home/anushruth/experiment/make/config/install-sh does not start with $(SHELL), so we add it.
-# In automake >= 1.10, /bin/mkdir -p is derived from ${MKDIR_P}, which is defined
+# ${SHELL} /Users/regnarts/Documents/experiment/make/config/install-sh does not start with $(SHELL), so we add it.
+# In automake >= 1.10, $(top_builddir)/config/install-sh -c -d is derived from ${MKDIR_P}, which is defined
 # either as "/path/to/mkdir -p" or ".../install-sh -c -d". For these automake
 # versions, $(mkinstalldirs) and $(install_sh) are unused.
-mkinstalldirs = $(SHELL) ${SHELL} /home/anushruth/experiment/make/config/install-sh -d
-install_sh = $(SHELL) ${SHELL} /home/anushruth/experiment/make/config/install-sh
-MKDIR_P = /bin/mkdir -p
-mkdir_p = /bin/mkdir -p
+mkinstalldirs = $(SHELL) ${SHELL} /Users/regnarts/Documents/experiment/make/config/install-sh -d
+install_sh = $(SHELL) ${SHELL} /Users/regnarts/Documents/experiment/make/config/install-sh
+MKDIR_P = ../config/install-sh -c -d
+mkdir_p = $(top_builddir)/config/install-sh -c -d
 
-GMSGFMT_ = /usr/bin/msgfmt
-GMSGFMT_no = /usr/bin/msgfmt
-GMSGFMT_yes = /usr/bin/msgfmt
+GMSGFMT_ = /opt/local/bin/msgfmt
+GMSGFMT_no = /opt/local/bin/msgfmt
+GMSGFMT_yes = /opt/local/bin/msgfmt
 GMSGFMT = $(GMSGFMT_$(USE_MSGCTXT))
-MSGFMT_ = /usr/bin/msgfmt
-MSGFMT_no = /usr/bin/msgfmt
-MSGFMT_yes = /usr/bin/msgfmt
+MSGFMT_ = /opt/local/bin/msgfmt
+MSGFMT_no = /opt/local/bin/msgfmt
+MSGFMT_yes = /opt/local/bin/msgfmt
 MSGFMT = $(MSGFMT_$(USE_MSGCTXT))
-XGETTEXT_ = /usr/bin/xgettext
-XGETTEXT_no = /usr/bin/xgettext
-XGETTEXT_yes = /usr/bin/xgettext
+XGETTEXT_ = /opt/local/bin/xgettext
+XGETTEXT_no = /opt/local/bin/xgettext
+XGETTEXT_yes = /opt/local/bin/xgettext
 XGETTEXT = $(XGETTEXT_$(USE_MSGCTXT))
 MSGMERGE = msgmerge
-MSGMERGE_UPDATE = /usr/bin/msgmerge --update
+MSGMERGE_UPDATE = /opt/local/bin/msgmerge --update
 MSGINIT = msginit
 MSGCONV = msgconv
 MSGFILTER = msgfilter

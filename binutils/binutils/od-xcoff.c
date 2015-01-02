@@ -1,5 +1,5 @@
 /* od-xcoff.c -- dump information about an xcoff object file.
-   Copyright 2011 Free Software Foundation, Inc.
+   Copyright 2011-2013 Free Software Foundation, Inc.
    Written by Tristan Gingold, Adacore.
 
    This file is part of GNU Binutils.
@@ -19,9 +19,9 @@
    Foundation, 51 Franklin Street - Fifth Floor, Boston,
    MA 02110-1301, USA.  */
 
+#include "sysdep.h"
 #include <stddef.h>
 #include <time.h>
-#include "sysdep.h"
 #include "safe-ctype.h"
 #include "bfd.h"
 #include "objdump.h"
@@ -49,6 +49,7 @@
 #define OPT_TYPCHK 8
 #define OPT_TRACEBACK 9
 #define OPT_TOC 10
+#define OPT_LDINFO 11
 
 /* List of actions.  */
 static struct objdump_private_option options[] =
@@ -64,6 +65,7 @@ static struct objdump_private_option options[] =
     { "typchk", 0 },
     { "traceback", 0 },
     { "toc", 0 },
+    { "ldinfo", 0 },
     { NULL, 0 }
   };
 
@@ -85,6 +87,7 @@ For XCOFF files:\n\
   typchk      Display type-check section\n\
   traceback   Display traceback tags\n\
   toc         Display toc symbols\n\
+  ldinfo      Display loader info in core files\n\
 "));
 }
 
@@ -353,7 +356,7 @@ union xcoff32_symbol
 
   struct sym
   {
-    /* Pointer the the NUL-terminated name.  */
+    /* Pointer to the NUL-terminated name.  */
     char *name;
 
     /* XCOFF symbol fields.  */
@@ -448,7 +451,7 @@ dump_xcoff32_aout_header (bfd *abfd, struct xcoff_dump *data)
     }
   if (data->opthdr > sizeof (auxhdr))
     {
-      printf (_("warning: optionnal header size too large (> %d)\n"),
+      printf (_("warning: optional header size too large (> %d)\n"),
               (int)sizeof (auxhdr));
       sz = sizeof (auxhdr);
     }
@@ -459,52 +462,53 @@ dump_xcoff32_aout_header (bfd *abfd, struct xcoff_dump *data)
     }
 
   magic = bfd_h_get_16 (abfd, auxhdr.magic);
-  printf (_("  o_mflag (magic): 0x%04x 0%04o\n"), magic, magic);
-  printf (_("  o_vstamp:        0x%04x\n"),
+  /* We don't translate these strings as they are fields name.  */
+  printf ("  o_mflag (magic): 0x%04x 0%04o\n", magic, magic);
+  printf ("  o_vstamp:        0x%04x\n",
           (unsigned short)bfd_h_get_16 (abfd, auxhdr.vstamp));
-  printf (_("  o_tsize:         0x%08x\n"),
+  printf ("  o_tsize:         0x%08x\n",
           (unsigned int)bfd_h_get_32 (abfd, auxhdr.tsize));
-  printf (_("  o_dsize:         0x%08x\n"),
+  printf ("  o_dsize:         0x%08x\n",
           (unsigned int)bfd_h_get_32 (abfd, auxhdr.dsize));
-  printf (_("  o_entry:         0x%08x\n"),
+  printf ("  o_entry:         0x%08x\n",
           (unsigned int)bfd_h_get_32 (abfd, auxhdr.entry));
-  printf (_("  o_text_start:    0x%08x\n"),
+  printf ("  o_text_start:    0x%08x\n",
           (unsigned int)bfd_h_get_32 (abfd, auxhdr.text_start));
-  printf (_("  o_data_start:    0x%08x\n"),
+  printf ("  o_data_start:    0x%08x\n",
           (unsigned int)bfd_h_get_32 (abfd, auxhdr.data_start));
   if (sz == offsetof (AOUTHDR, o_toc))
     return;
-  printf (_("  o_toc:           0x%08x\n"),
+  printf ("  o_toc:           0x%08x\n",
           (unsigned int)bfd_h_get_32 (abfd, auxhdr.o_toc));
-  printf (_("  o_snentry:       0x%04x\n"),
+  printf ("  o_snentry:       0x%04x\n",
           (unsigned int)bfd_h_get_16 (abfd, auxhdr.o_snentry));
-  printf (_("  o_sntext:        0x%04x\n"),
+  printf ("  o_sntext:        0x%04x\n",
           (unsigned int)bfd_h_get_16 (abfd, auxhdr.o_sntext));
-  printf (_("  o_sndata:        0x%04x\n"),
+  printf ("  o_sndata:        0x%04x\n",
           (unsigned int)bfd_h_get_16 (abfd, auxhdr.o_sndata));
-  printf (_("  o_sntoc:         0x%04x\n"),
+  printf ("  o_sntoc:         0x%04x\n",
           (unsigned int)bfd_h_get_16 (abfd, auxhdr.o_sntoc));
-  printf (_("  o_snloader:      0x%04x\n"),
+  printf ("  o_snloader:      0x%04x\n",
           (unsigned int)bfd_h_get_16 (abfd, auxhdr.o_snloader));
-  printf (_("  o_snbss:         0x%04x\n"),
+  printf ("  o_snbss:         0x%04x\n",
           (unsigned int)bfd_h_get_16 (abfd, auxhdr.o_snbss));
-  printf (_("  o_algntext:      %u\n"),
+  printf ("  o_algntext:      %u\n",
           (unsigned int)bfd_h_get_16 (abfd, auxhdr.o_algntext));
-  printf (_("  o_algndata:      %u\n"),
+  printf ("  o_algndata:      %u\n",
           (unsigned int)bfd_h_get_16 (abfd, auxhdr.o_algndata));
-  printf (_("  o_modtype:       0x%04x"),
+  printf ("  o_modtype:       0x%04x",
           (unsigned int)bfd_h_get_16 (abfd, auxhdr.o_modtype));
   if (ISPRINT (auxhdr.o_modtype[0]) && ISPRINT (auxhdr.o_modtype[1]))
     printf (" (%c%c)", auxhdr.o_modtype[0], auxhdr.o_modtype[1]);
   putchar ('\n');
-  printf (_("  o_cputype:       0x%04x\n"),
+  printf ("  o_cputype:       0x%04x\n",
           (unsigned int)bfd_h_get_16 (abfd, auxhdr.o_cputype));
-  printf (_("  o_maxstack:      0x%08x\n"),
+  printf ("  o_maxstack:      0x%08x\n",
           (unsigned int)bfd_h_get_32 (abfd, auxhdr.o_maxstack));
-  printf (_("  o_maxdata:       0x%08x\n"),
+  printf ("  o_maxdata:       0x%08x\n",
           (unsigned int)bfd_h_get_32 (abfd, auxhdr.o_maxdata));
 #if 0
-  printf (_("  o_debugger:      0x%08x\n"),
+  printf ("  o_debugger:      0x%08x\n",
           (unsigned int)bfd_h_get_32 (abfd, auxhdr.o_debugger));
 #endif
 }
@@ -531,7 +535,8 @@ dump_xcoff32_sections_header (bfd *abfd, struct xcoff_dump *data)
       non_fatal (_("cannot read section header"));
       return;
     }
-  printf (_(" # Name     paddr    vaddr    size     scnptr   relptr   lnnoptr  nrel  nlnno\n"));
+  /* We don't translate this string as it consists in fields name.  */
+  printf (" # Name     paddr    vaddr    size     scnptr   relptr   lnnoptr  nrel  nlnno\n");
   for (i = 0; i < data->nscns; i++)
     {
       struct external_scnhdr scn;
@@ -543,8 +548,7 @@ dump_xcoff32_sections_header (bfd *abfd, struct xcoff_dump *data)
           return;
         }
       flags = bfd_h_get_32 (abfd, scn.s_flags);
-      printf (_("%2d %-8.8s %08x %08x %08x %08x %08x %08x "
-                "%-5d %-5d\n"),
+      printf ("%2d %-8.8s %08x %08x %08x %08x %08x %08x %-5d %-5d\n",
               i + 1, scn.s_name,
               (unsigned int)bfd_h_get_32 (abfd, scn.s_paddr),
               (unsigned int)bfd_h_get_32 (abfd, scn.s_vaddr),
@@ -747,7 +751,7 @@ dump_xcoff32_symbols (bfd *abfd, struct xcoff_dump *data)
       return;
     }
 
-  /* Read string table.  */
+  /* Read strings table.  */
   if (data->strings_size == 0)
     printf (_(" (no strings):\n"));
   else
@@ -764,6 +768,7 @@ dump_xcoff32_symbols (bfd *abfd, struct xcoff_dump *data)
       bfd_get_section_contents (abfd, debugsec, debug, 0, size);
     }
 
+  /* Translators: 'sc' is for storage class, 'off' for offset.  */
   printf (_("  # sc         value    section  type aux name/off\n"));
   for (i = 0; i < data->nsyms; i++)
     {
@@ -815,12 +820,14 @@ dump_xcoff32_symbols (bfd *abfd, struct xcoff_dump *data)
           switch (s->sym.sclass)
             {
             case C_STAT:
+              /* Section length, number of relocs and line number.  */
               printf (_("  scnlen: %08x  nreloc: %-6u  nlinno: %-6u\n"),
                       (unsigned)bfd_h_get_32 (abfd, aux->x_scn.x_scnlen),
                       (unsigned)bfd_h_get_16 (abfd, aux->x_scn.x_nreloc),
                       (unsigned)bfd_h_get_16 (abfd, aux->x_scn.x_nlinno));
               break;
             case C_DWARF:
+              /* Section length and number of relocs.  */
               printf (_("  scnlen: %08x  nreloc: %-6u\n"),
                       (unsigned)bfd_h_get_32 (abfd, aux->x_scn.x_scnlen),
                       (unsigned)bfd_h_get_16 (abfd, aux->x_scn.x_nreloc));
@@ -830,8 +837,8 @@ dump_xcoff32_symbols (bfd *abfd, struct xcoff_dump *data)
             case C_HIDEXT:
               if (j == 0 && s->sym.numaux > 1)
                 {
-                  /* Function aux entry.  */
-                  printf (_("  exptr: %08x fsize: %08x lnnoptr: %08x endndx: %u\n"),
+                  /* Function aux entry  (Do not translate).  */
+                  printf ("  exptr: %08x fsize: %08x lnnoptr: %08x endndx: %u\n",
                           (unsigned)bfd_h_get_32 (abfd, aux->x_sym.x_tagndx),
                           (unsigned)bfd_h_get_32
                             (abfd, aux->x_sym.x_misc.x_fsize),
@@ -850,38 +857,39 @@ dump_xcoff32_symbols (bfd *abfd, struct xcoff_dump *data)
                   scnlen = bfd_h_get_32 (abfd, aux->x_csect.x_scnlen);
 
                   if (smtyp == XTY_LD)
-                    printf (_("  scnsym: %-8u"), scnlen);
+                    printf ("  scnsym: %-8u", scnlen);
                   else
-                    printf (_("  scnlen: %08x"), scnlen);
-                  printf (_(" h: parm=%08x sn=%04x al: 2**%u"),
+                    printf ("  scnlen: %08x", scnlen);
+                  printf (" h: parm=%08x sn=%04x al: 2**%u",
                           (unsigned)bfd_h_get_32 (abfd, aux->x_csect.x_parmhash),
                           (unsigned)bfd_h_get_16 (abfd, aux->x_csect.x_snhash),
                           SMTYP_ALIGN (smtyp));
-                  printf (_(" typ: "));
+                  printf (" typ: ");
                   dump_value (smtyp_xlat, SMTYP_SMTYP (smtyp), 2);
-                  printf (_(" cl: "));
+                  printf (" cl: ");
                   dump_value
                     (smclas_xlat,
                      (unsigned)bfd_h_get_8 (abfd, aux->x_csect.x_smclas), 6);
                   putchar ('\n');
                 }
               else
+                /* Do not translate - generic field name.  */
                 printf ("aux\n");
               break;
             case C_FILE:
               {
                 unsigned int off;
 
-                printf (_(" ftype: %02x "),
+                printf (" ftype: %02x ",
                         (unsigned)bfd_h_get_8 (abfd, aux->x_file.x_ftype));
                 if (aux->x_file.x_n.x_fname[0] != 0)
-                  printf (_("fname: %.14s"), aux->x_file.x_n.x_fname);
+                  printf ("fname: %.14s", aux->x_file.x_n.x_fname);
                 else
                   {
                     off = (unsigned)bfd_h_get_32
                       (abfd, aux->x_file.x_n.x_n.x_offset);
                     if (data->strings != NULL && off < data->strings_size)
-                      printf (_(" %s"), data->strings + off);
+                      printf (" %s", data->strings + off);
                     else
                       printf (_("offset: %08x"), off);
                   }
@@ -890,11 +898,12 @@ dump_xcoff32_symbols (bfd *abfd, struct xcoff_dump *data)
               break;
             case C_BLOCK:
             case C_FCN:
-              printf (_("  lnno: %u\n"),
+              printf ("  lnno: %u\n",
                       (unsigned)bfd_h_get_16
                       (abfd, aux->x_sym.x_misc.x_lnsz.x_lnno));
               break;
             default:
+              /* Do not translate - generic field name.  */
               printf ("aux\n");
               break;
             }
@@ -931,7 +940,8 @@ dump_xcoff32_relocs (bfd *abfd, struct xcoff_dump *data)
           non_fatal (_("cannot read relocations"));
           continue;
         }
-      printf (_("vaddr    sgn mod sz type  symndx symbol\n"));
+      /* Do not translate: fields name.  */
+      printf ("vaddr    sgn mod sz type  symndx symbol\n");
       for (j = 0; j < nrel; j++)
         {
           struct external_reloc rel;
@@ -944,7 +954,7 @@ dump_xcoff32_relocs (bfd *abfd, struct xcoff_dump *data)
               return;
             }
           rsize = bfd_h_get_8 (abfd, rel.r_size);
-          printf (_("%08x  %c   %c  %-2u "),
+          printf ("%08x  %c   %c  %-2u ",
                   (unsigned int)bfd_h_get_32 (abfd, rel.r_vaddr),
                   rsize & 0x80 ? 'S' : 'U',
                   rsize & 0x40 ? 'm' : ' ',
@@ -986,6 +996,7 @@ dump_xcoff32_lineno (bfd *abfd, struct xcoff_dump *data)
           non_fatal (_("cannot read line numbers"));
           continue;
         }
+      /* Line number, symbol index and physical address.  */
       printf (_("lineno  symndx/paddr\n"));
       for (j = 0; j < nlnno; j++)
         {
@@ -998,7 +1009,7 @@ dump_xcoff32_lineno (bfd *abfd, struct xcoff_dump *data)
               return;
             }
           no = bfd_h_get_16 (abfd, ln.l_lnno);
-          printf (_(" %-6u "), no);
+          printf (" %-6u ", no);
           if (no == 0)
             {
               unsigned int symndx = bfd_h_get_32 (abfd, ln.l_addr.l_symndx);
@@ -1063,6 +1074,7 @@ dump_xcoff32_loader (bfd *abfd)
   printf (_("  nbr symbols:       %u\n"), ndsyms);
   ndrel = bfd_h_get_32 (abfd, lhdr->l_nreloc);
   printf (_("  nbr relocs:        %u\n"), ndrel);
+  /* Import string table length.  */
   printf (_("  import strtab len: %u\n"),
           (unsigned) bfd_h_get_32 (abfd, lhdr->l_istlen));
   nimpid = bfd_h_get_32 (abfd, lhdr->l_nimpid);
@@ -1076,7 +1088,8 @@ dump_xcoff32_loader (bfd *abfd)
 
   ldsym = (struct external_ldsym *)(ldr_data + sizeof (*lhdr));
   printf (_("Dynamic symbols:\n"));
-  printf (_("     # value     sc IFEW ty class file  pa name\n"));
+  /* Do not translate: field names.  */
+  printf ("     # value     sc IFEW ty class file  pa name\n");
   for (i = 0; i < ndsyms; i++, ldsym++)
     {
       unsigned char smtype;
@@ -1111,7 +1124,8 @@ dump_xcoff32_loader (bfd *abfd)
     }
 
   printf (_("Dynamic relocs:\n"));
-  printf (_("  vaddr    sec    sz typ   sym\n"));
+  /* Do not translate fields name.  */
+  printf ("  vaddr    sec    sz typ   sym\n");
   ldrel = (struct external_ldrel *)(ldr_data + sizeof (*lhdr)
                                     + ndsyms * sizeof (*ldsym));
   for (i = 0; i < ndrel; i++, ldrel++)
@@ -1123,7 +1137,7 @@ dump_xcoff32_loader (bfd *abfd)
       rsize = bfd_h_get_8 (abfd, ldrel->l_rtype + 0);
       rtype = bfd_h_get_8 (abfd, ldrel->l_rtype + 1);
 
-      printf (_("  %08x %3u %c%c %2u "),
+      printf ("  %08x %3u %c%c %2u ",
               (unsigned)bfd_h_get_32 (abfd, ldrel->l_vaddr),
               (unsigned)bfd_h_get_16 (abfd, ldrel->l_rsecnm),
               rsize & 0x80 ? 'S' : 'U',
@@ -1134,16 +1148,16 @@ dump_xcoff32_loader (bfd *abfd)
       switch (symndx)
         {
         case 0:
-          printf (_(".text"));
+          printf (".text");
           break;
         case 1:
-          printf (_(".data"));
+          printf (".data");
           break;
         case 2:
-          printf (_(".bss"));
+          printf (".bss");
           break;
         default:
-          printf (_("%u"), symndx - 3);
+          printf ("%u", symndx - 3);
           break;
         }
       putchar ('\n');
@@ -1190,7 +1204,8 @@ dump_xcoff32_except (bfd *abfd, struct xcoff_dump *data)
   exceptab = (struct external_exceptab *)excp_data;
 
   printf (_("Exception table:\n"));
-  printf (_("lang reason sym/addr\n"));
+  /* Do not translate fields name.  */
+  printf ("lang reason sym/addr\n");
   for (i = 0; i * sizeof (*exceptab) < size; i++, exceptab++)
     {
       unsigned int reason;
@@ -1198,12 +1213,12 @@ dump_xcoff32_except (bfd *abfd, struct xcoff_dump *data)
 
       addr = bfd_get_32 (abfd, exceptab->e_addr.e_paddr);
       reason = bfd_get_8 (abfd, exceptab->e_reason);
-      printf (_("  %02x     %02x "),
+      printf ("  %02x     %02x ",
               (unsigned) bfd_get_8 (abfd, exceptab->e_lang), reason);
       if (reason == 0)
         xcoff32_print_symbol (data, addr);
       else
-        printf (_("@%08x"), addr);
+        printf ("@%08x", addr);
       putchar ('\n');
     }
   free (excp_data);
@@ -1231,7 +1246,8 @@ dump_xcoff32_typchk (bfd *abfd)
   bfd_get_section_contents (abfd, sec, data, 0, size);
 
   printf (_("Type-check section:\n"));
-  printf (_("offset    len  lang-id general-hash language-hash\n"));
+  /* Do not translate field names.  */
+  printf ("offset    len  lang-id general-hash language-hash\n");
   for (i = 0; i < size;)
     {
       unsigned int len;
@@ -1293,32 +1309,32 @@ dump_xcoff32_tbtags (bfd *abfd,
         tb1 = bfd_get_32 (abfd, text + i + 4);
         tb2 = bfd_get_32 (abfd, text + i + 8);
         off = i + 12;
-        printf (_(" version: %u, lang: %u, global_link: %u, is_eprol: %u, has_tboff: %u, int_proc: %u\n"),
+        printf (" version: %u, lang: %u, global_link: %u, is_eprol: %u, has_tboff: %u, int_proc: %u\n",
                 (tb1 >> 24) & 0xff,
                 (tb1 >> 16) & 0xff,
                 (tb1 >> 15) & 1,
                 (tb1 >> 14) & 1,
                 (tb1 >> 13) & 1,
                 (tb1 >> 12) & 1);
-        printf (_(" has_ctl: %u, tocless: %u, fp_pres: %u, log_abort: %u, int_hndl: %u\n"),
+        printf (" has_ctl: %u, tocless: %u, fp_pres: %u, log_abort: %u, int_hndl: %u\n",
                 (tb1 >> 11) & 1,
                 (tb1 >> 10) & 1,
                 (tb1 >> 9) & 1,
                 (tb1 >> 8) & 1,
                 (tb1 >> 7) & 1);
-        printf (_(" name_pres: %u, uses_alloca: %u, cl_dis_inv: %u, saves_cr: %u, saves_lr: %u\n"),
+        printf (" name_pres: %u, uses_alloca: %u, cl_dis_inv: %u, saves_cr: %u, saves_lr: %u\n",
                 (tb1 >> 6) & 1,
                 (tb1 >> 5) & 1,
                 (tb1 >> 2) & 7,
                 (tb1 >> 1) & 1,
                 (tb1 >> 0) & 1);
-        printf (_(" stores_bc: %u, fixup: %u, fpr_saved: %-2u, spare3: %u, gpr_saved: %-2u\n"),
+        printf (" stores_bc: %u, fixup: %u, fpr_saved: %-2u, spare3: %u, gpr_saved: %-2u\n",
                 (tb2 >> 31) & 1,
                 (tb2 >> 30) & 1,
                 (tb2 >> 24) & 63,
                 (tb2 >> 22) & 3,
                 (tb2 >> 16) & 63);
-        printf (_(" fixparms: %-3u  floatparms: %-3u  parm_on_stk: %u\n"),
+        printf (" fixparms: %-3u  floatparms: %-3u  parm_on_stk: %u\n",
                 (tb2 >> 8) & 0xff,
                 (tb2 >> 1) & 0x7f,
                 (tb2 >> 0) & 1);
@@ -1331,7 +1347,7 @@ dump_xcoff32_tbtags (bfd *abfd,
               goto truncated;
             parminfo = bfd_get_32 (abfd, text + off);
             off += 4;
-            printf (_(" parminfo: 0x%08x\n"), parminfo);
+            printf (" parminfo: 0x%08x\n", parminfo);
           }
 
         if ((tb1 >> 13) & 1)
@@ -1342,7 +1358,7 @@ dump_xcoff32_tbtags (bfd *abfd,
               goto truncated;
             tboff = bfd_get_32 (abfd, text + off);
             off += 4;
-            printf (_(" tb_offset: 0x%08x (start=0x%08x)\n"),
+            printf (" tb_offset: 0x%08x (start=0x%08x)\n",
                     tboff, text_start + i - tboff);
           }
         if ((tb1 >> 7) & 1)
@@ -1353,7 +1369,7 @@ dump_xcoff32_tbtags (bfd *abfd,
               goto truncated;
             hand_mask = bfd_get_32 (abfd, text + off);
             off += 4;
-            printf (_(" hand_mask_offset: 0x%08x\n"), hand_mask);
+            printf (" hand_mask_offset: 0x%08x\n", hand_mask);
           }
         if ((tb1 >> 11) & 1)
           {
@@ -1369,8 +1385,8 @@ dump_xcoff32_tbtags (bfd *abfd,
               {
                 if (off >= text_size)
                   goto truncated;
-                printf (_("  CTL[%u]: %08x\n"),
-                          j, (unsigned)bfd_get_32 (abfd, text + off));
+                printf ("  CTL[%u]: %08x\n",
+                        j, (unsigned)bfd_get_32 (abfd, text + off));
                 off += 4;
               }
           }
@@ -1401,7 +1417,7 @@ dump_xcoff32_tbtags (bfd *abfd,
           {
             if (off >= text_size)
               goto truncated;
-            printf (_(" alloca reg: %u\n"),
+            printf (" alloca reg: %u\n",
                     (unsigned) bfd_get_8 (abfd, text + off));
             off++;
           }
@@ -1615,7 +1631,7 @@ dump_xcoff32 (bfd *abfd, struct external_filehdr *fhdr)
 /* Dump ABFD (according to the options[] array).  */
 
 static void
-xcoff_dump (bfd *abfd)
+xcoff_dump_obj (bfd *abfd)
 {
   struct external_filehdr fhdr;
   unsigned short magic;
@@ -1647,6 +1663,7 @@ xcoff_dump (bfd *abfd)
           break;
         default:
           printf (_("unknown magic"));
+	  break;
         }
       putchar ('\n');
     }
@@ -1654,6 +1671,164 @@ xcoff_dump (bfd *abfd)
     dump_xcoff32 (abfd, &fhdr);
   else
     printf (_("  Unhandled magic\n"));
+}
+
+/* Handle an AIX dumpx core file.  */
+
+static void
+dump_dumpx_core (bfd *abfd, struct external_core_dumpx *hdr)
+{
+  if (options[OPT_FILE_HEADER].selected)
+    {
+      printf ("  signal:     %u\n", bfd_h_get_8 (abfd, hdr->c_signo));
+      printf ("  flags:      0x%02x\n", bfd_h_get_8 (abfd, hdr->c_flag));
+      printf ("  entries:    %u\n",
+	      (unsigned) bfd_h_get_16 (abfd, hdr->c_entries));
+#ifdef BFD64
+      printf ("  fdsinfox:   offset: 0x%08" BFD_VMA_FMT "x\n",
+	      bfd_h_get_64 (abfd, hdr->c_fdsinfox));
+      printf ("  loader:     offset: 0x%08" BFD_VMA_FMT "x, "
+	      "size: 0x%" BFD_VMA_FMT"x\n",
+	      bfd_h_get_64 (abfd, hdr->c_loader),
+	      bfd_h_get_64 (abfd, hdr->c_lsize));
+      printf ("  thr:        offset: 0x%08" BFD_VMA_FMT "x, nbr: %u\n",
+	      bfd_h_get_64 (abfd, hdr->c_thr),
+	      (unsigned) bfd_h_get_32 (abfd, hdr->c_n_thr));
+      printf ("  segregions: offset: 0x%08" BFD_VMA_FMT "x, "
+	      "nbr: %" BFD_VMA_FMT "u\n",
+	      bfd_h_get_64 (abfd, hdr->c_segregion),
+	      bfd_h_get_64 (abfd, hdr->c_segs));
+      printf ("  stack:      offset: 0x%08" BFD_VMA_FMT "x, "
+	      "org: 0x%" BFD_VMA_FMT"x, "
+	      "size: 0x%" BFD_VMA_FMT"x\n",
+	      bfd_h_get_64 (abfd, hdr->c_stack),
+	      bfd_h_get_64 (abfd, hdr->c_stackorg),
+	      bfd_h_get_64 (abfd, hdr->c_size));
+      printf ("  data:       offset: 0x%08" BFD_VMA_FMT "x, "
+	      "org: 0x%" BFD_VMA_FMT"x, "
+	      "size: 0x%" BFD_VMA_FMT"x\n",
+	      bfd_h_get_64 (abfd, hdr->c_data),
+	      bfd_h_get_64 (abfd, hdr->c_dataorg),
+	      bfd_h_get_64 (abfd, hdr->c_datasize));
+      printf ("  sdata:         org: 0x%" BFD_VMA_FMT"x, "
+	      "size: 0x%" BFD_VMA_FMT"x\n",
+	      bfd_h_get_64 (abfd, hdr->c_sdorg),
+	      bfd_h_get_64 (abfd, hdr->c_sdsize));
+      printf ("  vmmregions: offset: 0x%" BFD_VMA_FMT"x, "
+	      "num: 0x%" BFD_VMA_FMT"x\n",
+	      bfd_h_get_64 (abfd, hdr->c_vmm),
+	      bfd_h_get_64 (abfd, hdr->c_vmmregions));
+      printf ("  impl:       0x%08x\n",
+	      (unsigned) bfd_h_get_32 (abfd, hdr->c_impl));
+      printf ("  cprs:       0x%" BFD_VMA_FMT "x\n",
+	      bfd_h_get_64 (abfd, hdr->c_cprs));
+#endif
+    }
+  if (options[OPT_LDINFO].selected)
+    {
+#ifdef BFD64
+      file_ptr off = (file_ptr) bfd_h_get_64 (abfd, hdr->c_loader);
+      bfd_size_type len = (bfd_size_type) bfd_h_get_64 (abfd, hdr->c_lsize);
+      char *ldr;
+
+      ldr = xmalloc (len);
+      if (bfd_seek (abfd, off, SEEK_SET) != 0
+	  || bfd_bread (ldr, len, abfd) != len)
+	non_fatal (_("cannot read loader info table"));
+      else
+	{
+	  char *p;
+
+	  printf ("\n"
+		  "ld info:\n");
+	  printf ("  next     core off textorg  textsize dataorg  datasize\n");
+	  p = ldr;
+	  while (1)
+	    {
+	      struct external_ld_info32 *l = (struct external_ld_info32 *)p;
+	      unsigned int next;
+	      size_t n1;
+
+	      next = bfd_h_get_32 (abfd, l->ldinfo_next);
+	      printf ("  %08x %08x %08x %08x %08x %08x\n",
+		      next,
+		      (unsigned) bfd_h_get_32 (abfd, l->core_offset),
+		      (unsigned) bfd_h_get_32 (abfd, l->ldinfo_textorg),
+		      (unsigned) bfd_h_get_32 (abfd, l->ldinfo_textsize),
+		      (unsigned) bfd_h_get_32 (abfd, l->ldinfo_dataorg),
+		      (unsigned) bfd_h_get_32 (abfd, l->ldinfo_datasize));
+	      n1 = strlen ((char *) l->ldinfo_filename);
+	      printf ("    %s %s\n",
+		      l->ldinfo_filename, l->ldinfo_filename + n1 + 1);
+	      if (next == 0)
+		break;
+	      p += next;
+	    }
+	}
+#else
+      printf (_("\n"
+		"ldinfo dump not supported in 32 bits environments\n"));
+#endif
+    }
+}
+
+/* Dump a core file.  */
+
+static void
+xcoff_dump_core (bfd *abfd)
+{
+  struct external_core_dumpx hdr;
+  unsigned int version;
+
+  /* Read file header.  */
+  if (bfd_seek (abfd, 0, SEEK_SET) != 0
+      || bfd_bread (&hdr, sizeof (hdr), abfd) != sizeof (hdr))
+    {
+      non_fatal (_("cannot core read header"));
+      return;
+    }
+
+  version = bfd_h_get_32 (abfd, hdr.c_version);
+  if (options[OPT_FILE_HEADER].selected)
+    {
+      printf (_("Core header:\n"));
+      printf (_("  version:    0x%08x  "), version);
+      switch (version)
+	{
+	case CORE_DUMPX_VERSION:
+	  printf (_("(dumpx format - aix4.3 / 32 bits)"));
+	  break;
+	case CORE_DUMPXX_VERSION:
+	  printf (_("(dumpxx format - aix5.0 / 64 bits)"));
+	  break;
+	default:
+	  printf (_("unknown format"));
+	  break;
+	}
+      putchar ('\n');
+    }
+  if (version == CORE_DUMPX_VERSION)
+    dump_dumpx_core (abfd, &hdr);
+  else
+    printf (_("  Unhandled magic\n"));
+}
+
+/* Dump an XCOFF file.  */
+
+static void
+xcoff_dump (bfd *abfd)
+{
+  /* We rely on BFD to decide if the file is a core file.  Note that core
+     files are only supported on native environment by BFD.  */
+  switch (bfd_get_format (abfd))
+    {
+    case bfd_core:
+      xcoff_dump_core (abfd);
+      break;
+    default:
+      xcoff_dump_obj (abfd);
+      break;
+    }
 }
 
 /* Vector for xcoff.  */

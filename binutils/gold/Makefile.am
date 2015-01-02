@@ -1,4 +1,22 @@
-# Process this file with automake to generate Makefile.in
+## Process this file with automake to generate Makefile.in
+#
+#  Copyright 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013
+#  Free Software Foundation, Inc.
+#
+# This file is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; see the file COPYING3.  If not see
+# <http://www.gnu.org/licenses/>.
+#
 
 AUTOMAKE_OPTIONS = foreign
 
@@ -15,12 +33,12 @@ AM_CPPFLAGS = \
 	-I$(srcdir) -I$(srcdir)/../include -I$(srcdir)/../elfcpp \
 	-DLOCALEDIR="\"$(datadir)/locale\"" \
 	-DBINDIR="\"$(bindir)\"" -DTOOLBINDIR="\"$(tooldir)/bin\"" \
-	@INCINTL@
+	-DTOOLLIBDIR="\"$(tooldir)/lib\"" @INCINTL@
 
 LIBIBERTY = ../libiberty/libiberty.a
 
 if PLUGINS
-LIBDL = -ldl
+LIBDL = @DLOPEN_LIBS@
 endif
 
 if THREADS
@@ -33,6 +51,8 @@ AM_YFLAGS = -d
 # maintainer mode is disabled.  Avoid this.
 am__skiplex =
 am__skipyacc =
+
+bin_PROGRAMS = dwp
 
 noinst_PROGRAMS = ld-new incremental-dump
 noinst_LIBRARIES = libgold.a
@@ -55,6 +75,7 @@ CCFILES = \
 	expression.cc \
 	fileread.cc \
         gc.cc \
+        gdb-index.cc \
 	gold.cc \
 	gold-threads.cc \
 	icf.cc \
@@ -63,6 +84,7 @@ CCFILES = \
 	layout.cc \
 	mapfile.cc \
 	merge.cc \
+	nacl.cc \
 	object.cc \
 	options.cc \
 	output.cc \
@@ -102,6 +124,7 @@ HFILES = \
 	fileread.h \
 	freebsd.h \
         gc.h \
+        gdb-index.h \
 	gold.h \
 	gold-threads.h \
 	icf.h \
@@ -109,6 +132,7 @@ HFILES = \
 	layout.h \
 	mapfile.h \
 	merge.h \
+	nacl.h \
 	object.h \
 	options.h \
 	output.h \
@@ -140,23 +164,25 @@ DEFFILES = arm-reloc.def
 EXTRA_DIST = yyscript.c yyscript.h
 
 TARGETSOURCES = \
-	i386.cc x86_64.cc sparc.cc powerpc.cc arm.cc arm-reloc-property.cc
+	i386.cc x86_64.cc sparc.cc powerpc.cc arm.cc arm-reloc-property.cc tilegx.cc
 
 ALL_TARGETOBJS = \
 	i386.$(OBJEXT) x86_64.$(OBJEXT) sparc.$(OBJEXT) powerpc.$(OBJEXT) \
-	arm.$(OBJEXT) arm-reloc-property.$(OBJEXT)
+	arm.$(OBJEXT) arm-reloc-property.$(OBJEXT) tilegx.$(OBJEXT)
 
 libgold_a_SOURCES = $(CCFILES) $(HFILES) $(YFILES) $(DEFFILES)
 libgold_a_LIBADD = $(LIBOBJS)
 
 sources_var = main.cc
 deps_var = $(TARGETOBJS) libgold.a $(LIBIBERTY) $(LIBINTL_DEP)
-ldadd_var = $(TARGETOBJS) libgold.a $(LIBIBERTY) $(LIBINTL) \
+ldadd_var = $(TARGETOBJS) libgold.a $(LIBIBERTY) $(GOLD_LDADD) $(LIBINTL) \
 	 $(THREADSLIB) $(LIBDL)
+ldflags_var = $(GOLD_LDFLAGS)
 
 ld_new_SOURCES = $(sources_var)
 ld_new_DEPENDENCIES = $(deps_var)
 ld_new_LDADD = $(ldadd_var)
+ld_new_LDFLAGS = $(ldflags_var)
 
 EXTRA_ld_new_SOURCES = $(TARGETSOURCES)
 
@@ -165,6 +191,12 @@ incremental_dump_DEPENDENCIES = $(TARGETOBJS) libgold.a $(LIBIBERTY) \
 	$(LIBINTL_DEP)
 incremental_dump_LDADD = $(TARGETOBJS) libgold.a $(LIBIBERTY) $(LIBINTL) \
 	 $(THREADSLIB) $(LIBDL)
+
+dwp_SOURCES = dwp.cc
+dwp_DEPENDENCIES = libgold.a $(LIBIBERTY) $(LIBINTL_DEP)
+dwp_LDADD = libgold.a $(LIBIBERTY) $(GOLD_LDADD) $(LIBINTL) $(THREADSLIB) \
+	$(LIBDL)
+dwp_LDFLAGS = $(GOLD_LDFLAGS)
 
 # Use an explicit dependency for the bison generated header file.
 expression.$(OBJEXT): yyscript.h
@@ -237,7 +269,7 @@ ld2_LDFLAGS = -Bgcctestdir2/
 bootstrap-test: ld2
 	rm -f $@
 	echo "#!/bin/sh" > $@
-	echo "cmp ld1 ld2" > $@
+	echo "cmp ld1 ld2" >> $@
 	chmod +x $@
 
 libgold-1-r.o: gcctestdir1/ld libgold.a
@@ -264,11 +296,68 @@ ld2_r_LDFLAGS = -Bgcctestdir2-r/
 bootstrap-test-r: ld2-r
 	rm -f $@
 	echo "#!/bin/sh" > $@
-	echo "cmp ld1-r ld2-r" > $@
+	echo "cmp ld1-r ld2-r" >> $@
 	chmod +x $@
 
 check_PROGRAMS = ld1 ld2 ld1-r ld2-r
 TESTS = bootstrap-test bootstrap-test-r
+
+# Verify that changing the number of threads doesn't change the
+# treehash computation, by building ld1 and ld3 the same way except
+# for the number of threads.  However, the build ID should change if
+# we change the chunk size for --build-id=tree, so ld4 should be
+# different.  We run the latter test even if multithreading is unavailable,
+# because the treehash can still operate in that mode.
+check_PROGRAMS += ld4
+TESTS += bootstrap-test-treehash-chunksize
+
+gcctestdir3/ld: ld-new
+	test -d gcctestdir3 || mkdir -p gcctestdir3
+	rm -f gcctestdir3/ld
+	(cd gcctestdir3 && $(LN_S) ../ld-new ld)
+
+ld3_SOURCES = $(sources_var)
+ld3_DEPENDENCIES = $(deps_var) gcctestdir3/ld
+ld3_LDADD = $(ldadd_var)
+ld3_LDFLAGS = -Bgcctestdir3/
+
+gcctestdir4/ld: ld-new
+	test -d gcctestdir4 || mkdir -p gcctestdir4
+	rm -f gcctestdir4/ld
+	(cd gcctestdir4 && $(LN_S) ../ld-new ld)
+
+ld4_SOURCES = $(sources_var)
+ld4_DEPENDENCIES = $(deps_var) gcctestdir4/ld
+ld4_LDADD = $(ldadd_var)
+ld4_LDFLAGS = -Bgcctestdir4/
+
+ld1_LDFLAGS += -Wl,--build-id=tree -Wl,--build-id-chunk-size-for-treehash=12345 -Wl,--build-id-min-file-size-for-treehash=0
+ld2_LDFLAGS += -Wl,--build-id=tree -Wl,--build-id-chunk-size-for-treehash=12345 -Wl,--build-id-min-file-size-for-treehash=0
+ld3_LDFLAGS += -Wl,--build-id=tree -Wl,--build-id-chunk-size-for-treehash=12345 -Wl,--build-id-min-file-size-for-treehash=0
+ld4_LDFLAGS += -Wl,--build-id=tree -Wl,--build-id-chunk-size-for-treehash=12346 -Wl,--build-id-min-file-size-for-treehash=0
+
+if THREADS
+
+ld1_LDFLAGS += -Wl,--thread-count=3
+ld2_LDFLAGS += -Wl,--thread-count=3
+ld3_LDFLAGS += -Wl,--thread-count=13
+ld4_LDFLAGS += -Wl,--thread-count=3
+check_PROGRAMS += ld3
+TESTS += bootstrap-test-treehash-chunksize
+
+bootstrap-test-treehash: ld1 ld3
+	rm -f $@
+	echo "#!/bin/sh" > $@
+	echo "cmp ld1 ld3" >> $@
+	chmod +x $@
+
+endif
+
+bootstrap-test-treehash-chunksize: ld1 ld4
+	rm -f $@
+	echo "#!/bin/sh" > $@
+	echo "cmp ld1 ld4 | grep ." >> $@
+	chmod +x $@
 
 endif
 endif

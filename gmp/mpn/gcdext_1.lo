@@ -5,7 +5,7 @@
 # It is necessary for linking the library.
 
 # Name of the PIC object.
-pic_object=none
+pic_object='.libs/gcdext_1.o'
 
 # Name of the non-PIC object
 non_pic_object='gcdext_1.o'

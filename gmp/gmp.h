@@ -2288,8 +2288,8 @@ enum
 };
 
 /* Define CC and CFLAGS which were used to build this version of GMP */
-#define __GMP_CC "/home/anushruth/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc -std=gnu99"
-#define __GMP_CFLAGS "-g -O2 --sysroot=/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/ -I/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include"
+#define __GMP_CC "/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc -std=gnu99"
+#define __GMP_CFLAGS "-g -O2 -I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ --sysroot=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm"
 
 /* Major version number is the value of __GNU_MP__ too, above and in mp.h. */
 #define __GNU_MP_VERSION            6

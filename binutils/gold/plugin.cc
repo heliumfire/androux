@@ -1,6 +1,6 @@
 // plugin.cc -- plugin manager for gold      -*- C++ -*-
 
-// Copyright 2008, 2009, 2010, 2011 Free Software Foundation, Inc.
+// Copyright 2008, 2009, 2010, 2011, 2012, 2013 Free Software Foundation, Inc.
 // Written by Cary Coutant <ccoutant@google.com>.
 
 // This file is part of gold.
@@ -29,8 +29,38 @@
 #include <vector>
 
 #ifdef ENABLE_PLUGINS
+#ifdef HAVE_DLFCN_H
 #include <dlfcn.h>
+#elif defined (HAVE_WINDOWS_H)
+#include <windows.h>
+#else
+#error Unknown how to handle dynamic-load-libraries.
 #endif
+
+#if !defined (HAVE_DLFCN_H) && defined (HAVE_WINDOWS_H)
+
+#define RTLD_NOW 0      /* Dummy value.  */
+static void *
+dlopen(const char *file, int mode ATTRIBUTE_UNUSED)
+{
+  return LoadLibrary(file);
+}
+
+static void *
+dlsym(void *handle, const char *name)
+{
+  return reinterpret_cast<void *>(
+     GetProcAddress(static_cast<HMODULE>(handle),name));
+}
+
+static const char *
+dlerror(void)
+{
+  return "unable to load dll";
+}
+
+#endif /* !defined (HAVE_DLFCN_H) && defined (HAVE_WINDOWS_H)  */
+#endif /* ENABLE_PLUGINS */
 
 #include "parameters.h"
 #include "errors.h"
@@ -41,6 +71,7 @@
 #include "target.h"
 #include "readsyms.h"
 #include "symtab.h"
+#include "descriptors.h"
 #include "elfcpp.h"
 
 namespace gold
@@ -115,6 +146,15 @@ update_section_order(const struct ld_plugin_section *section_list,
 static enum ld_plugin_status
 allow_section_ordering();
 
+static enum ld_plugin_status
+allow_unique_segment_for_sections();
+
+static enum ld_plugin_status
+unique_segment_for_sections(const char* segment_name,
+			    uint64_t flags,
+			    uint64_t align,
+			    const struct ld_plugin_section *section_list,
+			    unsigned int num_sections);
 };
 
 #endif // ENABLE_PLUGINS
@@ -159,7 +199,7 @@ Plugin::load()
   sscanf(ver, "%d.%d", &major, &minor);
 
   // Allocate and populate a transfer vector.
-  const int tv_fixed_size = 24;
+  const int tv_fixed_size = 26;
 
   int tv_size = this->args_.size() + tv_fixed_size;
   ld_plugin_tv* tv = new ld_plugin_tv[tv_size];
@@ -184,6 +224,8 @@ Plugin::load()
     tv[i].tv_u.tv_val = LDPO_REL;
   else if (parameters->options().shared())
     tv[i].tv_u.tv_val = LDPO_DYN;
+  else if (parameters->options().pie())
+    tv[i].tv_u.tv_val = LDPO_PIE;
   else
     tv[i].tv_u.tv_val = LDPO_EXEC;
 
@@ -269,6 +311,15 @@ Plugin::load()
   ++i;
   tv[i].tv_tag = LDPT_ALLOW_SECTION_ORDERING;
   tv[i].tv_u.tv_allow_section_ordering = allow_section_ordering;
+
+  ++i;
+  tv[i].tv_tag = LDPT_ALLOW_UNIQUE_SEGMENT_FOR_SECTIONS;
+  tv[i].tv_u.tv_allow_unique_segment_for_sections
+    = allow_unique_segment_for_sections;
+
+  ++i;
+  tv[i].tv_tag = LDPT_UNIQUE_SEGMENT_FOR_SECTIONS;
+  tv[i].tv_u.tv_unique_segment_for_sections = unique_segment_for_sections;
 
   ++i;
   tv[i].tv_tag = LDPT_NULL;
@@ -647,6 +698,14 @@ Plugin_manager::layout_deferred_objects()
 void
 Plugin_manager::cleanup()
 {
+  if (this->any_added_)
+    {
+      // If any input files were added, close all the input files.
+      // This is because the plugin may want to remove them, and on
+      // Windows you are not allowed to remove an open file.
+      close_all_descriptors();
+    }
+
   for (this->current_ = this->plugins_.begin();
        this->current_ != this->plugins_.end();
        ++this->current_)
@@ -818,7 +877,9 @@ Pluginobj::Pluginobj(const std::string& name, Input_file* input_file,
 }
 
 // Return TRUE if a defined symbol is referenced from outside the
-// universe of claimed objects.
+// universe of claimed objects.  Only references from relocatable,
+// non-IR (unclaimed) objects count as a reference.  References from
+// dynamic objects count only as "visible".
 
 static inline bool
 is_referenced_from_outside(Symbol* lsym)
@@ -838,6 +899,8 @@ is_referenced_from_outside(Symbol* lsym)
 static inline bool
 is_visible_from_outside(Symbol* lsym)
 {
+  if (lsym->in_dyn())
+    return true;
   if (parameters->options().export_dynamic() || parameters->options().shared())
     return lsym->is_externally_visible();
   return false;
@@ -1155,13 +1218,14 @@ Sized_pluginobj<size, big_endian>::do_section_name(unsigned int)
 // Return a view of the contents of a section.  Not used for plugin objects.
 
 template<int size, bool big_endian>
-Object::Location
-Sized_pluginobj<size, big_endian>::do_section_contents(unsigned int)
+const unsigned char*
+Sized_pluginobj<size, big_endian>::do_section_contents(
+    unsigned int,
+    section_size_type*,
+    bool)
 {
-  Location loc(0, 0);
-
   gold_unreachable();
-  return loc;
+  return NULL;
 }
 
 // Return section flags.  Not used for plugin objects.
@@ -1244,14 +1308,18 @@ Sized_pluginobj<size, big_endian>::do_initialize_xindex()
   return NULL;
 }
 
-// Get symbol counts.  Not used for plugin objects.
+// Get symbol counts.  Don't count plugin objects; the replacement
+// files will provide the counts.
 
 template<int size, bool big_endian>
 void
-Sized_pluginobj<size, big_endian>::do_get_global_symbol_counts(const Symbol_table*,
-                                                   size_t*, size_t*) const
+Sized_pluginobj<size, big_endian>::do_get_global_symbol_counts(
+    const Symbol_table*,
+    size_t* defined,
+    size_t* used) const
 {
-  gold_unreachable();
+  *defined = 0;
+  *used = 0;
 }
 
 // Get symbols.  Not used for plugin objects.
@@ -1630,7 +1698,7 @@ get_input_section_contents(const struct ld_plugin_section section,
 // which they should appear in the final layout.
 
 static enum ld_plugin_status
-update_section_order(const struct ld_plugin_section *section_list,
+update_section_order(const struct ld_plugin_section* section_list,
 		     unsigned int num_sections)
 {
   gold_assert(parameters->options().has_plugins());
@@ -1641,8 +1709,14 @@ update_section_order(const struct ld_plugin_section *section_list,
   if (section_list == NULL)
     return LDPS_ERR;
 
-  std::map<Section_id, unsigned int> order_map;
+  Layout* layout = parameters->options().plugins()->layout();
+  gold_assert (layout != NULL);
 
+  std::map<Section_id, unsigned int>* order_map
+    = layout->get_section_order_map();
+
+  /* Store the mapping from Section_id to section position in layout's
+     order_map to consult after output sections are added.  */
   for (unsigned int i = 0; i < num_sections; ++i)
     {
       Object* obj = parameters->options().plugins()->get_elf_object(
@@ -1651,16 +1725,8 @@ update_section_order(const struct ld_plugin_section *section_list,
 	return LDPS_BAD_HANDLE;
       unsigned int shndx = section_list[i].shndx;
       Section_id secn_id(obj, shndx);
-      order_map[secn_id] = i + 1;
+      (*order_map)[secn_id] = i + 1;
     }
-
-  Layout* layout = parameters->options().plugins()->layout();
-  gold_assert (layout != NULL);
-
-  for (Layout::Section_list::const_iterator p = layout->section_list().begin();
-       p != layout->section_list().end();
-       ++p)
-    (*p)->update_section_layout(order_map);
 
   return LDPS_OK;
 }
@@ -1673,6 +1739,64 @@ allow_section_ordering()
   gold_assert(parameters->options().has_plugins());
   Layout* layout = parameters->options().plugins()->layout();
   layout->set_section_ordering_specified();
+  return LDPS_OK;
+}
+
+// Let the linker know that a subset of sections could be mapped
+// to a unique segment.
+
+static enum ld_plugin_status
+allow_unique_segment_for_sections()
+{
+  gold_assert(parameters->options().has_plugins());
+  Layout* layout = parameters->options().plugins()->layout();
+  layout->set_unique_segment_for_sections_specified();
+  return LDPS_OK;
+}
+
+// This function should map the list of sections specified in the
+// SECTION_LIST to a unique segment.  ELF segments do not have names
+// and the NAME is used to identify Output Section which should contain
+// the list of sections.  This Output Section will then be mapped to
+// a unique segment.  FLAGS is used to specify if any additional segment
+// flags need to be set.  For instance, a specific segment flag can be
+// set to identify this segment.  Unsetting segment flags is not possible.
+// ALIGN specifies the alignment of the segment.
+
+static enum ld_plugin_status
+unique_segment_for_sections(const char* segment_name,
+			    uint64_t flags,
+			    uint64_t align,
+			    const struct ld_plugin_section* section_list,
+			    unsigned int num_sections)
+{
+  gold_assert(parameters->options().has_plugins());
+
+  if (num_sections == 0)
+    return LDPS_OK;
+
+  if (section_list == NULL)
+    return LDPS_ERR;
+
+  Layout* layout = parameters->options().plugins()->layout();
+  gold_assert (layout != NULL);
+
+  Layout::Unique_segment_info* s = new Layout::Unique_segment_info;
+  s->name = segment_name;
+  s->flags = flags;
+  s->align = align;
+
+  for (unsigned int i = 0; i < num_sections; ++i)
+    {
+      Object* obj = parameters->options().plugins()->get_elf_object(
+          section_list[i].handle);
+      if (obj == NULL)
+	return LDPS_BAD_HANDLE;
+      unsigned int shndx = section_list[i].shndx;
+      Const_section_id secn_id(obj, shndx);
+      layout->insert_section_segment_map(secn_id, s);
+    }
+
   return LDPS_OK;
 }
 

@@ -1,11 +1,24 @@
-#!/bin/bash
- ./configure \
-	--prefix=/home/anushruth/experiment/sysroot \
-	--with-sysroot=/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/ \
-	--target=arm-linux-androideabi \
-	--host=arm-linux-androideabi \
-	--disable-shared \
-	CC=~/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc \
-	CXX=~/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/arm-linux-androideabi-g++ \
-	LDFLAGS=--sysroot=/home/anushruth/tools/android-ndk-r10d/platforms/android-9/arch-arm/ \
-	CFLAGS="-g -O2 --sysroot=/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/ -I/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include"
+#!/bin/sh
+
+#  build.sh
+#  
+#
+#  Created by Anushruth on 17/12/2014.
+#
+
+make distclean
+./configure \
+--prefix=${PREFIX} \
+    --host=arm-linux-androideabi \
+    --target=arm-linux-androideabi \
+    CC=${CROSS_COMPILE}gcc \
+    CXX=${CROSS_COMPILE}g++ \
+    CFLAGS="-g -O2 -I${SYSROOT}/usr/include/ --sysroot=${SYSROOT}" \
+    LDFLAGS="-L${SYSROOT}/usr/lib/" \
+    CPP=${CROSS_COMPILE}cpp \
+    CPPFLAGS="-I${SYSROOT}/usr/include/" \
+    AR=${CROSS_COMPILE}ar \
+    NM=${CROSS_COMPILE}nm
+make clean
+make -j2
+make install

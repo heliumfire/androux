@@ -1,0 +1,4 @@
+unwind-arm_s.o: ../../../gcc/libgcc/../gcc/config/arm/unwind-arm.c \
+ /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.6/include/unwind.h
+
+/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.6/include/unwind.h:

@@ -1,6 +1,5 @@
 /* dwarf.h - DWARF support header file
-   Copyright 2005, 2007, 2008, 2009, 2010, 2011
-   Free Software Foundation, Inc.
+   Copyright 2005-2013 Free Software Foundation, Inc.
 
    This file is part of GNU Binutils.
 
@@ -109,30 +108,6 @@ typedef struct
 }
 DWARF2_Internal_ARange;
 
-struct dwarf_section
-{
-  /* A debug section has a different name when it's stored compressed
-     or not.  COMPRESSED_NAME and UNCOMPRESSED_NAME are the two
-     possibilities.  NAME is set to whichever one is used for this
-     input file, as determined by load_debug_section().  */
-  const char *uncompressed_name;
-  const char *compressed_name;
-  const char *name;
-  unsigned char *start;
-  dwarf_vma address;
-  dwarf_size_type size;
-};
-
-/* A structure containing the name of a debug section
-   and a pointer to a function that can decode it.  */
-struct dwarf_section_display
-{
-  struct dwarf_section section;
-  int (*display) (struct dwarf_section *, void *);
-  int *enabled;
-  unsigned int relocate : 1;
-};
-
 enum dwarf_section_display_enum
 {
   abbrev = 0,
@@ -152,10 +127,49 @@ enum dwarf_section_display_enum
   static_vars,
   types,
   weaknames,
+  gdb_index,
   trace_info,
   trace_abbrev,
   trace_aranges,
+  info_dwo,
+  abbrev_dwo,
+  types_dwo,
+  line_dwo,
+  loc_dwo,
+  macro_dwo,
+  macinfo_dwo,
+  str_dwo,
+  str_index,
+  str_index_dwo,
+  debug_addr,
+  dwp_cu_index,
+  dwp_tu_index,
   max
+};
+
+struct dwarf_section
+{
+  /* A debug section has a different name when it's stored compressed
+     or not.  COMPRESSED_NAME and UNCOMPRESSED_NAME are the two
+     possibilities.  NAME is set to whichever one is used for this
+     input file, as determined by load_debug_section().  */
+  const char *uncompressed_name;
+  const char *compressed_name;
+  const char *name;
+  unsigned char *start;
+  dwarf_vma address;
+  dwarf_size_type size;
+  enum dwarf_section_display_enum abbrev_sec;
+};
+
+/* A structure containing the name of a debug section
+   and a pointer to a function that can decode it.  */
+struct dwarf_section_display
+{
+  struct dwarf_section section;
+  int (*display) (struct dwarf_section *, void *);
+  int *enabled;
+  unsigned int relocate : 1;
 };
 
 extern struct dwarf_section_display debug_displays [];
@@ -169,6 +183,12 @@ typedef struct
   int            dwarf_version;
   dwarf_vma	 cu_offset;
   dwarf_vma	 base_address;
+  /* This field is filled in when reading the attribute DW_AT_GNU_addr_base and
+     is used with the form DW_AT_GNU_FORM_addr_index.  */
+  dwarf_vma	 addr_base;
+  /* This field is filled in when reading the attribute DW_AT_GNU_ranges_base and
+     is used when calculating ranges.  */
+  dwarf_vma	 ranges_base;
   /* This is an array of offsets to the location list table.  */
   dwarf_vma *    loc_offsets;
   int *          have_frame_base;
@@ -199,10 +219,14 @@ extern int do_gdb_index;
 extern int do_trace_info;
 extern int do_trace_abbrevs;
 extern int do_trace_aranges;
+extern int do_debug_addr;
+extern int do_debug_cu_index;
 extern int do_wide;
 
 extern int dwarf_cutoff_level;
 extern unsigned long dwarf_start_die;
+
+extern int dwarf_check;
 
 extern void init_dwarf_regnames (unsigned int);
 extern void init_dwarf_regnames_i386 (void);
@@ -217,8 +241,10 @@ extern void dwarf_select_sections_by_names (const char *);
 extern void dwarf_select_sections_by_letters (const char *);
 extern void dwarf_select_sections_all (void);
 
+unsigned int * find_cu_tu_set (void *, unsigned int);
+
 void * cmalloc (size_t, size_t);
 void * xcmalloc (size_t, size_t);
 void * xcrealloc (void *, size_t, size_t);
 
-dwarf_vma read_leb128 (unsigned char *, unsigned int *, int);
+extern dwarf_vma read_leb128 (unsigned char *, unsigned int *, bfd_boolean, const unsigned char * const);

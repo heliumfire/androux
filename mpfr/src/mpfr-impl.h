@@ -1135,14 +1135,13 @@ do {                                                                  \
 #include <locale.h>
 /* Warning! In case of signed char, the value of MPFR_DECIMAL_POINT may
    be negative (the ISO C99 does not seem to forbid negative values). */
-#define MPFR_DECIMAL_POINT (localeconv()->decimal_point[0])
-#define MPFR_THOUSANDS_SEPARATOR (localeconv()->thousands_sep[0])
+#define MPFR_DECIMAL_POINT ((char) '.')
+#define MPFR_THOUSANDS_SEPARATOR ('\0')
 #else
 #define MPFR_DECIMAL_POINT ((char) '.')
 #define MPFR_THOUSANDS_SEPARATOR ('\0')
 #endif
-#define MPFR_DECIMAL_POINT ((char) '.')
-#define MPFR_THOUSANDS_SEPARATOR ('\0')
+
 
 /* Set y to s*significand(x)*2^e, for example MPFR_ALIAS(y,x,1,MPFR_EXP(x))
    sets y to |x|, and MPFR_ALIAS(y,x,MPFR_SIGN(x),0) sets y to x*2^f such

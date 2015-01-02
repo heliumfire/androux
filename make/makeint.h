@@ -425,7 +425,7 @@ extern struct rlimit stack_limit;
 #define INTSTR_LENGTH         CSTRLEN ("18446744073709551616")
 
 #ifdef HAVE_TTYNAME
-# define TTYNAME(_f) ttyname (_f)
+# define TTYNAME(_f) "true"
 #else
 # define TTYNAME(_f) "true"
 #endif

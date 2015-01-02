@@ -1,82 +1,85 @@
 get_version.lo: get_version.c mpc-impl.h ../config.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/stdlib.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/cdefs.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/android/api-level.h \
- /home/anushruth/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.6/include/stddef.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/string.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/malloc.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/alloca.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/strings.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/types.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/stdint.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/_types.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/machine/_types.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/_wchar_limits.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/posix_types.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/stddef.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/compiler.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/asm/posix_types.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/asm/types.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/types.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/machine/kernel.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h \
- /home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/memory.h \
- mpc.h /home/anushruth/experiment/sysroot//include/gmp.h \
- /home/anushruth/experiment/sysroot//include/mpfr.h
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/stdlib.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/cdefs.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/android/api-level.h \
+ /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stddef.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/string.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/malloc.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/alloca.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/strings.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/types.h \
+ /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdint.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/stdint.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/_types.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/machine/_types.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/_wchar_limits.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/posix_types.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/stddef.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/compiler.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/asm/posix_types.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/asm/types.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/types.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/machine/kernel.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/memory.h \
+ mpc.h /Users/regnarts/Documents/experiment/sysroot/include/gmp.h \
+ /Users/regnarts/Documents/experiment/sysroot/include/mpfr.h
 
 mpc-impl.h:
 
 ../config.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/stdlib.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/stdlib.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/cdefs.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/cdefs.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/android/api-level.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/android/api-level.h:
 
-/home/anushruth/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.6/include/stddef.h:
+/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stddef.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/string.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/string.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/malloc.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/malloc.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/alloca.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/alloca.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/strings.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/strings.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/types.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/types.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/stdint.h:
+/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdint.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/_types.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/stdint.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/machine/_types.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/_types.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/_wchar_limits.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/machine/_types.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/posix_types.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/_wchar_limits.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/stddef.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/posix_types.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/compiler.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/stddef.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/asm/posix_types.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/compiler.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/asm/types.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/asm/posix_types.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/types.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/asm/types.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/machine/kernel.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/types.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/machine/kernel.h:
 
-/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/memory.h:
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/memory.h:
 
 mpc.h:
 
-/home/anushruth/experiment/sysroot//include/gmp.h:
+/Users/regnarts/Documents/experiment/sysroot/include/gmp.h:
 
-/home/anushruth/experiment/sysroot//include/mpfr.h:
+/Users/regnarts/Documents/experiment/sysroot/include/mpfr.h:

@@ -41,6 +41,7 @@ not-strip.c
 objcopy.c
 objdump.c
 objdump.h
+od-macho.c
 od-xcoff.c
 prdbg.c
 rclex.c
@@ -61,6 +62,7 @@ stabs.c
 strings.c
 sysdep.h
 sysdump.c
+syslex_wrap.c
 unwind-ia64.c
 unwind-ia64.h
 version.c

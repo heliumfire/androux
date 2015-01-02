@@ -26,6 +26,7 @@
 # include <limits.h>
 #endif
 
+
 #include "ansidecl.h"
 
 /* The following contortions are an attempt to use the C preprocessor
@@ -38,6 +39,11 @@
 #ifdef _LIBC
 # include <sys/types.h>
 typedef u_int32_t sha1_uint32;
+typedef uintptr_t sha1_uintptr;
+#elif defined (HAVE_SYS_TYPES_H) && defined (HAVE_STDINT_H)
+#include <stdint.h>
+#include <sys/types.h>
+typedef uint32_t sha1_uint32;
 typedef uintptr_t sha1_uintptr;
 #else
 #  define INT_MAX_32_BITS 2147483647
@@ -68,7 +74,9 @@ typedef uintptr_t sha1_uintptr;
 # endif
 #endif
 
-#ifdef __cplusplus
+typedef unsigned int sha1_uint32;
+
+#if defined __cplusplus
 extern "C" {
 #endif
 
@@ -134,7 +142,7 @@ extern int sha1_stream (FILE *stream, void *resblock);
    digest.  */
 extern void *sha1_buffer (const char *buffer, size_t len, void *resblock);
 
-#ifdef __cplusplus
+#if defined __cplusplus
 }
 #endif
 

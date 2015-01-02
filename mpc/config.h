@@ -69,13 +69,13 @@
 #define LT_OBJDIR ".libs/"
 
 /* C compiler */
-#define MPC_CC "/home/anushruth/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc"
+#define MPC_CC "/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc"
 
 /* Gcc yes or no */
 #define MPC_GCC "yes"
 
 /* Version of gcc */
-#define MPC_GCC_VERSION "4.6"
+#define MPC_GCC_VERSION "4.8"
 
 /* Do not check mpc_out_str on stdout */
 /* #undef MPC_NO_STREAM_REDIRECTION */

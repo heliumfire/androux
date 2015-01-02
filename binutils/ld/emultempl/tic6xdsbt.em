@@ -1,5 +1,5 @@
 # This shell script emits a C file. -*- C -*-
-#   Copyright 2011 Free Software Foundation, Inc.
+#   Copyright 2011, 2012 Free Software Foundation, Inc.
 #
 # This file is part of the GNU Binutils.
 #
@@ -75,19 +75,19 @@ compare_output_sec_vma (const void *a, const void *b)
   asection *asec = *(asection **) a, *bsec = *(asection **) b;
   asection *aout = asec->output_section, *bout = bsec->output_section;
   bfd_vma avma, bvma;
-  
+
   /* If there's no output section for some reason, compare equal.  */
   if (!aout || !bout)
     return 0;
-  
+
   avma = aout->vma + asec->output_offset;
   bvma = bout->vma + bsec->output_offset;
-  
+
   if (avma > bvma)
     return 1;
   else if (avma < bvma)
     return -1;
-  
+
   return 0;
 }
 
@@ -109,10 +109,10 @@ gld${EMULATION_NAME}_after_allocation (void)
 	{
 	  bfd *abfd = is->the_bfd;
 	  asection *sec;
-	  
+
 	  if ((abfd->flags & (EXEC_P | DYNAMIC)) != 0)
 	    continue;
-	  
+
 	  for (sec = abfd->sections; sec != NULL; sec = sec->next)
 	    {
 	      asection *out_sec = sec->output_section;
@@ -122,13 +122,13 @@ gld${EMULATION_NAME}_after_allocation (void)
 		  && elf_section_type (sec) == SHT_PROGBITS
 		  && (elf_section_flags (sec) & SHF_EXECINSTR) != 0
 		  && (sec->flags & SEC_EXCLUDE) == 0
-		  && sec->sec_info_type != ELF_INFO_TYPE_JUST_SYMS
+		  && sec->sec_info_type != SEC_INFO_TYPE_JUST_SYMS
 		  && out_sec != bfd_abs_section_ptr)
 		{
 		  if (sec_count == list_size)
 		    {
 		      list_size *= 2;
-		      sec_list = (asection **) 
+		      sec_list = (asection **)
                           xrealloc (sec_list, list_size * sizeof (asection *));
 		    }
 
@@ -136,13 +136,13 @@ gld${EMULATION_NAME}_after_allocation (void)
 		}
 	    }
 	}
-	
+
       qsort (sec_list, sec_count, sizeof (asection *), &compare_output_sec_vma);
-      
+
       if (elf32_tic6x_fix_exidx_coverage (sec_list, sec_count, &link_info,
 					   merge_exidx_entries))
 	layout_changed = 1;
-      
+
       free (sec_list);
     }
 

@@ -143,6 +143,12 @@ enum edict_enum
 };
 
 
+struct list_message
+{
+  char *message;
+  struct list_message *next;
+};
+
 /* This structure remembers which line from which file goes into which
    frag.  */
 struct list_info_struct
@@ -170,8 +176,8 @@ struct list_info_struct
   /* High level language source line.  */
   unsigned int hll_line;
 
-  /* Pointer to any error message associated with this line.  */
-  char *message;
+  /* Pointers to linked list of messages associated with this line.  */
+  struct list_message *messages, *last_message;
 
   enum edict_enum edict;
   char *edict_arg;
@@ -232,9 +238,17 @@ listing_message (const char *name, const char *message)
     {
       unsigned int l = strlen (name) + strlen (message) + 1;
       char *n = (char *) xmalloc (l);
+      struct list_message *lm = xmalloc (sizeof *lm);
       strcpy (n, name);
       strcat (n, message);
-      listing_tail->message = n;
+      lm->message = n;
+      lm->next = NULL;
+
+      if (listing_tail->last_message)
+	listing_tail->last_message->next = lm;
+      else
+	listing_tail->messages = lm;
+      listing_tail->last_message = lm;
     }
 }
 
@@ -404,7 +418,8 @@ listing_newline (char *ps)
   new_i->line = line;
   new_i->file = file_info (file);
   new_i->next = (list_info_type *) NULL;
-  new_i->message = (char *) NULL;
+  new_i->messages = NULL;
+  new_i->last_message = NULL;
   new_i->edict = EDICT_NONE;
   new_i->hll_file = (file_info_type *) NULL;
   new_i->hll_line = 0;
@@ -538,7 +553,8 @@ buffer_line (file_info_type *file, char *line, unsigned int size)
 
 /* This function rewinds the requested file back to the line requested,
    reads it in again into the buffer provided and then restores the file
-   back to its original location.  */
+   back to its original location.  Returns the buffer pointer upon success
+   or an empty string if an error occurs.  */
 
 static char *
 rebuffer_line (file_info_type *  file,
@@ -547,13 +563,15 @@ rebuffer_line (file_info_type *  file,
 	       unsigned int      size)
 {
   unsigned int count = 0;
-  unsigned int current_line = 1;
+  unsigned int current_line;
   char * p = buffer;
   long pos;
+  long pos2;
   int c;
+  bfd_boolean found = FALSE;
 
   /* Sanity checks.  */
-  if (file == NULL || buffer == NULL || size == 0 || file->linenum <= linenum)
+  if (file == NULL || buffer == NULL || size <= 1 || file->linenum <= linenum)
     return "";
 
   /* Check the cache and see if we last used this file.  */
@@ -581,38 +599,71 @@ rebuffer_line (file_info_type *  file,
     }
 
   /* Remember where we are in the current file.  */
-  pos = ftell (last_open_file);
-
-  /* Go back to the beginning.  */
-  fseek (last_open_file, 0, SEEK_SET);
-
-  /* Skip lines prior to the one we are interested in.  */
-  while (current_line < linenum)
-    {
-      /* fgets only stops on newlines and has a size limit,
-	 so we read one character at a time instead.  */
-      do
-	{
-	  c = fgetc (last_open_file);
-	}
-      while (c != EOF && c != '\n' && c != '\r');
-
-      ++ current_line;
-
-      if (c == '\r' || c == '\n')
-	{
-	  int next = fgetc (last_open_file);
-
-	  /* If '\r' is followed by '\n', swallow that.  Likewise, if '\n'
-	     is followed by '\r', swallow that as well.  */
-	  if ((c == '\r' && next != '\n')
-	      || (c == '\n' && next != '\r'))
-	    ungetc (next, last_open_file);
-	}
-    }
+  pos2 = pos = ftell (last_open_file);
+  if (pos < 3)
+    return "";
+  current_line = file->linenum;
 
   /* Leave room for the nul at the end of the buffer.  */
   size -= 1;
+  buffer[size] = 0;
+
+  /* Increment the current line count by one.
+     This is to allow for the fact that we are searching for the
+     start of a previous line, but we do this by detecting end-of-line
+     character(s) not start-of-line characters.  */
+  ++ current_line;
+
+  while (pos2 > 0 && ! found)
+    {
+      char * ptr;
+
+      /* Move backwards through the file, looking for earlier lines.  */
+      pos2 = (long) size > pos2 ? 0 : pos2 - size;
+      fseek (last_open_file, pos2, SEEK_SET);
+
+      /* Our caller has kindly provided us with a buffer, so we use it.  */
+      if (fread (buffer, 1, size, last_open_file) != size)
+	{
+	  as_warn (_("unable to rebuffer file: %s\n"), file->filename);
+	  return "";
+	}
+
+      for (ptr = buffer + size; ptr >= buffer; -- ptr)
+	{
+	  if (*ptr == '\n')
+	    {
+	      -- current_line;
+
+	      if (current_line == linenum)
+		{
+		  /* We have found the start of the line we seek.  */
+		  found = TRUE;
+
+		  /* FIXME: We could skip the read-in-the-line code
+		     below if we know that we already have the whole
+		     line in the buffer.  */
+
+		  /* Advance pos2 to the newline character we have just located.  */
+		  pos2 += (ptr - buffer);
+
+		  /* Skip the newline and, if present, the carriage return.  */
+		  if (ptr + 1 == buffer + size)
+		    {
+		      ++pos2;
+		      if (fgetc (last_open_file) == '\r')
+			++ pos2;
+		    }
+		  else
+		    pos2 += (ptr[1] == '\r' ? 2 : 1);
+
+		  /* Move the file pointer to this location.  */
+		  fseek (last_open_file, pos2, SEEK_SET);
+		  break;
+		}
+	    }
+	}
+    }
 
   /* Read in the line.  */
   c = fgetc (last_open_file);
@@ -792,6 +843,7 @@ print_lines (list_info_type *list, unsigned int lineno,
   unsigned int octet_in_word = 0;
   char *src = data_buffer;
   int cur;
+  struct list_message *msg;
 
   /* Print the stuff on the first line.  */
   listing_page (list);
@@ -839,8 +891,8 @@ print_lines (list_info_type *list, unsigned int lineno,
 
   emit_line (list, "\t%s\n", string ? string : "");
 
-  if (list->message)
-    emit_line (list, "****  %s\n", list->message);
+  for (msg = list->messages; msg; msg = msg->next)
+    emit_line (list, "****  %s\n", msg->message);
 
   for (lines = 0;
        lines < (unsigned int) listing_lhs_cont_lines

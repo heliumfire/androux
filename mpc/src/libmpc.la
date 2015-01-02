@@ -5,10 +5,10 @@
 # It is necessary for linking the library.
 
 # The name that we can dlopen(3).
-dlname=''
+dlname='libmpc.so.3'
 
 # Names of this library.
-library_names=''
+library_names='libmpc.so.3.0.0 libmpc.so.3 libmpc.so'
 
 # The name of the static archive.
 old_library='libmpc.a'
@@ -17,7 +17,7 @@ old_library='libmpc.a'
 inherited_linker_flags=''
 
 # Libraries that this one depends upon.
-dependency_libs=' -L/home/anushruth/experiment/sysroot//lib /home/anushruth/experiment/sysroot//lib/libmpfr.la -L/home/anushruth/experiment/sysroot/lib =/home/anushruth/experiment/sysroot/lib/libgmp.la /home/anushruth/experiment/sysroot//lib/libgmp.la'
+dependency_libs=' -L/Users/regnarts/Documents/experiment/sysroot/lib -L/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/lib/ /Users/regnarts/Documents/experiment/sysroot/lib/libmpfr.la /Users/regnarts/Documents/experiment/sysroot/lib/libgmp.la'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''
@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/home/anushruth/experiment/sysroot/lib'
+libdir='/Users/regnarts/Documents/experiment/sysroot/lib'

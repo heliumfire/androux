@@ -1,0 +1,175 @@
+regex.o: regex.c ../config.h \
+ /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/limits.h \
+ /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/syslimits.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/limits.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/cdefs.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/android/api-level.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/limits.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/limits.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/machine/internal_types.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/machine/limits.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/syslimits.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/asm/page.h \
+ regex.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/types.h \
+ /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stddef.h \
+ stdint.h \
+ /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdint.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/stdint.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/_types.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/machine/_types.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/_wchar_limits.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/inttypes.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/posix_types.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/stddef.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/compiler.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/asm/posix_types.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/asm/types.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/types.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/machine/kernel.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h \
+ regex_internal.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/assert.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ctype.h \
+ /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdbool.h \
+ stdio.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/stdio.h \
+ /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdarg.h \
+ stdlib.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/stdlib.h \
+ string.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/string.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/malloc.h \
+ alloca.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/strings.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/memory.h \
+ localcharset.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/locale.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/wchar.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/time.h \
+ sys/time.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/time.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/time.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/asm/siginfo.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/asm-generic/siginfo.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/wctype.h \
+ regex_internal.c regcomp.c regexec.c
+
+../config.h:
+
+/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/limits.h:
+
+/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/syslimits.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/limits.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/cdefs.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/android/api-level.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/limits.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/limits.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/machine/internal_types.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/machine/limits.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/syslimits.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/asm/page.h:
+
+regex.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/types.h:
+
+/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stddef.h:
+
+stdint.h:
+
+/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdint.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/stdint.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/_types.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/machine/_types.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/_wchar_limits.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/inttypes.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/posix_types.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/stddef.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/compiler.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/asm/posix_types.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/asm/types.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/types.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/machine/kernel.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h:
+
+regex_internal.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/assert.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ctype.h:
+
+/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdbool.h:
+
+stdio.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/stdio.h:
+
+/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdarg.h:
+
+stdlib.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/stdlib.h:
+
+string.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/string.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/malloc.h:
+
+alloca.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/strings.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/memory.h:
+
+localcharset.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/locale.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/wchar.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/time.h:
+
+sys/time.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/time.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/time.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/asm/siginfo.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/asm-generic/siginfo.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/wctype.h:
+
+regex_internal.c:
+
+regcomp.c:
+
+regexec.c:

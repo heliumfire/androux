@@ -1,7 +1,5 @@
 /* A YACC grammar to parse a superset of the AT&T linker scripting language.
-   Copyright 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
-   2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
-   Free Software Foundation, Inc.
+   Copyright 1991-2013 Free Software Foundation, Inc.
    Written by Steve Chamberlain of Cygnus Support (steve@cygnus.com).
 
    This file is part of the GNU Binutils.
@@ -129,7 +127,7 @@ static int error_index;
 %token <token> ALIGN_K BLOCK BIND QUAD SQUAD LONG SHORT BYTE
 %token SECTIONS PHDRS INSERT_K AFTER BEFORE
 %token DATA_SEGMENT_ALIGN DATA_SEGMENT_RELRO_END DATA_SEGMENT_END
-%token SORT_BY_NAME SORT_BY_ALIGNMENT
+%token SORT_BY_NAME SORT_BY_ALIGNMENT SORT_NONE
 %token SORT_BY_INIT_PRIORITY
 %token '{' '}'
 %token SIZEOF_HEADERS OUTPUT_FORMAT FORCE_COMMON_ALLOCATION OUTPUT_ARCH
@@ -146,15 +144,15 @@ static int error_index;
 %token STARTUP HLL SYSLIB FLOAT NOFLOAT NOCROSSREFS
 %token ORIGIN FILL
 %token LENGTH CREATE_OBJECT_SYMBOLS INPUT GROUP OUTPUT CONSTRUCTORS
-%token ALIGNMOD AT SUBALIGN PROVIDE PROVIDE_HIDDEN AS_NEEDED
-%type <token> assign_op atype attributes_opt sect_constraint
+%token ALIGNMOD AT SUBALIGN HIDDEN PROVIDE PROVIDE_HIDDEN AS_NEEDED
+%type <token> assign_op atype attributes_opt sect_constraint opt_align_with_input
 %type <name>  filename
 %token CHIP LIST SECT ABSOLUTE  LOAD NEWLINE ENDWORD ORDER NAMEWORD ASSERT_K
-%token FORMAT PUBLIC DEFSYMEND BASE ALIAS TRUNCATE REL
+%token LOG2CEIL FORMAT PUBLIC DEFSYMEND BASE ALIAS TRUNCATE REL
 %token INPUT_SCRIPT INPUT_MRI_SCRIPT INPUT_DEFSYM CASE EXTERN START
 %token <name> VERS_TAG VERS_IDENTIFIER
 %token GLOBAL LOCAL VERSIONK INPUT_VERSION_SCRIPT
-%token KEEP ONLY_IF_RO ONLY_IF_RW SPECIAL INPUT_SECTION_FLAGS
+%token KEEP ONLY_IF_RO ONLY_IF_RW SPECIAL INPUT_SECTION_FLAGS ALIGN_WITH_INPUT
 %token EXCLUDE_FILE
 %token CONSTANT
 %type <versyms> vers_defns
@@ -386,17 +384,20 @@ input_list:
 		{ lang_add_input_file($2,lang_input_file_is_l_enum,
 				 (char *)NULL); }
 	|	AS_NEEDED '('
-		  { $<integer>$ = add_DT_NEEDED_for_regular; add_DT_NEEDED_for_regular = TRUE; }
+		  { $<integer>$ = input_flags.add_DT_NEEDED_for_regular;
+		    input_flags.add_DT_NEEDED_for_regular = TRUE; }
 		     input_list ')'
-		  { add_DT_NEEDED_for_regular = $<integer>3; }
+		  { input_flags.add_DT_NEEDED_for_regular = $<integer>3; }
 	|	input_list ',' AS_NEEDED '('
-		  { $<integer>$ = add_DT_NEEDED_for_regular; add_DT_NEEDED_for_regular = TRUE; }
+		  { $<integer>$ = input_flags.add_DT_NEEDED_for_regular;
+		    input_flags.add_DT_NEEDED_for_regular = TRUE; }
 		     input_list ')'
-		  { add_DT_NEEDED_for_regular = $<integer>5; }
+		  { input_flags.add_DT_NEEDED_for_regular = $<integer>5; }
 	|	input_list AS_NEEDED '('
-		  { $<integer>$ = add_DT_NEEDED_for_regular; add_DT_NEEDED_for_regular = TRUE; }
+		  { $<integer>$ = input_flags.add_DT_NEEDED_for_regular;
+		    input_flags.add_DT_NEEDED_for_regular = TRUE; }
 		     input_list ')'
-		  { add_DT_NEEDED_for_regular = $<integer>4; }
+		  { input_flags.add_DT_NEEDED_for_regular = $<integer>4; }
 	;
 
 sections:
@@ -461,6 +462,13 @@ wildcard_spec:
 			{
 			  $$.name = $3;
 			  $$.sorted = by_alignment;
+			  $$.exclude_name_list = NULL;
+			  $$.section_flag_list = NULL;
+			}
+	|	SORT_NONE '(' wildcard_name ')'
+			{
+			  $$.name = $3;
+			  $$.sorted = by_none;
 			  $$.exclude_name_list = NULL;
 			  $$.section_flag_list = NULL;
 			}
@@ -629,7 +637,7 @@ input_section_spec_no_keep:
 			  tmp.exclude_name_list = NULL;
 			  tmp.sorted = none;
 			  tmp.section_flag_list = $1;
-			  lang_add_wild (NULL, $3, ldgram_had_keep);
+			  lang_add_wild (&tmp, $3, ldgram_had_keep);
 			}
 	|	wildcard_spec '(' file_NAME_list ')'
 			{
@@ -749,7 +757,7 @@ end:	';' | ','
 assignment:
 		NAME '=' mustbe_exp
 		{
-		  lang_add_assignment (exp_assign ($1, $3));
+		  lang_add_assignment (exp_assign ($1, $3, FALSE));
 		}
 	|	NAME assign_op mustbe_exp
 		{
@@ -757,7 +765,11 @@ assignment:
 						   exp_binop ($2,
 							      exp_nameop (NAME,
 									  $1),
-							      $3)));
+							      $3), FALSE));
+		}
+	|	HIDDEN '(' NAME '=' mustbe_exp ')'
+		{
+		  lang_add_assignment (exp_assign ($3, $5, TRUE));
 		}
 	|	PROVIDE '(' NAME '=' mustbe_exp ')'
 		{
@@ -998,6 +1010,8 @@ exp	:
 			{ $$ = exp_nameop (ORIGIN, $3); }
 	|	LENGTH '(' NAME ')'
 			{ $$ = exp_nameop (LENGTH, $3); }
+	|	LOG2CEIL '(' exp ')'
+			{ $$ = exp_unop (LOG2CEIL, $3); }
 	;
 
 
@@ -1013,6 +1027,11 @@ opt_at:
 
 opt_align:
 		ALIGN_K '(' exp ')' { $$ = $3; }
+	|	{ $$ = 0; }
+	;
+
+opt_align_with_input:
+		ALIGN_WITH_INPUT { $$ = ALIGN_WITH_INPUT; }
 	|	{ $$ = 0; }
 	;
 
@@ -1032,20 +1051,21 @@ section:	NAME 		{ ldlex_expression(); }
 		opt_exp_with_type
 		opt_at
 		opt_align
+		opt_align_with_input
 		opt_subalign	{ ldlex_popstate (); ldlex_script (); }
 		sect_constraint
 		'{'
 			{
 			  lang_enter_output_section_statement($1, $3,
 							      sectype,
-							      $5, $6, $4, $8);
+							      $5, $7, $4, $9, $6);
 			}
 		statement_list_opt
  		'}' { ldlex_popstate (); ldlex_expression (); }
 		memspec_opt memspec_at_opt phdr_opt fill_opt
 		{
 		  ldlex_popstate ();
-		  lang_leave_output_section_statement ($17, $14, $16, $15);
+		  lang_leave_output_section_statement ($18, $15, $17, $16);
 		}
 		opt_comma
 		{}
@@ -1075,7 +1095,7 @@ section:	NAME 		{ ldlex_expression(); }
 		opt_exp_with_type
 		{
 		  ldlex_popstate ();
-		  lang_add_assignment (exp_assign (".", $3));
+		  lang_add_assignment (exp_assign (".", $3, FALSE));
 		}
 		'{' sec_or_group_p1 '}'
 	|	INCLUDE filename
@@ -1219,7 +1239,7 @@ phdr_type:
 			    {
 			      einfo (_("\
 %X%P:%S: unknown phdr type `%s' (try integer literal)\n"),
-				     s);
+				     NULL, s);
 			      $$ = exp_intop (0);
 			    }
 			}
@@ -1242,7 +1262,8 @@ phdr_qualifiers:
 		  else if (strcmp ($1, "FLAGS") == 0 && $2 != NULL)
 		    $$.flags = $2;
 		  else
-		    einfo (_("%X%P:%S: PHDRS syntax error at `%s'\n"), $1);
+		    einfo (_("%X%P:%S: PHDRS syntax error at `%s'\n"),
+			   NULL, $1);
 		}
 	|	AT '(' exp ')' phdr_qualifiers
 		{
@@ -1448,9 +1469,9 @@ yyerror(arg)
 {
   if (ldfile_assumed_script)
     einfo (_("%P:%s: file format not recognized; treating as linker script\n"),
-	   ldfile_input_filename);
+	   ldlex_filename ());
   if (error_index > 0 && error_index < ERROR_NAME_MAX)
-     einfo ("%P%F:%S: %s in %s\n", arg, error_names[error_index-1]);
+    einfo ("%P%F:%S: %s in %s\n", NULL, arg, error_names[error_index - 1]);
   else
-     einfo ("%P%F:%S: %s\n", arg);
+    einfo ("%P%F:%S: %s\n", NULL, arg);
 }

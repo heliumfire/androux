@@ -5,10 +5,10 @@
 # It is necessary for linking the library.
 
 # The name that we can dlopen(3).
-dlname=''
+dlname='libgmp.so.10'
 
 # Names of this library.
-library_names=''
+library_names='libgmp.so.10.2.0 libgmp.so.10 libgmp.so'
 
 # The name of the static archive.
 old_library='libgmp.a'
@@ -17,7 +17,7 @@ old_library='libgmp.a'
 inherited_linker_flags=''
 
 # Libraries that this one depends upon.
-dependency_libs=''
+dependency_libs=' -L/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/lib/'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''
@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/home/anushruth/experiment/sysroot/lib'
+libdir='/Users/regnarts/Documents/experiment/sysroot/lib'

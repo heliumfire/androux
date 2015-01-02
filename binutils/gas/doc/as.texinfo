@@ -1,7 +1,5 @@
 \input texinfo @c                               -*-Texinfo-*-
-@c  Copyright 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
-@c  2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
-@c  Free Software Foundation, Inc.
+@c  Copyright 1991-2013 Free Software Foundation, Inc.
 @c UPDATE!!  On future updates--
 @c   (1)   check for new machine-dep cmdline options in
 @c         md_parse_option definitions in config/tc-*.c
@@ -102,9 +100,7 @@
 This file documents the GNU Assembler "@value{AS}".
 
 @c man begin COPYRIGHT
-Copyright @copyright{} 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
-2000, 2001, 2002, 2006, 2007, 2008, 2009, 2010, 2011 Free Software Foundation,
-Inc.
+Copyright @copyright{} 1991-2013 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
@@ -153,9 +149,7 @@ done.
 @end tex
 
 @vskip 0pt plus 1filll
-Copyright @copyright{} 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
-2000, 2001, 2002, 2006, 2007, 2008, 2009, 2010, 2011 Free Software Foundation,
-Inc.
+Copyright @copyright{} 1991-2013 Free Software Foundation, Inc.
 
       Permission is granted to copy, distribute and/or modify this document
       under the terms of the GNU Free Documentation License, Version 1.3
@@ -236,7 +230,8 @@ gcc(1), ld(1), and the Info entries for @file{binutils} and @file{ld}.
  [@b{--compress-debug-sections}]  [@b{--nocompress-debug-sections}]
  [@b{--debug-prefix-map} @var{old}=@var{new}]
  [@b{--defsym} @var{sym}=@var{val}] [@b{-f}] [@b{-g}] [@b{--gstabs}]
- [@b{--gstabs+}] [@b{--gdwarf-2}] [@b{--help}] [@b{-I} @var{dir}] [@b{-J}]
+ [@b{--gstabs+}] [@b{--gdwarf-2}] [@b{--gdwarf-sections}]
+ [@b{--help}] [@b{-I} @var{dir}] [@b{-J}]
  [@b{-K}] [@b{-L}] [@b{--listing-lhs-width}=@var{NUM}]
  [@b{--listing-lhs-width2}=@var{NUM}] [@b{--listing-rhs-width}=@var{NUM}]
  [@b{--listing-cont-lines}=@var{NUM}] [@b{--keep-locals}] [@b{-o}
@@ -249,6 +244,12 @@ gcc(1), ld(1), and the Info entries for @file{binutils} and @file{ld}.
 @c
 @c Target dependent options are listed below.  Keep the list sorted.
 @c Add an empty line for separation.
+@ifset AARCH64
+
+@emph{Target AArch64 options:}
+   [@b{-EB}|@b{-EL}]
+   [@b{-mabi}=@var{ABI}]
+@end ifset
 @ifset ALPHA
 
 @emph{Target Alpha options:}
@@ -307,6 +308,11 @@ gcc(1), ld(1), and the Info entries for @file{binutils} and @file{ld}.
 @emph{Target D30V options:}
    [@b{-O}|@b{-n}|@b{-N}]
 @end ifset
+@ifset EPIPHANY
+
+@emph{Target EPIPHANY options:}
+   [@b{-mepiphany}|@b{-mepiphany16}]
+@end ifset
 @ifset H8
 
 @emph{Target H8/300 options:}
@@ -318,7 +324,7 @@ gcc(1), ld(1), and the Info entries for @file{binutils} and @file{ld}.
 @ifset I80386
 
 @emph{Target i386 options:}
-   [@b{--32}|@b{--n32}|@b{--64}] [@b{-n}]
+   [@b{--32}|@b{--x32}|@b{--64}] [@b{-n}]
    [@b{-march}=@var{CPU}[+@var{EXTENSION}@dots{}]] [@b{-mtune}=@var{CPU}]
 @end ifset
 @ifset I960
@@ -364,7 +370,7 @@ gcc(1), ld(1), and the Info entries for @file{binutils} and @file{ld}.
 @ifset M68HC11
 
 @emph{Target M68HC11 options:}
-   [@b{-m68hc11}|@b{-m68hc12}|@b{-m68hcs12}]
+   [@b{-m68hc11}|@b{-m68hc12}|@b{-m68hcs12}|@b{-mm9s12x}|@b{-mm9s12xg}]
    [@b{-mshort}|@b{-mlong}]
    [@b{-mshort-double}|@b{-mlong-double}]
    [@b{--force-long-branches}] [@b{--short-branches}]
@@ -376,6 +382,11 @@ gcc(1), ld(1), and the Info entries for @file{binutils} and @file{ld}.
 @emph{Target MCORE options:}
    [@b{-jsri2bsr}] [@b{-sifilter}] [@b{-relax}]
    [@b{-mcpu=[210|340]}]
+@end ifset
+@ifset METAG
+
+@emph{Target Meta options:}
+   [@b{-mcpu=@var{cpu}}] [@b{-mfpu=@var{cpu}}] [@b{-mdsp=@var{cpu}}]
 @end ifset
 @ifset MICROBLAZE
 @emph{Target MICROBLAZE options:}
@@ -392,6 +403,7 @@ gcc(1), ld(1), and the Info entries for @file{binutils} and @file{ld}.
    [@b{-mips3}] [@b{-mips4}] [@b{-mips5}] [@b{-mips32}] [@b{-mips32r2}]
    [@b{-mips64}] [@b{-mips64r2}]
    [@b{-construct-floats}] [@b{-no-construct-floats}]
+   [@b{-mnan=@var{encoding}}]
    [@b{-trap}] [@b{-no-break}] [@b{-break}] [@b{-no-trap}]
    [@b{-mips16}] [@b{-no-mips16}]
    [@b{-mmicromips}] [@b{-mno-micromips}]
@@ -402,6 +414,7 @@ gcc(1), ld(1), and the Info entries for @file{binutils} and @file{ld}.
    [@b{-mdspr2}] [@b{-mno-dspr2}]
    [@b{-mmt}] [@b{-mno-mt}]
    [@b{-mmcu}] [@b{-mno-mcu}]
+   [@b{-minsn32}] [@b{-mno-insn32}]
    [@b{-mfix7000}] [@b{-mno-fix7000}]
    [@b{-mfix-vr4120}] [@b{-mno-fix-vr4120}]
    [@b{-mfix-vr4130}] [@b{-mno-fix-vr4130}]
@@ -415,6 +428,12 @@ gcc(1), ld(1), and the Info entries for @file{binutils} and @file{ld}.
    [@b{--gnu-syntax}] [@b{--relax}] [@b{--no-predefined-symbols}]
    [@b{--no-expand}] [@b{--no-merge-gregs}] [@b{-x}]
    [@b{--linker-allocated-gregs}]
+@end ifset
+@ifset NIOSII
+
+@emph{Target Nios II options:}
+   [@b{-relax-all}] [@b{-relax-section}] [@b{-no-relax}]
+   [@b{-EB}] [@b{-EL}]
 @end ifset
 @ifset PDP11
 
@@ -434,10 +453,10 @@ gcc(1), ld(1), and the Info entries for @file{binutils} and @file{ld}.
    [@b{-a32}|@b{-a64}]
    [@b{-mpwrx}|@b{-mpwr2}|@b{-mpwr}|@b{-m601}|@b{-mppc}|@b{-mppc32}|@b{-m603}|@b{-m604}|@b{-m403}|@b{-m405}|
     @b{-m440}|@b{-m464}|@b{-m476}|@b{-m7400}|@b{-m7410}|@b{-m7450}|@b{-m7455}|@b{-m750cl}|@b{-mppc64}|
-    @b{-m620}|@b{-me500}|@b{-e500x2}|@b{-me500mc}|@b{-me500mc64}|@b{-mppc64bridge}|@b{-mbooke}|
-    @b{-mpower4}|@b{-mpr4}|@b{-mpower5}|@b{-mpwr5}|@b{-mpwr5x}|@b{-mpower6}|@b{-mpwr6}|
-    @b{-mpower7}|@b{-mpw7}|@b{-ma2}|@b{-mcell}|@b{-mspe}|@b{-mtitan}|@b{-me300}|@b{-mcom}]
-   [@b{-many}] [@b{-maltivec}|@b{-mvsx}]
+    @b{-m620}|@b{-me500}|@b{-e500x2}|@b{-me500mc}|@b{-me500mc64}|@b{-me5500}|@b{-me6500}|@b{-mppc64bridge}|
+    @b{-mbooke}|@b{-mpower4}|@b{-mpwr4}|@b{-mpower5}|@b{-mpwr5}|@b{-mpwr5x}|@b{-mpower6}|@b{-mpwr6}|
+    @b{-mpower7}|@b{-mpwr7}|@b{-mpower8}|@b{-mpwr8}|@b{-ma2}|@b{-mcell}|@b{-mspe}|@b{-mtitan}|@b{-me300}|@b{-mcom}]
+   [@b{-many}] [@b{-maltivec}|@b{-mvsx}|@b{-mhtm}|@b{-mvle}]
    [@b{-mregnames}|@b{-mno-regnames}]
    [@b{-mrelocatable}|@b{-mrelocatable-lib}|@b{-K PIC}] [@b{-memb}]
    [@b{-mlittle}|@b{-mlittle-endian}|@b{-le}|@b{-mbig}|@b{-mbig-endian}|@b{-be}]
@@ -448,8 +467,13 @@ gcc(1), ld(1), and the Info entries for @file{binutils} and @file{ld}.
 
 @emph{Target RX options:}
    [@b{-mlittle-endian}|@b{-mbig-endian}]
-   [@b{-m32bit-ints}|@b{-m16bit-ints}]
    [@b{-m32bit-doubles}|@b{-m64bit-doubles}]
+   [@b{-muse-conventional-section-names}]
+   [@b{-msmall-data-limit}]
+   [@b{-mpid}]
+   [@b{-mrelax}]
+   [@b{-mint-register=@var{number}}]
+   [@b{-mgcc-abi}|@b{-mrx-abi}]
 @end ifset
 @ifset S390
 
@@ -492,7 +516,7 @@ gcc(1), ld(1), and the Info entries for @file{binutils} and @file{ld}.
 @ifset TILEGX
 
 @emph{Target TILE-Gx options:}
-   [@b{-m32}|@b{-m64}]
+   [@b{-m32}|@b{-m64}][@b{-EB}][@b{-EL}]
 @end ifset
 @ifset TILEPRO
 @c TILEPro has no machine-dependent assembler options
@@ -622,6 +646,15 @@ Generate DWARF2 debugging information for each assembler line.  This
 may help debugging assembler code, if the debugger can handle it.  Note---this
 option is only supported by some targets, not all of them.
 
+@item --gdwarf-sections
+Instead of creating a .debug_line section, create a series of
+.debug_line.@var{foo} sections where @var{foo} is the name of the
+corresponding code section.  For example a code section called @var{.text.func}
+will have its dwarf line number information placed into a section called
+@var{.debug_line.text.func}.  If the code section is just called @var{.text}
+then debug line section will still be called just @var{.debug_line} without any
+suffix.
+
 @item --size-check=error
 @itemx --size-check=warning
 Issue an error or warning for invalid ELF .size directive.
@@ -727,6 +760,25 @@ Standard input, or source files to assemble.
 
 @end table
 @c man end
+
+@ifset AARCH64
+
+@ifclear man
+@xref{AArch64 Options}, for the options available when @value{AS} is configured
+for the 64-bit mode of the ARM Architecture (AArch64).
+@end ifclear
+
+@ifset man
+@c man begin OPTIONS
+The following options are available when @value{AS} is configured for the
+64-bit mode of the ARM Architecture (AArch64).
+@c man end
+@c man begin INCLUDE
+@include c-aarch64.texi
+@c ended inside the included file
+@end ifset
+
+@end ifset
 
 @ifset ALPHA
 
@@ -842,6 +894,46 @@ Warn when a nop after a 32-bit multiply instruction is generated.
 @end table
 @end ifset
 @c man end
+
+@ifset EPIPHANY
+The following options are available when @value{AS} is configured for the
+Adapteva EPIPHANY series.
+
+@ifclear man
+@xref{Epiphany Options}, for the options available when @value{AS} is
+configured for an Epiphany processor.
+@end ifclear
+
+@ifset man
+@c man begin OPTIONS
+The following options are available when @value{AS} is configured for
+an Epiphany processor.
+@c man end
+@c man begin INCLUDE
+@include c-epiphany.texi
+@c ended inside the included file
+@end ifset
+
+@end ifset
+
+@ifset H8300
+
+@ifclear man
+@xref{H8/300 Options}, for the options available when @value{AS} is configured
+for an H8/300 processor.
+@end ifclear
+
+@ifset man
+@c man begin OPTIONS
+The following options are available when @value{AS} is configured for an H8/300
+processor.
+@c man end
+@c man begin INCLUDE
+@include c-h8300.texi
+@c ended inside the included file
+@end ifset
+
+@end ifset
 
 @ifset I80386
 
@@ -968,6 +1060,24 @@ unit coprocessor.  The default is to assume an MMU for 68020 and up.
 @end table
 @end ifset
 
+@ifset NIOSII
+
+@ifclear man
+@xref{Nios II Options}, for the options available when @value{AS} is configured
+for an Altera Nios II processor.
+@end ifclear
+
+@ifset man
+@c man begin OPTIONS
+The following options are available when @value{AS} is configured for an
+Altera Nios II processor.
+@c man end
+@c man begin INCLUDE
+@include c-nios2.texi
+@c ended inside the included file
+@end ifset
+@end ifset
+
 @ifset PDP11
 
 For details about the PDP-11 machine dependent features options,
@@ -1024,9 +1134,13 @@ Motorola 68HC11 or 68HC12 series.
 
 @table @gcctabopt
 
-@item -m68hc11 | -m68hc12 | -m68hcs12
+@item -m68hc11 | -m68hc12 | -m68hcs12 | -mm9s12x | -mm9s12xg
 Specify what processor is the target.  The default is
 defined by the configuration option when building the assembler.
+
+@item --xgate-ramoffset
+Instruct the linker to offset RAM addresses from S12X address space into
+XGATE address space.
 
 @item -mshort
 Specify to use the 16-bit integer ABI.
@@ -1057,10 +1171,10 @@ when the instruction does not support direct addressing mode.
 Print the syntax of instruction in case of error.
 
 @item --print-opcodes
-print the list of instructions with syntax and then exit.
+Print the list of instructions with syntax and then exit.
 
 @item --generate-example
-print an example of instruction for each possible instruction and then exit.
+Print an example of instruction for each possible instruction and then exit.
 This option is only useful for testing @command{@value{AS}}.
 
 @end table
@@ -1108,7 +1222,7 @@ behaviour in the shell.
 
 @ifset MIPS
 The following options are available when @value{AS} is configured for
-a @sc{mips} processor.
+a MIPS processor.
 
 @table @gcctabopt
 @item -G @var{num}
@@ -1136,22 +1250,19 @@ Generate ``little endian'' format output.
 @itemx -mips32r2
 @itemx -mips64
 @itemx -mips64r2
-Generate code for a particular @sc{mips} Instruction Set Architecture level.
+Generate code for a particular MIPS Instruction Set Architecture level.
 @samp{-mips1} is an alias for @samp{-march=r3000}, @samp{-mips2} is an
 alias for @samp{-march=r6000}, @samp{-mips3} is an alias for
 @samp{-march=r4000} and @samp{-mips4} is an alias for @samp{-march=r8000}.
 @samp{-mips5}, @samp{-mips32}, @samp{-mips32r2}, @samp{-mips64}, and
-@samp{-mips64r2}
-correspond to generic
-@samp{MIPS V}, @samp{MIPS32}, @samp{MIPS32 Release 2}, @samp{MIPS64},
-and @samp{MIPS64 Release 2}
-ISA processors, respectively.
+@samp{-mips64r2} correspond to generic MIPS V, MIPS32, MIPS32 Release 2,
+MIPS64, and MIPS64 Release 2 ISA processors, respectively.
 
-@item -march=@var{CPU}
-Generate code for a particular @sc{mips} cpu.
+@item -march=@var{cpu}
+Generate code for a particular MIPS CPU.
 
 @item -mtune=@var{cpu}
-Schedule and tune for a particular @sc{mips} cpu.
+Schedule and tune for a particular MIPS CPU.
 
 @item -mfix7000
 @itemx -mno-fix7000
@@ -1230,6 +1341,16 @@ Generate code for the MCU Application Specific Extension.
 This tells the assembler to accept MCU instructions.
 @samp{-mno-mcu} turns off this option.
 
+@item -minsn32
+@itemx -mno-insn32
+Only use 32-bit instruction encodings when generating code for the
+microMIPS processor.  This option inhibits the use of any 16-bit
+instructions.  This is equivalent to putting @code{.set insn32} at
+the start of the assembly file.  @samp{-mno-insn32} turns off this
+option.  This is equivalent to putting @code{.set noinsn32} at the
+start of the assembly file.  By default @samp{-mno-insn32} is
+selected, allowing all instructions to be used.
+
 @item --construct-floats
 @itemx --no-construct-floats
 The @samp{--no-construct-floats} option disables the construction of
@@ -1238,30 +1359,28 @@ value into the two single width floating point registers that make up
 the double width register.  By default @samp{--construct-floats} is
 selected, allowing construction of these floating point constants.
 
+@item --relax-branch
+@itemx --no-relax-branch
+The @samp{--relax-branch} option enables the relaxation of out-of-range
+branches.  By default @samp{--no-relax-branch} is selected, causing any
+out-of-range branches to produce an error.
+
+@item -mnan=@var{encoding}
+Select between the IEEE 754-2008 (@option{-mnan=2008}) or the legacy
+(@option{-mnan=legacy}) NaN encoding format.  The latter is the default.
+
 @cindex emulation
 @item --emulation=@var{name}
-This option causes @command{@value{AS}} to emulate @command{@value{AS}} configured
-for some other target, in all respects, including output format (choosing
-between ELF and ECOFF only), handling of pseudo-opcodes which may generate
-debugging information or store symbol table information, and default
-endianness.  The available configuration names are: @samp{mipsecoff},
-@samp{mipself}, @samp{mipslecoff}, @samp{mipsbecoff}, @samp{mipslelf},
-@samp{mipsbelf}.  The first two do not alter the default endianness from that
-of the primary target for which the assembler was configured; the others change
-the default to little- or big-endian as indicated by the @samp{b} or @samp{l}
-in the name.  Using @samp{-EB} or @samp{-EL} will override the endianness
-selection in any case.
+This option was formerly used to switch between ELF and ECOFF output
+on targets like IRIX 5 that supported both.  MIPS ECOFF support was
+removed in GAS 2.24, so the option now serves little purpose.
+It is retained for backwards compatibility.
 
-This option is currently supported only when the primary target
-@command{@value{AS}} is configured for is a @sc{mips} ELF or ECOFF target.
-Furthermore, the primary target or others specified with
-@samp{--enable-targets=@dots{}} at configuration time must include support for
-the other format, if both are to be available.  For example, the Irix 5
-configuration includes support for both.
-
-Eventually, this option will support more configurations, with more
-fine-grained control over the assembler's behavior, and will be supported for
-more processors.
+The available configuration names are: @samp{mipself}, @samp{mipslelf} and
+@samp{mipsbelf}.  Choosing @samp{mipself} now has no effect, since the output
+is always ELF.  @samp{mipslelf} and @samp{mipsbelf} select little- and
+big-endian output respectively, but @samp{-EL} and @samp{-EB} are now the
+preferred options instead.
 
 @item -nocpp
 @command{@value{AS}} ignores this option.  It is accepted for compatibility with
@@ -1313,7 +1432,28 @@ Assemble for a little endian target.
 
 @end table
 @end ifset
+@c man end
 
+@ifset METAG
+
+@ifclear man
+@xref{Meta Options}, for the options available when @value{AS} is configured
+for a Meta processor.
+@end ifclear
+
+@ifset man
+@c man begin OPTIONS
+The following options are available when @value{AS} is configured for a
+Meta processor.
+@c man end
+@c man begin INCLUDE
+@include c-metag.texi
+@c ended inside the included file
+@end ifset
+
+@end ifset
+
+@c man begin OPTIONS
 @ifset MMIX
 See the info pages for documentation of the MMIX-specific options.
 @end ifset
@@ -1357,7 +1497,8 @@ Select the architecture mode, either the Enterprise System
 Architecture (esa) or the z/Architecture mode (zarch).
 @item -march=@var{processor}
 Specify which s390 processor variant is the target, @samp{g6}, @samp{g6},
-@samp{z900}, @samp{z990}, @samp{z9-109}, @samp{z9-ec}, or @samp{z10}.
+@samp{z900}, @samp{z990}, @samp{z9-109}, @samp{z9-ec}, @samp{z10},
+@samp{z196}, or @samp{zEC12}.
 @item -mregnames
 @itemx -mno-regnames
 Allow or disallow symbolic names for registers.
@@ -2455,10 +2596,10 @@ On most machines, you can also use @code{$} in symbol names; exceptions
 are noted in @ref{Machine Dependencies}.
 @end ifset
 No symbol may begin with a digit.  Case is significant.
-There is no length limit: all characters are significant.  Symbols are
-delimited by characters not in that set, or by the beginning of a file
-(since the source program must end with a newline, the end of a file is
-not a possible symbol delimiter).  @xref{Symbols}.
+There is no length limit: all characters are significant.  Multibyte characters
+are supported.  Symbols are delimited by characters not in that set, or by the
+beginning of a file (since the source program must end with a newline, the end
+of a file is not a possible symbol delimiter).  @xref{Symbols}.
 @cindex length of symbols
 
 @node Statements
@@ -3384,6 +3525,11 @@ on the H8/300), and underscores.
 Case of letters is significant: @code{foo} is a different symbol name
 than @code{Foo}.
 
+Multibyte characters are supported.  To generate a symbol name containing
+multibyte characters enclose it within double quotes and use escape codes. cf
+@xref{Strings}.  Generating a multibyte symbol name from a label is not
+currently supported.
+
 Each symbol has exactly one name.  Each name in an assembly language program
 refers to exactly one symbol.  You may use that symbol name any number of times
 in a program.
@@ -3944,6 +4090,7 @@ Some machine configurations provide additional directives.
 * Ascii::                       @code{.ascii "@var{string}"}@dots{}
 * Asciz::                       @code{.asciz "@var{string}"}@dots{}
 * Balign::                      @code{.balign @var{abs-expr} , @var{abs-expr}}
+* Bundle directives::           @code{.bundle_align_mode @var{abs-expr}}, @code{.bundle_lock}, @code{.bundle_unlock}
 * Byte::                        @code{.byte @var{expressions}}
 * CFI directives::		@code{.cfi_startproc [simple]}, @code{.cfi_endproc}, etc.
 * Comm::                        @code{.comm @var{symbol} , @var{length} }
@@ -4265,6 +4412,62 @@ fill pattern as a four byte longword value.  For example, @code{.balignw
 filled in with the value 0x368d (the exact placement of the bytes depends upon
 the endianness of the processor).  If it skips 1 or 3 bytes, the fill value is
 undefined.
+
+@node Bundle directives
+@section @code{.bundle_align_mode @var{abs-expr}}
+@cindex @code{bundle_align_mode} directive
+@cindex bundle
+@cindex instruction bundle
+@cindex aligned instruction bundle
+@code{.bundle_align_mode} enables or disables @dfn{aligned instruction
+bundle} mode.  In this mode, sequences of adjacent instructions are grouped
+into fixed-sized @dfn{bundles}.  If the argument is zero, this mode is
+disabled (which is the default state).  If the argument it not zero, it
+gives the size of an instruction bundle as a power of two (as for the
+@code{.p2align} directive, @pxref{P2align}).
+
+For some targets, it's an ABI requirement that no instruction may span a
+certain aligned boundary.  A @dfn{bundle} is simply a sequence of
+instructions that starts on an aligned boundary.  For example, if
+@var{abs-expr} is @code{5} then the bundle size is 32, so each aligned
+chunk of 32 bytes is a bundle.  When aligned instruction bundle mode is in
+effect, no single instruction may span a boundary between bundles.  If an
+instruction would start too close to the end of a bundle for the length of
+that particular instruction to fit within the bundle, then the space at the
+end of that bundle is filled with no-op instructions so the instruction
+starts in the next bundle.  As a corollary, it's an error if any single
+instruction's encoding is longer than the bundle size.
+
+@section @code{.bundle_lock} and @code{.bundle_unlock}
+@cindex @code{bundle_lock} directive
+@cindex @code{bundle_unlock} directive
+The @code{.bundle_lock} and directive @code{.bundle_unlock} directives
+allow explicit control over instruction bundle padding.  These directives
+are only valid when @code{.bundle_align_mode} has been used to enable
+aligned instruction bundle mode.  It's an error if they appear when
+@code{.bundle_align_mode} has not been used at all, or when the last
+directive was @w{@code{.bundle_align_mode 0}}.
+
+@cindex bundle-locked
+For some targets, it's an ABI requirement that certain instructions may
+appear only as part of specified permissible sequences of multiple
+instructions, all within the same bundle.  A pair of @code{.bundle_lock}
+and @code{.bundle_unlock} directives define a @dfn{bundle-locked}
+instruction sequence.  For purposes of aligned instruction bundle mode, a
+sequence starting with @code{.bundle_lock} and ending with
+@code{.bundle_unlock} is treated as a single instruction.  That is, the
+entire sequence must fit into a single bundle and may not span a bundle
+boundary.  If necessary, no-op instructions will be inserted before the
+first instruction of the sequence so that the whole sequence starts on an
+aligned bundle boundary.  It's an error if the sequence is longer than the
+bundle size.
+
+For convenience when using @code{.bundle_lock} and @code{.bundle_unlock}
+inside assembler macros (@pxref{Macro}), bundle-locked sequences may be
+nested.  That is, a second @code{.bundle_lock} directive before the next
+@code{.bundle_unlock} directive has no effect except that it must be
+matched by another closing @code{.bundle_unlock} so that there is the
+same number of @code{.bundle_lock} and @code{.bundle_unlock} directives.
 
 @node Byte
 @section @code{.byte @var{expressions}}
@@ -5495,7 +5698,7 @@ hence @emph{octa}-word for 16 bytes.
 Set the location counter to @var{loc} in the absolute section.  @var{loc} must
 be an absolute expression.  This directive may be useful for defining
 symbols with absolute values.  Do not confuse it with the @code{.org}
-directive. 
+directive.
 
 @node Org
 @section @code{.org @var{new-lc} , @var{fill}}
@@ -5836,6 +6039,8 @@ section is not loaded
 writable section
 @item d
 data section
+@item e
+exclude section from linking
 @item r
 read-only section
 @item x
@@ -6822,6 +7027,9 @@ include details on any machine's instruction set.  For details on that
 subject, see the hardware manufacturer's manual.
 
 @menu
+@ifset AARCH64
+* AArch64-Dependent::		AArch64 Dependent Features
+@end ifset
 @ifset ALPHA
 * Alpha-Dependent::		Alpha Dependent Features
 @end ifset
@@ -6848,6 +7056,9 @@ subject, see the hardware manufacturer's manual.
 @end ifset
 @ifset D30V
 * D30V-Dependent::              D30V Dependent Features
+@end ifset
+@ifset EPIPHANY
+* Epiphany-Dependent::          EPIPHANY Dependent Features
 @end ifset
 @ifset H8/300
 * H8/300-Dependent::            Renesas H8/300 Dependent Features
@@ -6888,6 +7099,9 @@ subject, see the hardware manufacturer's manual.
 @ifset M68HC11
 * M68HC11-Dependent::           M68HC11 and 68HC12 Dependent Features
 @end ifset
+@ifset METAG
+* Meta-Dependent ::             Meta Dependent Features
+@end ifset
 @ifset MICROBLAZE
 * MicroBlaze-Dependent::	MICROBLAZE Dependent Features
 @end ifset
@@ -6899,6 +7113,9 @@ subject, see the hardware manufacturer's manual.
 @end ifset
 @ifset MSP430
 * MSP430-Dependent::		MSP430 Dependent Features
+@end ifset
+@ifset NIOSII
+* NiosII-Dependent::            Altera Nios II Dependent Features
 @end ifset
 @ifset NS32K
 * NS32K-Dependent::		NS32K Dependent Features
@@ -6915,6 +7132,9 @@ subject, see the hardware manufacturer's manual.
 @end ifset
 @ifset PPC
 * PPC-Dependent::               PowerPC Dependent Features
+@end ifset
+@ifset RL78
+* RL78-Dependent::              RL78 Dependent Features
 @end ifset
 @ifset RX
 * RX-Dependent::                RX Dependent Features
@@ -6943,6 +7163,9 @@ subject, see the hardware manufacturer's manual.
 @ifset V850
 * V850-Dependent::              V850 Dependent Features
 @end ifset
+@ifset XGATE
+* XGATE-Dependent::             XGATE Features
+@end ifset
 @ifset XSTORMY16
 * XSTORMY16-Dependent::         XStormy16 Dependent Features
 @end ifset
@@ -6970,6 +7193,10 @@ subject, see the hardware manufacturer's manual.
 @c major node below.  Node defaulting in makeinfo requires adjacency of
 @c node and sectioning commands; hence the repetition of @chapter BLAH
 @c in both conditional blocks.
+
+@ifset AARCH64
+@include c-aarch64.texi
+@end ifset
 
 @ifset ALPHA
 @include c-alpha.texi
@@ -7025,6 +7252,10 @@ family.
 @include c-d30v.texi
 @end ifset
 
+@ifset EPIPHANY
+@include c-epiphany.texi
+@end ifset
+
 @ifset H8/300
 @include c-h8300.texi
 @end ifset
@@ -7077,6 +7308,10 @@ family.
 @include c-m68hc11.texi
 @end ifset
 
+@ifset METAG
+@include c-metag.texi
+@end ifset
+
 @ifset MICROBLAZE
 @include c-microblaze.texi
 @end ifset
@@ -7093,6 +7328,10 @@ family.
 @include c-msp430.texi
 @end ifset
 
+@ifset NIOSII
+@include c-nios2.texi
+@end ifset
+
 @ifset NS32K
 @include c-ns32k.texi
 @end ifset
@@ -7107,6 +7346,10 @@ family.
 
 @ifset PPC
 @include c-ppc.texi
+@end ifset
+
+@ifset RL78
+@include c-rl78.texi
 @end ifset
 
 @ifset RX
@@ -7160,6 +7403,10 @@ family.
 
 @ifset V850
 @include c-v850.texi
+@end ifset
+
+@ifset XGATE
+@include c-xgate.texi
 @end ifset
 
 @ifset XSTORMY16
@@ -7385,8 +7632,8 @@ things without first using the debugger to find the facts.
 If you have contributed to GAS and your name isn't listed here,
 it is not meant as a slight.  We just don't know about it.  Send mail to the
 maintainer, and we'll correct the situation.  Currently
-@c (January 1994),
-the maintainer is Ken Raeburn (email address @code{raeburn@@cygnus.com}).
+@c (October 2012),
+the maintainer is Nick Clifton (email address @code{nickc@@redhat.com}).
 
 Dean Elsner wrote the original @sc{gnu} assembler for the VAX.@footnote{Any
 more details?}

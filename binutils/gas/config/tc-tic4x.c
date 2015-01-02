@@ -1,6 +1,6 @@
 /* tc-tic4x.c -- Assemble for the Texas Instruments TMS320C[34]x.
-   Copyright (C) 1997,1998, 2002, 2003, 2005, 2006, 2007, 2008, 2009, 2010
-   Free Software Foundation. Inc.
+   Copyright (C) 1997,1998, 2002, 2003, 2005, 2006, 2007, 2008, 2009, 2010,
+   2012 Free Software Foundation. Inc.
 
    Contributed by Michael P. Hayes (m.hayes@elec.canterbury.ac.nz)
 
@@ -27,11 +27,6 @@
   o .align cannot handle fill-data-width larger than 0xFF/8-bits. It
     should be possible to define a 32-bits pattern.
 
-  o .align fills all section with NOP's when used regardless if has
-    been used in .text or .data. (However the .align is primarily
-    intended used in .text sections. If you require something else,
-    use .align <size>,0x00)
-
   o .align: Implement a 'bu' insn if the number of nop's exceeds 4
     within the align frag. if(fragsize>4words) insert bu fragend+1
     first.
@@ -43,11 +38,10 @@
   o Evaluation of constant floating point expressions (expr.c needs
     work!)
 
-  o Support 'abc' constants (that is 0x616263)
-*/
+  o Support 'abc' constants (that is 0x616263).  */
 
-#include "safe-ctype.h"
 #include "as.h"
+#include "safe-ctype.h"
 #include "opcode/tic4x.h"
 #include "subsegs.h"
 #include "obstack.h"
@@ -2955,13 +2949,11 @@ md_pcrel_from (fixS *fixP)
 /* Fill the alignment area with NOP's on .text, unless fill-data
    was specified. */
 int 
-tic4x_do_align (int alignment ATTRIBUTE_UNUSED,
-		const char *fill ATTRIBUTE_UNUSED,
-		int len ATTRIBUTE_UNUSED,
-		int max ATTRIBUTE_UNUSED)
+tic4x_do_align (int alignment,
+		const char *fill,
+		int len,
+		int max)
 {
-  unsigned long nop = TIC_NOP_OPCODE;
-
   /* Because we are talking lwords, not bytes, adjust alignment to do words */
   alignment += 2;
   
@@ -2969,11 +2961,15 @@ tic4x_do_align (int alignment ATTRIBUTE_UNUSED,
     {
       if (fill == NULL)
         {
-          /*if (subseg_text_p (now_seg))*/  /* FIXME: doesn't work for .text for some reason */
-          frag_align_pattern( alignment, (const char *)&nop, sizeof(nop), max);
-          return 1;
-          /*else
-            frag_align (alignment, 0, max);*/
+          if (subseg_text_p (now_seg))
+	    {
+	      char nop[4];
+
+	      md_number_to_chars (nop, TIC_NOP_OPCODE, 4);
+	      frag_align_pattern (alignment, nop, sizeof (nop), max);
+	    }
+          else
+            frag_align (alignment, 0, max);
 	}
       else if (len <= 1)
 	frag_align (alignment, *fill, max);

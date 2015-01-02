@@ -188,7 +188,8 @@ avoid_constant_pool_reference (rtx x)
       /* If we're accessing the constant in a different mode than it was
          originally stored, attempt to fix that up via subreg simplifications.
          If that fails we have no choice but to return the original memory.  */
-      if (offset != 0 || cmode != GET_MODE (x))
+      if ((offset != 0 || cmode != GET_MODE (x))
+	  && offset >= 0 && offset < GET_MODE_SIZE (cmode))
         {
           rtx tem = simplify_subreg (GET_MODE (x), c, cmode, offset);
           if (tem && CONSTANT_P (tem))
@@ -2777,7 +2778,7 @@ simplify_binary_operation_1 (enum rtx_code code, enum machine_mode mode,
 		}
 	    }
 	}
-      else
+      else if (SCALAR_INT_MODE_P (mode))
 	{
 	  /* 0/x is 0 (or x&0 if x has side-effects).  */
 	  if (trueop0 == CONST0_RTX (mode)
@@ -4177,10 +4178,20 @@ simplify_relational_operation_1 (enum rtx_code code, enum machine_mode mode,
     {
       rtx x = XEXP (op0, 0);
       rtx c = XEXP (op0, 1);
+      enum rtx_code invcode = op0code == PLUS ? MINUS : PLUS;
+      rtx tem = simplify_gen_binary (invcode, cmp_mode, op1, c);
 
-      c = simplify_gen_binary (op0code == PLUS ? MINUS : PLUS,
-			       cmp_mode, op1, c);
-      return simplify_gen_relational (code, mode, cmp_mode, x, c);
+      /* Detect an infinite recursive condition, where we oscillate at this
+	 simplification case between:
+	    A + B == C  <--->  C - B == A,
+	 where A, B, and C are all constants with non-simplifiable expressions,
+	 usually SYMBOL_REFs.  */
+      if (GET_CODE (tem) == invcode
+	  && CONSTANT_P (x)
+	  && rtx_equal_p (c, XEXP (tem, 1)))
+	return NULL_RTX;
+
+      return simplify_gen_relational (code, mode, cmp_mode, x, tem);
     }
 
   /* (ne:SI (zero_extract:SI FOO (const_int 1) BAR) (const_int 0))) is

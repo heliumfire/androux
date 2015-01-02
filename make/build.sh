@@ -21,21 +21,21 @@
 # See Makefile.in for comments describing these variables.
 
 srcdir='.'
-CC='/home/anushruth/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc'
-CFLAGS='-g -O2 --sysroot=/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/ -I/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include '
-CPPFLAGS=''
-LDFLAGS='-Wl,--export-dynamic --sysroot=/home/anushruth/tools/android-ndk-r10d/platforms/android-9/arch-arm/'
+CC='/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc'
+CFLAGS='-g -O2 -I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ --sysroot=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm '
+CPPFLAGS='-I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ -DHAVE_TTYNAME=0'
+LDFLAGS='-Wl,--export-dynamic -L/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/lib/'
 ALLOCA=''
 LOADLIBES='  '
 eval extras=\' ${LIBOBJDIR}getloadavg$U.o\'
 REMOTE='stub'
-GLOBLIB=''
+GLOBLIB='glob/libglob.a'
 PATH_SEPARATOR=':'
 OBJEXT='o'
 EXEEXT=''
 
 # Common prefix for machine-independent installed files.
-prefix='/home/anushruth/experiment/sysroot'
+prefix='/Users/regnarts/Documents/experiment/sysroot'
 # Common prefix for machine-dependent installed files.
 exec_prefix=`eval echo ${prefix}`
 # Directory to find libraries in for '-lXXX'.

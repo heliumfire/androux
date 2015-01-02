@@ -1,4 +1,0 @@
-#define TLSDESC_ARG 0
-#define TLSDESC_GEN_COUNT 8
-#define TLSDESC_MODID 0
-#define TLSDESC_MODOFF 4

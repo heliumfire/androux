@@ -29,10 +29,10 @@
 srcdir = .
 
 
-SHELL = /bin/bash
+SHELL = /bin/sh
 
-CC = /home/anushruth/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc
-CFLAGS = -I. -I./../include -I/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include -Wno-error -g -O2
+CC = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc
+CFLAGS = -g -O2 -I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ --sysroot=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/ -Wno-error
 LIBCFLAGS = $(CFLAGS)
 
 # Multilib support variables.

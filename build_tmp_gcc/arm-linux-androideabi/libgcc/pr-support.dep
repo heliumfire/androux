@@ -1,0 +1,4 @@
+pr-support.o: ../../../gcc/libgcc/../gcc/config/arm/pr-support.c \
+ /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.6/include/unwind.h
+
+/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.6/include/unwind.h:

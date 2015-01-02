@@ -2,7 +2,7 @@
 # Originally written by K. Richard Pixley <rich@cygnus.com>.
 #
 # Copyright (C) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
-# 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
+# 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
 # Free Software Foundation
 #
 # This file is part of the libiberty library.
@@ -24,7 +24,7 @@
 libiberty_topdir = ./..
 srcdir = .
 
-prefix = /home/anushruth/experiment/sysroot
+prefix = /Users/regnarts/Documents/experiment/system
 
 exec_prefix = ${prefix}
 bindir = ${exec_prefix}/bin
@@ -33,7 +33,7 @@ includedir = ${prefix}/include
 target_header_dir = 
 objext = o
 
-SHELL = /bin/bash
+SHELL = /bin/sh
 
 # Multilib support variables.
 MULTISRCTOP =
@@ -51,11 +51,11 @@ mkinstalldirs = $(SHELL) $(libiberty_topdir)/mkinstalldirs
 # Some compilers can't handle cc -c blah.c -o foo/blah.o.
 OUTPUT_OPTION = -o $@
 
-AR = arm-linux-ar
+AR = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-ar
 AR_FLAGS = rc
 
-CC = /home/anushruth/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc
-CFLAGS = -I. -I./../include -I/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include -Wno-error -g -O2
+CC = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc
+CFLAGS = -g -O2 -I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ --sysroot=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/ -Wno-error
 CPPFLAGS = 
 RANLIB = true
 MAKEINFO = makeinfo --split-size=5000000
@@ -68,7 +68,7 @@ MAKEOVERRIDES =
 TARGETLIB = ./libiberty.a
 TESTLIB = ./testlib.a
 
-LIBOBJS =  ${LIBOBJDIR}./bcmp$U.o ${LIBOBJDIR}./getpagesize$U.o ${LIBOBJDIR}./insque$U.o ${LIBOBJDIR}./mempcpy$U.o ${LIBOBJDIR}./random$U.o ${LIBOBJDIR}./rindex$U.o ${LIBOBJDIR}./stpcpy$U.o ${LIBOBJDIR}./stpncpy$U.o ${LIBOBJDIR}./strverscmp$U.o ${LIBOBJDIR}./setproctitle$U.o ${LIBOBJDIR}./strncmp$U.o
+LIBOBJS =  ${LIBOBJDIR}./bcmp$U.o ${LIBOBJDIR}./getpagesize$U.o ${LIBOBJDIR}./insque$U.o ${LIBOBJDIR}./mempcpy$U.o ${LIBOBJDIR}./random$U.o ${LIBOBJDIR}./rindex$U.o ${LIBOBJDIR}./stpcpy$U.o ${LIBOBJDIR}./stpncpy$U.o ${LIBOBJDIR}./strverscmp$U.o ${LIBOBJDIR}./setproctitle$U.o
 
 # A configuration can specify extra .o files that should be included,
 # even if they are in libc. (Perhaps the libc version is buggy.)
@@ -127,7 +127,7 @@ CFILES = alloca.c argv.c asprintf.c atexit.c				\
 	basename.c bcmp.c bcopy.c bsearch.c bzero.c			\
 	calloc.c choose-temp.c clock.c concat.c cp-demangle.c		\
 	 cp-demint.c cplus-dem.c crc32.c				\
-	dyn-string.c							\
+	dwarfnames.c dyn-string.c					\
 	fdmatch.c ffs.c fibheap.c filename_cmp.c floatformat.c		\
 	fnmatch.c fopen_unlocked.c					\
 	getcwd.c getopt.c getopt1.c getpagesize.c getpwd.c getruntime.c	\
@@ -147,13 +147,13 @@ CFILES = alloca.c argv.c asprintf.c atexit.c				\
 	random.c regex.c rename.c rindex.c				\
 	safe-ctype.c setenv.c setproctitle.c sha1.c sigsetmask.c        \
 	 simple-object.c simple-object-coff.c simple-object-elf.c	\
-	 simple-object-mach-o.c						\
+	 simple-object-mach-o.c simple-object-xcoff.c			\
          snprintf.c sort.c						\
 	 spaces.c splay-tree.c stack-limit.c stpcpy.c stpncpy.c		\
 	 strcasecmp.c strchr.c strdup.c strerror.c strncasecmp.c	\
 	 strncmp.c strrchr.c strsignal.c strstr.c strtod.c strtol.c	\
-	 strtoul.c strndup.c strverscmp.c				\
-	tmpnam.c							\
+	 strtoul.c strndup.c strnlen.c strverscmp.c			\
+	timeval-utils.c tmpnam.c					\
 	unlink-if-ordinary.c						\
 	vasprintf.c vfork.c vfprintf.c vprintf.c vsnprintf.c vsprintf.c	\
 	waitpid.c							\
@@ -167,7 +167,8 @@ REQUIRED_OFILES =							\
 	./md5.$(objext) ./sha1.$(objext) ./alloca.$(objext)		\
 	./argv.$(objext)						\
 	./choose-temp.$(objext) ./concat.$(objext)			\
-	./cp-demint.$(objext) ./crc32.$(objext) ./dyn-string.$(objext)	\
+	./cp-demint.$(objext) ./crc32.$(objext)				\
+	./dwarfnames.$(objext) ./dyn-string.$(objext)			\
 	./fdmatch.$(objext) ./fibheap.$(objext)				\
 	./filename_cmp.$(objext) ./floatformat.$(objext)		\
 	./fnmatch.$(objext) ./fopen_unlocked.$(objext)			\
@@ -183,10 +184,11 @@ REQUIRED_OFILES =							\
 	./safe-ctype.$(objext)						\
 	./simple-object.$(objext) ./simple-object-coff.$(objext)	\
 	./simple-object-elf.$(objext) ./simple-object-mach-o.$(objext)	\
+	./simple-object-xcoff.$(objext)					\
 	./sort.$(objext) ./spaces.$(objext)				\
 	./splay-tree.$(objext) ./stack-limit.$(objext)			\
-	./strerror.$(objext)						\
-	./strsignal.$(objext) ./unlink-if-ordinary.$(objext)		\
+	./strerror.$(objext) ./strsignal.$(objext)			\
+	./timeval-utils.$(objext) ./unlink-if-ordinary.$(objext)	\
 	./xatexit.$(objext) ./xexit.$(objext) ./xmalloc.$(objext)	\
 	./xmemdup.$(objext) ./xstrdup.$(objext) ./xstrerror.$(objext)	\
 	./xstrndup.$(objext)
@@ -215,9 +217,9 @@ CONFIGURED_OFILES = ./asprintf.$(objext) ./atexit.$(objext)		\
 	 ./sigsetmask.$(objext) ./snprintf.$(objext)			\
 	 ./stpcpy.$(objext) ./stpncpy.$(objext) ./strcasecmp.$(objext)	\
 	 ./strchr.$(objext) ./strdup.$(objext) ./strncasecmp.$(objext)	\
-	 ./strncmp.$(objext) ./strndup.$(objext) ./strrchr.$(objext)	\
-	 ./strstr.$(objext) ./strtod.$(objext) ./strtol.$(objext)	\
-	 ./strtoul.$(objext) ./strverscmp.$(objext)			\
+	 ./strncmp.$(objext) ./strndup.$(objext) ./strnlen.$(objext)	\
+	 ./strrchr.$(objext) ./strstr.$(objext) ./strtod.$(objext)	\
+	 ./strtol.$(objext) ./strtoul.$(objext) ./strverscmp.$(objext)	\
 	./tmpnam.$(objext)						\
 	./vasprintf.$(objext) ./vfork.$(objext) ./vfprintf.$(objext)	\
 	 ./vprintf.$(objext) ./vsnprintf.$(objext) ./vsprintf.$(objext)	\
@@ -236,7 +238,8 @@ INSTALLED_HEADERS =                                                     \
 	$(INCDIR)/partition.h                                           \
 	$(INCDIR)/safe-ctype.h                                          \
 	$(INCDIR)/sort.h                                                \
-	$(INCDIR)/splay-tree.h
+	$(INCDIR)/splay-tree.h \
+	$(INCDIR)/timeval-utils.h
 
 $(TARGETLIB): $(REQUIRED_OFILES) $(EXTRA_OFILES) $(LIBOBJS)
 	-rm -f $(TARGETLIB) pic/$(TARGETLIB)
@@ -353,19 +356,19 @@ install-strip: install
 # since it will be passed the multilib flags.
 MULTIOSDIR = `$(CC) $(CFLAGS) -print-multi-os-directory`
 install_to_libdir: all
-	${mkinstalldirs} $(DESTDIR)$(libdir)/$(MULTIOSDIR)
-	$(INSTALL_DATA) $(TARGETLIB) $(DESTDIR)$(libdir)/$(MULTIOSDIR)/$(TARGETLIB)n
-	( cd $(DESTDIR)$(libdir)/$(MULTIOSDIR) ; chmod 644 $(TARGETLIB)n ;$(RANLIB) $(TARGETLIB)n )
-	mv -f $(DESTDIR)$(libdir)/$(MULTIOSDIR)/$(TARGETLIB)n $(DESTDIR)$(libdir)/$(MULTIOSDIR)/$(TARGETLIB)
 	if test -n "${target_header_dir}"; then \
-	  case "${target_header_dir}" in \
-	    /*)    thd=${target_header_dir};; \
-	    *)     thd=${includedir}/${target_header_dir};; \
-	  esac; \
-	  ${mkinstalldirs} $(DESTDIR)$${thd}; \
-	  for h in ${INSTALLED_HEADERS}; do \
-	    ${INSTALL_DATA} $$h $(DESTDIR)$${thd}; \
-	  done; \
+		${mkinstalldirs} $(DESTDIR)$(libdir)/$(MULTIOSDIR); \
+		$(INSTALL_DATA) $(TARGETLIB) $(DESTDIR)$(libdir)/$(MULTIOSDIR)/$(TARGETLIB)n; \
+		( cd $(DESTDIR)$(libdir)/$(MULTIOSDIR) ; chmod 644 $(TARGETLIB)n ;$(RANLIB) $(TARGETLIB)n ); \
+		mv -f $(DESTDIR)$(libdir)/$(MULTIOSDIR)/$(TARGETLIB)n $(DESTDIR)$(libdir)/$(MULTIOSDIR)/$(TARGETLIB); \
+		case "${target_header_dir}" in \
+		  /*)    thd=${target_header_dir};; \
+		  *)     thd=${includedir}/${target_header_dir};; \
+		esac; \
+		${mkinstalldirs} $(DESTDIR)$${thd}; \
+		for h in ${INSTALLED_HEADERS}; do \
+		  ${INSTALL_DATA} $$h $(DESTDIR)$${thd}; \
+		done; \
 	fi
 	@$(MULTIDO) $(FLAGS_TO_PASS) multi-do DO=install
 
@@ -621,6 +624,13 @@ $(CONFIGURED_OFILES): stamp-picdir
 	else true; fi
 	$(COMPILE.c) $(srcdir)/crc32.c $(OUTPUT_OPTION)
 
+./dwarfnames.$(objext): $(srcdir)/dwarfnames.c $(INCDIR)/dwarf2.def \
+	$(INCDIR)/dwarf2.h
+	if [ x"$(PICFLAG)" != x ]; then \
+	  $(COMPILE.c) $(PICFLAG) $(srcdir)/dwarfnames.c -o pic/$@; \
+	else true; fi
+	$(COMPILE.c) $(srcdir)/dwarfnames.c $(OUTPUT_OPTION)
+
 ./dyn-string.$(objext): $(srcdir)/dyn-string.c config.h $(INCDIR)/ansidecl.h \
 	$(INCDIR)/dyn-string.h $(INCDIR)/libiberty.h
 	if [ x"$(PICFLAG)" != x ]; then \
@@ -648,7 +658,8 @@ $(CONFIGURED_OFILES): stamp-picdir
 	else true; fi
 	$(COMPILE.c) $(srcdir)/fibheap.c $(OUTPUT_OPTION)
 
-./filename_cmp.$(objext): $(srcdir)/filename_cmp.c config.h $(INCDIR)/filenames.h \
+./filename_cmp.$(objext): $(srcdir)/filename_cmp.c config.h $(INCDIR)/ansidecl.h \
+	$(INCDIR)/filenames.h $(INCDIR)/hashtab.h \
 	$(INCDIR)/safe-ctype.h
 	if [ x"$(PICFLAG)" != x ]; then \
 	  $(COMPILE.c) $(PICFLAG) $(srcdir)/filename_cmp.c -o pic/$@; \
@@ -749,7 +760,7 @@ $(CONFIGURED_OFILES): stamp-picdir
 	$(COMPILE.c) $(srcdir)/insque.c $(OUTPUT_OPTION)
 
 ./lbasename.$(objext): $(srcdir)/lbasename.c config.h $(INCDIR)/ansidecl.h \
-	$(INCDIR)/filenames.h $(INCDIR)/libiberty.h \
+	$(INCDIR)/filenames.h $(INCDIR)/hashtab.h $(INCDIR)/libiberty.h \
 	$(INCDIR)/safe-ctype.h
 	if [ x"$(PICFLAG)" != x ]; then \
 	  $(COMPILE.c) $(PICFLAG) $(srcdir)/lbasename.c -o pic/$@; \
@@ -1000,6 +1011,14 @@ $(CONFIGURED_OFILES): stamp-picdir
 	else true; fi
 	$(COMPILE.c) $(srcdir)/simple-object-mach-o.c $(OUTPUT_OPTION)
 
+./simple-object-xcoff.$(objext): $(srcdir)/simple-object-xcoff.c config.h \
+	$(INCDIR)/ansidecl.h $(INCDIR)/libiberty.h \
+	$(srcdir)/simple-object-common.h $(INCDIR)/simple-object.h
+	if [ x"$(PICFLAG)" != x ]; then \
+	  $(COMPILE.c) $(PICFLAG) $(srcdir)/simple-object-xcoff.c -o pic/$@; \
+	else true; fi
+	$(COMPILE.c) $(srcdir)/simple-object-xcoff.c $(OUTPUT_OPTION)
+
 ./simple-object.$(objext): $(srcdir)/simple-object.c config.h \
 	$(INCDIR)/ansidecl.h $(INCDIR)/libiberty.h \
 	$(srcdir)/simple-object-common.h $(INCDIR)/simple-object.h
@@ -1035,7 +1054,7 @@ $(CONFIGURED_OFILES): stamp-picdir
 	else true; fi
 	$(COMPILE.c) $(srcdir)/splay-tree.c $(OUTPUT_OPTION)
 
-./stack-limit.$(objext): $(srcdir)/stack-limit.c config.h
+./stack-limit.$(objext): $(srcdir)/stack-limit.c config.h $(INCDIR)/ansidecl.h
 	if [ x"$(PICFLAG)" != x ]; then \
 	  $(COMPILE.c) $(PICFLAG) $(srcdir)/stack-limit.c -o pic/$@; \
 	else true; fi
@@ -1096,6 +1115,12 @@ $(CONFIGURED_OFILES): stamp-picdir
 	else true; fi
 	$(COMPILE.c) $(srcdir)/strndup.c $(OUTPUT_OPTION)
 
+./strnlen.$(objext): $(srcdir)/strnlen.c config.h
+	if [ x"$(PICFLAG)" != x ]; then \
+	  $(COMPILE.c) $(PICFLAG) $(srcdir)/strnlen.c -o pic/$@; \
+	else true; fi
+	$(COMPILE.c) $(srcdir)/strnlen.c $(OUTPUT_OPTION)
+
 ./strrchr.$(objext): $(srcdir)/strrchr.c $(INCDIR)/ansidecl.h
 	if [ x"$(PICFLAG)" != x ]; then \
 	  $(COMPILE.c) $(PICFLAG) $(srcdir)/strrchr.c -o pic/$@; \
@@ -1141,6 +1166,13 @@ $(CONFIGURED_OFILES): stamp-picdir
 	  $(COMPILE.c) $(PICFLAG) $(srcdir)/strverscmp.c -o pic/$@; \
 	else true; fi
 	$(COMPILE.c) $(srcdir)/strverscmp.c $(OUTPUT_OPTION)
+
+./timeval-utils.$(objext): $(srcdir)/timeval-utils.c config.h \
+	$(INCDIR)/timeval-utils.h
+	if [ x"$(PICFLAG)" != x ]; then \
+	  $(COMPILE.c) $(PICFLAG) $(srcdir)/timeval-utils.c -o pic/$@; \
+	else true; fi
+	$(COMPILE.c) $(srcdir)/timeval-utils.c $(OUTPUT_OPTION)
 
 ./tmpnam.$(objext): $(srcdir)/tmpnam.c
 	if [ x"$(PICFLAG)" != x ]; then \

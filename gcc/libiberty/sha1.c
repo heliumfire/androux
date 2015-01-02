@@ -22,7 +22,8 @@
    Credits:
       Robert Klep <robert@ilse.nl>  -- Expansion function fix
 */
-
+#include "sha1.h"
+#include <stdio.h>
 #include <config.h>
 
 #include "sha1.h"
@@ -65,6 +66,7 @@ sha1_init_ctx (struct sha1_ctx *ctx)
 
   ctx->total[0] = ctx->total[1] = 0;
   ctx->buflen = 0;
+    //ctx->buffer=tmp;
 }
 
 /* Put result from CTX in first 20 bytes following RESBUF.  The result

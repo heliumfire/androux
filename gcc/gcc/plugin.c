@@ -30,6 +30,7 @@ along with GCC; see the file COPYING3.  If not see
 #include "plugin.h"
 #include "timevar.h"
 #include "ggc.h"
+#include <dlfcn.h>
 
 #ifdef ENABLE_PLUGIN
 #include "plugin-version.h"

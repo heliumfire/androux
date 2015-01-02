@@ -15,6 +15,24 @@
 
 
 
+#
+#   Copyright 2012 Free Software Foundation
+#
+# This file is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; see the file COPYING3.  If not see
+# <http://www.gnu.org/licenses/>.
+#
+
 pkgdatadir = $(datadir)/bfd
 pkgincludedir = $(includedir)/bfd
 pkglibdir = $(libdir)/bfd
@@ -31,9 +49,9 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-build_triplet = x86_64-unknown-linux-gnu
-host_triplet = arm-unknown-linux-gnu
-target_triplet = arm-unknown-linux-gnu
+build_triplet = i386-apple-darwin14.0.0
+host_triplet = arm-unknown-linux-androideabi
+target_triplet = arm-unknown-linux-androideabi
 
 # Automake 1.9 will only build info files in the objdir if they are
 # mentioned in DISTCLEANFILES.  It doesn't have to be unconditional,
@@ -106,58 +124,58 @@ am__nobase_list = $(am__nobase_strip_setup); \
 am__base_list = \
   sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
   sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
-ACLOCAL = ${SHELL} /home/anushruth/experiment/binutils/missing --run aclocal-1.11
-AMTAR = ${SHELL} /home/anushruth/experiment/binutils/missing --run tar
-AR = arm-linux-ar
-AUTOCONF = ${SHELL} /home/anushruth/experiment/binutils/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/anushruth/experiment/binutils/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/anushruth/experiment/binutils/missing --run automake-1.11
-AWK = gawk
+ACLOCAL = ${SHELL} /Users/regnarts/Documents/experiment/binutils/missing --run aclocal-1.11
+AMTAR = ${SHELL} /Users/regnarts/Documents/experiment/binutils/missing --run tar
+AR = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-ar
+AUTOCONF = ${SHELL} /Users/regnarts/Documents/experiment/binutils/missing --run autoconf
+AUTOHEADER = ${SHELL} /Users/regnarts/Documents/experiment/binutils/missing --run autoheader
+AUTOMAKE = ${SHELL} /Users/regnarts/Documents/experiment/binutils/missing --run automake-1.11
+AWK = awk
 BFD_HOSTPTR_T = unsigned long
 BFD_HOST_64BIT_LONG = 0
 BFD_HOST_64BIT_LONG_LONG = 1
 BFD_HOST_64_BIT = long long
 BFD_HOST_64_BIT_DEFINED = 1
 BFD_HOST_U_64_BIT = unsigned long long
-CATALOGS = 
-CATOBJEXT = 
-CC = /home/anushruth/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc
+CATALOGS =  da.gmo es.gmo fi.gmo fr.gmo id.gmo ja.gmo ro.gmo ru.gmo rw.gmo sv.gmo tr.gmo uk.gmo vi.gmo zh_CN.gmo da.gmo es.gmo fi.gmo fr.gmo id.gmo ja.gmo ro.gmo ru.gmo rw.gmo sv.gmo tr.gmo uk.gmo vi.gmo zh_CN.gmo
+CATOBJEXT = .gmo
+CC = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc
 CCDEPMODE = depmode=gcc3
 CC_FOR_BUILD = gcc
-CFLAGS = -I. -I./../include -I/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include -Wno-error -g -O2
+CFLAGS = -g -O2 -I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ --sysroot=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/ -Wno-error
 COREFILE = 
 COREFLAG = 
 CPP = /lib/cpp
 CPPFLAGS = 
 CYGPATH_W = echo
-DATADIRNAME = 
+DATADIRNAME = share
 DEBUGDIR = ${exec_prefix}/lib/debug
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
 DSYMUTIL = 
 DUMPBIN = 
-ECHO_C = 
-ECHO_N = -n
+ECHO_C = \c
+ECHO_N = 
 ECHO_T = 
-EGREP = /bin/grep -E
+EGREP = /usr/bin/grep -E
 EXEEXT = 
 EXEEXT_FOR_BUILD = 
-FGREP = /bin/grep -F
-GENCAT = 
-GMSGFMT = /usr/bin/msgfmt
-GREP = /bin/grep
+FGREP = /usr/bin/grep -F
+GENCAT = gencat
+GMSGFMT = /opt/local/bin/msgfmt
+GREP = /usr/bin/grep
 HDEFINES = 
-INCINTL = 
+INCINTL = -I${top_builddir}/../intl
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = /usr/bin/install -c -m 644
 INSTALL_PROGRAM = /usr/bin/install -c
 INSTALL_SCRIPT = /usr/bin/install -c
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-INSTOBJEXT = 
-LD = /home/anushruth/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.6/../../../../arm-linux-androideabi/bin/ld
-LDFLAGS =  --sysroot=/home/anushruth/tools/android-ndk-r10d/platforms/android-9/arch-arm/
-LIBINTL = 
-LIBINTL_DEP = 
+INSTOBJEXT = .mo
+LD = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ld
+LDFLAGS =  -L/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/lib/
+LIBINTL = ${top_builddir}/../intl/libintl.a
+LIBINTL_DEP = ${top_builddir}/../intl/libintl.a
 LIBM = -lm
 LIBOBJS = 
 LIBS = -lz 
@@ -167,45 +185,45 @@ LN_S = ln -s
 LTLIBOBJS = 
 MAINT = #
 MAKEINFO = makeinfo --split-size=5000000
-MKDIR_P = /bin/mkdir -p
+MKDIR_P = .././../install-sh -c -d
 MKINSTALLDIRS = $(top_builddir)/./../mkinstalldirs
-MSGFMT = /usr/bin/msgfmt
-MSGMERGE = /usr/bin/msgmerge
-NM = arm-linux-nm
+MSGFMT = /opt/local/bin/msgfmt
+MSGMERGE = /opt/local/bin/msgmerge
+NM = arm-linux-androideabi-nm
 NMEDIT = 
-NO_WERROR = 
-OBJDUMP = arm-linux-objdump
+NO_WERROR = -Wno-error
+OBJDUMP = arm-linux-androideabi-objdump
 OBJEXT = o
 OTOOL = 
 OTOOL64 = 
 PACKAGE = bfd
 PACKAGE_BUGREPORT = 
-PACKAGE_NAME = 
-PACKAGE_STRING = 
-PACKAGE_TARNAME = 
+PACKAGE_NAME = bfd
+PACKAGE_STRING = bfd 2.24
+PACKAGE_TARNAME = bfd
 PACKAGE_URL = 
-PACKAGE_VERSION = 
+PACKAGE_VERSION = 2.24
 PATH_SEPARATOR = :
 PKGVERSION = (GNU Binutils) 
-POSUB = 
+POSUB = po
 RANLIB = true
 REPORT_BUGS_TEXI = @uref{http://www.sourceware.org/bugzilla/}
 REPORT_BUGS_TO = <http://www.sourceware.org/bugzilla/>
-SED = /bin/sed
+SED = /usr/bin/sed
 SET_MAKE = 
 SHARED_LDFLAGS = 
 SHARED_LIBADD = 
-SHELL = /bin/bash
+SHELL = /bin/sh
 STRIP = strip
 TDEFINES =  
-USE_NLS = no
-VERSION = 2.22
-WARN_CFLAGS = -W -Wall -Wstrict-prototypes -Wmissing-prototypes -Wshadow
-XGETTEXT = /usr/bin/xgettext
-abs_builddir = /home/anushruth/experiment/binutils/bfd/doc
-abs_srcdir = /home/anushruth/experiment/binutils/bfd/doc
-abs_top_builddir = /home/anushruth/experiment/binutils/bfd
-abs_top_srcdir = /home/anushruth/experiment/binutils/bfd
+USE_NLS = yes
+VERSION = 2.24
+WARN_CFLAGS = -W -Wall -Wstrict-prototypes -Wmissing-prototypes -Wshadow -Werror
+XGETTEXT = /opt/local/bin/xgettext
+abs_builddir = /Users/regnarts/Documents/experiment/binutils/bfd/doc
+abs_srcdir = /Users/regnarts/Documents/experiment/binutils/bfd/doc
+abs_top_builddir = /Users/regnarts/Documents/experiment/binutils/bfd
+abs_top_srcdir = /Users/regnarts/Documents/experiment/binutils/bfd
 ac_ct_CC = 
 ac_ct_DUMPBIN = 
 all_backends = $(BFD32_BACKENDS)
@@ -215,43 +233,44 @@ am__quote =
 am__tar = ${AMTAR} chof - "$$tardir"
 am__untar = ${AMTAR} xf -
 bfd64_libs = 
-bfd_backends =  elf32-arm.lo elf32.lo elf-vxworks.lo elf.lo elflink.lo elf-attrs.lo elf-strtab.lo elf-eh-frame.lo dwarf1.lo elf32-gen.lo
+bfd_backends =  elf32-arm.lo elf32.lo elf-nacl.lo elf-vxworks.lo elf.lo elflink.lo elf-attrs.lo elf-strtab.lo elf-eh-frame.lo dwarf1.lo elf32-gen.lo
 bfd_default_target_size = 32
 bfd_file_ptr = long
 bfd_machines =  cpu-arm.lo
 bfd_ufile_ptr = unsigned long
 bindir = ${exec_prefix}/bin
-build = x86_64-unknown-linux-gnu
-build_alias = x86_64-unknown-linux-gnu
-build_cpu = x86_64
-build_os = linux-gnu
-build_vendor = unknown
+build = i386-apple-darwin14.0.0
+build_alias = i386-apple-darwin14.0.0
+build_cpu = i386
+build_os = darwin14.0.0
+build_vendor = apple
 builddir = .
 datadir = ${datarootdir}
 datarootdir = ${prefix}/share
-docdir = ${datarootdir}/doc/${PACKAGE}
+docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
 havevecs = -DHAVE_bfd_elf32_littlearm_vec -DHAVE_bfd_elf32_bigarm_vec -DHAVE_bfd_elf32_little_generic_vec -DHAVE_bfd_elf32_big_generic_vec
-host = arm-unknown-linux-gnu
-host_alias = arm-linux
+host = arm-unknown-linux-androideabi
+host_alias = arm-linux-androideabi
 host_cpu = arm
-host_noncanonical = arm-linux
-host_os = linux-gnu
+host_noncanonical = arm-linux-androideabi
+host_os = linux-androideabi
 host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/anushruth/experiment/binutils/install-sh
+install_sh = ${SHELL} /Users/regnarts/Documents/experiment/binutils/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
 localstatedir = ${prefix}/var
+lt_cv_dlopen_libs = 
 mandir = ${datarootdir}/man
-mkdir_p = /bin/mkdir -p
+mkdir_p = $(top_builddir)/./../install-sh -c -d
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /home/anushruth/experiment/sysroot
+prefix = /Users/regnarts/Documents/experiment/system
 program_transform_name = s,y,y,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
@@ -259,11 +278,11 @@ sharedstatedir = ${prefix}/com
 srcdir = .
 supports_plugins = 0
 sysconfdir = ${prefix}/etc
-target = arm-unknown-linux-gnu
-target_alias = arm-linux
+target = arm-unknown-linux-androideabi
+target_alias = arm-linux-androideabi
 target_cpu = arm
-target_noncanonical = arm-linux
-target_os = linux-gnu
+target_noncanonical = arm-linux-androideabi
+target_os = linux-androideabi
 target_vendor = unknown
 tdefaults =  -DDEFAULT_VECTOR=bfd_elf32_littlearm_vec -DSELECT_VECS='&bfd_elf32_littlearm_vec,&bfd_elf32_bigarm_vec,&bfd_elf32_little_generic_vec,&bfd_elf32_big_generic_vec' -DSELECT_ARCHITECTURES='&bfd_arm_arch'
 top_build_prefix = ../
@@ -757,9 +776,9 @@ uninstall-am: uninstall-dvi-am uninstall-html-am uninstall-info-am \
 
 
 $(MKDOC): $(srcdir)/chew.c
-	$(CC_FOR_BUILD) -o chew.$$$$ $(CFLAGS_FOR_BUILD) $(LDFLAGS_FOR_BUILD) \
-	  $(H_CFLAGS) $(AM_CPPFLAGS) $(srcdir)/chew.c; \
-	$(SHELL) $(srcdir)/../../move-if-change chew.$$$$ $(MKDOC)
+	$(CC_FOR_BUILD) -o chw$$$$$(EXEEXT_FOR_BUILD) $(CFLAGS_FOR_BUILD) \
+	  $(LDFLAGS_FOR_BUILD) $(H_CFLAGS) $(AM_CPPFLAGS) $(srcdir)/chew.c; \
+	$(SHELL) $(srcdir)/../../move-if-change chw$$$$$(EXEEXT_FOR_BUILD) $(MKDOC)
 
 protos: libbfd.h libcoff.h bfd.h
 

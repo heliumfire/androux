@@ -1,0 +1,12 @@
+_aeabi_ulcmp.o: ../../../gcc/libgcc/../gcc/config/arm/lib1funcs.asm \
+ _aeabi_ulcmp.vis ../../../gcc/libgcc/../gcc/config/arm/ieee754-df.S \
+ ../../../gcc/libgcc/../gcc/config/arm/ieee754-sf.S \
+ ../../../gcc/libgcc/../gcc/config/arm/bpabi.S
+
+_aeabi_ulcmp.vis:
+
+../../../gcc/libgcc/../gcc/config/arm/ieee754-df.S:
+
+../../../gcc/libgcc/../gcc/config/arm/ieee754-sf.S:
+
+../../../gcc/libgcc/../gcc/config/arm/bpabi.S:

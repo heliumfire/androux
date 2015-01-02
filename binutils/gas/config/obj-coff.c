@@ -26,6 +26,7 @@
 #include "safe-ctype.h"
 #include "obstack.h"
 #include "subsegs.h"
+#include "struc-symbol.h"
 
 #ifdef TE_PE
 #include "coff/pe.h"
@@ -1359,7 +1360,8 @@ coff_frob_symbol (symbolS *symp, int *punt)
 		}
 	    }
 
-	  if (coff_last_function == 0 && SF_GET_FUNCTION (symp))
+	  if (coff_last_function == 0 && SF_GET_FUNCTION (symp)
+	      && S_IS_DEFINED (symp))
 	    {
 	      union internal_auxent *auxp;
 
@@ -1371,7 +1373,8 @@ coff_frob_symbol (symbolS *symp, int *punt)
 		      sizeof (auxp->x_sym.x_fcnary.x_ary.x_dimen));
 	    }
 
-	  if (S_GET_STORAGE_CLASS (symp) == C_EFCN)
+	  if (S_GET_STORAGE_CLASS (symp) == C_EFCN
+	      && S_IS_DEFINED (symp))
 	    {
 	      if (coff_last_function == 0)
 		as_fatal (_("C_EFCN symbol for %s out of scope"),
@@ -1531,6 +1534,7 @@ coff_frob_file_after_relocs (void)
                                                  'o' for over
                                                  'w' for data
   						 'd' (apparently m88k for data)
+						 'e' for exclude
                                                  'x' for text
   						 'r' for read-only data
   						 's' for shared data (PE)
@@ -1598,6 +1602,11 @@ obj_coff_section (int ignore ATTRIBUTE_UNUSED)
 		}
 	      switch (attr)
 		{
+		case 'e':
+		  /* Exclude section from linking.  */
+		  flags |= SEC_EXCLUDE;
+		  break;
+
 		case 'b':
 		  /* Uninitialised data section.  */
 		  flags |= SEC_ALLOC;
@@ -1672,6 +1681,7 @@ obj_coff_section (int ignore ATTRIBUTE_UNUSED)
     }
 
   sec = subseg_new (name, (subsegT) exp);
+
   if (alignment >= 0)
     sec->alignment_power = alignment;
 

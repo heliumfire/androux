@@ -1,7 +1,5 @@
 /* tc-h8300.c -- Assemble code for the Renesas H8/300
-   Copyright 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 2000,
-   2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009
-   Free Software Foundation, Inc.
+   Copyright 1991-2013 Free Software Foundation, Inc.
 
    This file is part of GAS, the GNU Assembler.
 
@@ -359,7 +357,6 @@ static int parse_reg (char *, op_type *, unsigned *, int);
 static char *skip_colonthing (char *, int *);
 static char *parse_exp (char *, struct h8_op *);
 
-static int constant_fits_width_p (struct h8_op *, unsigned int);
 static int constant_fits_size_p (struct h8_op *, int, int);
 
 /*
@@ -556,19 +553,23 @@ skip_colonthing (char *src, int *mode)
    @@aa[:8]		memory indirect.  */
 
 static int
-constant_fits_width_p (struct h8_op *operand, unsigned int width)
+constant_fits_width_p (struct h8_op *operand, offsetT width)
 {
-  return ((operand->exp.X_add_number & ~width) == 0
-	  || (operand->exp.X_add_number | (offsetT) width) == (offsetT)(~0));
+  offsetT num;
+
+  num = ((operand->exp.X_add_number & 0xffffffff) ^ 0x80000000) - 0x80000000;
+  return (num & ~width) == 0 || (num | width) == ~0;
 }
 
 static int
 constant_fits_size_p (struct h8_op *operand, int size, int no_symbols)
 {
-  offsetT num = operand->exp.X_add_number;
+  offsetT num;
+
   if (no_symbols
       && (operand->exp.X_add_symbol != 0 || operand->exp.X_op_symbol != 0))
     return 0;
+  num = operand->exp.X_add_number & 0xffffffff;
   switch (size)
     {
     case L_2:
@@ -582,11 +583,13 @@ constant_fits_size_p (struct h8_op *operand, int size, int no_symbols)
     case L_5:
       return num >= 1 && num < 32;
     case L_8:
-      return (num & ~0xFF) == 0 || ((unsigned)num | 0x7F) == ~0u;
+      num = (num ^ 0x80000000) - 0x80000000;
+      return (num & ~0xFF) == 0 || (num | 0x7F) == ~0;
     case L_8U:
       return (num & ~0xFF) == 0;
     case L_16:
-      return (num & ~0xFFFF) == 0 || ((unsigned)num | 0x7FFF) == ~0u;
+      num = (num ^ 0x80000000) - 0x80000000;
+      return (num & ~0xFFFF) == 0 || (num | 0x7FFF) == ~0;
     case L_16U:
       return (num & ~0xFFFF) == 0;
     case L_32:
@@ -1184,7 +1187,7 @@ get_specific (const struct h8_instruction *instruction,
 		}
 	      else if (x_mode == IMM && op_mode != IMM)
 		{
-		  offsetT num = operands[i].exp.X_add_number;
+		  offsetT num = operands[i].exp.X_add_number & 0xffffffff;
 		  if (op_mode == KBIT || op_mode == DBIT)
 		    /* This is ok if the immediate value is sensible.  */;
 		  else if (op_mode == CONST_2)
@@ -1391,7 +1394,12 @@ do_a_fix_imm (int offset, int nibble, struct h8_op *operand, int relaxmode, cons
 	  bytes[3] |= operand->exp.X_add_number >> 0;
 	  if (relaxmode != 0)
 	    {
-	      idx = (relaxmode == 2) ? R_MOV24B1 : R_MOVL1;
+#ifdef OBJ_ELF
+	      if ((operand->mode & MODE) == DISP && relaxmode == 1)
+		idx = BFD_RELOC_H8_DISP32A16;
+	      else
+#endif
+		idx = (relaxmode == 2) ? R_MOV24B1 : R_MOVL1;
 	      fix_new_exp (frag_now, offset, 4, &operand->exp, 0, idx);
 	    }
 	  break;
@@ -1405,6 +1413,11 @@ do_a_fix_imm (int offset, int nibble, struct h8_op *operand, int relaxmode, cons
 	case L_32:
 	  size = 4;
 	  where = (operand->mode & SIZE) == L_24 ? -1 : 0;
+#ifdef OBJ_ELF
+	  if ((operand->mode & MODE) == DISP && relaxmode == 1)
+	    idx = BFD_RELOC_H8_DISP32A16;
+	  else
+#endif
 	  if (relaxmode == 2)
 	    idx = R_MOV24B1;
 	  else if (relaxmode == 1)
@@ -1611,7 +1624,7 @@ build_bytes (const struct h8_instruction *this_try, struct h8_op *operand)
   for (i = 0; i < this_try->length; i++)
     output[i] = (asnibbles[i * 2] << 4) | asnibbles[i * 2 + 1];
 
-  /* Note if this is a movb or a bit manipulation instruction
+  /* Note if this is a mov.b or a bit manipulation instruction
      there is a special relaxation which only applies.  */
   if (   this_try->opcode->how == O (O_MOV,   SB)
       || this_try->opcode->how == O (O_BCLR,  SB)
@@ -1637,10 +1650,17 @@ build_bytes (const struct h8_instruction *this_try, struct h8_op *operand)
       int x_mode = x & MODE;
 
       if (x_mode == IMM || x_mode == DISP)
-	do_a_fix_imm (output - frag_now->fr_literal + op_at[i] / 2,
-		      op_at[i] & 1, operand + i, (x & MEMRELAX) != 0,
-		      this_try);
-
+	{
+#ifndef OBJ_ELF
+	  /* Remove MEMRELAX flag added in h8300.h on mov with
+	     addressing mode "register indirect with displacement".  */
+	  if (x_mode == DISP)
+	    x &= ~MEMRELAX;
+#endif
+	  do_a_fix_imm (output - frag_now->fr_literal + op_at[i] / 2,
+			op_at[i] & 1, operand + i, (x & MEMRELAX) != 0,
+			this_try);
+	}
       else if (x_mode == ABS)
 	do_a_fix_imm (output - frag_now->fr_literal + op_at[i] / 2,
 		      op_at[i] & 1, operand + i,
@@ -1866,8 +1886,8 @@ fix_operand_size (struct h8_op *operand, int size)
 	   necessary.  */
 	if (Hmode
 	    && !Nmode 
-	    && (operand->exp.X_add_number < -32768
-		|| operand->exp.X_add_number > 32767
+	    && ((((addressT) operand->exp.X_add_number + 0x8000)
+		 & 0xffffffff) > 0xffff
 		|| operand->exp.X_add_symbol != 0
 		|| operand->exp.X_op_symbol != 0))
 	  operand->mode |= L_24;
@@ -1876,9 +1896,8 @@ fix_operand_size (struct h8_op *operand, int size)
 	break;
 
       case PCREL:
-	/* This condition is long standing, though somewhat suspect.  */
-	if (operand->exp.X_add_number > -128
-	    && operand->exp.X_add_number < 127)
+	if ((((addressT) operand->exp.X_add_number + 0x80)
+	     & 0xffffffff) <= 0xff)
 	  {
 	    if (operand->exp.X_add_symbol != NULL)
 	      operand->mode |= bsize;

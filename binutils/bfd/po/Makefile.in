@@ -8,7 +8,7 @@
 # Please note that the actual code is *not* freely available.
 
 PACKAGE = bfd
-VERSION = 2.22
+VERSION = 2.24
 
 SHELL = /bin/sh
 
@@ -18,9 +18,9 @@ top_srcdir = ..
 
 top_builddir = ..
 
-prefix = /home/anushruth/experiment/sysroot
+prefix = /Users/regnarts/Documents/experiment/system
 exec_prefix = ${prefix}
-datadir = $(prefix)/
+datadir = $(prefix)/share
 localedir = $(datadir)/locale
 gnulocaledir = $(prefix)/share/locale
 gettextsrcdir = $(prefix)/share/gettext/po
@@ -32,15 +32,15 @@ INSTALL = /usr/bin/install -c
 INSTALL_DATA = /usr/bin/install -c -m 644
 MKINSTALLDIRS = $(top_builddir)/./../mkinstalldirs
 
-CC = /home/anushruth/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc
-GENCAT = 
-GMSGFMT = PATH=../src:$$PATH /usr/bin/msgfmt
-MSGFMT = /usr/bin/msgfmt
-XGETTEXT = PATH=../src:$$PATH /usr/bin/xgettext
+CC = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc
+GENCAT = gencat
+GMSGFMT = PATH=../src:$$PATH /opt/local/bin/msgfmt
+MSGFMT = /opt/local/bin/msgfmt
+XGETTEXT = PATH=../src:$$PATH /opt/local/bin/xgettext
 MSGMERGE = PATH=../src:$$PATH msgmerge
 
 DEFS = -DHAVE_CONFIG_H
-CFLAGS = -I. -I./../include -I/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include -Wno-error -g -O2
+CFLAGS = -g -O2 -I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ --sysroot=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/ -Wno-error
 CPPFLAGS = 
 
 INCLUDES = -I.. -I$(top_srcdir)/intl
@@ -61,9 +61,9 @@ SRC-POTFILES = \
 # to contain the full list of build dir POTFILES.
 BLD-POTFILES = \
 
-CATALOGS = 
-CATOBJEXT = 
-INSTOBJEXT = 
+CATALOGS =  da.gmo es.gmo fi.gmo fr.gmo id.gmo ja.gmo ro.gmo ru.gmo rw.gmo sv.gmo tr.gmo uk.gmo vi.gmo zh_CN.gmo da.gmo es.gmo fi.gmo fr.gmo id.gmo ja.gmo ro.gmo ru.gmo rw.gmo sv.gmo tr.gmo uk.gmo vi.gmo zh_CN.gmo
+CATOBJEXT = .gmo
+INSTOBJEXT = .mo
 
 .SUFFIXES:
 .SUFFIXES: .c .o .po .pox .gmo .mo .msg .cat
@@ -87,7 +87,7 @@ INSTOBJEXT =
 	  && rm -f $@ && $(GENCAT) $@ $*.msg
 
 
-all: all-no
+all: all-yes
 
 all-yes: $(CATALOGS) # $(PACKAGE).pot
 all-no:
@@ -128,7 +128,7 @@ install-exec:
 install-info:
 install-html:
 install-pdf:
-install-data: install-data-no
+install-data: install-data-yes
 install-data-no: all
 install-data-yes: all
 	if test -r $(MKINSTALLDIRS); then \

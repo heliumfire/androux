@@ -1,6 +1,8 @@
 ;;; dwarf-mode.el --- Browser for DWARF information.
 
-;; Version: 1.0
+;; Version: 1.2
+
+;; Copyright (C) 2012, 2013 Free Software Foundation, Inc.
 
 ;; This file is not part of GNU Emacs, but is distributed under the
 ;; same terms:
@@ -56,7 +58,7 @@
   (beginning-of-line)
   (unless (looking-at "^ <\\([0-9]+\\)>")
     (error "Unrecognized line."))
-  (let ((new-depth (1+ (string-to-int (match-string 1)))))
+  (let ((new-depth (1+ (string-to-number (match-string 1)))))
     (dwarf-do-insert-substructure new-depth die)))
 
 (defun dwarf-insert-substructure (arg)
@@ -96,7 +98,7 @@ A prefix argument means expand all children."
   'action #'dwarf-die-button-action)
 
 ;; Helper regexp to match a DIE reference.
-(defconst dwarf-die-reference ": \\(<0x\\([0-9a-f]+\\)>\\)\\s *$")
+(defconst dwarf-die-reference "\\(<0x\\([0-9a-f]+\\)>\\)")
 
 ;; Helper regexp to match a `...' indicating that there are hidden
 ;; children.
@@ -139,7 +141,6 @@ A prefix argument means expand all children."
 		    (expand-file-name dwarf-file)))
     (set-buffer-modified-p nil)))
 
-;;;###autoload
 (define-derived-mode dwarf-mode special-mode "DWARF"
   "Major mode for browsing DWARF output.
 
@@ -152,7 +153,7 @@ A prefix argument means expand all children."
 
 (define-key dwarf-mode-map [(control ?m)] #'dwarf-insert-substructure)
 
-;;:###autoload
+;;;###autoload
 (defun dwarf-browse (file)
   "Invoke `objdump' and put output into a `dwarf-mode' buffer.
 This is the main interface to `dwarf-mode'."
@@ -165,3 +166,5 @@ This is the main interface to `dwarf-mode'."
     (dwarf-do-refresh)))
 
 (provide 'dwarf-mode)
+
+;;; dwarf-mode.el ends here

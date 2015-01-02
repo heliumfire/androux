@@ -8,7 +8,7 @@
 # Please note that the actual code is *not* freely available.
 
 PACKAGE = bfd
-VERSION = 2.22
+VERSION = 2.24
 
 SHELL = /bin/sh
 
@@ -18,9 +18,9 @@ top_srcdir = ..
 
 top_builddir = ..
 
-prefix = /home/anushruth/experiment/sysroot
+prefix = /Users/regnarts/Documents/experiment/system
 exec_prefix = ${prefix}
-datadir = $(prefix)/
+datadir = $(prefix)/share
 localedir = $(datadir)/locale
 gnulocaledir = $(prefix)/share/locale
 gettextsrcdir = $(prefix)/share/gettext/po
@@ -32,15 +32,15 @@ INSTALL = /usr/bin/install -c
 INSTALL_DATA = /usr/bin/install -c -m 644
 MKINSTALLDIRS = $(top_builddir)/./../mkinstalldirs
 
-CC = /home/anushruth/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc
-GENCAT = 
-GMSGFMT = PATH=../src:$$PATH /usr/bin/msgfmt
-MSGFMT = /usr/bin/msgfmt
-XGETTEXT = PATH=../src:$$PATH /usr/bin/xgettext
+CC = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc
+GENCAT = gencat
+GMSGFMT = PATH=../src:$$PATH /opt/local/bin/msgfmt
+MSGFMT = /opt/local/bin/msgfmt
+XGETTEXT = PATH=../src:$$PATH /opt/local/bin/xgettext
 MSGMERGE = PATH=../src:$$PATH msgmerge
 
 DEFS = -DHAVE_CONFIG_H
-CFLAGS = -I. -I./../include -I/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include -Wno-error -g -O2
+CFLAGS = -g -O2 -I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ --sysroot=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/ -Wno-error
 CPPFLAGS = 
 
 INCLUDES = -I.. -I$(top_srcdir)/intl
@@ -48,8 +48,8 @@ INCLUDES = -I.. -I$(top_srcdir)/intl
 COMPILE = $(CC) -c $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS) $(XCFLAGS)
 
 SOURCES = cat-id-tbl.c
-POFILES =  fr.po tr.po ja.po es.po sv.po da.po zh_CN.po ro.po rw.po vi.po fi.po id.po ru.po
-GMOFILES =  fr.gmo tr.gmo ja.gmo es.gmo sv.gmo da.gmo zh_CN.gmo ro.gmo rw.gmo vi.gmo fi.gmo id.gmo ru.gmo
+POFILES =  fr.po tr.po ja.po es.po sv.po da.po zh_CN.po ro.po rw.po vi.po fi.po id.po ru.po uk.po
+GMOFILES =  fr.gmo tr.gmo ja.gmo es.gmo sv.gmo da.gmo zh_CN.gmo ro.gmo rw.gmo vi.gmo fi.gmo id.gmo ru.gmo uk.gmo
 DISTFILES = ChangeLog Makefile.in.in SRC-POTFILES.in BLD-POTFILES.in $(PACKAGE).pot \
 stamp-cat-id $(POFILES) $(GMOFILES) $(SOURCES)
 
@@ -119,6 +119,7 @@ SRC-POTFILES = \
 	../coffswap.h \
 	../compress.c \
 	../corefile.c \
+	../cpu-aarch64.c \
 	../cpu-alpha.c \
 	../cpu-arc.c \
 	../cpu-arm.c \
@@ -131,6 +132,7 @@ SRC-POTFILES = \
 	../cpu-d10v.c \
 	../cpu-d30v.c \
 	../cpu-dlx.c \
+	../cpu-epiphany.c \
 	../cpu-fr30.c \
 	../cpu-frv.c \
 	../cpu-h8300.c \
@@ -143,6 +145,7 @@ SRC-POTFILES = \
 	../cpu-ia64.c \
 	../cpu-ip2k.c \
 	../cpu-iq2000.c \
+	../cpu-k1om.c \
 	../cpu-l1om.c \
 	../cpu-lm32.c \
 	../cpu-m10200.c \
@@ -153,14 +156,18 @@ SRC-POTFILES = \
 	../cpu-m68hc12.c \
 	../cpu-m68k.c \
 	../cpu-m88k.c \
+	../cpu-m9s12x.c \
+	../cpu-m9s12xg.c \
 	../cpu-mcore.c \
 	../cpu-mep.c \
+	../cpu-metag.c \
 	../cpu-microblaze.c \
 	../cpu-mips.c \
 	../cpu-mmix.c \
 	../cpu-moxie.c \
 	../cpu-msp430.c \
 	../cpu-mt.c \
+	../cpu-nios2.c \
 	../cpu-ns32k.c \
 	../cpu-openrisc.c \
 	../cpu-or32.c \
@@ -168,6 +175,7 @@ SRC-POTFILES = \
 	../cpu-pj.c \
 	../cpu-plugin.c \
 	../cpu-powerpc.c \
+	../cpu-rl78.c \
 	../cpu-rs6000.c \
 	../cpu-rx.c \
 	../cpu-s390.c \
@@ -183,10 +191,12 @@ SRC-POTFILES = \
 	../cpu-tilegx.c \
 	../cpu-tilepro.c \
 	../cpu-v850.c \
+	../cpu-v850_rh850.c \
 	../cpu-vax.c \
 	../cpu-w65.c \
 	../cpu-we32k.c \
 	../cpu-xc16x.c \
+	../cpu-xgate.c \
 	../cpu-xstormy16.c \
 	../cpu-xtensa.c \
 	../cpu-z80.c \
@@ -202,8 +212,10 @@ SRC-POTFILES = \
 	../elf-eh-frame.c \
 	../elf-hppa.h \
 	../elf-ifunc.c \
+	../elf-linux-psinfo.h \
 	../elf-m10200.c \
 	../elf-m10300.c \
+	../elf-nacl.c \
 	../elf-strtab.c \
 	../elf-vxworks.c \
 	../elf.c \
@@ -219,6 +231,7 @@ SRC-POTFILES = \
 	../elf32-d10v.c \
 	../elf32-d30v.c \
 	../elf32-dlx.c \
+	../elf32-epiphany.c \
 	../elf32-fr30.c \
 	../elf32-frv.c \
 	../elf32-gen.c \
@@ -241,15 +254,18 @@ SRC-POTFILES = \
 	../elf32-m88k.c \
 	../elf32-mcore.c \
 	../elf32-mep.c \
+	../elf32-metag.c \
 	../elf32-microblaze.c \
 	../elf32-mips.c \
 	../elf32-moxie.c \
 	../elf32-msp430.c \
 	../elf32-mt.c \
+	../elf32-nios2.c \
 	../elf32-openrisc.c \
 	../elf32-or32.c \
 	../elf32-pj.c \
 	../elf32-ppc.c \
+	../elf32-rl78.c \
 	../elf32-rx.c \
 	../elf32-s390.c \
 	../elf32-score.c \
@@ -266,6 +282,7 @@ SRC-POTFILES = \
 	../elf32-v850.c \
 	../elf32-vax.c \
 	../elf32-xc16x.c \
+	../elf32-xgate.c \
 	../elf32-xstormy16.c \
 	../elf32-xtensa.c \
 	../elf32.c \
@@ -273,6 +290,7 @@ SRC-POTFILES = \
 	../elf64-gen.c \
 	../elf64-hppa.c \
 	../elf64-hppa.h \
+	../elf64-ia64-vms.c \
 	../elf64-mips.c \
 	../elf64-mmix.c \
 	../elf64-ppc.c \
@@ -286,6 +304,7 @@ SRC-POTFILES = \
 	../elfcore.h \
 	../elflink.c \
 	../elfn32-mips.c \
+	../elfxx-aarch64.c \
 	../elfxx-ia64.c \
 	../elfxx-mips.c \
 	../elfxx-sparc.c \
@@ -422,8 +441,10 @@ SRC-POTFILES = \
 BLD-POTFILES = \
 	../bfd_stdint.h \
 	../bfdver.h \
+	../elf32-aarch64.c \
 	../elf32-ia64.c \
 	../elf32-target.h \
+	../elf64-aarch64.c \
 	../elf64-ia64.c \
 	../elf64-target.h \
 	../peigen.c \
@@ -431,9 +452,9 @@ BLD-POTFILES = \
 	../pex64igen.c \
 	../targmatch.h 
 
-CATALOGS = 
-CATOBJEXT = 
-INSTOBJEXT = 
+CATALOGS =  da.gmo es.gmo fi.gmo fr.gmo id.gmo ja.gmo ro.gmo ru.gmo rw.gmo sv.gmo tr.gmo uk.gmo vi.gmo zh_CN.gmo da.gmo es.gmo fi.gmo fr.gmo id.gmo ja.gmo ro.gmo ru.gmo rw.gmo sv.gmo tr.gmo uk.gmo vi.gmo zh_CN.gmo
+CATOBJEXT = .gmo
+INSTOBJEXT = .mo
 
 .SUFFIXES:
 .SUFFIXES: .c .o .po .pox .gmo .mo .msg .cat
@@ -457,7 +478,7 @@ INSTOBJEXT =
 	  && rm -f $@ && $(GENCAT) $@ $*.msg
 
 
-all: all-no
+all: all-yes
 
 all-yes: $(CATALOGS) # $(PACKAGE).pot
 all-no:
@@ -498,7 +519,7 @@ install-exec:
 install-info:
 install-html:
 install-pdf:
-install-data: install-data-no
+install-data: install-data-yes
 install-data-no: all
 install-data-yes: all
 	if test -r $(MKINSTALLDIRS); then \

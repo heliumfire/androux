@@ -5,7 +5,7 @@
 # It is necessary for linking the library.
 
 # Name of the PIC object.
-pic_object=none
+pic_object='.libs/ui_sub.o'
 
 # Name of the non-PIC object
 non_pic_object='ui_sub.o'

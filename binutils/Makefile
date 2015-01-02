@@ -3,7 +3,7 @@
 #
 # Makefile for directory with subdirs to build.
 #   Copyright (C) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
-#   1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010
+#   1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
 #   Free Software Foundation
 #
 # This file is free software; you can redistribute it and/or modify
@@ -29,22 +29,22 @@
 # -------------------------------
 
 
-build_alias=x86_64-unknown-linux-gnu
-build_vendor=unknown
-build_os=linux-gnu
-build=x86_64-unknown-linux-gnu
-host_alias=arm-linux
+build_alias=i386-apple-darwin14.0.0
+build_vendor=apple
+build_os=darwin14.0.0
+build=i386-apple-darwin14.0.0
+host_alias=arm-linux-androideabi
 host_vendor=unknown
-host_os=linux-gnu
-host=arm-unknown-linux-gnu
-target_alias=arm-linux
+host_os=linux-androideabi
+host=arm-unknown-linux-androideabi
+target_alias=arm-linux-androideabi
 target_vendor=unknown
-target_os=linux-gnu
-target=arm-unknown-linux-gnu
+target_os=linux-androideabi
+target=arm-unknown-linux-androideabi
 
 program_transform_name = s,y,y,
 
-prefix = /home/anushruth/experiment/sysroot
+prefix = /Users/regnarts/Documents/experiment/system
 exec_prefix = ${prefix}
 
 srcdir = .
@@ -90,10 +90,10 @@ MAINTAINER_MODE_TRUE = #
 # -------------------------------------------------
 
 # The gcc driver likes to know the arguments it was configured with.
-TOPLEVEL_CONFIGURE_ARGUMENTS=./configure --prefix=/home/anushruth/experiment/sysroot --with-sysroot='~/tools/android-ndk-r10b/platforms/android-9/arch-arm/' --target=arm-linux --host=arm-linux --disable-nls --disable-werror --disable-shared CC=/home/anushruth/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc CXX=/home/anushruth/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/arm-linux-androideabi-g++ LDFLAGS=--sysroot=/home/anushruth/tools/android-ndk-r10d/platforms/android-9/arch-arm/ CFLAGS='-I. -I./../include -I/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include -Wno-error -g -O2'
+TOPLEVEL_CONFIGURE_ARGUMENTS=./configure --prefix=/Users/regnarts/Documents/experiment/system --host=arm-linux-androideabi --target=arm-linux-androideabi CC=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc CXX=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-g++ CFLAGS='-g -O2 -I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ --sysroot=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/ -Wno-error' LDFLAGS=-L/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/lib/ CPP=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-cpp CPPFLAGS=-I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ AR=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-ar
 
-tooldir = ${exec_prefix}/arm-linux
-build_tooldir = ${exec_prefix}/arm-linux
+tooldir = ${exec_prefix}/arm-linux-androideabi
+build_tooldir = ${exec_prefix}/arm-linux-androideabi
 
 # This is the name of the environment variable used for the path to
 # the libraries.
@@ -105,10 +105,10 @@ RPATH_ENVVAR = LD_LIBRARY_PATH
 GCC_SHLIB_SUBDIR = 
 
 # Build programs are put under this directory.
-BUILD_SUBDIR = build-x86_64-unknown-linux-gnu
+BUILD_SUBDIR = build-i386-apple-darwin14.0.0
 # This is set by the configure script to the arguments to use when configuring
 # directories built for the build system.
-BUILD_CONFIGARGS =  --cache-file=../config.cache '--prefix=/home/anushruth/experiment/sysroot' '--with-sysroot=~/tools/android-ndk-r10b/platforms/android-9/arch-arm/' '--disable-nls' '--disable-werror' '--disable-shared' --program-transform-name='s,y,y,' --disable-option-checking --with-build-subdir="$(BUILD_SUBDIR)"
+BUILD_CONFIGARGS =  --cache-file=../config.cache '--prefix=/Users/regnarts/Documents/experiment/system' --program-transform-name='s,y,y,' --disable-option-checking --with-build-subdir="$(BUILD_SUBDIR)"
 
 # Linker flags to use on the host, for stage1 or when not
 # bootstrapping.
@@ -171,7 +171,7 @@ SUBDIRS =  intl libiberty opcodes bfd binutils gas ld gprof etc
 TARGET_CONFIGDIRS = 
 # This is set by the configure script to the arguments to use when configuring
 # directories built for the host system.
-HOST_CONFIGARGS =  --cache-file=./config.cache  --with-gnu-as --with-gnu-ld --with-system-zlib '--prefix=/home/anushruth/experiment/sysroot' '--with-sysroot=~/tools/android-ndk-r10b/platforms/android-9/arch-arm/' '--disable-nls' '--disable-werror' '--disable-shared' --program-transform-name='s,y,y,' --disable-option-checking
+HOST_CONFIGARGS =  --cache-file=./config.cache  --with-gnu-as --with-gnu-ld --with-system-zlib '--prefix=/Users/regnarts/Documents/experiment/system' --program-transform-name='s,y,y,' --disable-option-checking
 # Host programs are put under this directory, which is . except if building
 # with srcdir=..
 HOST_SUBDIR = .
@@ -201,6 +201,7 @@ HOST_EXPORTS = \
 	WINDMC="$(WINDMC)"; export WINDMC; \
 	OBJCOPY="$(OBJCOPY)"; export OBJCOPY; \
 	OBJDUMP="$(OBJDUMP)"; export OBJDUMP; \
+	READELF="$(READELF)"; export READELF; \
 	AR_FOR_TARGET="$(AR_FOR_TARGET)"; export AR_FOR_TARGET; \
 	AS_FOR_TARGET="$(AS_FOR_TARGET)"; export AS_FOR_TARGET; \
 	GCC_FOR_TARGET="$(GCC_FOR_TARGET)"; export GCC_FOR_TARGET; \
@@ -208,12 +209,12 @@ HOST_EXPORTS = \
 	NM_FOR_TARGET="$(NM_FOR_TARGET)"; export NM_FOR_TARGET; \
 	OBJDUMP_FOR_TARGET="$(OBJDUMP_FOR_TARGET)"; export OBJDUMP_FOR_TARGET; \
 	RANLIB_FOR_TARGET="$(RANLIB_FOR_TARGET)"; export RANLIB_FOR_TARGET; \
+	READELF_FOR_TARGET="$(READELF_FOR_TARGET)"; export READELF_FOR_TARGET; \
 	TOPLEVEL_CONFIGURE_ARGUMENTS="$(TOPLEVEL_CONFIGURE_ARGUMENTS)"; export TOPLEVEL_CONFIGURE_ARGUMENTS; \
 	HOST_LIBS="$(STAGE1_LIBS)"; export HOST_LIBS; \
 	GMPLIBS="$(HOST_GMPLIBS)"; export GMPLIBS; \
 	GMPINC="$(HOST_GMPINC)"; export GMPINC; \
-	PPLLIBS="$(HOST_PPLLIBS)"; export PPLLIBS; \
-	PPLINC="$(HOST_PPLINC)"; export PPLINC; \
+	ISLINC="$(HOST_ISLINC)"; export ISLINC; \
 	CLOOGLIBS="$(HOST_CLOOGLIBS)"; export CLOOGLIBS; \
 	CLOOGINC="$(HOST_CLOOGINC)"; export CLOOGINC; \
 	LIBELFLIBS="$(HOST_LIBELFLIBS)" ; export LIBELFLIBS; \
@@ -237,10 +238,10 @@ POSTSTAGE1_HOST_EXPORTS = \
 	HOST_LIBS="$(POSTSTAGE1_LIBS)"; export HOST_LIBS;
 
 # Target libraries are put under this directory:
-TARGET_SUBDIR = arm-linux
+TARGET_SUBDIR = arm-linux-androideabi
 # This is set by the configure script to the arguments to use when configuring
 # directories built for the target.
-TARGET_CONFIGARGS = --cache-file=./config.cache --enable-multilib   '--prefix=/home/anushruth/experiment/sysroot' '--with-sysroot=~/tools/android-ndk-r10b/platforms/android-9/arch-arm/' '--disable-nls' '--disable-werror' '--disable-shared' --program-transform-name='s,y,y,' --disable-option-checking --with-target-subdir="$(TARGET_SUBDIR)"
+TARGET_CONFIGARGS = --cache-file=./config.cache --enable-multilib   '--prefix=/Users/regnarts/Documents/experiment/system' --program-transform-name='s,y,y,' --disable-option-checking --with-target-subdir="$(TARGET_SUBDIR)"
 # This is the list of variables to export in the environment when
 # configuring subdirectories for the target system.
 BASE_TARGET_EXPORTS = \
@@ -262,6 +263,7 @@ BASE_TARGET_EXPORTS = \
 	NM="$(COMPILER_NM_FOR_TARGET)"; export NM; \
 	OBJDUMP="$(OBJDUMP_FOR_TARGET)"; export OBJDUMP; \
 	RANLIB="$(RANLIB_FOR_TARGET)"; export RANLIB; \
+	READELF="$(READELF_FOR_TARGET)"; export READELF; \
 	STRIP="$(STRIP_FOR_TARGET)"; export STRIP; \
 	WINDRES="$(WINDRES_FOR_TARGET)"; export WINDRES; \
 	WINDMC="$(WINDMC_FOR_TARGET)"; export WINDMC; \
@@ -281,9 +283,8 @@ NORMAL_TARGET_EXPORTS = \
 HOST_GMPLIBS = -lmpc -lmpfr -lgmp
 HOST_GMPINC = 
 
-# Where to find PPL
-HOST_PPLLIBS = 
-HOST_PPLINC = 
+# Where to find ISL
+HOST_ISLINC = 
 
 # Where to find CLOOG
 HOST_CLOOGLIBS = 
@@ -299,7 +300,7 @@ EXTRA_CONFIGARGS_LIBJAVA = --disable-static
 # Programs producing files for the BUILD machine
 # ----------------------------------------------
 
-SHELL = /bin/bash
+SHELL = /bin/sh
 
 # pwd command to use.  Allow user to override default by setting PWDCMD in
 # the environment to account for automounters.  The make variable must not
@@ -337,15 +338,15 @@ BUILD_PREFIX_1 = @BUILD_PREFIX_1@
 # here so that they can be overridden by Makefile fragments.
 BOOT_CFLAGS= -g -O2
 BOOT_LDFLAGS=
-BOOT_ADAFLAGS=-gnatpg -gnata
+BOOT_ADAFLAGS= -gnatpg
 
-AWK = gawk
-SED = /bin/sed
+AWK = awk
+SED = /usr/bin/sed
 BISON = bison
 YACC = bison -y
 FLEX = flex
 LEX = flex
-M4 = m4
+M4 = gm4
 MAKEINFO = makeinfo
 EXPECT = expect
 RUNTEST = runtest
@@ -360,26 +361,27 @@ MAKEINFOFLAGS = --split-size=5000000
 # Programs producing files for the HOST machine
 # ---------------------------------------------
 
-AS = arm-linux-as
-AR = arm-linux-ar
+AS = arm-linux-androideabi-as
+AR = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-ar
 AR_FLAGS = rc
-CC = /home/anushruth/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc
-CXX = /home/anushruth/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/arm-linux-androideabi-g++
-DLLTOOL = arm-linux-dlltool
-LD = /home/anushruth/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.6/../../../../arm-linux-androideabi/bin/ld
-LIPO = arm-linux-lipo
-NM = arm-linux-nm
-OBJDUMP = arm-linux-objdump
-RANLIB = true
-STRIP = true
-WINDRES = arm-linux-windres
-WINDMC = arm-linux-windmc
+CC = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc
+CXX = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-g++
+DLLTOOL = arm-linux-androideabi-dlltool
+LD = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ld
+LIPO = arm-linux-androideabi-lipo
+NM = arm-linux-androideabi-nm
+OBJDUMP = arm-linux-androideabi-objdump
+RANLIB = arm-linux-androideabi-ranlib
+READELF = arm-linux-androideabi-readelf
+STRIP = arm-linux-androideabi-strip
+WINDRES = arm-linux-androideabi-windres
+WINDMC = arm-linux-androideabi-windmc
 
 GNATBIND = no
 GNATMAKE = no
 
-CFLAGS = -I. -I./../include -I/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include -Wno-error -g -O2
-LDFLAGS = --sysroot=/home/anushruth/tools/android-ndk-r10d/platforms/android-9/arch-arm/
+CFLAGS = -g -O2 -I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ --sysroot=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/ -Wno-error
+LDFLAGS = -L/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/lib/
 LIBCFLAGS = $(CFLAGS)
 CXXFLAGS = -g -O2
 LIBCXXFLAGS = $(CXXFLAGS) -fno-implicit-templates
@@ -392,62 +394,43 @@ TFLAGS =
 STAGE_CFLAGS = $(BOOT_CFLAGS)
 STAGE_TFLAGS = $(TFLAGS)
 STAGE_CONFIGURE_FLAGS=
-POSTSTAGE1_CONFIGURE_FLAGS = --enable-build-with-cxx
 
 
 # Defaults for stage 1; some are overridden below.
 STAGE1_CFLAGS = $(STAGE_CFLAGS)
 STAGE1_CXXFLAGS = $(CXXFLAGS)
 STAGE1_TFLAGS = $(STAGE_TFLAGS)
-# STAGE1_CONFIGURE_FLAGS overridden below, so we can use
-# POSTSTAGE1_CONFIGURE_FLAGS here.
-STAGE1_CONFIGURE_FLAGS = \
-	$(STAGE_CONFIGURE_FLAGS) $(POSTSTAGE1_CONFIGURE_FLAGS)
+STAGE1_CONFIGURE_FLAGS = $(STAGE_CONFIGURE_FLAGS)
 
 # Defaults for stage 2; some are overridden below.
 STAGE2_CFLAGS = $(STAGE_CFLAGS)
 STAGE2_CXXFLAGS = $(CXXFLAGS)
 STAGE2_TFLAGS = $(STAGE_TFLAGS)
-# STAGE1_CONFIGURE_FLAGS overridden below, so we can use
-# POSTSTAGE1_CONFIGURE_FLAGS here.
-STAGE2_CONFIGURE_FLAGS = \
-	$(STAGE_CONFIGURE_FLAGS) $(POSTSTAGE1_CONFIGURE_FLAGS)
+STAGE2_CONFIGURE_FLAGS = $(STAGE_CONFIGURE_FLAGS)
 
 # Defaults for stage 3; some are overridden below.
 STAGE3_CFLAGS = $(STAGE_CFLAGS)
 STAGE3_CXXFLAGS = $(CXXFLAGS)
 STAGE3_TFLAGS = $(STAGE_TFLAGS)
-# STAGE1_CONFIGURE_FLAGS overridden below, so we can use
-# POSTSTAGE1_CONFIGURE_FLAGS here.
-STAGE3_CONFIGURE_FLAGS = \
-	$(STAGE_CONFIGURE_FLAGS) $(POSTSTAGE1_CONFIGURE_FLAGS)
+STAGE3_CONFIGURE_FLAGS = $(STAGE_CONFIGURE_FLAGS)
 
 # Defaults for stage 4; some are overridden below.
 STAGE4_CFLAGS = $(STAGE_CFLAGS)
 STAGE4_CXXFLAGS = $(CXXFLAGS)
 STAGE4_TFLAGS = $(STAGE_TFLAGS)
-# STAGE1_CONFIGURE_FLAGS overridden below, so we can use
-# POSTSTAGE1_CONFIGURE_FLAGS here.
-STAGE4_CONFIGURE_FLAGS = \
-	$(STAGE_CONFIGURE_FLAGS) $(POSTSTAGE1_CONFIGURE_FLAGS)
+STAGE4_CONFIGURE_FLAGS = $(STAGE_CONFIGURE_FLAGS)
 
 # Defaults for stage profile; some are overridden below.
 STAGEprofile_CFLAGS = $(STAGE_CFLAGS)
 STAGEprofile_CXXFLAGS = $(CXXFLAGS)
 STAGEprofile_TFLAGS = $(STAGE_TFLAGS)
-# STAGE1_CONFIGURE_FLAGS overridden below, so we can use
-# POSTSTAGE1_CONFIGURE_FLAGS here.
-STAGEprofile_CONFIGURE_FLAGS = \
-	$(STAGE_CONFIGURE_FLAGS) $(POSTSTAGE1_CONFIGURE_FLAGS)
+STAGEprofile_CONFIGURE_FLAGS = $(STAGE_CONFIGURE_FLAGS)
 
 # Defaults for stage feedback; some are overridden below.
 STAGEfeedback_CFLAGS = $(STAGE_CFLAGS)
 STAGEfeedback_CXXFLAGS = $(CXXFLAGS)
 STAGEfeedback_TFLAGS = $(STAGE_TFLAGS)
-# STAGE1_CONFIGURE_FLAGS overridden below, so we can use
-# POSTSTAGE1_CONFIGURE_FLAGS here.
-STAGEfeedback_CONFIGURE_FLAGS = \
-	$(STAGE_CONFIGURE_FLAGS) $(POSTSTAGE1_CONFIGURE_FLAGS)
+STAGEfeedback_CONFIGURE_FLAGS = $(STAGE_CONFIGURE_FLAGS)
 
 
 # Only build the C compiler for stage1, because that is the only one that
@@ -456,7 +439,7 @@ STAGEfeedback_CONFIGURE_FLAGS = \
 # MAKEINFO and MAKEINFOFLAGS are explicitly passed here to make them
 # overrideable (for a bootstrap build stage1 also builds gcc.info).
 
-STAGE1_CFLAGS = -g -fkeep-inline-functions
+STAGE1_CFLAGS = -g
 STAGE1_CHECKING = --enable-checking=yes,types
 STAGE1_LANGUAGES = ,c,
 # * We force-disable intermodule optimizations, even if
@@ -465,9 +448,6 @@ STAGE1_LANGUAGES = ,c,
 #   the last argument when conflicting --enable arguments are passed.
 # * Likewise, we force-disable coverage flags, since the installed
 #   compiler probably has never heard of them.
-# * Don't remove this, because above we added
-#   POSTSTAGE1_CONFIGURE_FLAGS to STAGE_CONFIGURE_FLAGS, which
-#   we don't want for STAGE1_CONFIGURE_FLAGS.
 STAGE1_CONFIGURE_FLAGS = --disable-intermodule $(STAGE1_CHECKING) \
 	  --disable-coverage --enable-languages="$(STAGE1_LANGUAGES)"
 
@@ -484,36 +464,37 @@ do-compare3 = $(do-compare)
 # Programs producing files for the TARGET machine
 # -----------------------------------------------
 
-AR_FOR_TARGET=arm-linux-ar
-AS_FOR_TARGET=arm-linux-as
-CC_FOR_TARGET=$(STAGE_CC_WRAPPER) arm-linux-cc
+AR_FOR_TARGET=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ar
+AS_FOR_TARGET=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/as
+CC_FOR_TARGET=$(STAGE_CC_WRAPPER) arm-linux-androideabi-cc
 
 # If GCC_FOR_TARGET is not overriden on the command line, then this
 # variable is passed down to the gcc Makefile, where it is used to
 # build libgcc2.a.  We define it here so that it can itself be
 # overridden on the command line.
-GCC_FOR_TARGET=$(STAGE_CC_WRAPPER) arm-linux-gcc
-CXX_FOR_TARGET=$(STAGE_CC_WRAPPER) arm-linux-c++
-RAW_CXX_FOR_TARGET=$(STAGE_CC_WRAPPER) arm-linux-c++
-GCJ_FOR_TARGET=$(STAGE_CC_WRAPPER) arm-linux-gcj
-GFORTRAN_FOR_TARGET=$(STAGE_CC_WRAPPER) arm-linux-gfortran
-GOC_FOR_TARGET=$(STAGE_CC_WRAPPER) arm-linux-gccgo
-DLLTOOL_FOR_TARGET=arm-linux-dlltool
-LD_FOR_TARGET=arm-linux-ld
+GCC_FOR_TARGET=$(STAGE_CC_WRAPPER) arm-linux-androideabi-gcc
+CXX_FOR_TARGET=$(STAGE_CC_WRAPPER) arm-linux-androideabi-c++
+RAW_CXX_FOR_TARGET=$(STAGE_CC_WRAPPER) arm-linux-androideabi-c++
+GCJ_FOR_TARGET=$(STAGE_CC_WRAPPER) arm-linux-androideabi-gcj
+GFORTRAN_FOR_TARGET=$(STAGE_CC_WRAPPER) arm-linux-androideabi-gfortran
+GOC_FOR_TARGET=$(STAGE_CC_WRAPPER) arm-linux-androideabi-gccgo
+DLLTOOL_FOR_TARGET=arm-linux-androideabi-dlltool
+LD_FOR_TARGET=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ld
 
-LIPO_FOR_TARGET=arm-linux-lipo
-NM_FOR_TARGET=arm-linux-nm
-OBJDUMP_FOR_TARGET=arm-linux-objdump
-RANLIB_FOR_TARGET=arm-linux-ranlib
-STRIP_FOR_TARGET=arm-linux-strip
-WINDRES_FOR_TARGET=arm-linux-windres
-WINDMC_FOR_TARGET=arm-linux-windmc
+LIPO_FOR_TARGET=arm-linux-androideabi-lipo
+NM_FOR_TARGET=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/nm
+OBJDUMP_FOR_TARGET=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/objdump
+RANLIB_FOR_TARGET=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ranlib
+READELF_FOR_TARGET=arm-linux-androideabi-readelf
+STRIP_FOR_TARGET=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/strip
+WINDRES_FOR_TARGET=arm-linux-androideabi-windres
+WINDMC_FOR_TARGET=arm-linux-androideabi-windmc
 
 COMPILER_AS_FOR_TARGET=$(AS_FOR_TARGET)
 COMPILER_LD_FOR_TARGET=$(LD_FOR_TARGET)
 COMPILER_NM_FOR_TARGET=$(NM_FOR_TARGET)
 
-CFLAGS_FOR_TARGET = -I. -I./../include -I/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include -Wno-error -g -O2
+CFLAGS_FOR_TARGET = -g -O2 -I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ --sysroot=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/ -Wno-error
 CXXFLAGS_FOR_TARGET = -g -O2
 
 LIBCFLAGS_FOR_TARGET = $(CFLAGS_FOR_TARGET)
@@ -541,7 +522,11 @@ CXXFLAGS_FOR_TARGET = $(CXXFLAGS) -D_GNU_SOURCE
 
 # This is the list of directories that may be needed in RPATH_ENVVAR
 # so that programs built for the target machine work.
-TARGET_LIB_PATH = $(TARGET_LIB_PATH_libstdc++-v3)$(TARGET_LIB_PATH_libmudflap)$(TARGET_LIB_PATH_libssp)$(TARGET_LIB_PATH_libgomp)$(HOST_LIB_PATH_gcc)
+TARGET_LIB_PATH = $(TARGET_LIB_PATH_libstdc++-v3)$(TARGET_LIB_PATH_libmudflap)$(TARGET_LIB_PATH_libsanitizer)$(TARGET_LIB_PATH_libvtv)$(TARGET_LIB_PATH_libssp)$(TARGET_LIB_PATH_libgomp)$(TARGET_LIB_PATH_libitm)$(TARGET_LIB_PATH_libatomic)$(HOST_LIB_PATH_gcc)
+
+
+
+
 
 
 
@@ -551,16 +536,10 @@ TARGET_LIB_PATH = $(TARGET_LIB_PATH_libstdc++-v3)$(TARGET_LIB_PATH_libmudflap)$(
 
 # This is the list of directories that may be needed in RPATH_ENVVAR
 # so that programs built for the host machine work.
-HOST_LIB_PATH = $(HOST_LIB_PATH_bfd)$(HOST_LIB_PATH_opcodes)$(HOST_LIB_PATH_gmp)$(HOST_LIB_PATH_mpfr)$(HOST_LIB_PATH_mpc)$(HOST_LIB_PATH_ppl)$(HOST_LIB_PATH_cloog)$(HOST_LIB_PATH_libelf)
+HOST_LIB_PATH = $(HOST_LIB_PATH_gmp)$(HOST_LIB_PATH_mpfr)$(HOST_LIB_PATH_mpc)$(HOST_LIB_PATH_isl)$(HOST_LIB_PATH_cloog)$(HOST_LIB_PATH_libelf)
 
 # Define HOST_LIB_PATH_gcc here, for the sake of TARGET_LIB_PATH, ouch
 
-
-HOST_LIB_PATH_bfd = \
-  $$r/$(HOST_SUBDIR)/bfd/.libs:$$r/$(HOST_SUBDIR)/prev-bfd/.libs:
-
-HOST_LIB_PATH_opcodes = \
-  $$r/$(HOST_SUBDIR)/opcodes/.libs:$$r/$(HOST_SUBDIR)/prev-opcodes/.libs:
 
 
 
@@ -654,6 +633,7 @@ BASE_FLAGS_TO_PASS = \
 	"NM_FOR_TARGET=$(NM_FOR_TARGET)" \
 	"OBJDUMP_FOR_TARGET=$(OBJDUMP_FOR_TARGET)" \
 	"RANLIB_FOR_TARGET=$(RANLIB_FOR_TARGET)" \
+	"READELF_FOR_TARGET=$(READELF_FOR_TARGET)" \
 	"STRIP_FOR_TARGET=$(STRIP_FOR_TARGET)" \
 	"WINDRES_FOR_TARGET=$(WINDRES_FOR_TARGET)" \
 	"WINDMC_FOR_TARGET=$(WINDMC_FOR_TARGET)" \
@@ -702,11 +682,18 @@ EXTRA_HOST_FLAGS = \
 	'NM=$(NM)' \
 	'OBJDUMP=$(OBJDUMP)' \
 	'RANLIB=$(RANLIB)' \
+	'READELF=$(READELF)' \
 	'STRIP=$(STRIP)' \
 	'WINDRES=$(WINDRES)' \
 	'WINDMC=$(WINDMC)'
 
 FLAGS_TO_PASS = $(BASE_FLAGS_TO_PASS) $(EXTRA_HOST_FLAGS)
+
+# Flags to pass to stage1 or when not bootstrapping.
+
+STAGE1_FLAGS_TO_PASS = \
+	LDFLAGS="$${LDFLAGS}" \
+	HOST_LIBS="$${HOST_LIBS}"
 
 # Flags to pass to stage2 and later makes.
 
@@ -742,6 +729,7 @@ EXTRA_TARGET_FLAGS = \
 	'NM=$(COMPILER_NM_FOR_TARGET)' \
 	'OBJDUMP=$$(OBJDUMP_FOR_TARGET)' \
 	'RANLIB=$$(RANLIB_FOR_TARGET)' \
+	'READELF=$$(READELF_FOR_TARGET)' \
 	'WINDRES=$$(WINDRES_FOR_TARGET)' \
 	'WINDMC=$$(WINDMC_FOR_TARGET)' \
 	'XGCC_FLAGS_FOR_TARGET=$(XGCC_FLAGS_FOR_TARGET)' \
@@ -758,10 +746,7 @@ TARGET_FLAGS_TO_PASS = $(BASE_FLAGS_TO_PASS) $(EXTRA_TARGET_FLAGS)
 EXTRA_GCC_FLAGS = \
 	"GCC_FOR_TARGET=$(GCC_FOR_TARGET)" \
 	"`echo 'STMP_FIXPROTO=$(STMP_FIXPROTO)' | sed -e s'/[^=][^=]*=$$/XFOO=/'`" \
-	"`echo 'LIMITS_H_TEST=$(LIMITS_H_TEST)' | sed -e s'/[^=][^=]*=$$/XFOO=/'`" \
-	"`echo 'LIBGCC2_CFLAGS=$(LIBGCC2_CFLAGS)' | sed -e s'/[^=][^=]*=$$/XFOO=/'`" \
-	"`echo 'LIBGCC2_DEBUG_CFLAGS=$(LIBGCC2_DEBUG_CFLAGS)' | sed -e s'/[^=][^=]*=$$/XFOO=/'`" \
-	"`echo 'LIBGCC2_INCLUDES=$(LIBGCC2_INCLUDES)' | sed -e s'/[^=][^=]*=$$/XFOO=/'`"
+	"`echo 'LIMITS_H_TEST=$(LIMITS_H_TEST)' | sed -e s'/[^=][^=]*=$$/XFOO=/'`"
 
 GCC_FLAGS_TO_PASS = $(BASE_FLAGS_TO_PASS) $(EXTRA_HOST_FLAGS) $(EXTRA_GCC_FLAGS)
 
@@ -783,7 +768,7 @@ configure-host:  \
     maybe-configure-gmp \
     maybe-configure-mpfr \
     maybe-configure-mpc \
-    maybe-configure-ppl \
+    maybe-configure-isl \
     maybe-configure-cloog \
     maybe-configure-libelf \
     maybe-configure-gold \
@@ -792,6 +777,7 @@ configure-host:  \
     maybe-configure-tcl \
     maybe-configure-itcl \
     maybe-configure-ld \
+    maybe-configure-libbacktrace \
     maybe-configure-libcpp \
     maybe-configure-libdecnumber \
     maybe-configure-libgui \
@@ -815,9 +801,12 @@ configure-host:  \
 configure-target:  \
     maybe-configure-target-libstdc++-v3 \
     maybe-configure-target-libmudflap \
+    maybe-configure-target-libsanitizer \
+    maybe-configure-target-libvtv \
     maybe-configure-target-libssp \
     maybe-configure-target-newlib \
     maybe-configure-target-libgcc \
+    maybe-configure-target-libbacktrace \
     maybe-configure-target-libquadmath \
     maybe-configure-target-libgfortran \
     maybe-configure-target-libobjc \
@@ -831,7 +820,9 @@ configure-target:  \
     maybe-configure-target-boehm-gc \
     maybe-configure-target-rda \
     maybe-configure-target-libada \
-    maybe-configure-target-libgomp
+    maybe-configure-target-libgomp \
+    maybe-configure-target-libitm \
+    maybe-configure-target-libatomic
 
 # The target built for a native non-bootstrap build.
 .PHONY: all
@@ -890,6 +881,7 @@ all-host: maybe-all-gnattools
 all-target: maybe-all-target-libmudflap
 all-target: maybe-all-target-libssp
 all-target: maybe-all-target-newlib
+all-target: maybe-all-target-libbacktrace
 all-target: maybe-all-target-libquadmath
 all-target: maybe-all-target-libgfortran
 all-target: maybe-all-target-libobjc
@@ -903,6 +895,8 @@ all-target: maybe-all-target-zlib
 all-target: maybe-all-target-boehm-gc
 all-target: maybe-all-target-rda
 all-target: maybe-all-target-libada
+all-target: maybe-all-target-libitm
+all-target: maybe-all-target-libatomic
 
 # Do a target for all the subdirectories.  A ``make do-X'' will do a
 # ``make X'' in all subdirectories (because, in general, there is a
@@ -935,7 +929,7 @@ info-host: maybe-info-gcc
 info-host: maybe-info-gmp
 info-host: maybe-info-mpfr
 info-host: maybe-info-mpc
-info-host: maybe-info-ppl
+info-host: maybe-info-isl
 info-host: maybe-info-cloog
 info-host: maybe-info-libelf
 info-host: maybe-info-gold
@@ -944,6 +938,7 @@ info-host: maybe-info-intl
 info-host: maybe-info-tcl
 info-host: maybe-info-itcl
 info-host: maybe-info-ld
+info-host: maybe-info-libbacktrace
 info-host: maybe-info-libcpp
 info-host: maybe-info-libdecnumber
 info-host: maybe-info-libgui
@@ -968,9 +963,12 @@ info-host: maybe-info-lto-plugin
 
 info-target: maybe-info-target-libstdc++-v3
 info-target: maybe-info-target-libmudflap
+info-target: maybe-info-target-libsanitizer
+info-target: maybe-info-target-libvtv
 info-target: maybe-info-target-libssp
 info-target: maybe-info-target-newlib
 info-target: maybe-info-target-libgcc
+info-target: maybe-info-target-libbacktrace
 info-target: maybe-info-target-libquadmath
 info-target: maybe-info-target-libgfortran
 info-target: maybe-info-target-libobjc
@@ -985,6 +983,8 @@ info-target: maybe-info-target-boehm-gc
 info-target: maybe-info-target-rda
 info-target: maybe-info-target-libada
 info-target: maybe-info-target-libgomp
+info-target: maybe-info-target-libitm
+info-target: maybe-info-target-libatomic
 
 .PHONY: do-dvi
 do-dvi:
@@ -1012,7 +1012,7 @@ dvi-host: maybe-dvi-gcc
 dvi-host: maybe-dvi-gmp
 dvi-host: maybe-dvi-mpfr
 dvi-host: maybe-dvi-mpc
-dvi-host: maybe-dvi-ppl
+dvi-host: maybe-dvi-isl
 dvi-host: maybe-dvi-cloog
 dvi-host: maybe-dvi-libelf
 dvi-host: maybe-dvi-gold
@@ -1021,6 +1021,7 @@ dvi-host: maybe-dvi-intl
 dvi-host: maybe-dvi-tcl
 dvi-host: maybe-dvi-itcl
 dvi-host: maybe-dvi-ld
+dvi-host: maybe-dvi-libbacktrace
 dvi-host: maybe-dvi-libcpp
 dvi-host: maybe-dvi-libdecnumber
 dvi-host: maybe-dvi-libgui
@@ -1045,9 +1046,12 @@ dvi-host: maybe-dvi-lto-plugin
 
 dvi-target: maybe-dvi-target-libstdc++-v3
 dvi-target: maybe-dvi-target-libmudflap
+dvi-target: maybe-dvi-target-libsanitizer
+dvi-target: maybe-dvi-target-libvtv
 dvi-target: maybe-dvi-target-libssp
 dvi-target: maybe-dvi-target-newlib
 dvi-target: maybe-dvi-target-libgcc
+dvi-target: maybe-dvi-target-libbacktrace
 dvi-target: maybe-dvi-target-libquadmath
 dvi-target: maybe-dvi-target-libgfortran
 dvi-target: maybe-dvi-target-libobjc
@@ -1062,6 +1066,8 @@ dvi-target: maybe-dvi-target-boehm-gc
 dvi-target: maybe-dvi-target-rda
 dvi-target: maybe-dvi-target-libada
 dvi-target: maybe-dvi-target-libgomp
+dvi-target: maybe-dvi-target-libitm
+dvi-target: maybe-dvi-target-libatomic
 
 .PHONY: do-pdf
 do-pdf:
@@ -1089,7 +1095,7 @@ pdf-host: maybe-pdf-gcc
 pdf-host: maybe-pdf-gmp
 pdf-host: maybe-pdf-mpfr
 pdf-host: maybe-pdf-mpc
-pdf-host: maybe-pdf-ppl
+pdf-host: maybe-pdf-isl
 pdf-host: maybe-pdf-cloog
 pdf-host: maybe-pdf-libelf
 pdf-host: maybe-pdf-gold
@@ -1098,6 +1104,7 @@ pdf-host: maybe-pdf-intl
 pdf-host: maybe-pdf-tcl
 pdf-host: maybe-pdf-itcl
 pdf-host: maybe-pdf-ld
+pdf-host: maybe-pdf-libbacktrace
 pdf-host: maybe-pdf-libcpp
 pdf-host: maybe-pdf-libdecnumber
 pdf-host: maybe-pdf-libgui
@@ -1122,9 +1129,12 @@ pdf-host: maybe-pdf-lto-plugin
 
 pdf-target: maybe-pdf-target-libstdc++-v3
 pdf-target: maybe-pdf-target-libmudflap
+pdf-target: maybe-pdf-target-libsanitizer
+pdf-target: maybe-pdf-target-libvtv
 pdf-target: maybe-pdf-target-libssp
 pdf-target: maybe-pdf-target-newlib
 pdf-target: maybe-pdf-target-libgcc
+pdf-target: maybe-pdf-target-libbacktrace
 pdf-target: maybe-pdf-target-libquadmath
 pdf-target: maybe-pdf-target-libgfortran
 pdf-target: maybe-pdf-target-libobjc
@@ -1139,6 +1149,8 @@ pdf-target: maybe-pdf-target-boehm-gc
 pdf-target: maybe-pdf-target-rda
 pdf-target: maybe-pdf-target-libada
 pdf-target: maybe-pdf-target-libgomp
+pdf-target: maybe-pdf-target-libitm
+pdf-target: maybe-pdf-target-libatomic
 
 .PHONY: do-html
 do-html:
@@ -1166,7 +1178,7 @@ html-host: maybe-html-gcc
 html-host: maybe-html-gmp
 html-host: maybe-html-mpfr
 html-host: maybe-html-mpc
-html-host: maybe-html-ppl
+html-host: maybe-html-isl
 html-host: maybe-html-cloog
 html-host: maybe-html-libelf
 html-host: maybe-html-gold
@@ -1175,6 +1187,7 @@ html-host: maybe-html-intl
 html-host: maybe-html-tcl
 html-host: maybe-html-itcl
 html-host: maybe-html-ld
+html-host: maybe-html-libbacktrace
 html-host: maybe-html-libcpp
 html-host: maybe-html-libdecnumber
 html-host: maybe-html-libgui
@@ -1199,9 +1212,12 @@ html-host: maybe-html-lto-plugin
 
 html-target: maybe-html-target-libstdc++-v3
 html-target: maybe-html-target-libmudflap
+html-target: maybe-html-target-libsanitizer
+html-target: maybe-html-target-libvtv
 html-target: maybe-html-target-libssp
 html-target: maybe-html-target-newlib
 html-target: maybe-html-target-libgcc
+html-target: maybe-html-target-libbacktrace
 html-target: maybe-html-target-libquadmath
 html-target: maybe-html-target-libgfortran
 html-target: maybe-html-target-libobjc
@@ -1216,6 +1232,8 @@ html-target: maybe-html-target-boehm-gc
 html-target: maybe-html-target-rda
 html-target: maybe-html-target-libada
 html-target: maybe-html-target-libgomp
+html-target: maybe-html-target-libitm
+html-target: maybe-html-target-libatomic
 
 .PHONY: do-TAGS
 do-TAGS:
@@ -1243,7 +1261,7 @@ TAGS-host: maybe-TAGS-gcc
 TAGS-host: maybe-TAGS-gmp
 TAGS-host: maybe-TAGS-mpfr
 TAGS-host: maybe-TAGS-mpc
-TAGS-host: maybe-TAGS-ppl
+TAGS-host: maybe-TAGS-isl
 TAGS-host: maybe-TAGS-cloog
 TAGS-host: maybe-TAGS-libelf
 TAGS-host: maybe-TAGS-gold
@@ -1252,6 +1270,7 @@ TAGS-host: maybe-TAGS-intl
 TAGS-host: maybe-TAGS-tcl
 TAGS-host: maybe-TAGS-itcl
 TAGS-host: maybe-TAGS-ld
+TAGS-host: maybe-TAGS-libbacktrace
 TAGS-host: maybe-TAGS-libcpp
 TAGS-host: maybe-TAGS-libdecnumber
 TAGS-host: maybe-TAGS-libgui
@@ -1276,9 +1295,12 @@ TAGS-host: maybe-TAGS-lto-plugin
 
 TAGS-target: maybe-TAGS-target-libstdc++-v3
 TAGS-target: maybe-TAGS-target-libmudflap
+TAGS-target: maybe-TAGS-target-libsanitizer
+TAGS-target: maybe-TAGS-target-libvtv
 TAGS-target: maybe-TAGS-target-libssp
 TAGS-target: maybe-TAGS-target-newlib
 TAGS-target: maybe-TAGS-target-libgcc
+TAGS-target: maybe-TAGS-target-libbacktrace
 TAGS-target: maybe-TAGS-target-libquadmath
 TAGS-target: maybe-TAGS-target-libgfortran
 TAGS-target: maybe-TAGS-target-libobjc
@@ -1293,6 +1315,8 @@ TAGS-target: maybe-TAGS-target-boehm-gc
 TAGS-target: maybe-TAGS-target-rda
 TAGS-target: maybe-TAGS-target-libada
 TAGS-target: maybe-TAGS-target-libgomp
+TAGS-target: maybe-TAGS-target-libitm
+TAGS-target: maybe-TAGS-target-libatomic
 
 .PHONY: do-install-info
 do-install-info:
@@ -1320,7 +1344,7 @@ install-info-host: maybe-install-info-gcc
 install-info-host: maybe-install-info-gmp
 install-info-host: maybe-install-info-mpfr
 install-info-host: maybe-install-info-mpc
-install-info-host: maybe-install-info-ppl
+install-info-host: maybe-install-info-isl
 install-info-host: maybe-install-info-cloog
 install-info-host: maybe-install-info-libelf
 install-info-host: maybe-install-info-gold
@@ -1329,6 +1353,7 @@ install-info-host: maybe-install-info-intl
 install-info-host: maybe-install-info-tcl
 install-info-host: maybe-install-info-itcl
 install-info-host: maybe-install-info-ld
+install-info-host: maybe-install-info-libbacktrace
 install-info-host: maybe-install-info-libcpp
 install-info-host: maybe-install-info-libdecnumber
 install-info-host: maybe-install-info-libgui
@@ -1353,9 +1378,12 @@ install-info-host: maybe-install-info-lto-plugin
 
 install-info-target: maybe-install-info-target-libstdc++-v3
 install-info-target: maybe-install-info-target-libmudflap
+install-info-target: maybe-install-info-target-libsanitizer
+install-info-target: maybe-install-info-target-libvtv
 install-info-target: maybe-install-info-target-libssp
 install-info-target: maybe-install-info-target-newlib
 install-info-target: maybe-install-info-target-libgcc
+install-info-target: maybe-install-info-target-libbacktrace
 install-info-target: maybe-install-info-target-libquadmath
 install-info-target: maybe-install-info-target-libgfortran
 install-info-target: maybe-install-info-target-libobjc
@@ -1370,6 +1398,8 @@ install-info-target: maybe-install-info-target-boehm-gc
 install-info-target: maybe-install-info-target-rda
 install-info-target: maybe-install-info-target-libada
 install-info-target: maybe-install-info-target-libgomp
+install-info-target: maybe-install-info-target-libitm
+install-info-target: maybe-install-info-target-libatomic
 
 .PHONY: do-install-pdf
 do-install-pdf:
@@ -1397,7 +1427,7 @@ install-pdf-host: maybe-install-pdf-gcc
 install-pdf-host: maybe-install-pdf-gmp
 install-pdf-host: maybe-install-pdf-mpfr
 install-pdf-host: maybe-install-pdf-mpc
-install-pdf-host: maybe-install-pdf-ppl
+install-pdf-host: maybe-install-pdf-isl
 install-pdf-host: maybe-install-pdf-cloog
 install-pdf-host: maybe-install-pdf-libelf
 install-pdf-host: maybe-install-pdf-gold
@@ -1406,6 +1436,7 @@ install-pdf-host: maybe-install-pdf-intl
 install-pdf-host: maybe-install-pdf-tcl
 install-pdf-host: maybe-install-pdf-itcl
 install-pdf-host: maybe-install-pdf-ld
+install-pdf-host: maybe-install-pdf-libbacktrace
 install-pdf-host: maybe-install-pdf-libcpp
 install-pdf-host: maybe-install-pdf-libdecnumber
 install-pdf-host: maybe-install-pdf-libgui
@@ -1430,9 +1461,12 @@ install-pdf-host: maybe-install-pdf-lto-plugin
 
 install-pdf-target: maybe-install-pdf-target-libstdc++-v3
 install-pdf-target: maybe-install-pdf-target-libmudflap
+install-pdf-target: maybe-install-pdf-target-libsanitizer
+install-pdf-target: maybe-install-pdf-target-libvtv
 install-pdf-target: maybe-install-pdf-target-libssp
 install-pdf-target: maybe-install-pdf-target-newlib
 install-pdf-target: maybe-install-pdf-target-libgcc
+install-pdf-target: maybe-install-pdf-target-libbacktrace
 install-pdf-target: maybe-install-pdf-target-libquadmath
 install-pdf-target: maybe-install-pdf-target-libgfortran
 install-pdf-target: maybe-install-pdf-target-libobjc
@@ -1447,6 +1481,8 @@ install-pdf-target: maybe-install-pdf-target-boehm-gc
 install-pdf-target: maybe-install-pdf-target-rda
 install-pdf-target: maybe-install-pdf-target-libada
 install-pdf-target: maybe-install-pdf-target-libgomp
+install-pdf-target: maybe-install-pdf-target-libitm
+install-pdf-target: maybe-install-pdf-target-libatomic
 
 .PHONY: do-install-html
 do-install-html:
@@ -1474,7 +1510,7 @@ install-html-host: maybe-install-html-gcc
 install-html-host: maybe-install-html-gmp
 install-html-host: maybe-install-html-mpfr
 install-html-host: maybe-install-html-mpc
-install-html-host: maybe-install-html-ppl
+install-html-host: maybe-install-html-isl
 install-html-host: maybe-install-html-cloog
 install-html-host: maybe-install-html-libelf
 install-html-host: maybe-install-html-gold
@@ -1483,6 +1519,7 @@ install-html-host: maybe-install-html-intl
 install-html-host: maybe-install-html-tcl
 install-html-host: maybe-install-html-itcl
 install-html-host: maybe-install-html-ld
+install-html-host: maybe-install-html-libbacktrace
 install-html-host: maybe-install-html-libcpp
 install-html-host: maybe-install-html-libdecnumber
 install-html-host: maybe-install-html-libgui
@@ -1507,9 +1544,12 @@ install-html-host: maybe-install-html-lto-plugin
 
 install-html-target: maybe-install-html-target-libstdc++-v3
 install-html-target: maybe-install-html-target-libmudflap
+install-html-target: maybe-install-html-target-libsanitizer
+install-html-target: maybe-install-html-target-libvtv
 install-html-target: maybe-install-html-target-libssp
 install-html-target: maybe-install-html-target-newlib
 install-html-target: maybe-install-html-target-libgcc
+install-html-target: maybe-install-html-target-libbacktrace
 install-html-target: maybe-install-html-target-libquadmath
 install-html-target: maybe-install-html-target-libgfortran
 install-html-target: maybe-install-html-target-libobjc
@@ -1524,6 +1564,8 @@ install-html-target: maybe-install-html-target-boehm-gc
 install-html-target: maybe-install-html-target-rda
 install-html-target: maybe-install-html-target-libada
 install-html-target: maybe-install-html-target-libgomp
+install-html-target: maybe-install-html-target-libitm
+install-html-target: maybe-install-html-target-libatomic
 
 .PHONY: do-installcheck
 do-installcheck:
@@ -1551,7 +1593,7 @@ installcheck-host: maybe-installcheck-gcc
 installcheck-host: maybe-installcheck-gmp
 installcheck-host: maybe-installcheck-mpfr
 installcheck-host: maybe-installcheck-mpc
-installcheck-host: maybe-installcheck-ppl
+installcheck-host: maybe-installcheck-isl
 installcheck-host: maybe-installcheck-cloog
 installcheck-host: maybe-installcheck-libelf
 installcheck-host: maybe-installcheck-gold
@@ -1560,6 +1602,7 @@ installcheck-host: maybe-installcheck-intl
 installcheck-host: maybe-installcheck-tcl
 installcheck-host: maybe-installcheck-itcl
 installcheck-host: maybe-installcheck-ld
+installcheck-host: maybe-installcheck-libbacktrace
 installcheck-host: maybe-installcheck-libcpp
 installcheck-host: maybe-installcheck-libdecnumber
 installcheck-host: maybe-installcheck-libgui
@@ -1584,9 +1627,12 @@ installcheck-host: maybe-installcheck-lto-plugin
 
 installcheck-target: maybe-installcheck-target-libstdc++-v3
 installcheck-target: maybe-installcheck-target-libmudflap
+installcheck-target: maybe-installcheck-target-libsanitizer
+installcheck-target: maybe-installcheck-target-libvtv
 installcheck-target: maybe-installcheck-target-libssp
 installcheck-target: maybe-installcheck-target-newlib
 installcheck-target: maybe-installcheck-target-libgcc
+installcheck-target: maybe-installcheck-target-libbacktrace
 installcheck-target: maybe-installcheck-target-libquadmath
 installcheck-target: maybe-installcheck-target-libgfortran
 installcheck-target: maybe-installcheck-target-libobjc
@@ -1601,6 +1647,8 @@ installcheck-target: maybe-installcheck-target-boehm-gc
 installcheck-target: maybe-installcheck-target-rda
 installcheck-target: maybe-installcheck-target-libada
 installcheck-target: maybe-installcheck-target-libgomp
+installcheck-target: maybe-installcheck-target-libitm
+installcheck-target: maybe-installcheck-target-libatomic
 
 .PHONY: do-mostlyclean
 do-mostlyclean:
@@ -1628,7 +1676,7 @@ mostlyclean-host: maybe-mostlyclean-gcc
 mostlyclean-host: maybe-mostlyclean-gmp
 mostlyclean-host: maybe-mostlyclean-mpfr
 mostlyclean-host: maybe-mostlyclean-mpc
-mostlyclean-host: maybe-mostlyclean-ppl
+mostlyclean-host: maybe-mostlyclean-isl
 mostlyclean-host: maybe-mostlyclean-cloog
 mostlyclean-host: maybe-mostlyclean-libelf
 mostlyclean-host: maybe-mostlyclean-gold
@@ -1637,6 +1685,7 @@ mostlyclean-host: maybe-mostlyclean-intl
 mostlyclean-host: maybe-mostlyclean-tcl
 mostlyclean-host: maybe-mostlyclean-itcl
 mostlyclean-host: maybe-mostlyclean-ld
+mostlyclean-host: maybe-mostlyclean-libbacktrace
 mostlyclean-host: maybe-mostlyclean-libcpp
 mostlyclean-host: maybe-mostlyclean-libdecnumber
 mostlyclean-host: maybe-mostlyclean-libgui
@@ -1661,9 +1710,12 @@ mostlyclean-host: maybe-mostlyclean-lto-plugin
 
 mostlyclean-target: maybe-mostlyclean-target-libstdc++-v3
 mostlyclean-target: maybe-mostlyclean-target-libmudflap
+mostlyclean-target: maybe-mostlyclean-target-libsanitizer
+mostlyclean-target: maybe-mostlyclean-target-libvtv
 mostlyclean-target: maybe-mostlyclean-target-libssp
 mostlyclean-target: maybe-mostlyclean-target-newlib
 mostlyclean-target: maybe-mostlyclean-target-libgcc
+mostlyclean-target: maybe-mostlyclean-target-libbacktrace
 mostlyclean-target: maybe-mostlyclean-target-libquadmath
 mostlyclean-target: maybe-mostlyclean-target-libgfortran
 mostlyclean-target: maybe-mostlyclean-target-libobjc
@@ -1678,6 +1730,8 @@ mostlyclean-target: maybe-mostlyclean-target-boehm-gc
 mostlyclean-target: maybe-mostlyclean-target-rda
 mostlyclean-target: maybe-mostlyclean-target-libada
 mostlyclean-target: maybe-mostlyclean-target-libgomp
+mostlyclean-target: maybe-mostlyclean-target-libitm
+mostlyclean-target: maybe-mostlyclean-target-libatomic
 
 .PHONY: do-clean
 do-clean:
@@ -1705,7 +1759,7 @@ clean-host: maybe-clean-gcc
 clean-host: maybe-clean-gmp
 clean-host: maybe-clean-mpfr
 clean-host: maybe-clean-mpc
-clean-host: maybe-clean-ppl
+clean-host: maybe-clean-isl
 clean-host: maybe-clean-cloog
 clean-host: maybe-clean-libelf
 clean-host: maybe-clean-gold
@@ -1714,6 +1768,7 @@ clean-host: maybe-clean-intl
 clean-host: maybe-clean-tcl
 clean-host: maybe-clean-itcl
 clean-host: maybe-clean-ld
+clean-host: maybe-clean-libbacktrace
 clean-host: maybe-clean-libcpp
 clean-host: maybe-clean-libdecnumber
 clean-host: maybe-clean-libgui
@@ -1738,9 +1793,12 @@ clean-host: maybe-clean-lto-plugin
 
 clean-target: maybe-clean-target-libstdc++-v3
 clean-target: maybe-clean-target-libmudflap
+clean-target: maybe-clean-target-libsanitizer
+clean-target: maybe-clean-target-libvtv
 clean-target: maybe-clean-target-libssp
 clean-target: maybe-clean-target-newlib
 clean-target: maybe-clean-target-libgcc
+clean-target: maybe-clean-target-libbacktrace
 clean-target: maybe-clean-target-libquadmath
 clean-target: maybe-clean-target-libgfortran
 clean-target: maybe-clean-target-libobjc
@@ -1755,6 +1813,8 @@ clean-target: maybe-clean-target-boehm-gc
 clean-target: maybe-clean-target-rda
 clean-target: maybe-clean-target-libada
 clean-target: maybe-clean-target-libgomp
+clean-target: maybe-clean-target-libitm
+clean-target: maybe-clean-target-libatomic
 
 .PHONY: do-distclean
 do-distclean:
@@ -1782,7 +1842,7 @@ distclean-host: maybe-distclean-gcc
 distclean-host: maybe-distclean-gmp
 distclean-host: maybe-distclean-mpfr
 distclean-host: maybe-distclean-mpc
-distclean-host: maybe-distclean-ppl
+distclean-host: maybe-distclean-isl
 distclean-host: maybe-distclean-cloog
 distclean-host: maybe-distclean-libelf
 distclean-host: maybe-distclean-gold
@@ -1791,6 +1851,7 @@ distclean-host: maybe-distclean-intl
 distclean-host: maybe-distclean-tcl
 distclean-host: maybe-distclean-itcl
 distclean-host: maybe-distclean-ld
+distclean-host: maybe-distclean-libbacktrace
 distclean-host: maybe-distclean-libcpp
 distclean-host: maybe-distclean-libdecnumber
 distclean-host: maybe-distclean-libgui
@@ -1815,9 +1876,12 @@ distclean-host: maybe-distclean-lto-plugin
 
 distclean-target: maybe-distclean-target-libstdc++-v3
 distclean-target: maybe-distclean-target-libmudflap
+distclean-target: maybe-distclean-target-libsanitizer
+distclean-target: maybe-distclean-target-libvtv
 distclean-target: maybe-distclean-target-libssp
 distclean-target: maybe-distclean-target-newlib
 distclean-target: maybe-distclean-target-libgcc
+distclean-target: maybe-distclean-target-libbacktrace
 distclean-target: maybe-distclean-target-libquadmath
 distclean-target: maybe-distclean-target-libgfortran
 distclean-target: maybe-distclean-target-libobjc
@@ -1832,6 +1896,8 @@ distclean-target: maybe-distclean-target-boehm-gc
 distclean-target: maybe-distclean-target-rda
 distclean-target: maybe-distclean-target-libada
 distclean-target: maybe-distclean-target-libgomp
+distclean-target: maybe-distclean-target-libitm
+distclean-target: maybe-distclean-target-libatomic
 
 .PHONY: do-maintainer-clean
 do-maintainer-clean:
@@ -1859,7 +1925,7 @@ maintainer-clean-host: maybe-maintainer-clean-gcc
 maintainer-clean-host: maybe-maintainer-clean-gmp
 maintainer-clean-host: maybe-maintainer-clean-mpfr
 maintainer-clean-host: maybe-maintainer-clean-mpc
-maintainer-clean-host: maybe-maintainer-clean-ppl
+maintainer-clean-host: maybe-maintainer-clean-isl
 maintainer-clean-host: maybe-maintainer-clean-cloog
 maintainer-clean-host: maybe-maintainer-clean-libelf
 maintainer-clean-host: maybe-maintainer-clean-gold
@@ -1868,6 +1934,7 @@ maintainer-clean-host: maybe-maintainer-clean-intl
 maintainer-clean-host: maybe-maintainer-clean-tcl
 maintainer-clean-host: maybe-maintainer-clean-itcl
 maintainer-clean-host: maybe-maintainer-clean-ld
+maintainer-clean-host: maybe-maintainer-clean-libbacktrace
 maintainer-clean-host: maybe-maintainer-clean-libcpp
 maintainer-clean-host: maybe-maintainer-clean-libdecnumber
 maintainer-clean-host: maybe-maintainer-clean-libgui
@@ -1892,9 +1959,12 @@ maintainer-clean-host: maybe-maintainer-clean-lto-plugin
 
 maintainer-clean-target: maybe-maintainer-clean-target-libstdc++-v3
 maintainer-clean-target: maybe-maintainer-clean-target-libmudflap
+maintainer-clean-target: maybe-maintainer-clean-target-libsanitizer
+maintainer-clean-target: maybe-maintainer-clean-target-libvtv
 maintainer-clean-target: maybe-maintainer-clean-target-libssp
 maintainer-clean-target: maybe-maintainer-clean-target-newlib
 maintainer-clean-target: maybe-maintainer-clean-target-libgcc
+maintainer-clean-target: maybe-maintainer-clean-target-libbacktrace
 maintainer-clean-target: maybe-maintainer-clean-target-libquadmath
 maintainer-clean-target: maybe-maintainer-clean-target-libgfortran
 maintainer-clean-target: maybe-maintainer-clean-target-libobjc
@@ -1909,6 +1979,8 @@ maintainer-clean-target: maybe-maintainer-clean-target-boehm-gc
 maintainer-clean-target: maybe-maintainer-clean-target-rda
 maintainer-clean-target: maybe-maintainer-clean-target-libada
 maintainer-clean-target: maybe-maintainer-clean-target-libgomp
+maintainer-clean-target: maybe-maintainer-clean-target-libitm
+maintainer-clean-target: maybe-maintainer-clean-target-libatomic
 
 
 # Here are the targets which correspond to the do-X targets.
@@ -1991,7 +2063,7 @@ check-host:  \
     maybe-check-gmp \
     maybe-check-mpfr \
     maybe-check-mpc \
-    maybe-check-ppl \
+    maybe-check-isl \
     maybe-check-cloog \
     maybe-check-libelf \
     maybe-check-gold \
@@ -2000,6 +2072,7 @@ check-host:  \
     maybe-check-tcl \
     maybe-check-itcl \
     maybe-check-ld \
+    maybe-check-libbacktrace \
     maybe-check-libcpp \
     maybe-check-libdecnumber \
     maybe-check-libgui \
@@ -2024,9 +2097,12 @@ check-host:  \
 check-target:  \
     maybe-check-target-libstdc++-v3 \
     maybe-check-target-libmudflap \
+    maybe-check-target-libsanitizer \
+    maybe-check-target-libvtv \
     maybe-check-target-libssp \
     maybe-check-target-newlib \
     maybe-check-target-libgcc \
+    maybe-check-target-libbacktrace \
     maybe-check-target-libquadmath \
     maybe-check-target-libgfortran \
     maybe-check-target-libobjc \
@@ -2040,7 +2116,9 @@ check-target:  \
     maybe-check-target-boehm-gc \
     maybe-check-target-rda \
     maybe-check-target-libada \
-    maybe-check-target-libgomp
+    maybe-check-target-libgomp \
+    maybe-check-target-libitm \
+    maybe-check-target-libatomic
 
 do-check:
 	@: $(MAKE); $(unstage)
@@ -2094,7 +2172,7 @@ install-host-nogcc:  \
     maybe-install-gmp \
     maybe-install-mpfr \
     maybe-install-mpc \
-    maybe-install-ppl \
+    maybe-install-isl \
     maybe-install-cloog \
     maybe-install-libelf \
     maybe-install-gold \
@@ -2103,6 +2181,7 @@ install-host-nogcc:  \
     maybe-install-tcl \
     maybe-install-itcl \
     maybe-install-ld \
+    maybe-install-libbacktrace \
     maybe-install-libcpp \
     maybe-install-libdecnumber \
     maybe-install-libgui \
@@ -2140,7 +2219,7 @@ install-host:  \
     maybe-install-gmp \
     maybe-install-mpfr \
     maybe-install-mpc \
-    maybe-install-ppl \
+    maybe-install-isl \
     maybe-install-cloog \
     maybe-install-libelf \
     maybe-install-gold \
@@ -2149,6 +2228,7 @@ install-host:  \
     maybe-install-tcl \
     maybe-install-itcl \
     maybe-install-ld \
+    maybe-install-libbacktrace \
     maybe-install-libcpp \
     maybe-install-libdecnumber \
     maybe-install-libgui \
@@ -2173,9 +2253,12 @@ install-host:  \
 install-target:  \
     maybe-install-target-libstdc++-v3 \
     maybe-install-target-libmudflap \
+    maybe-install-target-libsanitizer \
+    maybe-install-target-libvtv \
     maybe-install-target-libssp \
     maybe-install-target-newlib \
     maybe-install-target-libgcc \
+    maybe-install-target-libbacktrace \
     maybe-install-target-libquadmath \
     maybe-install-target-libgfortran \
     maybe-install-target-libobjc \
@@ -2189,7 +2272,9 @@ install-target:  \
     maybe-install-target-boehm-gc \
     maybe-install-target-rda \
     maybe-install-target-libada \
-    maybe-install-target-libgomp
+    maybe-install-target-libgomp \
+    maybe-install-target-libitm \
+    maybe-install-target-libatomic
 
 uninstall:
 	@echo "the uninstall target is not supported in this tree"
@@ -2206,11 +2291,12 @@ install.all: install-no-fixedincludes
 		true ; \
 	fi
 
-# install-no-fixedincludes is used because Cygnus can not distribute
-# the fixed header files.
+# install-no-fixedincludes is used to allow the elaboration of binary packages
+# suitable for distribution, where we cannot include the fixed system header
+# files.
 .PHONY: install-no-fixedincludes
 install-no-fixedincludes: installdirs install-host-nogcc \
-	install-target gcc-no-fixedincludes
+	install-target gcc-install-no-fixedincludes
 
 .PHONY: install-strip
 install-strip:
@@ -2236,7 +2322,7 @@ install-strip-host:  \
     maybe-install-strip-gmp \
     maybe-install-strip-mpfr \
     maybe-install-strip-mpc \
-    maybe-install-strip-ppl \
+    maybe-install-strip-isl \
     maybe-install-strip-cloog \
     maybe-install-strip-libelf \
     maybe-install-strip-gold \
@@ -2245,6 +2331,7 @@ install-strip-host:  \
     maybe-install-strip-tcl \
     maybe-install-strip-itcl \
     maybe-install-strip-ld \
+    maybe-install-strip-libbacktrace \
     maybe-install-strip-libcpp \
     maybe-install-strip-libdecnumber \
     maybe-install-strip-libgui \
@@ -2269,9 +2356,12 @@ install-strip-host:  \
 install-strip-target:  \
     maybe-install-strip-target-libstdc++-v3 \
     maybe-install-strip-target-libmudflap \
+    maybe-install-strip-target-libsanitizer \
+    maybe-install-strip-target-libvtv \
     maybe-install-strip-target-libssp \
     maybe-install-strip-target-newlib \
     maybe-install-strip-target-libgcc \
+    maybe-install-strip-target-libbacktrace \
     maybe-install-strip-target-libquadmath \
     maybe-install-strip-target-libgfortran \
     maybe-install-strip-target-libobjc \
@@ -2285,7 +2375,9 @@ install-strip-target:  \
     maybe-install-strip-target-boehm-gc \
     maybe-install-strip-target-rda \
     maybe-install-strip-target-libada \
-    maybe-install-strip-target-libgomp
+    maybe-install-strip-target-libgomp \
+    maybe-install-strip-target-libitm \
+    maybe-install-strip-target-libatomic
 
 
 ### other supporting targets
@@ -2370,7 +2462,7 @@ all-build-libiberty: configure-build-libiberty
 	s=`cd $(srcdir); ${PWD_COMMAND}`; export s; \
 	$(BUILD_EXPORTS)  \
 	(cd $(BUILD_SUBDIR)/libiberty && \
-	  $(MAKE) $(BASE_FLAGS_TO_PASS) $(EXTRA_BUILD_FLAGS)  \
+	  $(MAKE) $(BASE_FLAGS_TO_PASS) $(EXTRA_BUILD_FLAGS)   \
 		$(TARGET-build-libiberty))
 
 
@@ -2508,7 +2600,7 @@ all-bfd: configure-bfd
 	s=`cd $(srcdir); ${PWD_COMMAND}`; export s; \
 	$(HOST_EXPORTS)  \
 	(cd $(HOST_SUBDIR)/bfd && \
-	  $(MAKE) $(BASE_FLAGS_TO_PASS) $(EXTRA_HOST_FLAGS)  \
+	  $(MAKE) $(BASE_FLAGS_TO_PASS) $(EXTRA_HOST_FLAGS) $(STAGE1_FLAGS_TO_PASS)  \
 		$(TARGET-bfd))
 
 
@@ -2949,7 +3041,7 @@ all-opcodes: configure-opcodes
 	s=`cd $(srcdir); ${PWD_COMMAND}`; export s; \
 	$(HOST_EXPORTS)  \
 	(cd $(HOST_SUBDIR)/opcodes && \
-	  $(MAKE) $(BASE_FLAGS_TO_PASS) $(EXTRA_HOST_FLAGS)  \
+	  $(MAKE) $(BASE_FLAGS_TO_PASS) $(EXTRA_HOST_FLAGS) $(STAGE1_FLAGS_TO_PASS)  \
 		$(TARGET-opcodes))
 
 
@@ -3390,7 +3482,7 @@ all-binutils: configure-binutils
 	s=`cd $(srcdir); ${PWD_COMMAND}`; export s; \
 	$(HOST_EXPORTS)  \
 	(cd $(HOST_SUBDIR)/binutils && \
-	  $(MAKE) $(BASE_FLAGS_TO_PASS) $(EXTRA_HOST_FLAGS)  \
+	  $(MAKE) $(BASE_FLAGS_TO_PASS) $(EXTRA_HOST_FLAGS) $(STAGE1_FLAGS_TO_PASS)  \
 		$(TARGET-binutils))
 
 
@@ -4008,7 +4100,7 @@ all-etc: configure-etc
 	s=`cd $(srcdir); ${PWD_COMMAND}`; export s; \
 	$(HOST_EXPORTS)  \
 	(cd $(HOST_SUBDIR)/etc && \
-	  $(MAKE) $(BASE_FLAGS_TO_PASS) $(EXTRA_HOST_FLAGS)  \
+	  $(MAKE) $(BASE_FLAGS_TO_PASS) $(EXTRA_HOST_FLAGS) $(STAGE1_FLAGS_TO_PASS)  \
 		$(TARGET-etc))
 
 
@@ -4619,7 +4711,7 @@ all-gas: configure-gas
 	s=`cd $(srcdir); ${PWD_COMMAND}`; export s; \
 	$(HOST_EXPORTS)  \
 	(cd $(HOST_SUBDIR)/gas && \
-	  $(MAKE) $(BASE_FLAGS_TO_PASS) $(EXTRA_HOST_FLAGS)  \
+	  $(MAKE) $(BASE_FLAGS_TO_PASS) $(EXTRA_HOST_FLAGS) $(STAGE1_FLAGS_TO_PASS)  \
 		$(TARGET-gas))
 
 
@@ -5496,126 +5588,126 @@ maybe-maintainer-clean-mpc:
 
 
 
-.PHONY: configure-ppl maybe-configure-ppl
-maybe-configure-ppl:
+.PHONY: configure-isl maybe-configure-isl
+maybe-configure-isl:
 
 
 
-.PHONY: configure-stage1-ppl maybe-configure-stage1-ppl
-maybe-configure-stage1-ppl:
+.PHONY: configure-stage1-isl maybe-configure-stage1-isl
+maybe-configure-stage1-isl:
 
-.PHONY: configure-stage2-ppl maybe-configure-stage2-ppl
-maybe-configure-stage2-ppl:
+.PHONY: configure-stage2-isl maybe-configure-stage2-isl
+maybe-configure-stage2-isl:
 
-.PHONY: configure-stage3-ppl maybe-configure-stage3-ppl
-maybe-configure-stage3-ppl:
+.PHONY: configure-stage3-isl maybe-configure-stage3-isl
+maybe-configure-stage3-isl:
 
-.PHONY: configure-stage4-ppl maybe-configure-stage4-ppl
-maybe-configure-stage4-ppl:
+.PHONY: configure-stage4-isl maybe-configure-stage4-isl
+maybe-configure-stage4-isl:
 
-.PHONY: configure-stageprofile-ppl maybe-configure-stageprofile-ppl
-maybe-configure-stageprofile-ppl:
+.PHONY: configure-stageprofile-isl maybe-configure-stageprofile-isl
+maybe-configure-stageprofile-isl:
 
-.PHONY: configure-stagefeedback-ppl maybe-configure-stagefeedback-ppl
-maybe-configure-stagefeedback-ppl:
-
-
-
-
-
-.PHONY: all-ppl maybe-all-ppl
-maybe-all-ppl:
-
-
-
-.PHONY: all-stage1-ppl maybe-all-stage1-ppl
-.PHONY: clean-stage1-ppl maybe-clean-stage1-ppl
-maybe-all-stage1-ppl:
-maybe-clean-stage1-ppl:
-
-
-.PHONY: all-stage2-ppl maybe-all-stage2-ppl
-.PHONY: clean-stage2-ppl maybe-clean-stage2-ppl
-maybe-all-stage2-ppl:
-maybe-clean-stage2-ppl:
-
-
-.PHONY: all-stage3-ppl maybe-all-stage3-ppl
-.PHONY: clean-stage3-ppl maybe-clean-stage3-ppl
-maybe-all-stage3-ppl:
-maybe-clean-stage3-ppl:
-
-
-.PHONY: all-stage4-ppl maybe-all-stage4-ppl
-.PHONY: clean-stage4-ppl maybe-clean-stage4-ppl
-maybe-all-stage4-ppl:
-maybe-clean-stage4-ppl:
-
-
-.PHONY: all-stageprofile-ppl maybe-all-stageprofile-ppl
-.PHONY: clean-stageprofile-ppl maybe-clean-stageprofile-ppl
-maybe-all-stageprofile-ppl:
-maybe-clean-stageprofile-ppl:
-
-
-.PHONY: all-stagefeedback-ppl maybe-all-stagefeedback-ppl
-.PHONY: clean-stagefeedback-ppl maybe-clean-stagefeedback-ppl
-maybe-all-stagefeedback-ppl:
-maybe-clean-stagefeedback-ppl:
+.PHONY: configure-stagefeedback-isl maybe-configure-stagefeedback-isl
+maybe-configure-stagefeedback-isl:
 
 
 
 
 
-.PHONY: check-ppl maybe-check-ppl
-maybe-check-ppl:
+.PHONY: all-isl maybe-all-isl
+maybe-all-isl:
 
-.PHONY: install-ppl maybe-install-ppl
-maybe-install-ppl:
 
-.PHONY: install-strip-ppl maybe-install-strip-ppl
-maybe-install-strip-ppl:
+
+.PHONY: all-stage1-isl maybe-all-stage1-isl
+.PHONY: clean-stage1-isl maybe-clean-stage1-isl
+maybe-all-stage1-isl:
+maybe-clean-stage1-isl:
+
+
+.PHONY: all-stage2-isl maybe-all-stage2-isl
+.PHONY: clean-stage2-isl maybe-clean-stage2-isl
+maybe-all-stage2-isl:
+maybe-clean-stage2-isl:
+
+
+.PHONY: all-stage3-isl maybe-all-stage3-isl
+.PHONY: clean-stage3-isl maybe-clean-stage3-isl
+maybe-all-stage3-isl:
+maybe-clean-stage3-isl:
+
+
+.PHONY: all-stage4-isl maybe-all-stage4-isl
+.PHONY: clean-stage4-isl maybe-clean-stage4-isl
+maybe-all-stage4-isl:
+maybe-clean-stage4-isl:
+
+
+.PHONY: all-stageprofile-isl maybe-all-stageprofile-isl
+.PHONY: clean-stageprofile-isl maybe-clean-stageprofile-isl
+maybe-all-stageprofile-isl:
+maybe-clean-stageprofile-isl:
+
+
+.PHONY: all-stagefeedback-isl maybe-all-stagefeedback-isl
+.PHONY: clean-stagefeedback-isl maybe-clean-stagefeedback-isl
+maybe-all-stagefeedback-isl:
+maybe-clean-stagefeedback-isl:
+
+
+
+
+
+.PHONY: check-isl maybe-check-isl
+maybe-check-isl:
+
+.PHONY: install-isl maybe-install-isl
+maybe-install-isl:
+
+.PHONY: install-strip-isl maybe-install-strip-isl
+maybe-install-strip-isl:
 
 # Other targets (info, dvi, pdf, etc.)
 
-.PHONY: maybe-info-ppl info-ppl
-maybe-info-ppl:
+.PHONY: maybe-info-isl info-isl
+maybe-info-isl:
 
-.PHONY: maybe-dvi-ppl dvi-ppl
-maybe-dvi-ppl:
+.PHONY: maybe-dvi-isl dvi-isl
+maybe-dvi-isl:
 
-.PHONY: maybe-pdf-ppl pdf-ppl
-maybe-pdf-ppl:
+.PHONY: maybe-pdf-isl pdf-isl
+maybe-pdf-isl:
 
-.PHONY: maybe-html-ppl html-ppl
-maybe-html-ppl:
+.PHONY: maybe-html-isl html-isl
+maybe-html-isl:
 
-.PHONY: maybe-TAGS-ppl TAGS-ppl
-maybe-TAGS-ppl:
+.PHONY: maybe-TAGS-isl TAGS-isl
+maybe-TAGS-isl:
 
-.PHONY: maybe-install-info-ppl install-info-ppl
-maybe-install-info-ppl:
+.PHONY: maybe-install-info-isl install-info-isl
+maybe-install-info-isl:
 
-.PHONY: maybe-install-pdf-ppl install-pdf-ppl
-maybe-install-pdf-ppl:
+.PHONY: maybe-install-pdf-isl install-pdf-isl
+maybe-install-pdf-isl:
 
-.PHONY: maybe-install-html-ppl install-html-ppl
-maybe-install-html-ppl:
+.PHONY: maybe-install-html-isl install-html-isl
+maybe-install-html-isl:
 
-.PHONY: maybe-installcheck-ppl installcheck-ppl
-maybe-installcheck-ppl:
+.PHONY: maybe-installcheck-isl installcheck-isl
+maybe-installcheck-isl:
 
-.PHONY: maybe-mostlyclean-ppl mostlyclean-ppl
-maybe-mostlyclean-ppl:
+.PHONY: maybe-mostlyclean-isl mostlyclean-isl
+maybe-mostlyclean-isl:
 
-.PHONY: maybe-clean-ppl clean-ppl
-maybe-clean-ppl:
+.PHONY: maybe-clean-isl clean-isl
+maybe-clean-isl:
 
-.PHONY: maybe-distclean-ppl distclean-ppl
-maybe-distclean-ppl:
+.PHONY: maybe-distclean-isl distclean-isl
+maybe-distclean-isl:
 
-.PHONY: maybe-maintainer-clean-ppl maintainer-clean-ppl
-maybe-maintainer-clean-ppl:
+.PHONY: maybe-maintainer-clean-isl maintainer-clean-isl
+maybe-maintainer-clean-isl:
 
 
 
@@ -6026,7 +6118,7 @@ all-gprof: configure-gprof
 	s=`cd $(srcdir); ${PWD_COMMAND}`; export s; \
 	$(HOST_EXPORTS)  \
 	(cd $(HOST_SUBDIR)/gprof && \
-	  $(MAKE) $(BASE_FLAGS_TO_PASS) $(EXTRA_HOST_FLAGS)  \
+	  $(MAKE) $(BASE_FLAGS_TO_PASS) $(EXTRA_HOST_FLAGS) $(STAGE1_FLAGS_TO_PASS)  \
 		$(TARGET-gprof))
 
 
@@ -6442,7 +6534,7 @@ all-intl: configure-intl
 	s=`cd $(srcdir); ${PWD_COMMAND}`; export s; \
 	$(HOST_EXPORTS)  \
 	(cd $(HOST_SUBDIR)/intl && \
-	  $(MAKE) $(BASE_FLAGS_TO_PASS) $(EXTRA_HOST_FLAGS)  \
+	  $(MAKE) $(BASE_FLAGS_TO_PASS) $(EXTRA_HOST_FLAGS) $(STAGE1_FLAGS_TO_PASS)  \
 		$(TARGET-intl))
 
 
@@ -7013,7 +7105,7 @@ all-ld: configure-ld
 	s=`cd $(srcdir); ${PWD_COMMAND}`; export s; \
 	$(HOST_EXPORTS)  \
 	(cd $(HOST_SUBDIR)/ld && \
-	  $(MAKE) $(BASE_FLAGS_TO_PASS) $(EXTRA_HOST_FLAGS)  \
+	  $(MAKE) $(BASE_FLAGS_TO_PASS) $(EXTRA_HOST_FLAGS) $(STAGE1_FLAGS_TO_PASS)  \
 		$(TARGET-ld))
 
 
@@ -7398,6 +7490,129 @@ maintainer-clean-ld:
 
 
 
+.PHONY: configure-libbacktrace maybe-configure-libbacktrace
+maybe-configure-libbacktrace:
+
+
+
+.PHONY: configure-stage1-libbacktrace maybe-configure-stage1-libbacktrace
+maybe-configure-stage1-libbacktrace:
+
+.PHONY: configure-stage2-libbacktrace maybe-configure-stage2-libbacktrace
+maybe-configure-stage2-libbacktrace:
+
+.PHONY: configure-stage3-libbacktrace maybe-configure-stage3-libbacktrace
+maybe-configure-stage3-libbacktrace:
+
+.PHONY: configure-stage4-libbacktrace maybe-configure-stage4-libbacktrace
+maybe-configure-stage4-libbacktrace:
+
+.PHONY: configure-stageprofile-libbacktrace maybe-configure-stageprofile-libbacktrace
+maybe-configure-stageprofile-libbacktrace:
+
+.PHONY: configure-stagefeedback-libbacktrace maybe-configure-stagefeedback-libbacktrace
+maybe-configure-stagefeedback-libbacktrace:
+
+
+
+
+
+.PHONY: all-libbacktrace maybe-all-libbacktrace
+maybe-all-libbacktrace:
+
+
+
+.PHONY: all-stage1-libbacktrace maybe-all-stage1-libbacktrace
+.PHONY: clean-stage1-libbacktrace maybe-clean-stage1-libbacktrace
+maybe-all-stage1-libbacktrace:
+maybe-clean-stage1-libbacktrace:
+
+
+.PHONY: all-stage2-libbacktrace maybe-all-stage2-libbacktrace
+.PHONY: clean-stage2-libbacktrace maybe-clean-stage2-libbacktrace
+maybe-all-stage2-libbacktrace:
+maybe-clean-stage2-libbacktrace:
+
+
+.PHONY: all-stage3-libbacktrace maybe-all-stage3-libbacktrace
+.PHONY: clean-stage3-libbacktrace maybe-clean-stage3-libbacktrace
+maybe-all-stage3-libbacktrace:
+maybe-clean-stage3-libbacktrace:
+
+
+.PHONY: all-stage4-libbacktrace maybe-all-stage4-libbacktrace
+.PHONY: clean-stage4-libbacktrace maybe-clean-stage4-libbacktrace
+maybe-all-stage4-libbacktrace:
+maybe-clean-stage4-libbacktrace:
+
+
+.PHONY: all-stageprofile-libbacktrace maybe-all-stageprofile-libbacktrace
+.PHONY: clean-stageprofile-libbacktrace maybe-clean-stageprofile-libbacktrace
+maybe-all-stageprofile-libbacktrace:
+maybe-clean-stageprofile-libbacktrace:
+
+
+.PHONY: all-stagefeedback-libbacktrace maybe-all-stagefeedback-libbacktrace
+.PHONY: clean-stagefeedback-libbacktrace maybe-clean-stagefeedback-libbacktrace
+maybe-all-stagefeedback-libbacktrace:
+maybe-clean-stagefeedback-libbacktrace:
+
+
+
+
+
+.PHONY: check-libbacktrace maybe-check-libbacktrace
+maybe-check-libbacktrace:
+
+.PHONY: install-libbacktrace maybe-install-libbacktrace
+maybe-install-libbacktrace:
+
+.PHONY: install-strip-libbacktrace maybe-install-strip-libbacktrace
+maybe-install-strip-libbacktrace:
+
+# Other targets (info, dvi, pdf, etc.)
+
+.PHONY: maybe-info-libbacktrace info-libbacktrace
+maybe-info-libbacktrace:
+
+.PHONY: maybe-dvi-libbacktrace dvi-libbacktrace
+maybe-dvi-libbacktrace:
+
+.PHONY: maybe-pdf-libbacktrace pdf-libbacktrace
+maybe-pdf-libbacktrace:
+
+.PHONY: maybe-html-libbacktrace html-libbacktrace
+maybe-html-libbacktrace:
+
+.PHONY: maybe-TAGS-libbacktrace TAGS-libbacktrace
+maybe-TAGS-libbacktrace:
+
+.PHONY: maybe-install-info-libbacktrace install-info-libbacktrace
+maybe-install-info-libbacktrace:
+
+.PHONY: maybe-install-pdf-libbacktrace install-pdf-libbacktrace
+maybe-install-pdf-libbacktrace:
+
+.PHONY: maybe-install-html-libbacktrace install-html-libbacktrace
+maybe-install-html-libbacktrace:
+
+.PHONY: maybe-installcheck-libbacktrace installcheck-libbacktrace
+maybe-installcheck-libbacktrace:
+
+.PHONY: maybe-mostlyclean-libbacktrace mostlyclean-libbacktrace
+maybe-mostlyclean-libbacktrace:
+
+.PHONY: maybe-clean-libbacktrace clean-libbacktrace
+maybe-clean-libbacktrace:
+
+.PHONY: maybe-distclean-libbacktrace distclean-libbacktrace
+maybe-distclean-libbacktrace:
+
+.PHONY: maybe-maintainer-clean-libbacktrace maintainer-clean-libbacktrace
+maybe-maintainer-clean-libbacktrace:
+
+
+
 .PHONY: configure-libcpp maybe-configure-libcpp
 maybe-configure-libcpp:
 
@@ -7765,7 +7980,7 @@ all-libiberty: configure-libiberty
 	s=`cd $(srcdir); ${PWD_COMMAND}`; export s; \
 	$(HOST_EXPORTS)  \
 	(cd $(HOST_SUBDIR)/libiberty && \
-	  $(MAKE) $(BASE_FLAGS_TO_PASS) $(EXTRA_HOST_FLAGS)  \
+	  $(MAKE) $(BASE_FLAGS_TO_PASS) $(EXTRA_HOST_FLAGS) $(STAGE1_FLAGS_TO_PASS)  \
 		$(TARGET-libiberty))
 
 
@@ -9442,6 +9657,258 @@ maybe-maintainer-clean-target-libmudflap:
 
 
 
+.PHONY: configure-target-libsanitizer maybe-configure-target-libsanitizer
+maybe-configure-target-libsanitizer:
+
+
+
+.PHONY: configure-stage1-target-libsanitizer maybe-configure-stage1-target-libsanitizer
+maybe-configure-stage1-target-libsanitizer:
+
+.PHONY: configure-stage2-target-libsanitizer maybe-configure-stage2-target-libsanitizer
+maybe-configure-stage2-target-libsanitizer:
+
+.PHONY: configure-stage3-target-libsanitizer maybe-configure-stage3-target-libsanitizer
+maybe-configure-stage3-target-libsanitizer:
+
+.PHONY: configure-stage4-target-libsanitizer maybe-configure-stage4-target-libsanitizer
+maybe-configure-stage4-target-libsanitizer:
+
+.PHONY: configure-stageprofile-target-libsanitizer maybe-configure-stageprofile-target-libsanitizer
+maybe-configure-stageprofile-target-libsanitizer:
+
+.PHONY: configure-stagefeedback-target-libsanitizer maybe-configure-stagefeedback-target-libsanitizer
+maybe-configure-stagefeedback-target-libsanitizer:
+
+
+
+
+
+.PHONY: all-target-libsanitizer maybe-all-target-libsanitizer
+maybe-all-target-libsanitizer:
+
+
+
+.PHONY: all-stage1-target-libsanitizer maybe-all-stage1-target-libsanitizer
+.PHONY: clean-stage1-target-libsanitizer maybe-clean-stage1-target-libsanitizer
+maybe-all-stage1-target-libsanitizer:
+maybe-clean-stage1-target-libsanitizer:
+
+
+.PHONY: all-stage2-target-libsanitizer maybe-all-stage2-target-libsanitizer
+.PHONY: clean-stage2-target-libsanitizer maybe-clean-stage2-target-libsanitizer
+maybe-all-stage2-target-libsanitizer:
+maybe-clean-stage2-target-libsanitizer:
+
+
+.PHONY: all-stage3-target-libsanitizer maybe-all-stage3-target-libsanitizer
+.PHONY: clean-stage3-target-libsanitizer maybe-clean-stage3-target-libsanitizer
+maybe-all-stage3-target-libsanitizer:
+maybe-clean-stage3-target-libsanitizer:
+
+
+.PHONY: all-stage4-target-libsanitizer maybe-all-stage4-target-libsanitizer
+.PHONY: clean-stage4-target-libsanitizer maybe-clean-stage4-target-libsanitizer
+maybe-all-stage4-target-libsanitizer:
+maybe-clean-stage4-target-libsanitizer:
+
+
+.PHONY: all-stageprofile-target-libsanitizer maybe-all-stageprofile-target-libsanitizer
+.PHONY: clean-stageprofile-target-libsanitizer maybe-clean-stageprofile-target-libsanitizer
+maybe-all-stageprofile-target-libsanitizer:
+maybe-clean-stageprofile-target-libsanitizer:
+
+
+.PHONY: all-stagefeedback-target-libsanitizer maybe-all-stagefeedback-target-libsanitizer
+.PHONY: clean-stagefeedback-target-libsanitizer maybe-clean-stagefeedback-target-libsanitizer
+maybe-all-stagefeedback-target-libsanitizer:
+maybe-clean-stagefeedback-target-libsanitizer:
+
+
+
+
+
+
+.PHONY: check-target-libsanitizer maybe-check-target-libsanitizer
+maybe-check-target-libsanitizer:
+
+.PHONY: install-target-libsanitizer maybe-install-target-libsanitizer
+maybe-install-target-libsanitizer:
+
+.PHONY: install-strip-target-libsanitizer maybe-install-strip-target-libsanitizer
+maybe-install-strip-target-libsanitizer:
+
+# Other targets (info, dvi, pdf, etc.)
+
+.PHONY: maybe-info-target-libsanitizer info-target-libsanitizer
+maybe-info-target-libsanitizer:
+
+.PHONY: maybe-dvi-target-libsanitizer dvi-target-libsanitizer
+maybe-dvi-target-libsanitizer:
+
+.PHONY: maybe-pdf-target-libsanitizer pdf-target-libsanitizer
+maybe-pdf-target-libsanitizer:
+
+.PHONY: maybe-html-target-libsanitizer html-target-libsanitizer
+maybe-html-target-libsanitizer:
+
+.PHONY: maybe-TAGS-target-libsanitizer TAGS-target-libsanitizer
+maybe-TAGS-target-libsanitizer:
+
+.PHONY: maybe-install-info-target-libsanitizer install-info-target-libsanitizer
+maybe-install-info-target-libsanitizer:
+
+.PHONY: maybe-install-pdf-target-libsanitizer install-pdf-target-libsanitizer
+maybe-install-pdf-target-libsanitizer:
+
+.PHONY: maybe-install-html-target-libsanitizer install-html-target-libsanitizer
+maybe-install-html-target-libsanitizer:
+
+.PHONY: maybe-installcheck-target-libsanitizer installcheck-target-libsanitizer
+maybe-installcheck-target-libsanitizer:
+
+.PHONY: maybe-mostlyclean-target-libsanitizer mostlyclean-target-libsanitizer
+maybe-mostlyclean-target-libsanitizer:
+
+.PHONY: maybe-clean-target-libsanitizer clean-target-libsanitizer
+maybe-clean-target-libsanitizer:
+
+.PHONY: maybe-distclean-target-libsanitizer distclean-target-libsanitizer
+maybe-distclean-target-libsanitizer:
+
+.PHONY: maybe-maintainer-clean-target-libsanitizer maintainer-clean-target-libsanitizer
+maybe-maintainer-clean-target-libsanitizer:
+
+
+
+
+
+.PHONY: configure-target-libvtv maybe-configure-target-libvtv
+maybe-configure-target-libvtv:
+
+
+
+.PHONY: configure-stage1-target-libvtv maybe-configure-stage1-target-libvtv
+maybe-configure-stage1-target-libvtv:
+
+.PHONY: configure-stage2-target-libvtv maybe-configure-stage2-target-libvtv
+maybe-configure-stage2-target-libvtv:
+
+.PHONY: configure-stage3-target-libvtv maybe-configure-stage3-target-libvtv
+maybe-configure-stage3-target-libvtv:
+
+.PHONY: configure-stage4-target-libvtv maybe-configure-stage4-target-libvtv
+maybe-configure-stage4-target-libvtv:
+
+.PHONY: configure-stageprofile-target-libvtv maybe-configure-stageprofile-target-libvtv
+maybe-configure-stageprofile-target-libvtv:
+
+.PHONY: configure-stagefeedback-target-libvtv maybe-configure-stagefeedback-target-libvtv
+maybe-configure-stagefeedback-target-libvtv:
+
+
+
+
+
+.PHONY: all-target-libvtv maybe-all-target-libvtv
+maybe-all-target-libvtv:
+
+
+
+.PHONY: all-stage1-target-libvtv maybe-all-stage1-target-libvtv
+.PHONY: clean-stage1-target-libvtv maybe-clean-stage1-target-libvtv
+maybe-all-stage1-target-libvtv:
+maybe-clean-stage1-target-libvtv:
+
+
+.PHONY: all-stage2-target-libvtv maybe-all-stage2-target-libvtv
+.PHONY: clean-stage2-target-libvtv maybe-clean-stage2-target-libvtv
+maybe-all-stage2-target-libvtv:
+maybe-clean-stage2-target-libvtv:
+
+
+.PHONY: all-stage3-target-libvtv maybe-all-stage3-target-libvtv
+.PHONY: clean-stage3-target-libvtv maybe-clean-stage3-target-libvtv
+maybe-all-stage3-target-libvtv:
+maybe-clean-stage3-target-libvtv:
+
+
+.PHONY: all-stage4-target-libvtv maybe-all-stage4-target-libvtv
+.PHONY: clean-stage4-target-libvtv maybe-clean-stage4-target-libvtv
+maybe-all-stage4-target-libvtv:
+maybe-clean-stage4-target-libvtv:
+
+
+.PHONY: all-stageprofile-target-libvtv maybe-all-stageprofile-target-libvtv
+.PHONY: clean-stageprofile-target-libvtv maybe-clean-stageprofile-target-libvtv
+maybe-all-stageprofile-target-libvtv:
+maybe-clean-stageprofile-target-libvtv:
+
+
+.PHONY: all-stagefeedback-target-libvtv maybe-all-stagefeedback-target-libvtv
+.PHONY: clean-stagefeedback-target-libvtv maybe-clean-stagefeedback-target-libvtv
+maybe-all-stagefeedback-target-libvtv:
+maybe-clean-stagefeedback-target-libvtv:
+
+
+
+
+
+
+.PHONY: check-target-libvtv maybe-check-target-libvtv
+maybe-check-target-libvtv:
+
+.PHONY: install-target-libvtv maybe-install-target-libvtv
+maybe-install-target-libvtv:
+
+.PHONY: install-strip-target-libvtv maybe-install-strip-target-libvtv
+maybe-install-strip-target-libvtv:
+
+# Other targets (info, dvi, pdf, etc.)
+
+.PHONY: maybe-info-target-libvtv info-target-libvtv
+maybe-info-target-libvtv:
+
+.PHONY: maybe-dvi-target-libvtv dvi-target-libvtv
+maybe-dvi-target-libvtv:
+
+.PHONY: maybe-pdf-target-libvtv pdf-target-libvtv
+maybe-pdf-target-libvtv:
+
+.PHONY: maybe-html-target-libvtv html-target-libvtv
+maybe-html-target-libvtv:
+
+.PHONY: maybe-TAGS-target-libvtv TAGS-target-libvtv
+maybe-TAGS-target-libvtv:
+
+.PHONY: maybe-install-info-target-libvtv install-info-target-libvtv
+maybe-install-info-target-libvtv:
+
+.PHONY: maybe-install-pdf-target-libvtv install-pdf-target-libvtv
+maybe-install-pdf-target-libvtv:
+
+.PHONY: maybe-install-html-target-libvtv install-html-target-libvtv
+maybe-install-html-target-libvtv:
+
+.PHONY: maybe-installcheck-target-libvtv installcheck-target-libvtv
+maybe-installcheck-target-libvtv:
+
+.PHONY: maybe-mostlyclean-target-libvtv mostlyclean-target-libvtv
+maybe-mostlyclean-target-libvtv:
+
+.PHONY: maybe-clean-target-libvtv clean-target-libvtv
+maybe-clean-target-libvtv:
+
+.PHONY: maybe-distclean-target-libvtv distclean-target-libvtv
+maybe-distclean-target-libvtv:
+
+.PHONY: maybe-maintainer-clean-target-libvtv maintainer-clean-target-libvtv
+maybe-maintainer-clean-target-libvtv:
+
+
+
+
+
 .PHONY: configure-target-libssp maybe-configure-target-libssp
 maybe-configure-target-libssp:
 
@@ -9699,6 +10166,74 @@ maybe-distclean-target-libgcc:
 
 .PHONY: maybe-maintainer-clean-target-libgcc maintainer-clean-target-libgcc
 maybe-maintainer-clean-target-libgcc:
+
+
+
+
+
+.PHONY: configure-target-libbacktrace maybe-configure-target-libbacktrace
+maybe-configure-target-libbacktrace:
+
+
+
+
+
+.PHONY: all-target-libbacktrace maybe-all-target-libbacktrace
+maybe-all-target-libbacktrace:
+
+
+
+
+
+.PHONY: check-target-libbacktrace maybe-check-target-libbacktrace
+maybe-check-target-libbacktrace:
+
+.PHONY: install-target-libbacktrace maybe-install-target-libbacktrace
+maybe-install-target-libbacktrace:
+
+.PHONY: install-strip-target-libbacktrace maybe-install-strip-target-libbacktrace
+maybe-install-strip-target-libbacktrace:
+
+# Other targets (info, dvi, pdf, etc.)
+
+.PHONY: maybe-info-target-libbacktrace info-target-libbacktrace
+maybe-info-target-libbacktrace:
+
+.PHONY: maybe-dvi-target-libbacktrace dvi-target-libbacktrace
+maybe-dvi-target-libbacktrace:
+
+.PHONY: maybe-pdf-target-libbacktrace pdf-target-libbacktrace
+maybe-pdf-target-libbacktrace:
+
+.PHONY: maybe-html-target-libbacktrace html-target-libbacktrace
+maybe-html-target-libbacktrace:
+
+.PHONY: maybe-TAGS-target-libbacktrace TAGS-target-libbacktrace
+maybe-TAGS-target-libbacktrace:
+
+.PHONY: maybe-install-info-target-libbacktrace install-info-target-libbacktrace
+maybe-install-info-target-libbacktrace:
+
+.PHONY: maybe-install-pdf-target-libbacktrace install-pdf-target-libbacktrace
+maybe-install-pdf-target-libbacktrace:
+
+.PHONY: maybe-install-html-target-libbacktrace install-html-target-libbacktrace
+maybe-install-html-target-libbacktrace:
+
+.PHONY: maybe-installcheck-target-libbacktrace installcheck-target-libbacktrace
+maybe-installcheck-target-libbacktrace:
+
+.PHONY: maybe-mostlyclean-target-libbacktrace mostlyclean-target-libbacktrace
+maybe-mostlyclean-target-libbacktrace:
+
+.PHONY: maybe-clean-target-libbacktrace clean-target-libbacktrace
+maybe-clean-target-libbacktrace:
+
+.PHONY: maybe-distclean-target-libbacktrace distclean-target-libbacktrace
+maybe-distclean-target-libbacktrace:
+
+.PHONY: maybe-maintainer-clean-target-libbacktrace maintainer-clean-target-libbacktrace
+maybe-maintainer-clean-target-libbacktrace:
 
 
 
@@ -10713,6 +11248,144 @@ maybe-maintainer-clean-target-libgomp:
 
 
 
+
+.PHONY: configure-target-libitm maybe-configure-target-libitm
+maybe-configure-target-libitm:
+
+
+
+
+
+.PHONY: all-target-libitm maybe-all-target-libitm
+maybe-all-target-libitm:
+
+
+
+
+
+.PHONY: check-target-libitm maybe-check-target-libitm
+maybe-check-target-libitm:
+
+.PHONY: install-target-libitm maybe-install-target-libitm
+maybe-install-target-libitm:
+
+.PHONY: install-strip-target-libitm maybe-install-strip-target-libitm
+maybe-install-strip-target-libitm:
+
+# Other targets (info, dvi, pdf, etc.)
+
+.PHONY: maybe-info-target-libitm info-target-libitm
+maybe-info-target-libitm:
+
+.PHONY: maybe-dvi-target-libitm dvi-target-libitm
+maybe-dvi-target-libitm:
+
+.PHONY: maybe-pdf-target-libitm pdf-target-libitm
+maybe-pdf-target-libitm:
+
+.PHONY: maybe-html-target-libitm html-target-libitm
+maybe-html-target-libitm:
+
+.PHONY: maybe-TAGS-target-libitm TAGS-target-libitm
+maybe-TAGS-target-libitm:
+
+.PHONY: maybe-install-info-target-libitm install-info-target-libitm
+maybe-install-info-target-libitm:
+
+.PHONY: maybe-install-pdf-target-libitm install-pdf-target-libitm
+maybe-install-pdf-target-libitm:
+
+.PHONY: maybe-install-html-target-libitm install-html-target-libitm
+maybe-install-html-target-libitm:
+
+.PHONY: maybe-installcheck-target-libitm installcheck-target-libitm
+maybe-installcheck-target-libitm:
+
+.PHONY: maybe-mostlyclean-target-libitm mostlyclean-target-libitm
+maybe-mostlyclean-target-libitm:
+
+.PHONY: maybe-clean-target-libitm clean-target-libitm
+maybe-clean-target-libitm:
+
+.PHONY: maybe-distclean-target-libitm distclean-target-libitm
+maybe-distclean-target-libitm:
+
+.PHONY: maybe-maintainer-clean-target-libitm maintainer-clean-target-libitm
+maybe-maintainer-clean-target-libitm:
+
+
+
+
+
+.PHONY: configure-target-libatomic maybe-configure-target-libatomic
+maybe-configure-target-libatomic:
+
+
+
+
+
+.PHONY: all-target-libatomic maybe-all-target-libatomic
+maybe-all-target-libatomic:
+
+
+
+
+
+.PHONY: check-target-libatomic maybe-check-target-libatomic
+maybe-check-target-libatomic:
+
+.PHONY: install-target-libatomic maybe-install-target-libatomic
+maybe-install-target-libatomic:
+
+.PHONY: install-strip-target-libatomic maybe-install-strip-target-libatomic
+maybe-install-strip-target-libatomic:
+
+# Other targets (info, dvi, pdf, etc.)
+
+.PHONY: maybe-info-target-libatomic info-target-libatomic
+maybe-info-target-libatomic:
+
+.PHONY: maybe-dvi-target-libatomic dvi-target-libatomic
+maybe-dvi-target-libatomic:
+
+.PHONY: maybe-pdf-target-libatomic pdf-target-libatomic
+maybe-pdf-target-libatomic:
+
+.PHONY: maybe-html-target-libatomic html-target-libatomic
+maybe-html-target-libatomic:
+
+.PHONY: maybe-TAGS-target-libatomic TAGS-target-libatomic
+maybe-TAGS-target-libatomic:
+
+.PHONY: maybe-install-info-target-libatomic install-info-target-libatomic
+maybe-install-info-target-libatomic:
+
+.PHONY: maybe-install-pdf-target-libatomic install-pdf-target-libatomic
+maybe-install-pdf-target-libatomic:
+
+.PHONY: maybe-install-html-target-libatomic install-html-target-libatomic
+maybe-install-html-target-libatomic:
+
+.PHONY: maybe-installcheck-target-libatomic installcheck-target-libatomic
+maybe-installcheck-target-libatomic:
+
+.PHONY: maybe-mostlyclean-target-libatomic mostlyclean-target-libatomic
+maybe-mostlyclean-target-libatomic:
+
+.PHONY: maybe-clean-target-libatomic clean-target-libatomic
+maybe-clean-target-libatomic:
+
+.PHONY: maybe-distclean-target-libatomic distclean-target-libatomic
+maybe-distclean-target-libatomic:
+
+.PHONY: maybe-maintainer-clean-target-libatomic maintainer-clean-target-libatomic
+maybe-maintainer-clean-target-libatomic:
+
+
+
+
+
+
 # ----------
 # GCC module
 # ----------
@@ -11390,6 +12063,14 @@ configure-stage3-gcc: maybe-configure-stage3-intl
 configure-stage4-gcc: maybe-configure-stage4-intl
 configure-stageprofile-gcc: maybe-configure-stageprofile-intl
 configure-stagefeedback-gcc: maybe-configure-stagefeedback-intl
+configure-gcc: maybe-all-gmp
+
+configure-stage1-gcc: maybe-all-stage1-gmp
+configure-stage2-gcc: maybe-all-stage2-gmp
+configure-stage3-gcc: maybe-all-stage3-gmp
+configure-stage4-gcc: maybe-all-stage4-gmp
+configure-stageprofile-gcc: maybe-all-stageprofile-gmp
+configure-stagefeedback-gcc: maybe-all-stagefeedback-gmp
 configure-gcc: maybe-all-lto-plugin
 
 configure-stage1-gcc: maybe-all-stage1-lto-plugin
@@ -11446,14 +12127,6 @@ all-stage3-gcc: all-stage3-libiberty
 all-stage4-gcc: all-stage4-libiberty
 all-stageprofile-gcc: all-stageprofile-libiberty
 all-stagefeedback-gcc: all-stagefeedback-libiberty
-all-gcc: maybe-all-gmp
-
-all-stage1-gcc: maybe-all-stage1-gmp
-all-stage2-gcc: maybe-all-stage2-gmp
-all-stage3-gcc: maybe-all-stage3-gmp
-all-stage4-gcc: maybe-all-stage4-gmp
-all-stageprofile-gcc: maybe-all-stageprofile-gmp
-all-stagefeedback-gcc: maybe-all-stagefeedback-gmp
 all-gcc: maybe-all-intl
 
 all-stage1-gcc: maybe-all-stage1-intl
@@ -11478,14 +12151,6 @@ all-stage3-gcc: maybe-all-stage3-mpc
 all-stage4-gcc: maybe-all-stage4-mpc
 all-stageprofile-gcc: maybe-all-stageprofile-mpc
 all-stagefeedback-gcc: maybe-all-stagefeedback-mpc
-all-gcc: maybe-all-ppl
-
-all-stage1-gcc: maybe-all-stage1-ppl
-all-stage2-gcc: maybe-all-stage2-ppl
-all-stage3-gcc: maybe-all-stage3-ppl
-all-stage4-gcc: maybe-all-stage4-ppl
-all-stageprofile-gcc: maybe-all-stageprofile-ppl
-all-stagefeedback-gcc: maybe-all-stagefeedback-ppl
 all-gcc: maybe-all-cloog
 
 all-stage1-gcc: maybe-all-stage1-cloog
@@ -11542,6 +12207,14 @@ all-stage3-gcc: maybe-all-stage3-zlib
 all-stage4-gcc: maybe-all-stage4-zlib
 all-stageprofile-gcc: maybe-all-stageprofile-zlib
 all-stagefeedback-gcc: maybe-all-stagefeedback-zlib
+all-gcc: all-libbacktrace
+
+all-stage1-gcc: all-stage1-libbacktrace
+all-stage2-gcc: all-stage2-libbacktrace
+all-stage3-gcc: all-stage3-libbacktrace
+all-stage4-gcc: all-stage4-libbacktrace
+all-stageprofile-gcc: all-stageprofile-libbacktrace
+all-stagefeedback-gcc: all-stagefeedback-libbacktrace
 all-gcc: all-libcpp
 
 all-stage1-gcc: all-stage1-libcpp
@@ -11610,6 +12283,7 @@ html-stagefeedback-gcc: maybe-all-build-libiberty
 install-gcc: maybe-install-fixincludes
 install-gcc: maybe-install-lto-plugin
 install-strip-gcc: maybe-install-strip-fixincludes
+install-strip-gcc: maybe-install-strip-lto-plugin
 configure-libcpp: configure-libiberty
 
 configure-stage1-libcpp: configure-stage1-libiberty
@@ -11669,30 +12343,30 @@ configure-stage3-mpc: maybe-all-stage3-mpfr
 configure-stage4-mpc: maybe-all-stage4-mpfr
 configure-stageprofile-mpc: maybe-all-stageprofile-mpfr
 configure-stagefeedback-mpc: maybe-all-stagefeedback-mpfr
-configure-ppl: maybe-all-gmp
+configure-isl: maybe-all-gmp
 
-configure-stage1-ppl: maybe-all-stage1-gmp
-configure-stage2-ppl: maybe-all-stage2-gmp
-configure-stage3-ppl: maybe-all-stage3-gmp
-configure-stage4-ppl: maybe-all-stage4-gmp
-configure-stageprofile-ppl: maybe-all-stageprofile-gmp
-configure-stagefeedback-ppl: maybe-all-stagefeedback-gmp
-configure-ppl: maybe-all-mpfr
+configure-stage1-isl: maybe-all-stage1-gmp
+configure-stage2-isl: maybe-all-stage2-gmp
+configure-stage3-isl: maybe-all-stage3-gmp
+configure-stage4-isl: maybe-all-stage4-gmp
+configure-stageprofile-isl: maybe-all-stageprofile-gmp
+configure-stagefeedback-isl: maybe-all-stagefeedback-gmp
+configure-cloog: maybe-all-isl
 
-configure-stage1-ppl: maybe-all-stage1-mpfr
-configure-stage2-ppl: maybe-all-stage2-mpfr
-configure-stage3-ppl: maybe-all-stage3-mpfr
-configure-stage4-ppl: maybe-all-stage4-mpfr
-configure-stageprofile-ppl: maybe-all-stageprofile-mpfr
-configure-stagefeedback-ppl: maybe-all-stagefeedback-mpfr
-configure-cloog: maybe-all-ppl
+configure-stage1-cloog: maybe-all-stage1-isl
+configure-stage2-cloog: maybe-all-stage2-isl
+configure-stage3-cloog: maybe-all-stage3-isl
+configure-stage4-cloog: maybe-all-stage4-isl
+configure-stageprofile-cloog: maybe-all-stageprofile-isl
+configure-stagefeedback-cloog: maybe-all-stagefeedback-isl
+configure-cloog: maybe-all-gmp
 
-configure-stage1-cloog: maybe-all-stage1-ppl
-configure-stage2-cloog: maybe-all-stage2-ppl
-configure-stage3-cloog: maybe-all-stage3-ppl
-configure-stage4-cloog: maybe-all-stage4-ppl
-configure-stageprofile-cloog: maybe-all-stageprofile-ppl
-configure-stagefeedback-cloog: maybe-all-stagefeedback-ppl
+configure-stage1-cloog: maybe-all-stage1-gmp
+configure-stage2-cloog: maybe-all-stage2-gmp
+configure-stage3-cloog: maybe-all-stage3-gmp
+configure-stage4-cloog: maybe-all-stage4-gmp
+configure-stageprofile-cloog: maybe-all-stageprofile-gmp
+configure-stagefeedback-cloog: maybe-all-stagefeedback-gmp
 configure-gdb: maybe-all-intl
 configure-gdb: maybe-configure-sim
 configure-gdb: maybe-all-bfd
@@ -11814,6 +12488,14 @@ all-stage3-binutils: maybe-all-stage3-intl
 all-stage4-binutils: maybe-all-stage4-intl
 all-stageprofile-binutils: maybe-all-stageprofile-intl
 all-stagefeedback-binutils: maybe-all-stagefeedback-intl
+all-binutils: maybe-all-gas
+
+all-stage1-binutils: maybe-all-stage1-gas
+all-stage2-binutils: maybe-all-stage2-gas
+all-stage3-binutils: maybe-all-stage3-gas
+all-stage4-binutils: maybe-all-stage4-gas
+all-stageprofile-binutils: maybe-all-stageprofile-gas
+all-stagefeedback-binutils: maybe-all-stagefeedback-gas
 install-binutils: maybe-install-opcodes
 install-strip-binutils: maybe-install-strip-opcodes
 install-opcodes: maybe-install-bfd
@@ -11863,6 +12545,7 @@ all-gprof: maybe-all-libiberty
 all-gprof: maybe-all-bfd
 all-gprof: maybe-all-opcodes
 all-gprof: maybe-all-intl
+all-gprof: maybe-all-gas
 configure-ld: maybe-configure-intl
 
 configure-stage1-ld: maybe-configure-stage1-intl
@@ -11919,6 +12602,14 @@ all-stage3-ld: maybe-all-stage3-intl
 all-stage4-ld: maybe-all-stage4-intl
 all-stageprofile-ld: maybe-all-stageprofile-intl
 all-stagefeedback-ld: maybe-all-stagefeedback-intl
+all-ld: maybe-all-gas
+
+all-stage1-ld: maybe-all-stage1-gas
+all-stage2-ld: maybe-all-stage2-gas
+all-stage3-ld: maybe-all-stage3-gas
+all-stage4-ld: maybe-all-stage4-gas
+all-stageprofile-ld: maybe-all-stageprofile-gas
+all-stagefeedback-ld: maybe-all-stagefeedback-gas
 install-ld: maybe-install-gold
 install-strip-ld: maybe-install-strip-gold
 configure-gold: maybe-configure-intl
@@ -11961,6 +12652,14 @@ all-stage3-gold: maybe-all-build-bison
 all-stage4-gold: maybe-all-build-bison
 all-stageprofile-gold: maybe-all-build-bison
 all-stagefeedback-gold: maybe-all-build-bison
+all-gold: maybe-all-gas
+
+all-stage1-gold: maybe-all-stage1-gas
+all-stage2-gold: maybe-all-stage2-gas
+all-stage3-gold: maybe-all-stage3-gas
+all-stage4-gold: maybe-all-stage4-gas
+all-stageprofile-gold: maybe-all-stageprofile-gas
+all-stagefeedback-gold: maybe-all-stagefeedback-gas
 check-gold: maybe-all-binutils
 
 check-stage1-gold: maybe-all-stage1-binutils
@@ -12056,7 +12755,9 @@ configure-target-fastjar: maybe-configure-target-zlib
 all-target-fastjar: maybe-all-target-zlib
 configure-target-libgo: maybe-configure-target-libffi
 configure-target-libgo: maybe-all-target-libstdc++-v3
+all-target-libgo: maybe-all-target-libbacktrace
 all-target-libgo: maybe-all-target-libffi
+all-target-libgo: maybe-all-target-libatomic
 configure-target-libjava: maybe-configure-target-zlib
 configure-target-libjava: maybe-configure-target-boehm-gc
 configure-target-libjava: maybe-configure-target-libffi
@@ -12074,6 +12775,22 @@ configure-stage3-target-libstdc++-v3: maybe-configure-stage3-target-libgomp
 configure-stage4-target-libstdc++-v3: maybe-configure-stage4-target-libgomp
 configure-stageprofile-target-libstdc++-v3: maybe-configure-stageprofile-target-libgomp
 configure-stagefeedback-target-libstdc++-v3: maybe-configure-stagefeedback-target-libgomp
+configure-target-libsanitizer: maybe-all-target-libstdc++-v3
+
+configure-stage1-target-libsanitizer: maybe-all-stage1-target-libstdc++-v3
+configure-stage2-target-libsanitizer: maybe-all-stage2-target-libstdc++-v3
+configure-stage3-target-libsanitizer: maybe-all-stage3-target-libstdc++-v3
+configure-stage4-target-libsanitizer: maybe-all-stage4-target-libstdc++-v3
+configure-stageprofile-target-libsanitizer: maybe-all-stageprofile-target-libstdc++-v3
+configure-stagefeedback-target-libsanitizer: maybe-all-stagefeedback-target-libstdc++-v3
+configure-target-libvtv: maybe-all-target-libstdc++-v3
+
+configure-stage1-target-libvtv: maybe-all-stage1-target-libstdc++-v3
+configure-stage2-target-libvtv: maybe-all-stage2-target-libstdc++-v3
+configure-stage3-target-libvtv: maybe-all-stage3-target-libstdc++-v3
+configure-stage4-target-libvtv: maybe-all-stage4-target-libstdc++-v3
+configure-stageprofile-target-libvtv: maybe-all-stageprofile-target-libstdc++-v3
+configure-stagefeedback-target-libvtv: maybe-all-stagefeedback-target-libstdc++-v3
 all-target-libstdc++-v3: maybe-configure-target-libgomp
 
 all-stage1-target-libstdc++-v3: maybe-configure-stage1-target-libgomp
@@ -12082,6 +12799,17 @@ all-stage3-target-libstdc++-v3: maybe-configure-stage3-target-libgomp
 all-stage4-target-libstdc++-v3: maybe-configure-stage4-target-libgomp
 all-stageprofile-target-libstdc++-v3: maybe-configure-stageprofile-target-libgomp
 all-stagefeedback-target-libstdc++-v3: maybe-configure-stagefeedback-target-libgomp
+install-target-libgo: maybe-install-target-libatomic
+install-target-libgfortran: maybe-install-target-libquadmath
+install-target-libgfortran: maybe-install-target-libgcc
+install-target-libsanitizer: maybe-install-target-libstdc++-v3
+install-target-libsanitizer: maybe-install-target-libgcc
+install-target-libvtv: maybe-install-target-libstdc++-v3
+install-target-libvtv: maybe-install-target-libgcc
+install-target-libjava: maybe-install-target-libgcc
+install-target-libitm: maybe-install-target-libgcc
+install-target-libobjc: maybe-install-target-libgcc
+install-target-libstdc++-v3: maybe-install-target-libgcc
 all-target-libgloss: maybe-all-target-newlib
 all-target-winsup: maybe-all-target-libtermcap
 configure-target-newlib: maybe-all-binutils
@@ -12101,9 +12829,15 @@ configure-target-libstdc++-v3: maybe-all-target-newlib maybe-all-target-libgloss
 
 configure-target-libmudflap: maybe-all-target-newlib maybe-all-target-libgloss
 
+configure-target-libsanitizer: maybe-all-target-newlib maybe-all-target-libgloss
+
+configure-target-libvtv: maybe-all-target-newlib maybe-all-target-libgloss
+
 configure-target-libssp: maybe-all-target-newlib maybe-all-target-libgloss
 
 
+
+configure-target-libbacktrace: maybe-all-target-newlib maybe-all-target-libgloss
 
 configure-target-libquadmath: maybe-all-target-newlib maybe-all-target-libgloss
 
@@ -12132,6 +12866,11 @@ configure-target-rda: maybe-all-target-newlib maybe-all-target-libgloss
 configure-target-libada: maybe-all-target-newlib maybe-all-target-libgloss
 
 configure-target-libgomp: maybe-all-target-newlib maybe-all-target-libgloss
+
+configure-target-libitm: maybe-all-target-newlib maybe-all-target-libgloss
+configure-target-libitm: maybe-all-target-libstdc++-v3
+
+configure-target-libatomic: maybe-all-target-newlib maybe-all-target-libgloss
 
 
 CONFIGURE_GDB_TK = 

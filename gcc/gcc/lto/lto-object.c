@@ -26,6 +26,7 @@ along with GCC; see the file COPYING3.  If not see
 #include "tm.h"
 #include "lto-streamer.h"
 #include "simple-object.h"
+#include <asm-generic/fcntl.h>
 
 /* Segment name for LTO sections.  This is only used for Mach-O.
    FIXME: This needs to be kept in sync with darwin.c.  */

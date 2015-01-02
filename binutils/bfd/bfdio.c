@@ -1,8 +1,6 @@
 /* Low-level I/O routines for BFDs.
 
-   Copyright 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
-   1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2011
-   Free Software Foundation, Inc.
+   Copyright 1990-2013 Free Software Foundation, Inc.
 
    Written by Cygnus Support.
 
@@ -87,10 +85,9 @@ FILE *
 real_fopen (const char *filename, const char *modes)
 {
 #ifdef VMS
-  char vms_modes[4];
   char *vms_attr;
 
-  /* On VMS, fopen allows file attributes as optionnal arguments.
+  /* On VMS, fopen allows file attributes as optional arguments.
      We need to use them but we'd better to use the common prototype.
      In fopen-vms.h, they are separated from the mode with a comma.
      Split here.  */
@@ -185,7 +182,8 @@ bfd_bread (void *ptr, bfd_size_type size, bfd *abfd)
      this element.  */
   if (abfd->arelt_data != NULL)
     {
-      size_t maxbytes = ((struct areltdata *) abfd->arelt_data)->parsed_size;
+      bfd_size_type maxbytes = arelt_size (abfd);
+
       if (abfd->where + size > maxbytes)
         {
           if (abfd->where >= maxbytes)
@@ -233,10 +231,14 @@ bfd_tell (bfd *abfd)
 
   if (abfd->iovec)
     {
+      bfd *parent_bfd = abfd;
       ptr = abfd->iovec->btell (abfd);
 
-      if (abfd->my_archive)
-	ptr -= abfd->origin;
+      while (parent_bfd->my_archive != NULL)
+	{
+	  ptr -= parent_bfd->origin;
+	  parent_bfd = parent_bfd->my_archive;
+	}
     }
   else
     ptr = 0;
@@ -308,8 +310,16 @@ bfd_seek (bfd *abfd, file_ptr position, int direction)
     }
 
   file_position = position;
-  if (direction == SEEK_SET && abfd->my_archive != NULL)
-    file_position += abfd->origin;
+  if (direction == SEEK_SET)
+    {
+      bfd *parent_bfd = abfd;
+
+      while (parent_bfd->my_archive != NULL)
+        {
+          file_position += parent_bfd->origin;
+          parent_bfd = parent_bfd->my_archive;
+        }
+    }
 
   if (abfd->iovec)
     result = abfd->iovec->bseek (abfd, file_position, direction);
@@ -574,7 +584,7 @@ memory_bclose (struct bfd *abfd)
   free (bim);
   abfd->iostream = NULL;
 
-  return TRUE;
+  return 0;
 }
 
 static int

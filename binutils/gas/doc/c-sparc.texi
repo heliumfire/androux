@@ -54,6 +54,7 @@ is explicitly requested.  SPARC v9 is always incompatible with sparclite.
 @kindex -Av6
 @kindex -Av7
 @kindex -Av8
+@kindex -Aleon
 @kindex -Asparclet
 @kindex -Asparclite
 @kindex -Av9
@@ -69,7 +70,7 @@ is explicitly requested.  SPARC v9 is always incompatible with sparclite.
 @kindex -Asparcima
 @kindex -Asparcvis3
 @kindex -Asparcvis3r
-@item -Av6 | -Av7 | -Av8 | -Asparclet | -Asparclite
+@item -Av6 | -Av7 | -Av8 | -Aleon | -Asparclet | -Asparclite
 @itemx -Av8plus | -Av8plusa | -Av8plusb | -Av8plusc | -Av8plusd | -Av8plusv
 @itemx -Av9 | -Av9a | -Av9b | -Av9c | -Av9d | -Av9v
 @itemx -Asparc | -Asparcvis | -Asparcvis2 | -Asparcfmaf | -Asparcima
@@ -584,8 +585,23 @@ also be generated using @samp{%ulo}.
 @item
 @code{R_SPARC_M44} is requested using @samp{%m44}.
 @item
-@code{R_SPARC_L44} is requested using @samp{%l44}.
+@code{R_SPARC_L44} is requested using @samp{%l44} or @samp{%l34}.
+@item
+@code{R_SPARC_H34} is requested using @samp{%h34}.
 @end itemize
+
+The @samp{%l34} generates a @code{R_SPARC_L44} relocation because it
+calculates the necessary value, and therefore no explicit
+@code{R_SPARC_L34} relocation needed to be created for this purpose.
+
+The @samp{%h34} and @samp{%l34} relocations are used for the abs34 code
+model.  Here is an example abs34 address generation sequence:
+
+@example
+sethi %h34(symbol), %g1
+sllx  %g1, 2, %g1
+or    %g1, %l34(symbol), %g1
+@end example
 
 The PC relative relocation @code{R_SPARC_PC22} can be obtained by
 enclosing an operand inside of @samp{%pc22}.  Likewise, the

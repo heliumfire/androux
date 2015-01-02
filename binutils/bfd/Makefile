@@ -15,6 +15,24 @@
 
 
 
+#
+#   Copyright 2012 Free Software Foundation
+#
+# This file is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; see the file COPYING3.  If not see
+# <http://www.gnu.org/licenses/>.
+#
+
 
 
 
@@ -34,9 +52,9 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-build_triplet = x86_64-unknown-linux-gnu
-host_triplet = arm-unknown-linux-gnu
-target_triplet = arm-unknown-linux-gnu
+build_triplet = i386-apple-darwin14.0.0
+host_triplet = arm-unknown-linux-androideabi
+target_triplet = arm-unknown-linux-androideabi
 #am__append_1 = -rpath $(rpath_bfdlibdir)
 #am__append_2 = $(INCDIR)/plugin-api.h
 subdir = .
@@ -147,58 +165,58 @@ AM_RECURSIVE_TARGETS = $(RECURSIVE_TARGETS:-recursive=) \
 ETAGS = etags
 CTAGS = ctags
 DIST_SUBDIRS = $(SUBDIRS)
-ACLOCAL = ${SHELL} /home/anushruth/experiment/binutils/missing --run aclocal-1.11
-AMTAR = ${SHELL} /home/anushruth/experiment/binutils/missing --run tar
-AR = arm-linux-ar
-AUTOCONF = ${SHELL} /home/anushruth/experiment/binutils/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/anushruth/experiment/binutils/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/anushruth/experiment/binutils/missing --run automake-1.11
-AWK = gawk
+ACLOCAL = ${SHELL} /Users/regnarts/Documents/experiment/binutils/missing --run aclocal-1.11
+AMTAR = ${SHELL} /Users/regnarts/Documents/experiment/binutils/missing --run tar
+AR = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-ar
+AUTOCONF = ${SHELL} /Users/regnarts/Documents/experiment/binutils/missing --run autoconf
+AUTOHEADER = ${SHELL} /Users/regnarts/Documents/experiment/binutils/missing --run autoheader
+AUTOMAKE = ${SHELL} /Users/regnarts/Documents/experiment/binutils/missing --run automake-1.11
+AWK = awk
 BFD_HOSTPTR_T = unsigned long
 BFD_HOST_64BIT_LONG = 0
 BFD_HOST_64BIT_LONG_LONG = 1
 BFD_HOST_64_BIT = long long
 BFD_HOST_64_BIT_DEFINED = 1
 BFD_HOST_U_64_BIT = unsigned long long
-CATALOGS = 
-CATOBJEXT = 
-CC = /home/anushruth/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc
+CATALOGS =  da.gmo es.gmo fi.gmo fr.gmo id.gmo ja.gmo ro.gmo ru.gmo rw.gmo sv.gmo tr.gmo uk.gmo vi.gmo zh_CN.gmo da.gmo es.gmo fi.gmo fr.gmo id.gmo ja.gmo ro.gmo ru.gmo rw.gmo sv.gmo tr.gmo uk.gmo vi.gmo zh_CN.gmo
+CATOBJEXT = .gmo
+CC = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc
 CCDEPMODE = depmode=gcc3
 CC_FOR_BUILD = gcc
-CFLAGS = -I. -I./../include -I/home/anushruth/tools/android-ndk-r10b/platforms/android-9/arch-arm/usr/include -Wno-error -g -O2
+CFLAGS = -g -O2 -I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ --sysroot=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/ -Wno-error
 COREFILE = 
 COREFLAG = 
 CPP = /lib/cpp
 CPPFLAGS = 
 CYGPATH_W = echo
-DATADIRNAME = 
+DATADIRNAME = share
 DEBUGDIR = ${exec_prefix}/lib/debug
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
 DSYMUTIL = 
 DUMPBIN = 
-ECHO_C = 
-ECHO_N = -n
+ECHO_C = \c
+ECHO_N = 
 ECHO_T = 
-EGREP = /bin/grep -E
+EGREP = /usr/bin/grep -E
 EXEEXT = 
 EXEEXT_FOR_BUILD = 
-FGREP = /bin/grep -F
-GENCAT = 
-GMSGFMT = /usr/bin/msgfmt
-GREP = /bin/grep
+FGREP = /usr/bin/grep -F
+GENCAT = gencat
+GMSGFMT = /opt/local/bin/msgfmt
+GREP = /usr/bin/grep
 HDEFINES = 
-INCINTL = 
+INCINTL = -I${top_builddir}/../intl
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = /usr/bin/install -c -m 644
 INSTALL_PROGRAM = /usr/bin/install -c
 INSTALL_SCRIPT = /usr/bin/install -c
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-INSTOBJEXT = 
-LD = /home/anushruth/tools/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.6/../../../../arm-linux-androideabi/bin/ld
-LDFLAGS =  --sysroot=/home/anushruth/tools/android-ndk-r10d/platforms/android-9/arch-arm/
-LIBINTL = 
-LIBINTL_DEP = 
+INSTOBJEXT = .mo
+LD = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ld
+LDFLAGS =  -L/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/lib/
+LIBINTL = ${top_builddir}/../intl/libintl.a
+LIBINTL_DEP = ${top_builddir}/../intl/libintl.a
 LIBM = -lm
 LIBOBJS = 
 LIBS = -lz 
@@ -208,45 +226,45 @@ LN_S = ln -s
 LTLIBOBJS = 
 MAINT = #
 MAKEINFO = makeinfo --split-size=5000000
-MKDIR_P = /bin/mkdir -p
+MKDIR_P = ./../install-sh -c -d
 MKINSTALLDIRS = $(top_builddir)/./../mkinstalldirs
-MSGFMT = /usr/bin/msgfmt
-MSGMERGE = /usr/bin/msgmerge
-NM = arm-linux-nm
+MSGFMT = /opt/local/bin/msgfmt
+MSGMERGE = /opt/local/bin/msgmerge
+NM = arm-linux-androideabi-nm
 NMEDIT = 
-NO_WERROR = 
-OBJDUMP = arm-linux-objdump
+NO_WERROR = -Wno-error
+OBJDUMP = arm-linux-androideabi-objdump
 OBJEXT = o
 OTOOL = 
 OTOOL64 = 
 PACKAGE = bfd
 PACKAGE_BUGREPORT = 
-PACKAGE_NAME = 
-PACKAGE_STRING = 
-PACKAGE_TARNAME = 
+PACKAGE_NAME = bfd
+PACKAGE_STRING = bfd 2.24
+PACKAGE_TARNAME = bfd
 PACKAGE_URL = 
-PACKAGE_VERSION = 
+PACKAGE_VERSION = 2.24
 PATH_SEPARATOR = :
 PKGVERSION = (GNU Binutils) 
-POSUB = 
+POSUB = po
 RANLIB = true
 REPORT_BUGS_TEXI = @uref{http://www.sourceware.org/bugzilla/}
 REPORT_BUGS_TO = <http://www.sourceware.org/bugzilla/>
-SED = /bin/sed
+SED = /usr/bin/sed
 SET_MAKE = 
 SHARED_LDFLAGS = 
 SHARED_LIBADD = 
-SHELL = /bin/bash
+SHELL = /bin/sh
 STRIP = strip
 TDEFINES =  
-USE_NLS = no
-VERSION = 2.22
-WARN_CFLAGS = -W -Wall -Wstrict-prototypes -Wmissing-prototypes -Wshadow
-XGETTEXT = /usr/bin/xgettext
-abs_builddir = /home/anushruth/experiment/binutils/bfd
-abs_srcdir = /home/anushruth/experiment/binutils/bfd
-abs_top_builddir = /home/anushruth/experiment/binutils/bfd
-abs_top_srcdir = /home/anushruth/experiment/binutils/bfd
+USE_NLS = yes
+VERSION = 2.24
+WARN_CFLAGS = -W -Wall -Wstrict-prototypes -Wmissing-prototypes -Wshadow -Werror
+XGETTEXT = /opt/local/bin/xgettext
+abs_builddir = /Users/regnarts/Documents/experiment/binutils/bfd
+abs_srcdir = /Users/regnarts/Documents/experiment/binutils/bfd
+abs_top_builddir = /Users/regnarts/Documents/experiment/binutils/bfd
+abs_top_srcdir = /Users/regnarts/Documents/experiment/binutils/bfd
 ac_ct_CC = 
 ac_ct_DUMPBIN = 
 all_backends = $(BFD32_BACKENDS)
@@ -256,7 +274,7 @@ am__quote =
 am__tar = ${AMTAR} chof - "$$tardir"
 am__untar = ${AMTAR} xf -
 bfd64_libs = 
-bfd_backends =  elf32-arm.lo elf32.lo elf-vxworks.lo elf.lo elflink.lo elf-attrs.lo elf-strtab.lo elf-eh-frame.lo dwarf1.lo elf32-gen.lo
+bfd_backends =  elf32-arm.lo elf32.lo elf-nacl.lo elf-vxworks.lo elf.lo elflink.lo elf-attrs.lo elf-strtab.lo elf-eh-frame.lo dwarf1.lo elf32-gen.lo
 bfd_default_target_size = 32
 bfd_file_ptr = long
 bfd_machines =  cpu-arm.lo
@@ -267,37 +285,38 @@ bfdincludedir = $(includedir)
 #bfdlibdir = 
 bfdlibdir = $(libdir)
 bindir = ${exec_prefix}/bin
-build = x86_64-unknown-linux-gnu
-build_alias = x86_64-unknown-linux-gnu
-build_cpu = x86_64
-build_os = linux-gnu
-build_vendor = unknown
+build = i386-apple-darwin14.0.0
+build_alias = i386-apple-darwin14.0.0
+build_cpu = i386
+build_os = darwin14.0.0
+build_vendor = apple
 builddir = .
 datadir = ${datarootdir}
 datarootdir = ${prefix}/share
-docdir = ${datarootdir}/doc/${PACKAGE}
+docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
 havevecs = -DHAVE_bfd_elf32_littlearm_vec -DHAVE_bfd_elf32_bigarm_vec -DHAVE_bfd_elf32_little_generic_vec -DHAVE_bfd_elf32_big_generic_vec
-host = arm-unknown-linux-gnu
-host_alias = arm-linux
+host = arm-unknown-linux-androideabi
+host_alias = arm-linux-androideabi
 host_cpu = arm
-host_noncanonical = arm-linux
-host_os = linux-gnu
+host_noncanonical = arm-linux-androideabi
+host_os = linux-androideabi
 host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/anushruth/experiment/binutils/install-sh
+install_sh = ${SHELL} /Users/regnarts/Documents/experiment/binutils/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
 localstatedir = ${prefix}/var
+lt_cv_dlopen_libs = 
 mandir = ${datarootdir}/man
-mkdir_p = /bin/mkdir -p
+mkdir_p = $(top_builddir)/./../install-sh -c -d
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /home/anushruth/experiment/sysroot
+prefix = /Users/regnarts/Documents/experiment/system
 program_transform_name = s,y,y,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
@@ -305,11 +324,11 @@ sharedstatedir = ${prefix}/com
 srcdir = .
 supports_plugins = 0
 sysconfdir = ${prefix}/etc
-target = arm-unknown-linux-gnu
-target_alias = arm-linux
+target = arm-unknown-linux-androideabi
+target_alias = arm-linux-androideabi
 target_cpu = arm
-target_noncanonical = arm-linux
-target_os = linux-gnu
+target_noncanonical = arm-linux-androideabi
+target_os = linux-androideabi
 target_vendor = unknown
 tdefaults =  -DDEFAULT_VECTOR=bfd_elf32_littlearm_vec -DSELECT_VECS='&bfd_elf32_littlearm_vec,&bfd_elf32_bigarm_vec,&bfd_elf32_little_generic_vec,&bfd_elf32_big_generic_vec' -DSELECT_ARCHITECTURES='&bfd_arm_arch'
 top_build_prefix = 
@@ -336,7 +355,7 @@ bfdinclude_HEADERS = $(BFD_H) \
 #noinst_LTLIBRARIES = libbfd.la
 AM_CFLAGS = $(WARN_CFLAGS)
 AM_CPPFLAGS = -DBINDIR='"$(bindir)"'
-#LIBDL = -ldl
+#LIBDL = 
 
 # bfd.h goes here, for now
 BFD_H = bfd.h
@@ -370,6 +389,7 @@ BFD64_LIBS_CFILES = archive64.c
 # This list is alphabetized to make it easier to keep in sync
 # with the decls and initializer in archures.c.
 ALL_MACHINES = \
+	cpu-aarch64.lo \
 	cpu-alpha.lo \
 	cpu-arc.lo \
 	cpu-arm.lo \
@@ -382,6 +402,7 @@ ALL_MACHINES = \
 	cpu-d10v.lo \
 	cpu-d30v.lo \
 	cpu-dlx.lo \
+	cpu-epiphany.lo \
 	cpu-fr30.lo \
 	cpu-frv.lo \
 	cpu-h8300.lo \
@@ -403,16 +424,20 @@ ALL_MACHINES = \
 	cpu-m32r.lo \
 	cpu-m68hc11.lo \
 	cpu-m68hc12.lo \
+	cpu-m9s12x.lo \
+	cpu-m9s12xg.lo \
 	cpu-m68k.lo \
 	cpu-m88k.lo \
 	cpu-mcore.lo \
 	cpu-mep.lo \
+	cpu-metag.lo \
 	cpu-microblaze.lo \
 	cpu-mips.lo \
 	cpu-mmix.lo \
 	cpu-moxie.lo \
 	cpu-msp430.lo \
 	cpu-mt.lo \
+	cpu-nios2.lo \
 	cpu-ns32k.lo \
 	cpu-openrisc.lo \
 	cpu-or32.lo \
@@ -421,6 +446,7 @@ ALL_MACHINES = \
 	cpu-plugin.lo \
 	cpu-powerpc.lo \
 	cpu-rs6000.lo \
+	cpu-rl78.lo \
 	cpu-rx.lo \
 	cpu-s390.lo \
 	cpu-score.lo \
@@ -435,16 +461,19 @@ ALL_MACHINES = \
 	cpu-tilegx.lo \
 	cpu-tilepro.lo \
 	cpu-v850.lo \
+	cpu-v850_rh850.lo \
 	cpu-vax.lo \
 	cpu-w65.lo \
 	cpu-we32k.lo \
 	cpu-xc16x.lo \
+	cpu-xgate.lo \
 	cpu-xstormy16.lo \
 	cpu-xtensa.lo \
 	cpu-z80.lo \
 	cpu-z8k.lo
 
 ALL_MACHINES_CFILES = \
+	cpu-aarch64.c \
 	cpu-alpha.c \
 	cpu-arc.c \
 	cpu-arm.c \
@@ -457,6 +486,7 @@ ALL_MACHINES_CFILES = \
 	cpu-d10v.c \
 	cpu-d30v.c \
 	cpu-dlx.c \
+	cpu-epiphany.c \
 	cpu-fr30.c \
 	cpu-frv.c \
 	cpu-h8300.c \
@@ -478,10 +508,13 @@ ALL_MACHINES_CFILES = \
 	cpu-m32r.c \
 	cpu-m68hc11.c \
 	cpu-m68hc12.c \
+	cpu-m9s12x.c \
+	cpu-m9s12xg.c \
 	cpu-m68k.c \
 	cpu-m88k.c \
 	cpu-mcore.c \
 	cpu-mep.c \
+	cpu-metag.c \
 	cpu-microblaze.c \
 	cpu-mips.c \
 	cpu-mmix.c \
@@ -489,6 +522,7 @@ ALL_MACHINES_CFILES = \
 	cpu-msp430.c \
 	cpu-mt.c \
 	cpu-ns32k.c \
+	cpu-nios2.c \
 	cpu-openrisc.c \
 	cpu-or32.c \
 	cpu-pdp11.c \
@@ -496,6 +530,7 @@ ALL_MACHINES_CFILES = \
 	cpu-plugin.c \
 	cpu-powerpc.c \
 	cpu-rs6000.c \
+	cpu-rl78.c \
 	cpu-rx.c \
 	cpu-s390.c \
 	cpu-score.c \
@@ -510,10 +545,12 @@ ALL_MACHINES_CFILES = \
 	cpu-tilegx.c \
 	cpu-tilepro.c \
 	cpu-v850.c \
+	cpu-v850_rh850.c \
 	cpu-vax.c \
 	cpu-w65.c \
 	cpu-we32k.c \
 	cpu-xc16x.c \
+	cpu-xgate.c \
 	cpu-xstormy16.c \
 	cpu-xtensa.c \
 	cpu-z80.c \
@@ -571,6 +608,7 @@ BFD32_BACKENDS = \
 	elf-ifunc.lo \
 	elf-m10200.lo \
 	elf-m10300.lo \
+	elf-nacl.lo \
 	elf-strtab.lo \
 	elf-vxworks.lo \
 	elf.lo \
@@ -586,6 +624,7 @@ BFD32_BACKENDS = \
 	elf32-d10v.lo \
 	elf32-d30v.lo \
 	elf32-dlx.lo \
+	elf32-epiphany.lo \
 	elf32-fr30.lo \
 	elf32-frv.lo \
 	elf32-gen.lo \
@@ -607,15 +646,17 @@ BFD32_BACKENDS = \
 	elf32-m88k.lo \
 	elf32-mcore.lo \
 	elf32-mep.lo \
+	elf32-metag.lo \
 	elf32-microblaze.lo \
-	elf32-mips.lo \
 	elf32-moxie.lo \
 	elf32-msp430.lo \
 	elf32-mt.lo \
+	elf32-nios2.lo \
 	elf32-openrisc.lo \
 	elf32-or32.lo \
 	elf32-pj.lo \
 	elf32-ppc.lo \
+	elf32-rl78.lo \
 	elf32-rx.lo \
 	elf32-s390.lo \
 	elf32-sh-symbian.lo \
@@ -630,11 +671,11 @@ BFD32_BACKENDS = \
 	elf32-v850.lo \
 	elf32-vax.lo \
 	elf32-xc16x.lo \
+	elf32-xgate.lo \
 	elf32-xstormy16.lo \
 	elf32-xtensa.lo \
 	elf32.lo \
 	elflink.lo \
-	elfxx-mips.lo \
 	elfxx-sparc.lo \
 	elfxx-tilegx.lo \
 	epoc-pe-arm.lo \
@@ -755,6 +796,7 @@ BFD32_BACKENDS_CFILES = \
 	elf-ifunc.c \
 	elf-m10200.c \
 	elf-m10300.c \
+	elf-nacl.c \
 	elf-strtab.c \
 	elf-vxworks.c \
 	elf.c \
@@ -770,6 +812,7 @@ BFD32_BACKENDS_CFILES = \
 	elf32-d10v.c \
 	elf32-d30v.c \
 	elf32-dlx.c \
+	elf32-epiphany.c \
 	elf32-fr30.c \
 	elf32-frv.c \
 	elf32-gen.c \
@@ -791,15 +834,17 @@ BFD32_BACKENDS_CFILES = \
 	elf32-m88k.c \
 	elf32-mcore.c \
 	elf32-mep.c \
+	elf32-metag.c \
 	elf32-microblaze.c \
-	elf32-mips.c \
 	elf32-moxie.c \
 	elf32-msp430.c \
 	elf32-mt.c \
+	elf32-nios2.c \
 	elf32-openrisc.c \
 	elf32-or32.c \
 	elf32-pj.c \
 	elf32-ppc.c \
+	elf32-rl78.c \
 	elf32-rx.c \
 	elf32-s390.c \
 	elf32-sh-symbian.c \
@@ -814,11 +859,11 @@ BFD32_BACKENDS_CFILES = \
 	elf32-v850.c \
 	elf32-vax.c \
 	elf32-xc16x.c \
+	elf32-xgate.c \
 	elf32-xstormy16.c \
 	elf32-xtensa.c \
 	elf32.c \
 	elflink.c \
-	elfxx-mips.c \
 	elfxx-sparc.c \
 	elfxx-tilegx.c \
 	epoc-pe-arm.c \
@@ -896,6 +941,9 @@ BFD32_BACKENDS_CFILES = \
 # elf32-ia64.c requires a 64-bit bfd_vma, and hence can not be put in
 # BFD32_BACKENDS.
 BFD64_BACKENDS = \
+	elf32-aarch64.lo \
+	elf64-aarch64.lo \
+	elfxx-aarch64.lo \
 	aix5ppc-core.lo \
 	aout64.lo \
 	coff-alpha.lo \
@@ -903,12 +951,14 @@ BFD64_BACKENDS = \
 	coff64-rs6000.lo \
 	demo64.lo \
 	elf32-ia64.lo \
+	elf32-mips.lo \
 	elf32-score.lo \
 	elf32-score7.lo \
 	elf64-alpha.lo \
 	elf64-gen.lo \
 	elf64-hppa.lo \
 	elf64-ia64.lo \
+	elf64-ia64-vms.lo \
 	elf64-mips.lo \
 	elf64-mmix.lo \
 	elf64-ppc.lo \
@@ -920,6 +970,7 @@ BFD64_BACKENDS = \
 	elf64.lo \
 	elfn32-mips.lo \
 	elfxx-ia64.lo \
+	elfxx-mips.lo \
 	mach-o-x86-64.lo \
 	mmo.lo \
 	nlm32-alpha.lo \
@@ -938,11 +989,13 @@ BFD64_BACKENDS_CFILES = \
 	coff-x86_64.c \
 	coff64-rs6000.c \
 	demo64.c \
+	elf32-mips.c \
 	elf32-score.c \
 	elf32-score7.c \
 	elf64-alpha.c \
 	elf64-gen.c \
 	elf64-hppa.c \
+	elf64-ia64-vms.c \
 	elf64-mips.c \
 	elf64-mmix.c \
 	elf64-ppc.c \
@@ -953,7 +1006,9 @@ BFD64_BACKENDS_CFILES = \
 	elf64-x86-64.c \
 	elf64.c \
 	elfn32-mips.c \
+	elfxx-aarch64.c \
 	elfxx-ia64.c \
+	elfxx-mips.c \
 	mach-o-x86-64.c \
 	mmo.c \
 	nlm32-alpha.c \
@@ -998,12 +1053,12 @@ CONFIG_STATUS_DEPENDENCIES = \
 # These are defined by configure.in:
 WORDSIZE = 32
 ALL_BACKENDS = $(BFD32_BACKENDS)
-BFD_BACKENDS =  elf32-arm.lo elf32.lo elf-vxworks.lo elf.lo elflink.lo elf-attrs.lo elf-strtab.lo elf-eh-frame.lo dwarf1.lo elf32-gen.lo
+BFD_BACKENDS =  elf32-arm.lo elf32.lo elf-nacl.lo elf-vxworks.lo elf.lo elflink.lo elf-attrs.lo elf-strtab.lo elf-eh-frame.lo dwarf1.lo elf32-gen.lo
 BFD_MACHINES =  cpu-arm.lo
 TDEFAULTS =  -DDEFAULT_VECTOR=bfd_elf32_littlearm_vec -DSELECT_VECS='&bfd_elf32_littlearm_vec,&bfd_elf32_bigarm_vec,&bfd_elf32_little_generic_vec,&bfd_elf32_big_generic_vec' -DSELECT_ARCHITECTURES='&bfd_arm_arch'
 HAVEVECS = -DHAVE_bfd_elf32_littlearm_vec -DHAVE_bfd_elf32_bigarm_vec -DHAVE_bfd_elf32_little_generic_vec -DHAVE_bfd_elf32_big_generic_vec
 INCLUDES =     $(CSEARCH) $(CSWITCHES) \
-	$(HAVEVECS) 
+	$(HAVEVECS) -I${top_builddir}/../intl
 
 
 # C source files that correspond to .o's.
@@ -1016,12 +1071,13 @@ SOURCE_CFILES = \
 	$(OPTIONAL_BACKENDS_CFILES)
 
 BUILD_CFILES = \
+	elf32-aarch64.c elf64-aarch64.c \
 	elf32-ia64.c elf64-ia64.c peigen.c pepigen.c pex64igen.c
 
 CFILES = $(SOURCE_CFILES) $(BUILD_CFILES)
 SOURCE_HFILES = \
 	aout-target.h aoutf1.h aoutx.h coffcode.h coffswap.h ecoffswap.h \
-	elf-bfd.h elf-hppa.h elf32-hppa.h \
+	elf-bfd.h elf-hppa.h elf-linux-psinfo.h elf32-hppa.h \
 	elf64-hppa.h elfcode.h elfcore.h \
 	freebsd.h genlink.h go32stub.h \
 	libaout.h libbfd.h libcoff.h libecoff.h libhppa.h libieee.h \
@@ -1248,6 +1304,7 @@ include ./$(DEPDIR)/coffgen.Plo
 include ./$(DEPDIR)/cofflink.Plo
 include ./$(DEPDIR)/compress.Plo
 include ./$(DEPDIR)/corefile.Plo
+include ./$(DEPDIR)/cpu-aarch64.Plo
 include ./$(DEPDIR)/cpu-alpha.Plo
 include ./$(DEPDIR)/cpu-arc.Plo
 include ./$(DEPDIR)/cpu-arm.Plo
@@ -1260,6 +1317,7 @@ include ./$(DEPDIR)/cpu-crx.Plo
 include ./$(DEPDIR)/cpu-d10v.Plo
 include ./$(DEPDIR)/cpu-d30v.Plo
 include ./$(DEPDIR)/cpu-dlx.Plo
+include ./$(DEPDIR)/cpu-epiphany.Plo
 include ./$(DEPDIR)/cpu-fr30.Plo
 include ./$(DEPDIR)/cpu-frv.Plo
 include ./$(DEPDIR)/cpu-h8300.Plo
@@ -1283,14 +1341,18 @@ include ./$(DEPDIR)/cpu-m68hc11.Plo
 include ./$(DEPDIR)/cpu-m68hc12.Plo
 include ./$(DEPDIR)/cpu-m68k.Plo
 include ./$(DEPDIR)/cpu-m88k.Plo
+include ./$(DEPDIR)/cpu-m9s12x.Plo
+include ./$(DEPDIR)/cpu-m9s12xg.Plo
 include ./$(DEPDIR)/cpu-mcore.Plo
 include ./$(DEPDIR)/cpu-mep.Plo
+include ./$(DEPDIR)/cpu-metag.Plo
 include ./$(DEPDIR)/cpu-microblaze.Plo
 include ./$(DEPDIR)/cpu-mips.Plo
 include ./$(DEPDIR)/cpu-mmix.Plo
 include ./$(DEPDIR)/cpu-moxie.Plo
 include ./$(DEPDIR)/cpu-msp430.Plo
 include ./$(DEPDIR)/cpu-mt.Plo
+include ./$(DEPDIR)/cpu-nios2.Plo
 include ./$(DEPDIR)/cpu-ns32k.Plo
 include ./$(DEPDIR)/cpu-openrisc.Plo
 include ./$(DEPDIR)/cpu-or32.Plo
@@ -1298,6 +1360,7 @@ include ./$(DEPDIR)/cpu-pdp11.Plo
 include ./$(DEPDIR)/cpu-pj.Plo
 include ./$(DEPDIR)/cpu-plugin.Plo
 include ./$(DEPDIR)/cpu-powerpc.Plo
+include ./$(DEPDIR)/cpu-rl78.Plo
 include ./$(DEPDIR)/cpu-rs6000.Plo
 include ./$(DEPDIR)/cpu-rx.Plo
 include ./$(DEPDIR)/cpu-s390.Plo
@@ -1313,10 +1376,12 @@ include ./$(DEPDIR)/cpu-tic80.Plo
 include ./$(DEPDIR)/cpu-tilegx.Plo
 include ./$(DEPDIR)/cpu-tilepro.Plo
 include ./$(DEPDIR)/cpu-v850.Plo
+include ./$(DEPDIR)/cpu-v850_rh850.Plo
 include ./$(DEPDIR)/cpu-vax.Plo
 include ./$(DEPDIR)/cpu-w65.Plo
 include ./$(DEPDIR)/cpu-we32k.Plo
 include ./$(DEPDIR)/cpu-xc16x.Plo
+include ./$(DEPDIR)/cpu-xgate.Plo
 include ./$(DEPDIR)/cpu-xstormy16.Plo
 include ./$(DEPDIR)/cpu-xtensa.Plo
 include ./$(DEPDIR)/cpu-z80.Plo
@@ -1331,9 +1396,11 @@ include ./$(DEPDIR)/elf-eh-frame.Plo
 include ./$(DEPDIR)/elf-ifunc.Plo
 include ./$(DEPDIR)/elf-m10200.Plo
 include ./$(DEPDIR)/elf-m10300.Plo
+include ./$(DEPDIR)/elf-nacl.Plo
 include ./$(DEPDIR)/elf-strtab.Plo
 include ./$(DEPDIR)/elf-vxworks.Plo
 include ./$(DEPDIR)/elf.Plo
+include ./$(DEPDIR)/elf32-aarch64.Plo
 include ./$(DEPDIR)/elf32-am33lin.Plo
 include ./$(DEPDIR)/elf32-arc.Plo
 include ./$(DEPDIR)/elf32-arm.Plo
@@ -1346,6 +1413,7 @@ include ./$(DEPDIR)/elf32-crx.Plo
 include ./$(DEPDIR)/elf32-d10v.Plo
 include ./$(DEPDIR)/elf32-d30v.Plo
 include ./$(DEPDIR)/elf32-dlx.Plo
+include ./$(DEPDIR)/elf32-epiphany.Plo
 include ./$(DEPDIR)/elf32-fr30.Plo
 include ./$(DEPDIR)/elf32-frv.Plo
 include ./$(DEPDIR)/elf32-gen.Plo
@@ -1368,15 +1436,18 @@ include ./$(DEPDIR)/elf32-m68k.Plo
 include ./$(DEPDIR)/elf32-m88k.Plo
 include ./$(DEPDIR)/elf32-mcore.Plo
 include ./$(DEPDIR)/elf32-mep.Plo
+include ./$(DEPDIR)/elf32-metag.Plo
 include ./$(DEPDIR)/elf32-microblaze.Plo
 include ./$(DEPDIR)/elf32-mips.Plo
 include ./$(DEPDIR)/elf32-moxie.Plo
 include ./$(DEPDIR)/elf32-msp430.Plo
 include ./$(DEPDIR)/elf32-mt.Plo
+include ./$(DEPDIR)/elf32-nios2.Plo
 include ./$(DEPDIR)/elf32-openrisc.Plo
 include ./$(DEPDIR)/elf32-or32.Plo
 include ./$(DEPDIR)/elf32-pj.Plo
 include ./$(DEPDIR)/elf32-ppc.Plo
+include ./$(DEPDIR)/elf32-rl78.Plo
 include ./$(DEPDIR)/elf32-rx.Plo
 include ./$(DEPDIR)/elf32-s390.Plo
 include ./$(DEPDIR)/elf32-score.Plo
@@ -1393,12 +1464,15 @@ include ./$(DEPDIR)/elf32-tilepro.Plo
 include ./$(DEPDIR)/elf32-v850.Plo
 include ./$(DEPDIR)/elf32-vax.Plo
 include ./$(DEPDIR)/elf32-xc16x.Plo
+include ./$(DEPDIR)/elf32-xgate.Plo
 include ./$(DEPDIR)/elf32-xstormy16.Plo
 include ./$(DEPDIR)/elf32-xtensa.Plo
 include ./$(DEPDIR)/elf32.Plo
+include ./$(DEPDIR)/elf64-aarch64.Plo
 include ./$(DEPDIR)/elf64-alpha.Plo
 include ./$(DEPDIR)/elf64-gen.Plo
 include ./$(DEPDIR)/elf64-hppa.Plo
+include ./$(DEPDIR)/elf64-ia64-vms.Plo
 include ./$(DEPDIR)/elf64-ia64.Plo
 include ./$(DEPDIR)/elf64-mips.Plo
 include ./$(DEPDIR)/elf64-mmix.Plo
@@ -1411,6 +1485,7 @@ include ./$(DEPDIR)/elf64-x86-64.Plo
 include ./$(DEPDIR)/elf64.Plo
 include ./$(DEPDIR)/elflink.Plo
 include ./$(DEPDIR)/elfn32-mips.Plo
+include ./$(DEPDIR)/elfxx-aarch64.Plo
 include ./$(DEPDIR)/elfxx-ia64.Plo
 include ./$(DEPDIR)/elfxx-mips.Plo
 include ./$(DEPDIR)/elfxx-sparc.Plo
@@ -1918,6 +1993,18 @@ elf64-target.h : elfxx-target.h
 	rm -f elf64-target.h
 	sed -e s/NN/64/g < $(srcdir)/elfxx-target.h > elf64-target.new
 	mv -f elf64-target.new elf64-target.h
+
+elf32-aarch64.c : elfnn-aarch64.c
+	rm -f elf32-aarch64.c
+	echo "#line 1 \"$(srcdir)/elfnn-aarch64.c\"" > elf32-aarch64.new
+	sed -e s/NN/32/g < $(srcdir)/elfnn-aarch64.c >> elf32-aarch64.new
+	mv -f elf32-aarch64.new elf32-aarch64.c
+
+elf64-aarch64.c : elfnn-aarch64.c
+	rm -f elf64-aarch64.c
+	echo "#line 1 \"$(srcdir)/elfnn-aarch64.c\"" > elf64-aarch64.new
+	sed -e s/NN/64/g < $(srcdir)/elfnn-aarch64.c >> elf64-aarch64.new
+	mv -f elf64-aarch64.new elf64-aarch64.c
 
 elf32-ia64.c : elfnn-ia64.c
 	rm -f elf32-ia64.c

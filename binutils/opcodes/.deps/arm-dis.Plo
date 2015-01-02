@@ -1,0 +1,157 @@
+arm-dis.lo: arm-dis.c sysdep.h config.h ../include/ansidecl.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/stdlib.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/sys/cdefs.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/sys/cdefs_elf.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/android/api-level.h \
+ /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.6/include/stddef.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/string.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/malloc.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/alloca.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/strings.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/sys/types.h \
+ /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.6/include/stdint.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/stdint.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/sys/_types.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/machine/_types.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/sys/_wchar_limits.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/linux/posix_types.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/linux/stddef.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/linux/compiler.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/asm/posix_types.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/asm/types.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/linux/types.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/machine/kernel.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/sys/sysmacros.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/memory.h \
+ ../include/dis-asm.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/stdio.h \
+ /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.6/include/stdarg.h \
+ ../bfd/bfd.h ../include/symcat.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/sys/stat.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/sys/time.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/linux/time.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/linux/stat.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/endian.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/sys/endian.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/machine/endian.h \
+ ../include/opcode/arm.h opintl.h ../intl/libintl.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/locale.h \
+ ../include/safe-ctype.h \
+ /usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/ctype.h \
+ ../include/floatformat.h ../include/ansidecl.h \
+ ../include/coff/internal.h ../bfd/libcoff.h ../include/bfdlink.h \
+ ../bfd/elf-bfd.h ../include/elf/common.h ../include/elf/external.h \
+ ../include/elf/internal.h ../include/elf/arm.h \
+ ../include/elf/reloc-macros.h
+
+sysdep.h:
+
+config.h:
+
+../include/ansidecl.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/stdlib.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/sys/cdefs.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/sys/cdefs_elf.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/android/api-level.h:
+
+/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.6/include/stddef.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/string.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/malloc.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/alloca.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/strings.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/sys/types.h:
+
+/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.6/include/stdint.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/stdint.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/sys/_types.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/machine/_types.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/sys/_wchar_limits.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/linux/posix_types.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/linux/stddef.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/linux/compiler.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/asm/posix_types.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/asm/types.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/linux/types.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/machine/kernel.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/sys/sysmacros.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/memory.h:
+
+../include/dis-asm.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/stdio.h:
+
+/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.6/include/stdarg.h:
+
+../bfd/bfd.h:
+
+../include/symcat.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/sys/stat.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/sys/time.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/linux/time.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/linux/stat.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/endian.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/sys/endian.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/machine/endian.h:
+
+../include/opcode/arm.h:
+
+opintl.h:
+
+../intl/libintl.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/locale.h:
+
+../include/safe-ctype.h:
+
+/usr/android/android-ndk-r10b/platforms/android-9/arch-arm//usr/include/ctype.h:
+
+../include/floatformat.h:
+
+../include/ansidecl.h:
+
+../include/coff/internal.h:
+
+../bfd/libcoff.h:
+
+../include/bfdlink.h:
+
+../bfd/elf-bfd.h:
+
+../include/elf/common.h:
+
+../include/elf/external.h:
+
+../include/elf/internal.h:
+
+../include/elf/arm.h:
+
+../include/elf/reloc-macros.h:

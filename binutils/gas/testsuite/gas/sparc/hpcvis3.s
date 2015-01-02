@@ -34,9 +34,9 @@
 	fnumaddd %f4, %f6, %f8, %f10
 	addxc	%g5, %g6, %g7
 	addxccc	%o1, %o2, %o3
-	random	%o4
+	random	%f6
 	umulxhi	%o5, %o6, %o7
-	lzd	%i1, %i2
+	lzcnt	%i1, %i2
 	cmask8	%i3
 	cmask16	%i4
 	cmask32	%i5
@@ -80,3 +80,4 @@
 	flcmpd	%fcc1, %f14, %f16
 	flcmpd	%fcc2, %f16, %f18
 	flcmpd	%fcc3, %f18, %f20
+	lzd	%i1, %i2

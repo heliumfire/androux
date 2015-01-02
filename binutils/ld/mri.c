@@ -208,7 +208,7 @@ mri_draw_tree (void)
 
 	  lang_enter_output_section_statement (p->name, base,
 					       p->ok_to_load ? normal_section : noload_section,
-					       align, subalign, NULL, 0);
+					       align, subalign, NULL, 0, 0);
 	  base = 0;
 	  tmp = (struct wildcard_list *) xmalloc (sizeof *tmp);
 	  tmp->next = NULL;
@@ -297,7 +297,7 @@ mri_format (const char *name)
 void
 mri_public (const char *name, etree_type *exp)
 {
-  lang_add_assignment (exp_assign (name, exp));
+  lang_add_assignment (exp_assign (name, exp, FALSE));
 }
 
 void

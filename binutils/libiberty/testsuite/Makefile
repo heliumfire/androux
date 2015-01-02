@@ -31,8 +31,8 @@ srcdir = .
 
 SHELL = /bin/sh
 
-CC = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc
-CFLAGS = -g -O2 -I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ --sysroot=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/ -Wno-error
+CC = /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc
+CFLAGS = -g -I -O2 -I/Users/regnarts/Documents/androux/androux/binutils/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.6/include -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
 LIBCFLAGS = $(CFLAGS)
 
 # Multilib support variables.

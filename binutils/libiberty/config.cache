@@ -18,9 +18,9 @@ ac_cv_c_const=${ac_cv_c_const=yes}
 ac_cv_c_inline=${ac_cv_c_inline=inline}
 ac_cv_c_stack_direction=${ac_cv_c_stack_direction=0}
 ac_cv_env_CC_set=set
-ac_cv_env_CC_value=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc
+ac_cv_env_CC_value=/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc
 ac_cv_env_CFLAGS_set=set
-ac_cv_env_CFLAGS_value='-g -O2 -I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ --sysroot=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/ -Wno-error'
+ac_cv_env_CFLAGS_value='-g -I -O2 -I/Users/regnarts/Documents/androux/androux/binutils/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.6/include -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm'
 ac_cv_env_CPPFLAGS_set=
 ac_cv_env_CPPFLAGS_value=
 ac_cv_env_CPP_set=
@@ -169,13 +169,13 @@ ac_cv_objext=${ac_cv_objext=o}
 ac_cv_os_cray=${ac_cv_os_cray=no}
 ac_cv_path_EGREP=${ac_cv_path_EGREP='/usr/bin/grep -E'}
 ac_cv_path_GREP=${ac_cv_path_GREP=/usr/bin/grep}
-ac_cv_prog_AR=${ac_cv_prog_AR=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-ar}
-ac_cv_prog_CC=${ac_cv_prog_CC=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc}
+ac_cv_prog_AR=${ac_cv_prog_AR=/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-ar}
+ac_cv_prog_CC=${ac_cv_prog_CC=/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc}
 ac_cv_prog_CPP=${ac_cv_prog_CPP=/lib/cpp}
 ac_cv_prog_MAKEINFO=${ac_cv_prog_MAKEINFO='makeinfo --split-size=5000000'}
 ac_cv_prog_PERL=${ac_cv_prog_PERL=perl}
-ac_cv_prog_RANLIB=${ac_cv_prog_RANLIB=true}
-ac_cv_prog_cc__usr_android_android_ndk_r10b_toolchains_arm_linux_androideabi_4_8_prebuilt_darwin_x86_64_bin_arm_linux_androideabi_gcc_c_o=${ac_cv_prog_cc__usr_android_android_ndk_r10b_toolchains_arm_linux_androideabi_4_8_prebuilt_darwin_x86_64_bin_arm_linux_androideabi_gcc_c_o=yes}
+ac_cv_prog_RANLIB=${ac_cv_prog_RANLIB=arm-linux-androideabi-ranlib}
+ac_cv_prog_cc__Users_regnarts_Documents_androux_androux_toolchains_arm_linux_androideabi_4_8_prebuilt_darwin_x86_64_bin_arm_linux_androideabi_gcc_c_o=${ac_cv_prog_cc__Users_regnarts_Documents_androux_androux_toolchains_arm_linux_androideabi_4_8_prebuilt_darwin_x86_64_bin_arm_linux_androideabi_gcc_c_o=yes}
 ac_cv_prog_cc_c89=${ac_cv_prog_cc_c89=}
 ac_cv_prog_cc_g=${ac_cv_prog_cc_g=yes}
 ac_cv_search_strerror=${ac_cv_search_strerror='none required'}

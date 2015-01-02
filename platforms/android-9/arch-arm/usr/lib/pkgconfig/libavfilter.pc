@@ -1,0 +1,14 @@
+prefix=/Users/regnarts/Documents/ports/libav/android/arm
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: libavfilter
+Description: Libav video filtering library
+Version: 5.0.0
+Requires: 
+Requires.private: libswscale >= 3.0.0, libavformat >= 56.6.4, libavcodec >= 56.6.0, libavresample >= 2.1.0, libavutil >= 54.5.0
+Conflicts:
+Libs: -L${libdir} -lavfilter 
+Libs.private: -lm -lz -pthread
+Cflags: -I${includedir}

@@ -11,7 +11,7 @@
     --target=arm-linux-androideabi \
     CC=${CROSS_COMPILE}gcc \
     CXX=${CROSS_COMPILE}g++ \
-    CFLAGS="-g -O2 -I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ --sysroot=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/ -Wno-error" \
+    CFLAGS="-g -I -O2 -I${PWD}/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.6/include -I${SYSROOT}/usr/include/ --sysroot=${SYSROOT}" \
     LDFLAGS="-L/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/lib/" \
     CPP=${CROSS_COMPILE}cpp \
     CPPFLAGS="-I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/" \

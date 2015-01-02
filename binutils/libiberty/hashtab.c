@@ -58,7 +58,7 @@ Boston, MA 02110-1301, USA.  */
 #endif
 
 #include <stdio.h>
-
+#include <malloc.h> 
 #include "libiberty.h"
 #include "ansidecl.h"
 #include "hashtab.h"

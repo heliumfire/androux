@@ -1,11 +1,11 @@
 verilog.lo: verilog.c sysdep.h config.h ../include/ansidecl.h \
- /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stddef.h \
+ /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stddef.h \
  /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/stdio.h \
  /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/cdefs.h \
  /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h \
  /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/android/api-level.h \
  /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/types.h \
- /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdint.h \
+ /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdint.h \
  /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/stdint.h \
  /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/_types.h \
  /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/machine/_types.h \
@@ -18,7 +18,7 @@ verilog.lo: verilog.c sysdep.h config.h ../include/ansidecl.h \
  /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/types.h \
  /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/machine/kernel.h \
  /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h \
- /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdarg.h \
+ /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdarg.h \
  /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/stat.h \
  /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/time.h \
  /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/time.h \
@@ -43,8 +43,8 @@ verilog.lo: verilog.c sysdep.h config.h ../include/ansidecl.h \
  /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/unistd.h \
  /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/select.h \
  /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/signal.h \
- /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/limits.h \
- /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/syslimits.h \
+ /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/limits.h \
+ /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/syslimits.h \
  /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/limits.h \
  /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/limits.h \
  /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/linux/limits.h \
@@ -80,7 +80,7 @@ config.h:
 
 ../include/ansidecl.h:
 
-/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stddef.h:
+/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stddef.h:
 
 /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/stdio.h:
 
@@ -92,7 +92,7 @@ config.h:
 
 /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/types.h:
 
-/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdint.h:
+/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdint.h:
 
 /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/stdint.h:
 
@@ -118,7 +118,7 @@ config.h:
 
 /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h:
 
-/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdarg.h:
+/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdarg.h:
 
 /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/sys/stat.h:
 
@@ -168,9 +168,9 @@ config.h:
 
 /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/signal.h:
 
-/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/limits.h:
+/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/limits.h:
 
-/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/syslimits.h:
+/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/syslimits.h:
 
 /usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/limits.h:
 

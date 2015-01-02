@@ -38,6 +38,8 @@ extern "C" {
 #endif /* __cplusplus */
 
 #include "ansidecl.h"
+#include <stddef.h> //androux | edit by regnarts
+
 
 #ifndef GTY
 #define GTY(X)

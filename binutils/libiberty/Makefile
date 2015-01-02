@@ -24,7 +24,7 @@
 libiberty_topdir = ./..
 srcdir = .
 
-prefix = /Users/regnarts/Documents/experiment/system
+prefix = /Users/regnarts/Documents/androux/androux/system
 
 exec_prefix = ${prefix}
 bindir = ${exec_prefix}/bin
@@ -51,13 +51,13 @@ mkinstalldirs = $(SHELL) $(libiberty_topdir)/mkinstalldirs
 # Some compilers can't handle cc -c blah.c -o foo/blah.o.
 OUTPUT_OPTION = -o $@
 
-AR = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-ar
+AR = /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-ar
 AR_FLAGS = rc
 
-CC = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc
-CFLAGS = -g -O2 -I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ --sysroot=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/ -Wno-error
+CC = /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc
+CFLAGS = -g -I -O2 -I/Users/regnarts/Documents/androux/androux/binutils/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.6/include -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
 CPPFLAGS = 
-RANLIB = true
+RANLIB = arm-linux-androideabi-ranlib
 MAKEINFO = makeinfo --split-size=5000000
 PERL = perl
 

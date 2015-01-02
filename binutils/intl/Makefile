@@ -26,7 +26,7 @@ SHELL = /bin/sh
 srcdir = .
 
 
-prefix = /Users/regnarts/Documents/experiment/system
+prefix = /Users/regnarts/Documents/androux/androux/system
 exec_prefix = ${prefix}
 transform = s,y,y,
 libdir = ${exec_prefix}/lib
@@ -40,12 +40,12 @@ AR = ar
 ACLOCAL = aclocal
 AUTOCONF = autoconf
 AUTOHEADER = autoheader
-CC = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc
-RANLIB = true
+CC = /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc
+RANLIB = arm-linux-androideabi-ranlib
 YACC = bison -y -d
 YFLAGS = --name-prefix=__gettext
 CPPFLAGS = 
-CFLAGS = -g -O2 -I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ --sysroot=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/ -Wno-error
+CFLAGS = -g -I -O2 -I/Users/regnarts/Documents/androux/androux/binutils/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.6/include -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
 LDFLAGS =  -L/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/lib/
 LIBS = 
 DEFS = -DHAVE_CONFIG_H

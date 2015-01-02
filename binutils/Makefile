@@ -44,7 +44,7 @@ target=arm-unknown-linux-androideabi
 
 program_transform_name = s,y,y,
 
-prefix = /Users/regnarts/Documents/experiment/system
+prefix = /Users/regnarts/Documents/androux/androux/system
 exec_prefix = ${prefix}
 
 srcdir = .
@@ -90,7 +90,7 @@ MAINTAINER_MODE_TRUE = #
 # -------------------------------------------------
 
 # The gcc driver likes to know the arguments it was configured with.
-TOPLEVEL_CONFIGURE_ARGUMENTS=./configure --prefix=/Users/regnarts/Documents/experiment/system --host=arm-linux-androideabi --target=arm-linux-androideabi CC=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc CXX=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-g++ CFLAGS='-g -O2 -I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ --sysroot=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/ -Wno-error' LDFLAGS=-L/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/lib/ CPP=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-cpp CPPFLAGS=-I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ AR=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-ar
+TOPLEVEL_CONFIGURE_ARGUMENTS=./configure --prefix=/Users/regnarts/Documents/androux/androux/system --host=arm-linux-androideabi --target=arm-linux-androideabi CC=/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc CXX=/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-g++ CFLAGS='-g -I -O2 -I/Users/regnarts/Documents/androux/androux/binutils/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.6/include -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm' LDFLAGS=-L/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/lib/ CPP=/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-cpp CPPFLAGS=-I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ AR=/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-ar
 
 tooldir = ${exec_prefix}/arm-linux-androideabi
 build_tooldir = ${exec_prefix}/arm-linux-androideabi
@@ -108,7 +108,7 @@ GCC_SHLIB_SUBDIR =
 BUILD_SUBDIR = build-i386-apple-darwin14.0.0
 # This is set by the configure script to the arguments to use when configuring
 # directories built for the build system.
-BUILD_CONFIGARGS =  --cache-file=../config.cache '--prefix=/Users/regnarts/Documents/experiment/system' --program-transform-name='s,y,y,' --disable-option-checking --with-build-subdir="$(BUILD_SUBDIR)"
+BUILD_CONFIGARGS =  --cache-file=../config.cache '--prefix=/Users/regnarts/Documents/androux/androux/system' --program-transform-name='s,y,y,' --disable-option-checking --with-build-subdir="$(BUILD_SUBDIR)"
 
 # Linker flags to use on the host, for stage1 or when not
 # bootstrapping.
@@ -171,7 +171,7 @@ SUBDIRS =  intl libiberty opcodes bfd binutils gas ld gprof etc
 TARGET_CONFIGDIRS = 
 # This is set by the configure script to the arguments to use when configuring
 # directories built for the host system.
-HOST_CONFIGARGS =  --cache-file=./config.cache  --with-gnu-as --with-gnu-ld --with-system-zlib '--prefix=/Users/regnarts/Documents/experiment/system' --program-transform-name='s,y,y,' --disable-option-checking
+HOST_CONFIGARGS =  --cache-file=./config.cache  --with-gnu-as --with-gnu-ld --with-system-zlib '--prefix=/Users/regnarts/Documents/androux/androux/system' --program-transform-name='s,y,y,' --disable-option-checking
 # Host programs are put under this directory, which is . except if building
 # with srcdir=..
 HOST_SUBDIR = .
@@ -241,7 +241,7 @@ POSTSTAGE1_HOST_EXPORTS = \
 TARGET_SUBDIR = arm-linux-androideabi
 # This is set by the configure script to the arguments to use when configuring
 # directories built for the target.
-TARGET_CONFIGARGS = --cache-file=./config.cache --enable-multilib   '--prefix=/Users/regnarts/Documents/experiment/system' --program-transform-name='s,y,y,' --disable-option-checking --with-target-subdir="$(TARGET_SUBDIR)"
+TARGET_CONFIGARGS = --cache-file=./config.cache --enable-multilib   '--prefix=/Users/regnarts/Documents/androux/androux/system' --program-transform-name='s,y,y,' --disable-option-checking --with-target-subdir="$(TARGET_SUBDIR)"
 # This is the list of variables to export in the environment when
 # configuring subdirectories for the target system.
 BASE_TARGET_EXPORTS = \
@@ -362,12 +362,12 @@ MAKEINFOFLAGS = --split-size=5000000
 # ---------------------------------------------
 
 AS = arm-linux-androideabi-as
-AR = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-ar
+AR = /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-ar
 AR_FLAGS = rc
-CC = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc
-CXX = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-g++
+CC = /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-gcc
+CXX = /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-g++
 DLLTOOL = arm-linux-androideabi-dlltool
-LD = /usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ld
+LD = /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ld
 LIPO = arm-linux-androideabi-lipo
 NM = arm-linux-androideabi-nm
 OBJDUMP = arm-linux-androideabi-objdump
@@ -380,7 +380,7 @@ WINDMC = arm-linux-androideabi-windmc
 GNATBIND = no
 GNATMAKE = no
 
-CFLAGS = -g -O2 -I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ --sysroot=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/ -Wno-error
+CFLAGS = -g -I -O2 -I/Users/regnarts/Documents/androux/androux/binutils/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.6/include -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
 LDFLAGS = -L/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/lib/
 LIBCFLAGS = $(CFLAGS)
 CXXFLAGS = -g -O2
@@ -464,8 +464,8 @@ do-compare3 = $(do-compare)
 # Programs producing files for the TARGET machine
 # -----------------------------------------------
 
-AR_FOR_TARGET=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ar
-AS_FOR_TARGET=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/as
+AR_FOR_TARGET=/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ar
+AS_FOR_TARGET=/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/as
 CC_FOR_TARGET=$(STAGE_CC_WRAPPER) arm-linux-androideabi-cc
 
 # If GCC_FOR_TARGET is not overriden on the command line, then this
@@ -479,14 +479,14 @@ GCJ_FOR_TARGET=$(STAGE_CC_WRAPPER) arm-linux-androideabi-gcj
 GFORTRAN_FOR_TARGET=$(STAGE_CC_WRAPPER) arm-linux-androideabi-gfortran
 GOC_FOR_TARGET=$(STAGE_CC_WRAPPER) arm-linux-androideabi-gccgo
 DLLTOOL_FOR_TARGET=arm-linux-androideabi-dlltool
-LD_FOR_TARGET=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ld
+LD_FOR_TARGET=/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ld
 
 LIPO_FOR_TARGET=arm-linux-androideabi-lipo
-NM_FOR_TARGET=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/nm
-OBJDUMP_FOR_TARGET=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/objdump
-RANLIB_FOR_TARGET=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ranlib
+NM_FOR_TARGET=/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/nm
+OBJDUMP_FOR_TARGET=/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/objdump
+RANLIB_FOR_TARGET=/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ranlib
 READELF_FOR_TARGET=arm-linux-androideabi-readelf
-STRIP_FOR_TARGET=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/strip
+STRIP_FOR_TARGET=/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/strip
 WINDRES_FOR_TARGET=arm-linux-androideabi-windres
 WINDMC_FOR_TARGET=arm-linux-androideabi-windmc
 
@@ -494,7 +494,7 @@ COMPILER_AS_FOR_TARGET=$(AS_FOR_TARGET)
 COMPILER_LD_FOR_TARGET=$(LD_FOR_TARGET)
 COMPILER_NM_FOR_TARGET=$(NM_FOR_TARGET)
 
-CFLAGS_FOR_TARGET = -g -O2 -I/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/usr/include/ --sysroot=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm/ -Wno-error
+CFLAGS_FOR_TARGET = -g -I -O2 -I/Users/regnarts/Documents/androux/androux/binutils/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.6/include -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
 CXXFLAGS_FOR_TARGET = -g -O2
 
 LIBCFLAGS_FOR_TARGET = $(CFLAGS_FOR_TARGET)

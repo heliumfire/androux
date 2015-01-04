@@ -23,3 +23,4 @@ make distclean
 make clean
 make -j$THREADS
 make install
+make clean

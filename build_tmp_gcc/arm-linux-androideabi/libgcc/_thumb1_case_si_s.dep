@@ -1,0 +1,10 @@
+_thumb1_case_si_s.o: ../../../gcc/libgcc/../gcc/config/arm/lib1funcs.asm \
+ ../../../gcc/libgcc/../gcc/config/arm/ieee754-df.S \
+ ../../../gcc/libgcc/../gcc/config/arm/ieee754-sf.S \
+ ../../../gcc/libgcc/../gcc/config/arm/bpabi.S
+
+../../../gcc/libgcc/../gcc/config/arm/ieee754-df.S:
+
+../../../gcc/libgcc/../gcc/config/arm/ieee754-sf.S:
+
+../../../gcc/libgcc/../gcc/config/arm/bpabi.S:

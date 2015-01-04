@@ -1,0 +1,216 @@
+arparse.o: arparse.c sysdep.h ../include/alloca-conf.h config.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/alloca.h \
+ ../include/ansidecl.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/stdio.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/android/api-level.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/types.h \
+ /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stddef.h \
+ /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdint.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/stdint.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/_types.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/machine/_types.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/_wchar_limits.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/posix_types.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/stddef.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/compiler.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/posix_types.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/types.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/types.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/machine/kernel.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h \
+ /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdarg.h \
+ ../bfd/bfdver.h ../include/fopen-same.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/errno.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/errno.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/errno.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/errno.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/errno-base.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/unistd.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/select.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/time.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/time.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/signal.h \
+ /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/limits.h \
+ /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/syslimits.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/limits.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/limits.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/limits.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/machine/internal_types.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/machine/limits.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/syslimits.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/page.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/string.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/malloc.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/signal.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/signal.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/sigcontext.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/siginfo.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/siginfo.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/sysconf.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/capability.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/pathconf.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/strings.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/stdlib.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/memory.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/fcntl.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/fcntl.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/fcntl.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/fcntl.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/stat.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/stat.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/endian.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/endian.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/machine/endian.h \
+ ../include/binary-io.h \
+ /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/locale.h \
+ ../intl/libintl.h ../bfd/bfd.h ../include/symcat.h arsup.h
+
+sysdep.h:
+
+../include/alloca-conf.h:
+
+config.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/alloca.h:
+
+../include/ansidecl.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/stdio.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/android/api-level.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/types.h:
+
+/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stddef.h:
+
+/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdint.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/stdint.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/_types.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/machine/_types.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/_wchar_limits.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/posix_types.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/stddef.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/compiler.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/posix_types.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/types.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/types.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/machine/kernel.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h:
+
+/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdarg.h:
+
+../bfd/bfdver.h:
+
+../include/fopen-same.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/errno.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/errno.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/errno.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/errno.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/errno-base.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/unistd.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/select.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/time.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/time.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/signal.h:
+
+/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/limits.h:
+
+/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/syslimits.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/limits.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/limits.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/limits.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/machine/internal_types.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/machine/limits.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/syslimits.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/page.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/string.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/malloc.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/signal.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/signal.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/sigcontext.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/siginfo.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/siginfo.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/sysconf.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/capability.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/pathconf.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/strings.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/stdlib.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/memory.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/fcntl.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/fcntl.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/fcntl.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/fcntl.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/stat.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/stat.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/endian.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/endian.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/machine/endian.h:
+
+../include/binary-io.h:
+
+/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/locale.h:
+
+../intl/libintl.h:
+
+../bfd/bfd.h:
+
+../include/symcat.h:
+
+arsup.h:

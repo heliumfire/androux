@@ -1,0 +1,1 @@
+fp16.o: ../../../gcc/libgcc/../gcc/config/arm/fp16.c

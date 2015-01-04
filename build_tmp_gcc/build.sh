@@ -5,25 +5,15 @@
 #
 #  Created by Anushruth on 17/12/2014.
 #
-#CROSS_COMPILE=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-
-#SYSROOT=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm
-#PREFIX=/Users/regnarts/Documents/experiment/sysroot
-
-#export CC=${CROSS_COMPILE}gcc
-#export CXX=${CROSS_COMPILE}g++
-#export CFLAGS="-g -O2 -I${SYSROOT}/usr/include/ --sysroot=${SYSROOT}"
-#export LDFLAGS="-L${SYSROOT}/usr/lib/ --sysroot=${SYSROOT}"
-#export CPP=${CROSS_COMPILE}cpp
-#export CPPFLAGS="-I${SYSROOT}/usr/include/"
-#export AR=${CROSS_COMPILE}ar
-#export NM=${CROSS_COMPILE}nm
 
 make distclean
+rm */config.cache
 ../gcc/configure \
     --prefix=${PREFIX} \
     --host=arm-linux-androideabi \
     --target=arm-linux-androideabi \
     --with-gmp=${PREFIX} \
+    --with-mpc=${PREFIX} \
     --with-mpfr=${PREFIX} \
     --without-headers \
     --disable-decimal-float \
@@ -51,3 +41,4 @@ make distclean
 make clean
 make -j$THREADS
 make install
+make clean

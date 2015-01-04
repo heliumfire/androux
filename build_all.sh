@@ -9,14 +9,14 @@ export SYSROOT=${PWD}/platforms/android-9/arch-arm
 cd binutils
 ./build.sh
 
-#cd gmp
-#./build.sh
-#
-#cd mpc
-#./build.sh
-#
-#cd mpfr
-#./build.sh
-#
-#cd build_tmp_gcc
-#./build.sh
+cd ../gmp
+./build.sh
+
+cd ../mpfr
+./build.sh
+
+cd ../mpc
+./build.sh
+
+cd ./build_tmp_gcc
+./build.sh

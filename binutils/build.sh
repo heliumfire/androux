@@ -20,3 +20,4 @@ rm */config.cache
     AR=${CROSS_COMPILE}ar
 make -j$THREADS
 make install
+make clean

@@ -23,6 +23,7 @@ Boston, MA 02110-1301, USA.  */
 #include "config.h"
 #include "libiberty.h"
 #include "pex-common.h"
+#include <fcntl.h> //edit androux project
 
 #include <stdio.h>
 #include <signal.h>

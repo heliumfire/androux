@@ -5,9 +5,9 @@
 #
 #  Created by Anushruth on 17/12/2014.
 #
-CROSS_COMPILE=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-
-SYSROOT=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm
-PREFIX=/Users/regnarts/Documents/experiment/sysroot
+#CROSS_COMPILE=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-
+#SYSROOT=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm
+#PREFIX=/Users/regnarts/Documents/experiment/sysroot
 
 #export CC=${CROSS_COMPILE}gcc
 #export CXX=${CROSS_COMPILE}g++
@@ -26,7 +26,6 @@ make distclean
     --with-gmp=${PREFIX} \
     --with-mpfr=${PREFIX} \
     --without-headers \
-    --with-newlib \
     --disable-decimal-float \
     --disable-libgomp \
     --disable-libmudflap \
@@ -39,7 +38,7 @@ make distclean
     --disable-multilib \
     --disable-target-zlib \
     --with-system-zlib \
-    --enable-languages="c,c++" \
+    --enable-languages="c" \
     CC=${CROSS_COMPILE}gcc \
     CXX=${CROSS_COMPILE}g++ \
     CFLAGS="-g -O2 -I${SYSROOT}/usr/include/ --sysroot=${SYSROOT}" \
@@ -50,5 +49,5 @@ make distclean
     NM=${CROSS_COMPILE}nm \
     RANLIB=${CROSS_COMPILE}ranlib
 make clean
-make -j4
-#make install
+make -j$THREADS
+make install

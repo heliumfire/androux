@@ -20,5 +20,5 @@ make distclean
     AR=${CROSS_COMPILE}ar \
     NM=${CROSS_COMPILE}nm
 make clean
-make -j2
+make -j$THREADS
 make install

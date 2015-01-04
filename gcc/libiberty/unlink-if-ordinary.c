@@ -44,7 +44,7 @@ was made to unlink the file because it is special.
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
-#if HAVE_SYS_STAT_H
+#if 1 //androux | edit by regnarts; previous value=HAVE_SYS_STAT_H 
 #include <sys/stat.h>
 #endif
 

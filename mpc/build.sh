@@ -5,9 +5,6 @@
 #
 #  Created by Anushruth on 17/12/2014.
 #
-CROSS_COMPILE=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-
-SYSROOT=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm
-PREFIX=/Users/regnarts/Documents/experiment/sysroot
 
 make distclean
 ./configure \
@@ -25,5 +22,5 @@ make distclean
     AR=${CROSS_COMPILE}ar \
     NM=${CROSS_COMPILE}nm
 make clean
-make -j2
+make -j$THREADS
 make install

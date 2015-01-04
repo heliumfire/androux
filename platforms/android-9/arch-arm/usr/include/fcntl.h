@@ -30,6 +30,7 @@
 
 #include <sys/cdefs.h>
 #include <sys/types.h>
+#include <asm-generic/fcntl.h>
 #include <linux/fcntl.h>
 #include <unistd.h>  /* this is not required, but makes client code much happier */
 

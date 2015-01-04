@@ -62,6 +62,7 @@ Boston, MA 02110-1301, USA.  */
 #include "libiberty.h"
 #include "ansidecl.h"
 #include "hashtab.h"
+#include <malloc/malloc.h>
 
 #ifndef CHAR_BIT
 #define CHAR_BIT 8

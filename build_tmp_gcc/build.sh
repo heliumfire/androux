@@ -15,19 +15,7 @@ rm */config.cache
     --with-gmp=${PREFIX} \
     --with-mpc=${PREFIX} \
     --with-mpfr=${PREFIX} \
-    --without-headers \
-    --disable-decimal-float \
-    --disable-libgomp \
-    --disable-libmudflap \
-    --disable-libssp \
-    --disable-libatomic \
-    --disable-libitm \
-    --disable-libsanitizer \
-    --disable-libquadmath \
-    --disable-threads \
     --disable-multilib \
-    --disable-target-zlib \
-    --with-system-zlib \
     --enable-languages="c" \
     CC=${CROSS_COMPILE}gcc \
     CXX=${CROSS_COMPILE}g++ \

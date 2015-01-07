@@ -1,3 +1,0 @@
-	.hidden __udivsi3
-	.hidden __aeabi_uidiv
-	.hidden __aeabi_uidivmod

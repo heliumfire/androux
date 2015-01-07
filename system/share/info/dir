@@ -55,3 +55,7 @@ Software libraries
 
 GNU Packages
 * mpc: (mpc)Multiple Precision Complex Library.
+
+GNU Libraries
+* libgomp: (libgomp).                    GNU OpenMP runtime library
+* libquadmath: (libquadmath).                  GCC Quad-Precision Math Library

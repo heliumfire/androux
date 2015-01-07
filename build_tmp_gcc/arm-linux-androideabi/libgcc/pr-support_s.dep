@@ -1,7 +1,0 @@
-pr-support_s.o: ../../../gcc/libgcc/../gcc/config/arm/pr-support.c \
- /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/unwind.h \
- /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/unwind-arm-common.h
-
-/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/unwind.h:
-
-/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/unwind-arm-common.h:

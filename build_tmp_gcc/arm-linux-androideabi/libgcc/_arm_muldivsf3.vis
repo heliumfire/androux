@@ -1,4 +1,0 @@
-	.hidden __mulsf3
-	.hidden __aeabi_fmul
-	.hidden __divsf3
-	.hidden __aeabi_fdiv

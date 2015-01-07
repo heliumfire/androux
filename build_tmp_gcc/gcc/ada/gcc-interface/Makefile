@@ -88,7 +88,7 @@ MKDIR = mkdir -p
 AR = ar
 AR_FLAGS = rc
 LS = ls
-RANLIB = /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-ranlib
+RANLIB = arm-linux-androideabi-ranlib
 RANLIB_FLAGS = 
 AWK = awk
 

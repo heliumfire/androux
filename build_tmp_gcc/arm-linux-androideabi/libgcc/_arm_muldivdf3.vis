@@ -1,4 +1,0 @@
-	.hidden __muldf3
-	.hidden __aeabi_dmul
-	.hidden __divdf3
-	.hidden __aeabi_ddiv

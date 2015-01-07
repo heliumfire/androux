@@ -19,5 +19,5 @@ cd ../mpfr
 cd ../mpc
 ./build.sh
 
-cd ./build_tmp_gcc
+cd ../build_tmp_gcc
 ./build.sh

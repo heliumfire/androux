@@ -1,0 +1,1 @@
+/Users/regnarts/Documents/androux/androux/gcc/libstdc++-v3/config/abi/compatibility.h

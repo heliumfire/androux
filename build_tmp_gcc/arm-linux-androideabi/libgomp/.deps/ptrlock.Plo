@@ -1,0 +1,1 @@
+ptrlock.lo: ../../../gcc/libgomp/config/posix/ptrlock.c

@@ -1,0 +1,45 @@
+pch.o: ../../gcc/libcpp/pch.c config.h ../../gcc/libcpp/system.h \
+ ../intl/libintl.h ../../gcc/libcpp/../include/filenames.h \
+ ../../gcc/libcpp/../include/libiberty.h \
+ ../../gcc/libcpp/../include/ansidecl.h \
+ ../../gcc/libcpp/../include/safe-ctype.h \
+ ../../gcc/libcpp/include/cpplib.h ../../gcc/libcpp/include/symtab.h \
+ ../../gcc/libcpp/../include/obstack.h \
+ ../../gcc/libcpp/include/line-map.h ../../gcc/libcpp/internal.h \
+ ../../gcc/libcpp/include/symtab.h ../../gcc/libcpp/include/cpp-id-data.h \
+ ../../gcc/libcpp/include/cpplib.h ../../gcc/libcpp/../include/hashtab.h \
+ ../../gcc/libcpp/include/mkdeps.h
+
+config.h:
+
+../../gcc/libcpp/system.h:
+
+../intl/libintl.h:
+
+../../gcc/libcpp/../include/filenames.h:
+
+../../gcc/libcpp/../include/libiberty.h:
+
+../../gcc/libcpp/../include/ansidecl.h:
+
+../../gcc/libcpp/../include/safe-ctype.h:
+
+../../gcc/libcpp/include/cpplib.h:
+
+../../gcc/libcpp/include/symtab.h:
+
+../../gcc/libcpp/../include/obstack.h:
+
+../../gcc/libcpp/include/line-map.h:
+
+../../gcc/libcpp/internal.h:
+
+../../gcc/libcpp/include/symtab.h:
+
+../../gcc/libcpp/include/cpp-id-data.h:
+
+../../gcc/libcpp/include/cpplib.h:
+
+../../gcc/libcpp/../include/hashtab.h:
+
+../../gcc/libcpp/include/mkdeps.h:

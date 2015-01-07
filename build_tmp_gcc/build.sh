@@ -16,7 +16,7 @@ rm */config.cache
     --with-mpc=${PREFIX} \
     --with-mpfr=${PREFIX} \
     --disable-multilib \
-    --enable-languages="c" \
+    --enable-languages="c,c++" \
     CC=${CROSS_COMPILE}gcc \
     CXX=${CROSS_COMPILE}g++ \
     CFLAGS="-g -O2 -I${SYSROOT}/usr/include/ --sysroot=${SYSROOT}" \

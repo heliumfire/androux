@@ -24,7 +24,7 @@
 libiberty_topdir = ./..
 srcdir = .
 
-prefix = /Users/regnarts/Documents/androux/androux/system
+prefix = /home/anushruth/exps/androux/system
 
 exec_prefix = ${prefix}
 bindir = ${exec_prefix}/bin
@@ -55,7 +55,7 @@ AR = arm-linux-androideabi-ar
 AR_FLAGS = rc
 
 CC = arm-linux-androideabi-gcc
-CFLAGS = -g -I -O2 -I/Users/regnarts/Documents/androux/androux/binutils/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.6/include -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm -Wno-error
+CFLAGS = -g -I -O2 -I/home/anushruth/exps/androux/binutils/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.6/include -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm -Wno-error
 CPPFLAGS = 
 RANLIB = arm-linux-androideabi-ranlib
 MAKEINFO = makeinfo --split-size=5000000

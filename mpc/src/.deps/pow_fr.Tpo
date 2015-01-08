@@ -1,0 +1,85 @@
+pow_fr.lo: pow_fr.c mpc-impl.h ../config.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/stdlib.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/android/api-level.h \
+ /home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stddef.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/string.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/malloc.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/alloca.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/strings.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/types.h \
+ /home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdint.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/stdint.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/_types.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/machine/_types.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/_wchar_limits.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/posix_types.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/stddef.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/compiler.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/posix_types.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/types.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/types.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/machine/kernel.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/memory.h \
+ mpc.h /home/anushruth/exps/androux/system/include/gmp.h \
+ /home/anushruth/exps/androux/system/include/mpfr.h
+
+mpc-impl.h:
+
+../config.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/stdlib.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/android/api-level.h:
+
+/home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stddef.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/string.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/malloc.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/alloca.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/strings.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/types.h:
+
+/home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdint.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/stdint.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/_types.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/machine/_types.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/_wchar_limits.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/posix_types.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/stddef.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/compiler.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/posix_types.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/types.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/types.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/machine/kernel.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h:
+
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/memory.h:
+
+mpc.h:
+
+/home/anushruth/exps/androux/system/include/gmp.h:
+
+/home/anushruth/exps/androux/system/include/mpfr.h:

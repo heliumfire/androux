@@ -1,0 +1,2 @@
+include(CONFIG_TOP_SRCDIR`/mpn/asm-defs.m4')
+include_mpn(`arm/arm-defs.m4')

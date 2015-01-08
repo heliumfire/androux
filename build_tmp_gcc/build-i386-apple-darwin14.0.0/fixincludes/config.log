@@ -30,8 +30,8 @@ Kernel configured for up to 4 processors.
 Processor type: x86_64h (Intel x86-64h Haswell)
 Processors active: 0 1 2 3
 Primary memory available: 4.00 gigabytes
-Default processor set: 203 tasks, 900 threads, 4 processors
-Load average: 14.73, Mach factor: 0.24
+Default processor set: 190 tasks, 874 threads, 4 processors
+Load average: 11.28, Mach factor: 0.34
 /bin/machine           = unknown
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
@@ -55,7 +55,7 @@ PATH: /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi
 ## Core tests. ##
 ## ----------- ##
 
-configure:2062: creating cache ../config.cache
+configure:2054: loading cache ../config.cache
 configure:3159: checking build system type
 configure:3173: result: i386-apple-darwin14.0.0
 configure:3193: checking host system type
@@ -295,7 +295,7 @@ configure:4704: checking for fflush_unlocked
 configure:4704: gcc -o conftest    conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_fflush_unlocked", referenced from:
-      _main in conftest-60ae14.o
+      _main in conftest-e57e4a.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:4704: $? = 1
@@ -372,7 +372,7 @@ configure:4704: checking for fgetc_unlocked
 configure:4704: gcc -o conftest    conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_fgetc_unlocked", referenced from:
-      _main in conftest-c988f0.o
+      _main in conftest-152308.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:4704: $? = 1
@@ -449,7 +449,7 @@ configure:4704: checking for fgets_unlocked
 configure:4704: gcc -o conftest    conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_fgets_unlocked", referenced from:
-      _main in conftest-741417.o
+      _main in conftest-8d0483.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:4704: $? = 1
@@ -530,7 +530,7 @@ configure:4704: checking for fprintf_unlocked
 configure:4704: gcc -o conftest    conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_fprintf_unlocked", referenced from:
-      _main in conftest-328987.o
+      _main in conftest-b77f4d.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:4704: $? = 1
@@ -608,7 +608,7 @@ configure:4704: checking for fputc_unlocked
 configure:4704: gcc -o conftest    conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_fputc_unlocked", referenced from:
-      _main in conftest-34ee87.o
+      _main in conftest-5062fa.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:4704: $? = 1
@@ -686,7 +686,7 @@ configure:4704: checking for fputs_unlocked
 configure:4704: gcc -o conftest    conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_fputs_unlocked", referenced from:
-      _main in conftest-ef5f21.o
+      _main in conftest-9fa0f3.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:4704: $? = 1
@@ -764,7 +764,7 @@ configure:4704: checking for fread_unlocked
 configure:4704: gcc -o conftest    conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_fread_unlocked", referenced from:
-      _main in conftest-992c2c.o
+      _main in conftest-b29838.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:4704: $? = 1
@@ -842,7 +842,7 @@ configure:4704: checking for fwrite_unlocked
 configure:4704: gcc -o conftest    conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_fwrite_unlocked", referenced from:
-      _main in conftest-69ba1f.o
+      _main in conftest-b83927.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:4704: $? = 1

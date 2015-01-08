@@ -5,10 +5,7 @@
 #
 #  Created by Anushruth on 17/12/2014.
 #
-CROSS_COMPILE=/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-
-export PATH=$PATH:/usr/android/android-ndk-r10b/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/
-PREFIX=/Users/regnarts/Documents/experiment/sysroot
-SYSROOT=/usr/android/android-ndk-r10b/platforms/android-9/arch-arm
+
 make distclean
 ./configure \
 --prefix=${PREFIX} \
@@ -22,5 +19,6 @@ make distclean
     AR=${CROSS_COMPILE}ar \
     NM=${CROSS_COMPILE}nm
 make clean
-make -j2
+make -j$THREADS
 make install
+make clean

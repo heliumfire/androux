@@ -49,7 +49,7 @@
 #endif
 
 #if HAVE_SYS_SYSCTL_H
-# include <sys/sysctl.h>
+//# include <sys/sysctl.h>
 #endif
 
 #if HAVE_SYS_SYSTEMCFG_H

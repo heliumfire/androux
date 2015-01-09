@@ -1,1 +1,1 @@
-/Users/regnarts/Documents/androux/androux/gcc/libstdc++-v3/config/cpu/generic/atomic_word.h
+/home/anushruth/exps/androux/gcc/libstdc++-v3/config/cpu/generic/atomic_word.h

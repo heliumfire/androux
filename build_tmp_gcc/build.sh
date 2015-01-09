@@ -17,7 +17,7 @@ rm */config.cache
     --with-mpfr=${PREFIX} \
     --disable-multilib \
     --enable-languages="c,c++" \
-    CC=${CROSS_COMPILE}gcc \
+    CC=${CROSS_COMPILE}cc \
     CXX=${CROSS_COMPILE}g++ \
     CFLAGS="-g -O2 -I${SYSROOT}/usr/include/ --sysroot=${SYSROOT}" \
     LDFLAGS="-L${SYSROOT}/usr/lib/" \
@@ -28,5 +28,6 @@ rm */config.cache
     RANLIB=${CROSS_COMPILE}ranlib
 make clean
 make -j$THREADS
+#make
 make install
 make clean

@@ -31,8 +31,8 @@ VPATH = ../../../gcc/libiberty/testsuite
 
 SHELL = /bin/sh
 
-CC = arm-linux-androideabi-gcc
-CFLAGS = -g -O2 -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
+CC = arm-linux-androideabi-cc
+CFLAGS = -g -O2 -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm
 LIBCFLAGS = $(CFLAGS)
 
 # Multilib support variables.

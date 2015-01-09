@@ -1,1 +1,1 @@
-/Users/regnarts/Documents/androux/androux/gcc/libstdc++-v3/include/decimal/decimal.h
+/home/anushruth/exps/androux/gcc/libstdc++-v3/include/decimal/decimal.h

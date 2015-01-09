@@ -1,1 +1,2 @@
-arm-linux-androideabi-g++
+#!/bin/bash
+arm-linux-androideabi-c++.orig --sysroot=${SYSROOT} $@

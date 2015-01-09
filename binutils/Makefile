@@ -466,7 +466,7 @@ do-compare3 = $(do-compare)
 
 AR_FOR_TARGET=/home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ar
 AS_FOR_TARGET=/home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/as
-CC_FOR_TARGET=$(STAGE_CC_WRAPPER) arm-linux-androideabi-gcc
+CC_FOR_TARGET=$(STAGE_CC_WRAPPER) arm-linux-androideabi-cc
 
 # If GCC_FOR_TARGET is not overriden on the command line, then this
 # variable is passed down to the gcc Makefile, where it is used to

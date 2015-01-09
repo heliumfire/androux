@@ -73,7 +73,7 @@ unchanged.
 #endif
 #include <stdio.h>
 #ifdef HAVE_STDIO_EXT_H
-#include <stdio_ext.h>
+//#include <stdio_ext.h>
 #endif
 
 #include "libiberty.h"

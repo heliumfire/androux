@@ -7,6 +7,6 @@ LIBINTL='${top_builddir}/../intl/libintl.a'
 LIBINTL_DEP='${top_builddir}/../intl/libintl.a'
 INCINTL='-I${top_builddir}/../intl'
 
-XGETTEXT='/opt/local/bin/xgettext'
-GMSGFMT='/opt/local/bin/msgfmt'
+XGETTEXT='/usr/bin/xgettext'
+GMSGFMT='/usr/bin/msgfmt'
 POSUB='po'

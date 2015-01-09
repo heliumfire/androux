@@ -26,7 +26,7 @@ SHELL = /bin/sh
 srcdir = ../../gcc/intl
 VPATH = $(srcdir)
 
-prefix = /Users/regnarts/Documents/androux/androux/system
+prefix = /home/anushruth/exps/androux/system
 exec_prefix = ${prefix}
 transform = s,y,y,
 libdir = ${exec_prefix}/lib
@@ -40,13 +40,13 @@ AR = ar
 ACLOCAL = aclocal
 AUTOCONF = autoconf
 AUTOHEADER = autoheader
-CC = arm-linux-androideabi-gcc
+CC = arm-linux-androideabi-cc
 RANLIB = arm-linux-androideabi-ranlib
 YACC = bison -y -d
 YFLAGS = --name-prefix=__gettext
 CPPFLAGS = 
-CFLAGS = -g -O2 -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
-LDFLAGS =  -L/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/lib/
+CFLAGS = -g -O2 -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm
+LDFLAGS =  -L/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/lib/
 LIBS = 
 DEFS = -DHAVE_CONFIG_H
 

@@ -7,11 +7,24 @@ export SYSROOT=${PWD}/platforms/android-9/arch-arm
 
 if [ "$(uname)" = "Linux" ];
 then
-	echo "Building on Linux"
+	echo "================================================================================="
+	echo "*                                                                               *"
+	echo "*                             Building on Linux                                 *"
+	echo "*                            ~~~~~~~~~~~~~~~~~~~                                *"
+	echo "*                                                                               *"
+	echo "================================================================================="
+	sleep 1
 	export THREADS="$(nproc)"
 	export PATH=$PATH:${PWD}/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/bin/
 else
-	echo "Building on Darwin"
+	echo ""
+	echo "================================================================================="
+	echo "*                                                                               *"
+	echo "*                             Building on Darwin                                *"
+	echo "*                            ~~~~~~~~~~~~~~~~~~~~                               *"
+	echo "*                                                                               *"
+	echo "================================================================================="
+	sleep 1
 	export THREADS="$(sysctl -n hw.ncpu)"
 	export PATH=$PATH:${PWD}/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/
 fi

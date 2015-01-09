@@ -97,7 +97,7 @@ host_triplet = @host@
 subdir = config
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am ar-lib \
 	compile config.guess config.rpath config.sub depcomp \
-	install-sh missing
+	install-sh mdate-sh missing texinfo.tex
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/config/dospaths.m4 \
 	$(top_srcdir)/config/gettext.m4 $(top_srcdir)/config/iconv.m4 \

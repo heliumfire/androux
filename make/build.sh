@@ -22,9 +22,9 @@
 
 srcdir='.'
 CC='arm-linux-androideabi-gcc'
-CFLAGS='-g -O2 -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm '
-CPPFLAGS='-I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ -DHAVE_TTYNAME=0'
-LDFLAGS='-Wl,--export-dynamic -L/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/lib/'
+CFLAGS='-g -O2 -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm '
+CPPFLAGS='-I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ -DHAVE_TTYNAME=0'
+LDFLAGS='-Wl,--export-dynamic -L/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/lib/'
 ALLOCA=''
 LOADLIBES='  '
 eval extras=\' ${LIBOBJDIR}getloadavg$U.o\'
@@ -35,7 +35,7 @@ OBJEXT='o'
 EXEEXT=''
 
 # Common prefix for machine-independent installed files.
-prefix='/home/anushruth/exps/androux/system'
+prefix='/Users/regnarts/Documents/androux/androux/system'
 # Common prefix for machine-dependent installed files.
 exec_prefix=`eval echo ${prefix}`
 # Directory to find libraries in for '-lXXX'.

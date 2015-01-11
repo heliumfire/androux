@@ -1,1 +1,1 @@
-#define LOCALEDIR "/home/anushruth/exps/androux/system/share/locale"
+#define LOCALEDIR "/Users/regnarts/Documents/androux/androux/system/share/locale"

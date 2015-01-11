@@ -18,7 +18,7 @@ top_srcdir = ..
 
 top_builddir = ..
 
-prefix = /home/anushruth/exps/androux/system
+prefix = /Users/regnarts/Documents/androux/androux/system
 exec_prefix = ${prefix}
 datadir = $(prefix)/share
 localedir = $(datadir)/locale
@@ -34,13 +34,13 @@ MKINSTALLDIRS = $(top_builddir)/../mkinstalldirs
 
 CC = arm-linux-androideabi-gcc
 GENCAT = gencat
-GMSGFMT = PATH=../src:$$PATH /usr/bin/msgfmt
-MSGFMT = /usr/bin/msgfmt
-XGETTEXT = PATH=../src:$$PATH /usr/bin/xgettext
+GMSGFMT = PATH=../src:$$PATH /opt/local/bin/msgfmt
+MSGFMT = /opt/local/bin/msgfmt
+XGETTEXT = PATH=../src:$$PATH /opt/local/bin/xgettext
 MSGMERGE = PATH=../src:$$PATH msgmerge
 
 DEFS = -DHAVE_CONFIG_H
-CFLAGS = -g -I -O2 -I/home/anushruth/exps/androux/binutils/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.6/include -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm -Wno-error
+CFLAGS = -g -I -O2 -I/Users/regnarts/Documents/androux/androux/binutils/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.6/include -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm -Wno-error
 CPPFLAGS = 
 
 INCLUDES = -I.. -I$(top_srcdir)/intl

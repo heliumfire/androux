@@ -24,7 +24,7 @@
 libiberty_topdir = ../../gcc/libiberty/..
 srcdir = ../../gcc/libiberty
 
-prefix = /home/anushruth/exps/androux/system
+prefix = /Users/regnarts/Documents/androux/androux/system
 
 exec_prefix = ${prefix}
 bindir = ${exec_prefix}/bin
@@ -55,7 +55,7 @@ AR = arm-linux-androideabi-ar
 AR_FLAGS = rc
 
 CC = arm-linux-androideabi-cc
-CFLAGS = -g -O2 -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm
+CFLAGS = -g -O2 -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
 CPPFLAGS = 
 RANLIB = arm-linux-androideabi-ranlib
 MAKEINFO = makeinfo --split-size=5000000

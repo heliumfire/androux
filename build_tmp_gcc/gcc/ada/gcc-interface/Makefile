@@ -90,7 +90,7 @@ AR_FLAGS = rc
 LS = ls
 RANLIB = arm-linux-androideabi-ranlib
 RANLIB_FLAGS = 
-AWK = gawk
+AWK = awk
 
 COMPILER = $(CC)
 COMPILER_FLAGS = $(CFLAGS)

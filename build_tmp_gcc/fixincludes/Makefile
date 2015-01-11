@@ -27,9 +27,9 @@ SHELL=/bin/sh
 STAMP = echo timestamp >
 
 CC = arm-linux-androideabi-cc
-CFLAGS = -g -O2 -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm
+CFLAGS = -g -O2 -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
 WARN_CFLAGS = -W -Wall -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes -Wold-style-definition -Wmissing-format-attribute -Wno-overlength-strings -pedantic -Wno-long-long 
-LDFLAGS =  -L/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/lib/
+LDFLAGS =  -L/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/lib/
 INCLUDES = -I. -I$(srcdir) -I../include -I$(srcdir)/../include
 FIXINC_CFLAGS = -DHAVE_CONFIG_H $(INCLUDES)
 

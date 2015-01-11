@@ -1,1 +1,1 @@
-/home/anushruth/exps/androux/gcc/libstdc++-v3/include/bits/list.tcc
+/Users/regnarts/Documents/androux/androux/gcc/libstdc++-v3/include/bits/list.tcc

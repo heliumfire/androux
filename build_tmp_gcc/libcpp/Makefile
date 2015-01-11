@@ -32,7 +32,7 @@ AUTOCONF = autoconf
 AUTOHEADER = autoheader
 CATALOGS = $(patsubst %,po/%, be.gmo ca.gmo da.gmo de.gmo el.gmo es.gmo fi.gmo fr.gmo id.gmo ja.gmo nl.gmo ru.gmo sv.gmo tr.gmo uk.gmo vi.gmo zh_CN.gmo zh_TW.gmo be.gmo ca.gmo da.gmo de.gmo el.gmo es.gmo fi.gmo fr.gmo id.gmo ja.gmo nl.gmo ru.gmo sv.gmo tr.gmo uk.gmo vi.gmo zh_CN.gmo zh_TW.gmo)
 CC = arm-linux-androideabi-cc
-CFLAGS = -g -O2 -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm
+CFLAGS = -g -O2 -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
 WARN_CFLAGS = -W -Wall -Wwrite-strings -Wmissing-format-attribute -Wstrict-prototypes -Wmissing-prototypes -Wold-style-definition -Wc++-compat -pedantic -Wno-long-long 
 CXX = arm-linux-androideabi-g++
 CXXFLAGS = -g -O2
@@ -40,29 +40,29 @@ WARN_CXXFLAGS = -W -Wall -Wwrite-strings -Wmissing-format-attribute -pedantic -W
 CPP = arm-linux-androideabi-cc -E
 CPPFLAGS = 
 EXEEXT = 
-GMSGFMT = /usr/bin/msgfmt
+GMSGFMT = /opt/local/bin/msgfmt
 INCINTL = -I${top_builddir}/../intl
 INSTALL_DATA = /usr/bin/install -c -m 644
 INSTALL_PROGRAM = /usr/bin/install -c
 INSTALL_SCRIPT = /usr/bin/install -c
-LDFLAGS =  -L/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/lib/
+LDFLAGS =  -L/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/lib/
 LIBICONV = 
 LIBINTL = ${top_builddir}/../intl/libintl.a
 PACKAGE = cpplib
 RANLIB = arm-linux-androideabi-ranlib
 SHELL = /bin/sh
 USED_CATALOGS = $(CATALOGS)
-XGETTEXT = /usr/bin/xgettext
+XGETTEXT = /opt/local/bin/xgettext
 CCDEPMODE = depmode=gcc3
 CXXDEPMODE = 
 DEPDIR = .deps
 
 datarootdir = ${prefix}/share
 datadir = ${datarootdir}
-exec_prefix = /home/anushruth/exps/androux/system
+exec_prefix = /Users/regnarts/Documents/androux/androux/system
 libdir = ${exec_prefix}/lib
 localedir = $(datadir)/locale
-prefix = /home/anushruth/exps/androux/system
+prefix = /Users/regnarts/Documents/androux/androux/system
 
 MSGMERGE = msgmerge
 mkinstalldirs = $(SHELL) $(srcdir)/../mkinstalldirs

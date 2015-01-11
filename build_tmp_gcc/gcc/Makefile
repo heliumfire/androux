@@ -56,7 +56,7 @@ MAKEOVERRIDES =
 # Standard autoconf-set variables
 # -------------------------------
 
-build=x86_64-unknown-linux-gnu
+build=i386-apple-darwin14.0.0
 host=arm-unknown-linux-androideabi
 target=arm-unknown-linux-androideabi
 target_noncanonical:=arm-linux-androideabi
@@ -73,8 +73,8 @@ srcdir = ../../gcc/gcc
 gcc_docdir = ../../gcc/gcc/doc
 
 # Directory where sources are, absolute.
-abs_srcdir = /home/anushruth/exps/androux/build_tmp_gcc/gcc/../../gcc/gcc
-abs_docdir = /home/anushruth/exps/androux/build_tmp_gcc/gcc/../../gcc/gcc/doc
+abs_srcdir = /Users/regnarts/Documents/androux/androux/build_tmp_gcc/gcc/../../gcc/gcc
+abs_docdir = /Users/regnarts/Documents/androux/androux/build_tmp_gcc/gcc/../../gcc/gcc/doc
 
 # Top build directory for this package, relative to here.
 top_builddir = .
@@ -83,9 +83,9 @@ top_builddir = .
 objdir := $(shell pwd)
 
 host_subdir=.
-build_subdir=build-x86_64-unknown-linux-gnu
+build_subdir=build-i386-apple-darwin14.0.0
 target_subdir=arm-linux-androideabi
-build_libsubdir=build-x86_64-unknown-linux-gnu
+build_libsubdir=build-i386-apple-darwin14.0.0
 
 # Top build directory for the "Cygnus tree", relative to $(top_builddir).
 ifeq ($(host_subdir),.)
@@ -133,9 +133,9 @@ LANGUAGES = c gcov$(exeext) gcov-dump$(exeext) $(CONFIG_LANGUAGES)
 # T_CFLAGS is used for all compilations and is overridden by t-* files.
 T_CFLAGS =
 TCFLAGS =
-CFLAGS = -g -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm
+CFLAGS = -g -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
 CXXFLAGS = -g -O2
-LDFLAGS =  -L/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/lib/
+LDFLAGS =  -L/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/lib/
 
 # Flags to determine code coverage. When coverage is disabled, this will
 # contain the optimization flags, as you normally want code coverage
@@ -194,7 +194,7 @@ WARN_CXXFLAGS = $(GCC_WARN_CXXFLAGS)
 
 CPPFLAGS = 
 
-AWK = gawk
+AWK = awk
 CC = arm-linux-androideabi-cc
 CXX = arm-linux-androideabi-g++
 BISON = bison
@@ -310,8 +310,8 @@ ZLIB = -L../zlib -lz
 ZLIBINC = -I$(srcdir)/../zlib
 
 # How to find GMP
-GMPLIBS = -L/home/anushruth/exps/androux/system/lib -L/home/anushruth/exps/androux/system/lib -L/home/anushruth/exps/androux/system/lib -lmpc -lmpfr -lgmp
-GMPINC = -I/home/anushruth/exps/androux/system/include -I/home/anushruth/exps/androux/system/include -I/home/anushruth/exps/androux/system/include 
+GMPLIBS = -L/Users/regnarts/Documents/androux/androux/system/lib -L/Users/regnarts/Documents/androux/androux/system/lib -L/Users/regnarts/Documents/androux/androux/system/lib -lmpc -lmpfr -lgmp
+GMPINC = -I/Users/regnarts/Documents/androux/androux/system/include -I/Users/regnarts/Documents/androux/androux/system/include -I/Users/regnarts/Documents/androux/androux/system/include 
 
 # How to find PPL
 PPLLIBS = 
@@ -327,7 +327,7 @@ enable_lto = yes
 # Compiler and flags needed for plugin support
 ifneq ($(ENABLE_BUILD_WITH_CXX),yes)
 PLUGINCC = arm-linux-androideabi-cc
-PLUGINCFLAGS = -g -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm
+PLUGINCFLAGS = -g -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
 else
 PLUGINCC = arm-linux-androideabi-g++
 PLUGINCFLAGS = -g -O2
@@ -535,7 +535,7 @@ endif
 
 # Common prefix for installation directories.
 # NOTE: This directory must exist when you start installation.
-prefix = /home/anushruth/exps/androux/system
+prefix = /Users/regnarts/Documents/androux/androux/system
 # Directory in which to put localized header files. On the systems with
 # gcc as the native cc, `local_prefix' may not be `prefix' which is
 # `/usr'.
@@ -5161,8 +5161,8 @@ TAGS: lang.tags
 # Disabled by autoconf if the tools are not available.
 # -----------------------------------------------------
 
-XGETTEXT = /usr/bin/xgettext
-GMSGFMT = /usr/bin/msgfmt
+XGETTEXT = /opt/local/bin/xgettext
+GMSGFMT = /opt/local/bin/msgfmt
 MSGMERGE = msgmerge
 CATALOGS = $(patsubst %,po/%, be.gmo da.gmo de.gmo el.gmo es.gmo fi.gmo fr.gmo id.gmo ja.gmo nl.gmo ru.gmo sr.gmo sv.gmo tr.gmo vi.gmo zh_CN.gmo zh_TW.gmo be.gmo da.gmo de.gmo el.gmo es.gmo fi.gmo fr.gmo id.gmo ja.gmo nl.gmo ru.gmo sr.gmo sv.gmo tr.gmo vi.gmo zh_CN.gmo zh_TW.gmo)
 

@@ -1,1 +1,1 @@
-/home/anushruth/exps/androux/gcc/libstdc++-v3/config/locale/generic/monetary_members.cc
+/Users/regnarts/Documents/androux/androux/gcc/libstdc++-v3/config/locale/generic/monetary_members.cc

@@ -11,7 +11,7 @@
 # loading this file, other *unset* `ac_cv_foo' will be assigned the
 # following values.
 
-ac_cv_build=${ac_cv_build=x86_64-unknown-linux-gnu}
+ac_cv_build=${ac_cv_build=i386-apple-darwin14.0.0}
 ac_cv_c_bigendian=${ac_cv_c_bigendian=no}
 ac_cv_c_compiler_gnu=${ac_cv_c_compiler_gnu=yes}
 ac_cv_c_const=${ac_cv_c_const=yes}
@@ -20,17 +20,17 @@ ac_cv_c_stack_direction=${ac_cv_c_stack_direction=0}
 ac_cv_env_CC_set=set
 ac_cv_env_CC_value=arm-linux-androideabi-cc
 ac_cv_env_CFLAGS_set=set
-ac_cv_env_CFLAGS_value='-g -O2 -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm'
+ac_cv_env_CFLAGS_value='-g -O2 -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm'
 ac_cv_env_CPPFLAGS_set=
 ac_cv_env_CPPFLAGS_value=
 ac_cv_env_CPP_set=
 ac_cv_env_CPP_value=
 ac_cv_env_LDFLAGS_set=set
-ac_cv_env_LDFLAGS_value=' -L/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/lib/'
+ac_cv_env_LDFLAGS_value=' -L/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/lib/'
 ac_cv_env_LIBS_set=
 ac_cv_env_LIBS_value=
 ac_cv_env_build_alias_set=set
-ac_cv_env_build_alias_value=x86_64-unknown-linux-gnu
+ac_cv_env_build_alias_value=i386-apple-darwin14.0.0
 ac_cv_env_host_alias_set=set
 ac_cv_env_host_alias_value=arm-linux-androideabi
 ac_cv_env_target_alias_set=set
@@ -164,8 +164,8 @@ ac_cv_header_vfork_h=${ac_cv_header_vfork_h=no}
 ac_cv_host=${ac_cv_host=arm-unknown-linux-androideabi}
 ac_cv_objext=${ac_cv_objext=o}
 ac_cv_os_cray=${ac_cv_os_cray=no}
-ac_cv_path_EGREP=${ac_cv_path_EGREP='/bin/grep -E'}
-ac_cv_path_GREP=${ac_cv_path_GREP=/bin/grep}
+ac_cv_path_EGREP=${ac_cv_path_EGREP='/usr/bin/grep -E'}
+ac_cv_path_GREP=${ac_cv_path_GREP=/usr/bin/grep}
 ac_cv_prog_AR=${ac_cv_prog_AR=arm-linux-androideabi-ar}
 ac_cv_prog_CC=${ac_cv_prog_CC=arm-linux-androideabi-cc}
 ac_cv_prog_CPP=${ac_cv_prog_CPP='arm-linux-androideabi-cc -E'}

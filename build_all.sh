@@ -46,3 +46,9 @@ cd ../build_tmp_gcc
 
 cd ../make
 ./build_android.sh
+
+cd ../bash
+./build_android.sh
+
+#cd sed
+#./build_android.sh

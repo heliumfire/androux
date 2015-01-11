@@ -391,7 +391,7 @@
 	      << (INTVAL (operands[2])))))")
   (-1 "TARGET_INT_SIMD")
   (-1 "TARGET_THUMB2 && TARGET_HARD_FLOAT && TARGET_VFP_DOUBLE")
-  (0 "TARGET_32BIT && TARGET_HARD_FLOAT && TARGET_MAVERICK && 0")
+  (-1 "TARGET_32BIT && TARGET_HARD_FLOAT && TARGET_MAVERICK && 0")
   (-1 "TARGET_THUMB2 && optimize_size && reload_completed")
   (-1 "(TARGET_32BIT) && (TARGET_32BIT && XVECLEN (operands[0], 0) == 3)")
   (-1 "TARGET_32BIT

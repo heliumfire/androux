@@ -1,1 +1,1 @@
-/home/anushruth/exps/androux/gcc/libstdc++-v3/include/bits/atomic_2.h
+/Users/regnarts/Documents/androux/androux/gcc/libstdc++-v3/include/bits/atomic_2.h

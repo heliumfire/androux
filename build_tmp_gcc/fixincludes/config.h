@@ -378,7 +378,7 @@
 
 /* Defined to the best working sed program on the host system */
 #ifndef USED_FOR_TARGET
-#define SED_PROGRAM "/bin/sed"
+#define SED_PROGRAM "/usr/bin/sed"
 #endif
 
 

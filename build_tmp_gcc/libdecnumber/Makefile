@@ -32,13 +32,13 @@ ACLOCAL = aclocal
 AUTOCONF = autoconf
 AUTOHEADER = autoheader
 CC = arm-linux-androideabi-cc
-CFLAGS = -g -O2 -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm
+CFLAGS = -g -O2 -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
 WARN_CFLAGS = -W -Wall -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes -Wold-style-definition -Wmissing-format-attribute -Wcast-qual -pedantic -Wno-long-long 
 CPP = arm-linux-androideabi-cc -E
 CPPFLAGS = 
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
-LDFLAGS =  -L/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/lib/
+LDFLAGS =  -L/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/lib/
 LIBICONV = @LIBICONV@
 PACKAGE = @PACKAGE@
 RANLIB = arm-linux-androideabi-ranlib
@@ -47,10 +47,10 @@ objext = o
 
 datarootdir = ${prefix}/share
 datadir = ${datarootdir}
-exec_prefix = /home/anushruth/exps/androux/system
+exec_prefix = /Users/regnarts/Documents/androux/androux/system
 libdir = ${exec_prefix}/lib
 localedir = $(datadir)/locale
-prefix = /home/anushruth/exps/androux/system
+prefix = /Users/regnarts/Documents/androux/androux/system
 
 ADDITIONAL_OBJS = 
 

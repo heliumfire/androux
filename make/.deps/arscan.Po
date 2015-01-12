@@ -1,233 +1,233 @@
 arscan.o: arscan.c makeint.h config.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/alloca.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/alloca.h \
  gnumake.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/types.h \
- /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stddef.h \
- /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdint.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/stdint.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/_types.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/machine/_types.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/_wchar_limits.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/android/api-level.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/posix_types.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/stddef.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/compiler.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/posix_types.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/types.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/types.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/machine/kernel.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/stat.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/time.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/time.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/stat.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/endian.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/endian.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/machine/endian.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/signal.h \
- /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/limits.h \
- /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/syslimits.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/limits.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/limits.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/limits.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/machine/internal_types.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/machine/limits.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/syslimits.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/page.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/string.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/malloc.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/signal.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/signal.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/sigcontext.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/siginfo.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/siginfo.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/stdio.h \
- /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdarg.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ctype.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/timeb.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/time.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/errno.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/errno.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/errno.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/errno.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/errno-base.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/unistd.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/select.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/sysconf.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/capability.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/pathconf.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/param.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/param.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/param.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/stdlib.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/strings.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/memory.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/inttypes.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/locale.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/types.h \
+ /home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stddef.h \
+ /home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdint.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/stdint.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/_types.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/machine/_types.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/_wchar_limits.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/android/api-level.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/posix_types.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/stddef.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/compiler.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/posix_types.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/types.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/types.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/machine/kernel.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/stat.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/time.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/time.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/stat.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/endian.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/endian.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/machine/endian.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/signal.h \
+ /home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/limits.h \
+ /home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/syslimits.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/limits.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/limits.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/limits.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/machine/internal_types.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/machine/limits.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/syslimits.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/page.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/string.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/malloc.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/signal.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm-generic/signal.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/sigcontext.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/siginfo.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm-generic/siginfo.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/stdio.h \
+ /home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdarg.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ctype.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/timeb.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/time.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/errno.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/errno.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/errno.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm-generic/errno.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm-generic/errno-base.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/unistd.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/select.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/sysconf.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/capability.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/pathconf.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/param.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/param.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/param.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/stdlib.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/strings.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/memory.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/inttypes.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/locale.h \
  gettext.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/resource.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/resource.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/resource.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/resource.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/fcntl.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/fcntl.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/fcntl.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/fcntl.h
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/resource.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/resource.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/resource.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm-generic/resource.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/fcntl.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm-generic/fcntl.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/fcntl.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/fcntl.h
 
 makeint.h:
 
 config.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/alloca.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/alloca.h:
 
 gnumake.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/types.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/types.h:
 
-/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stddef.h:
+/home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stddef.h:
 
-/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdint.h:
+/home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdint.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/stdint.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/stdint.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/_types.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/_types.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/machine/_types.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/machine/_types.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/_wchar_limits.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/_wchar_limits.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/android/api-level.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/android/api-level.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/posix_types.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/posix_types.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/stddef.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/stddef.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/compiler.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/compiler.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/posix_types.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/posix_types.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/types.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/types.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/types.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/types.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/machine/kernel.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/machine/kernel.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/stat.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/stat.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/time.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/time.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/time.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/time.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/stat.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/stat.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/endian.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/endian.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/endian.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/endian.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/machine/endian.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/machine/endian.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/signal.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/signal.h:
 
-/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/limits.h:
+/home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/limits.h:
 
-/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/syslimits.h:
+/home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.8/include-fixed/syslimits.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/limits.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/limits.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/limits.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/limits.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/limits.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/limits.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/machine/internal_types.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/machine/internal_types.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/machine/limits.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/machine/limits.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/syslimits.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/syslimits.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/page.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/page.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/string.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/string.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/malloc.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/malloc.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/signal.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/signal.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/signal.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm-generic/signal.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/sigcontext.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/sigcontext.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/siginfo.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/siginfo.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/siginfo.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm-generic/siginfo.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/stdio.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/stdio.h:
 
-/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdarg.h:
+/home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stdarg.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ctype.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ctype.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/timeb.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/timeb.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/time.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/time.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/errno.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/errno.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/errno.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/errno.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/errno.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/errno.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/errno.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm-generic/errno.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/errno-base.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm-generic/errno-base.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/unistd.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/unistd.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/select.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/select.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/sysconf.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/sysconf.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/capability.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/capability.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/pathconf.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/pathconf.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/param.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/param.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/param.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/param.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/param.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/param.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/stdlib.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/stdlib.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/strings.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/strings.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/memory.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/memory.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/inttypes.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/inttypes.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/locale.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/locale.h:
 
 gettext.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/resource.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/resource.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/resource.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/resource.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/resource.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/resource.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/resource.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm-generic/resource.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/fcntl.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/fcntl.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm-generic/fcntl.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm-generic/fcntl.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/linux/fcntl.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/linux/fcntl.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/asm/fcntl.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/asm/fcntl.h:

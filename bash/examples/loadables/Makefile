@@ -18,7 +18,7 @@
 #
 
 # Include some boilerplate Gnu makefile definitions.
-prefix = /Users/regnarts/Documents/androux/androux/system
+prefix = /home/anushruth/exps/androux/system
 
 exec_prefix = ${prefix}
 bindir = ${exec_prefix}/bin
@@ -29,7 +29,7 @@ includedir = ${prefix}/include
 datarootdir = ${prefix}/share
 
 topdir = ../..
-BUILD_DIR = /Users/regnarts/Documents/androux/androux/bash
+BUILD_DIR = /home/anushruth/exps/androux/bash
 srcdir = .
 VPATH = .
 
@@ -43,12 +43,12 @@ host_os = linux-androideabi
 host_cpu = arm
 host_vendor = unknown
 
-CFLAGS = -g -O2 -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
+CFLAGS = -g -O2 -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm
 LOCAL_CFLAGS = 
 DEFS = -DHAVE_CONFIG_H
 LOCAL_DEFS = -DSHELL
 
-CPPFLAGS = -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/
+CPPFLAGS = -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/
 
 BASHINCDIR = ${topdir}/include
 
@@ -70,7 +70,7 @@ CCFLAGS = $(DEFS) $(LOCAL_DEFS) $(LOCAL_CFLAGS) $(CFLAGS)
 SHOBJ_CC = arm-linux-androideabi-gcc
 SHOBJ_CFLAGS = -fPIC
 SHOBJ_LD = ${CC}
-SHOBJ_LDFLAGS = -shared -Wl,-soname,$@ -L/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/lib/ -L./lib/termcap
+SHOBJ_LDFLAGS = -shared -Wl,-soname,$@ -L/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/lib/ -L./lib/termcap
 SHOBJ_XLDFLAGS = 
 SHOBJ_LIBS = 
 SHOBJ_STATUS = supported

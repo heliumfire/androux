@@ -28,7 +28,7 @@ PACKAGE_VERSION = 4.3-release
 srcdir = .
 VPATH = .
 topdir = ../..
-BUILD_DIR = /Users/regnarts/Documents/androux/androux/bash
+BUILD_DIR = /home/anushruth/exps/androux/bash
 
 LIBBUILD = ${BUILD_DIR}/lib
 
@@ -55,10 +55,10 @@ MV = mv
 
 SHELL = /bin/sh
 
-CFLAGS = -g -O2 -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
+CFLAGS = -g -O2 -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm
 LOCAL_CFLAGS =  ${DEBUG}
-CPPFLAGS = -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/
-LDFLAGS = -L/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/lib/ -L./lib/termcap -rdynamic
+CPPFLAGS = -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/
+LDFLAGS = -L/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/lib/ -L./lib/termcap -rdynamic
 
 PROFILE_FLAGS = 
 

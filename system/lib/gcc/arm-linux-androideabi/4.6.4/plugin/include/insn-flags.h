@@ -65,9 +65,6 @@
 #define HAVE_cirrus_adddi3 (TARGET_32BIT && TARGET_HARD_FLOAT && TARGET_MAVERICK)
 #define HAVE_cirrus_subdi3 (TARGET_32BIT && TARGET_HARD_FLOAT && TARGET_MAVERICK)
 #define HAVE_muldi3 (TARGET_32BIT && TARGET_HARD_FLOAT && TARGET_MAVERICK)
-#define HAVE_cirrus_ashl_const (TARGET_32BIT && TARGET_HARD_FLOAT && TARGET_MAVERICK && 0)
-#define HAVE_cirrus_ashiftrt_const (TARGET_32BIT && TARGET_HARD_FLOAT && TARGET_MAVERICK && 0)
-#define HAVE_cirrus_ashlsi3 (TARGET_32BIT && TARGET_HARD_FLOAT && TARGET_MAVERICK && 0)
 #define HAVE_ashldi3_cirrus (TARGET_32BIT && TARGET_HARD_FLOAT && TARGET_MAVERICK)
 #define HAVE_cirrus_ashldi_const (TARGET_32BIT && TARGET_HARD_FLOAT && TARGET_MAVERICK)
 #define HAVE_cirrus_ashiftrtdi_const (TARGET_32BIT && TARGET_HARD_FLOAT && TARGET_MAVERICK)
@@ -2070,9 +2067,24 @@ extern rtx        gen_load_tp_soft                      (void);
 extern rtx        gen_cirrus_adddi3                     (rtx, rtx, rtx);
 extern rtx        gen_cirrus_subdi3                     (rtx, rtx, rtx);
 extern rtx        gen_muldi3                            (rtx, rtx, rtx);
-extern rtx        gen_cirrus_ashl_const                 (rtx, rtx, rtx);
-extern rtx        gen_cirrus_ashiftrt_const             (rtx, rtx, rtx);
-extern rtx        gen_cirrus_ashlsi3                    (rtx, rtx, rtx);
+static inline rtx gen_cirrus_ashl_const                 (rtx, rtx, rtx);
+static inline rtx
+gen_cirrus_ashl_const(rtx ARG_UNUSED (a), rtx ARG_UNUSED (b), rtx ARG_UNUSED (c))
+{
+  return 0;
+}
+static inline rtx gen_cirrus_ashiftrt_const             (rtx, rtx, rtx);
+static inline rtx
+gen_cirrus_ashiftrt_const(rtx ARG_UNUSED (a), rtx ARG_UNUSED (b), rtx ARG_UNUSED (c))
+{
+  return 0;
+}
+static inline rtx gen_cirrus_ashlsi3                    (rtx, rtx, rtx);
+static inline rtx
+gen_cirrus_ashlsi3(rtx ARG_UNUSED (a), rtx ARG_UNUSED (b), rtx ARG_UNUSED (c))
+{
+  return 0;
+}
 extern rtx        gen_ashldi3_cirrus                    (rtx, rtx, rtx);
 extern rtx        gen_cirrus_ashldi_const               (rtx, rtx, rtx);
 extern rtx        gen_cirrus_ashiftrtdi_const           (rtx, rtx, rtx);

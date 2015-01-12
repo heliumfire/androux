@@ -1,1 +1,1 @@
-/Users/regnarts/Documents/androux/androux/gcc/libstdc++-v3/config/io/c_io_stdio.h
+/home/anushruth/exps/androux/gcc/libstdc++-v3/config/io/c_io_stdio.h

@@ -50,5 +50,5 @@ cd ../make
 cd ../bash
 ./build_android.sh
 
-#cd sed
-#./build_android.sh
+cd ../sed
+./build_android.sh

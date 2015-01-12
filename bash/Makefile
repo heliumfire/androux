@@ -29,7 +29,7 @@ PACKAGE_VERSION = 4.3-release
 PACKAGE_TARNAME = bash
 
 # Include some boilerplate Gnu makefile definitions.
-prefix = /Users/regnarts/Documents/androux/androux/system
+prefix = /home/anushruth/exps/androux/system
 
 exec_prefix = ${prefix}
 
@@ -58,8 +58,8 @@ htmldir = ${docdir}
 DESTDIR =
 
 topdir = .
-BUILD_DIR = /Users/regnarts/Documents/androux/androux/bash
-top_builddir = /Users/regnarts/Documents/androux/androux/bash
+BUILD_DIR = /home/anushruth/exps/androux/bash
+top_builddir = /home/anushruth/exps/androux/bash
 srcdir = .
 VPATH = .
 
@@ -124,9 +124,9 @@ THIS_SH = $(BUILD_DIR)/$(Program)
 # with gprof, or nothing (the default).
 PROFILE_FLAGS= 
 
-CFLAGS = -g -O2 -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
+CFLAGS = -g -O2 -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm
 CFLAGS_FOR_BUILD = -g -DCROSS_COMPILING
-CPPFLAGS = -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/
+CPPFLAGS = -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/
 CPPFLAGS_FOR_BUILD = 
 LOCAL_CFLAGS =  ${DEBUG} ${MALLOC_DEBUG}
 DEFS = -DHAVE_CONFIG_H
@@ -150,7 +150,7 @@ CCFLAGS = $(BASE_CCFLAGS) $(CPPFLAGS) $(CFLAGS)
 
 CCFLAGS_FOR_BUILD = $(BASE_CCFLAGS) $(CPPFLAGS_FOR_BUILD) $(CFLAGS_FOR_BUILD)
 
-LDFLAGS = -L/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/lib/ -L./lib/termcap $(STATIC_LD) $(LOCAL_LDFLAGS) $(PROFILE_FLAGS) $(CFLAGS)
+LDFLAGS = -L/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/lib/ -L./lib/termcap $(STATIC_LD) $(LOCAL_LDFLAGS) $(PROFILE_FLAGS) $(CFLAGS)
 LDFLAGS_FOR_BUILD =  $(LOCAL_LDFLAGS) $(CFLAGS_FOR_BUILD)
 
 INCLUDES = -I.  -I$(srcdir) -I$(BASHINCDIR) -I$(LIBSRC) $(INTL_INC)

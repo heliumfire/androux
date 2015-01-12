@@ -27,7 +27,7 @@ gcc_objdir = $(MULTIBUILDTOP)../../$(host_subdir)/gcc
 
 srcdir = ../../../gcc/libgcc
 
-prefix = /Users/regnarts/Documents/androux/androux/system
+prefix = /home/anushruth/exps/androux/system
 
 exec_prefix = ${prefix}
 libdir = ${exec_prefix}/lib
@@ -62,12 +62,12 @@ mkinstalldirs = $(SHELL) $(libgcc_topdir)/mkinstalldirs
 
 objext = .o
 
-AR = /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ar
+AR = /home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ar
 AR_FLAGS = rc
 
 CC = arm-linux-androideabi-cc    
-CFLAGS = -g -O2 -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
-RANLIB = /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ranlib
+CFLAGS = -g -O2 -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm
+RANLIB = /home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ranlib
 LN_S = ln -s
 
 PWD_COMMAND = $${PWDCMD-pwd}
@@ -161,15 +161,15 @@ AR_FOR_TARGET = $(AR)
 AR_FLAGS_FOR_TARGET =
 AR_CREATE_FOR_TARGET = $(AR_FOR_TARGET) $(AR_FLAGS_FOR_TARGET) rc
 AR_EXTRACT_FOR_TARGET = $(AR_FOR_TARGET) $(AR_FLAGS_FOR_TARGET) x
-AWK = awk
+AWK = gawk
 GCC_FOR_TARGET = $(CC)
 LIPO = arm-linux-androideabi-lipo
 LIPO_FOR_TARGET = $(LIPO)
 MACHMODE_H = machmode.h mode-classes.def insn-modes.h
-NM = /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/nm
+NM = /home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/nm
 NM_FOR_TARGET = $(NM)
 RANLIB_FOR_TARGET = $(RANLIB)
-STRIP = /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/strip
+STRIP = /home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/strip
 STRIP_FOR_TARGET = $(STRIP)
 
 # Directory in which the compiler finds libraries etc.

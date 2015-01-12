@@ -22,10 +22,10 @@ SHELL = /bin/sh
 
 srcdir = .
 top_srcdir = ../..
-top_builddir = /Users/regnarts/Documents/androux/androux/bash
+top_builddir = /home/anushruth/exps/androux/bash
 
 
-prefix = /Users/regnarts/Documents/androux/androux/system
+prefix = /home/anushruth/exps/androux/system
 exec_prefix = ${prefix}
 transform = s,x,x,
 
@@ -66,9 +66,9 @@ DEFS = -DLOCALEDIR=\"$(localedir)\" -DLOCALE_ALIAS_PATH=\"$(aliaspath)\" \
 -Dset_relocation_prefix=libintl_set_relocation_prefix \
 -Drelocate=libintl_relocate \
 -DDEPENDS_ON_LIBICONV=1 -DHAVE_CONFIG_H ${LOCAL_DEFS}
-CPPFLAGS = -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/
-CFLAGS = -g -O2 -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
-LDFLAGS = -L/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/lib/ -L./lib/termcap
+CPPFLAGS = -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/
+CFLAGS = -g -O2 -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm
+LDFLAGS = -L/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/lib/ -L./lib/termcap
 LIBS = -ldl 
 
 COMPILE = $(CC) -c $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS) $(XCFLAGS)

@@ -22,7 +22,7 @@
 srcdir = .
 VPATH = .
 topdir = ../..
-BUILD_DIR = /Users/regnarts/Documents/androux/androux/bash
+BUILD_DIR = /home/anushruth/exps/androux/bash
 
 INSTALL = /usr/bin/install -c
 INSTALL_PROGRAM = ${INSTALL}
@@ -40,10 +40,10 @@ SHELL = /bin/sh
 
 PROFILE_FLAGS = 
 
-CFLAGS = -g -O2 -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
+CFLAGS = -g -O2 -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm
 LOCAL_CFLAGS = 
-CPPFLAGS = -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/
-LDFLAGS = -L/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/lib/ -L./lib/termcap -rdynamic
+CPPFLAGS = -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/
+LDFLAGS = -L/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/lib/ -L./lib/termcap -rdynamic
 
 DEFS = -DHAVE_CONFIG_H
 LOCAL_DEFS = -DSHELL

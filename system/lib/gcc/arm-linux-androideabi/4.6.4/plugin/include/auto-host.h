@@ -232,7 +232,7 @@
 
 /* Define if your assembler supports the --debug-prefix-map option. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_AS_DEBUG_PREFIX_MAP */
+#define HAVE_AS_DEBUG_PREFIX_MAP 1
 #endif
 
 
@@ -257,7 +257,7 @@
 /* Define if your assembler supports dwarf2 .file/.loc directives, and
    preserves file table indices exactly as given. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_AS_DWARF2_DEBUG_LINE */
+#define HAVE_AS_DWARF2_DEBUG_LINE 1
 #endif
 
 
@@ -275,7 +275,7 @@
 
 /* Define if your assembler supports the --gdwarf2 option. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_AS_GDWARF2_DEBUG_FLAG */
+#define HAVE_AS_GDWARF2_DEBUG_FLAG 1
 #endif
 
 
@@ -293,7 +293,7 @@
 
 /* Define if your assembler supports the --gstabs option. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_AS_GSTABS_DEBUG_FLAG */
+#define HAVE_AS_GSTABS_DEBUG_FLAG 1
 #endif
 
 
@@ -360,13 +360,13 @@
 
 /* Define if your assembler supports .sleb128 and .uleb128. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_AS_LEB128 */
+#define HAVE_AS_LEB128 1
 #endif
 
 
 /* Define if the assembler won't complain about a line such as # 0 "" 2. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_AS_LINE_ZERO */
+#define HAVE_AS_LINE_ZERO 1
 #endif
 
 
@@ -470,7 +470,7 @@
 
 /* Define if your assembler and linker support thread-local storage. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_AS_TLS */
+#define HAVE_AS_TLS 1
 #endif
 
 
@@ -518,7 +518,7 @@
 
 /* Define 0/1 if your assembler and linker support COMDAT groups. */
 #ifndef USED_FOR_TARGET
-#define HAVE_COMDAT_GROUP 0
+#define HAVE_COMDAT_GROUP 1
 #endif
 
 
@@ -847,7 +847,7 @@
 
 /* Define to 1 if you have the <ext/hash_map> header file. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_EXT_HASH_MAP */
+#define HAVE_EXT_HASH_MAP 1
 #endif
 
 
@@ -938,22 +938,22 @@
 
 /* Define if your assembler supports .balign and .p2align. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_GAS_BALIGN_AND_P2ALIGN */
+#define HAVE_GAS_BALIGN_AND_P2ALIGN 1
 #endif
 
 
 /* Define 0/1 if your assembler supports CFI directives. */
-#define HAVE_GAS_CFI_DIRECTIVE 0
+#define HAVE_GAS_CFI_DIRECTIVE 1
 
 /* Define 0/1 if your assembler supports .cfi_personality. */
-#define HAVE_GAS_CFI_PERSONALITY_DIRECTIVE 0
+#define HAVE_GAS_CFI_PERSONALITY_DIRECTIVE 1
 
 /* Define 0/1 if your assembler supports .cfi_sections. */
-#define HAVE_GAS_CFI_SECTIONS_DIRECTIVE 0
+#define HAVE_GAS_CFI_SECTIONS_DIRECTIVE 1
 
 /* Define if your assembler supports the .loc discriminator sub-directive. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_GAS_DISCRIMINATOR */
+#define HAVE_GAS_DISCRIMINATOR 1
 #endif
 
 
@@ -964,7 +964,7 @@
 
 
 /* Define if your assembler and linker support .hidden. */
-/* #undef HAVE_GAS_HIDDEN */
+#define HAVE_GAS_HIDDEN 1
 
 /* Define if your assembler supports .lcomm with an alignment field. */
 #ifndef USED_FOR_TARGET
@@ -981,7 +981,7 @@
 /* Define if your assembler supports specifying the maximum number of bytes to
    skip when using the GAS .p2align command. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_GAS_MAX_SKIP_P2ALIGN */
+#define HAVE_GAS_MAX_SKIP_P2ALIGN 1
 #endif
 
 
@@ -1001,26 +1001,26 @@
 /* Define 0/1 if your assembler supports marking sections with SHF_MERGE flag.
    */
 #ifndef USED_FOR_TARGET
-#define HAVE_GAS_SHF_MERGE 0
+#define HAVE_GAS_SHF_MERGE 1
 #endif
 
 
 /* Define if your assembler supports .subsection and .subsection -1 starts
    emitting at the beginning of your section. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_GAS_SUBSECTION_ORDERING */
+#define HAVE_GAS_SUBSECTION_ORDERING 1
 #endif
 
 
 /* Define if your assembler supports .weak. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_GAS_WEAK */
+#define HAVE_GAS_WEAK 1
 #endif
 
 
 /* Define if your assembler supports .weakref. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_GAS_WEAKREF */
+#define HAVE_GAS_WEAKREF 1
 #endif
 
 
@@ -1146,13 +1146,13 @@
 
 /* Define if your linker supports --as-needed and --no-as-needed options. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_LD_AS_NEEDED */
+#define HAVE_LD_AS_NEEDED 1
 #endif
 
 
 /* Define if your linker supports --build-id. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_LD_BUILDID */
+#define HAVE_LD_BUILDID 1
 #endif
 
 
@@ -1163,7 +1163,7 @@
 
 
 /* Define if your linker supports .eh_frame_hdr. */
-/* #undef HAVE_LD_EH_FRAME_HDR */
+#define HAVE_LD_EH_FRAME_HDR 1
 
 /* Define if your linker supports garbage collection of sections in presence
    of EH frames. */
@@ -1200,14 +1200,14 @@
 
 /* Define if your linker supports -pie option. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_LD_PIE */
+#define HAVE_LD_PIE 1
 #endif
 
 
 /* Define if your linker links a mix of read-only and read-write sections into
    a read-write section. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_LD_RO_RW_SECTION_MIXING */
+#define HAVE_LD_RO_RW_SECTION_MIXING 1
 #endif
 
 
@@ -1219,13 +1219,13 @@
 
 /* Define if your linker supports -Bstatic/-Bdynamic or equivalent options. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_LD_STATIC_DYNAMIC */
+#define HAVE_LD_STATIC_DYNAMIC 1
 #endif
 
 
 /* Define if your linker supports --sysroot. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_LD_SYSROOT */
+#define HAVE_LD_SYSROOT 1
 #endif
 
 
@@ -1255,7 +1255,7 @@
 
 /* Define if your linker supports plugin. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_LTO_PLUGIN */
+#define HAVE_LTO_PLUGIN 1
 #endif
 
 
@@ -1453,7 +1453,7 @@
 
 /* Define to 1 if you have the <tr1/unordered_map> header file. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_TR1_UNORDERED_MAP */
+#define HAVE_TR1_UNORDERED_MAP 1
 #endif
 
 
@@ -1556,13 +1556,13 @@
 
 /* Define to the linker option to enable use of shared objects. */
 #ifndef USED_FOR_TARGET
-/* #undef LD_DYNAMIC_OPTION */
+#define LD_DYNAMIC_OPTION "-Bdynamic"
 #endif
 
 
 /* Define to the linker option to disable use of shared objects. */
 #ifndef USED_FOR_TARGET
-/* #undef LD_STATIC_OPTION */
+#define LD_STATIC_OPTION "-Bstatic"
 #endif
 
 
@@ -1654,7 +1654,7 @@
 
 /* Define to PREFIX/include if cpp should also search that directory. */
 #ifndef USED_FOR_TARGET
-#define PREFIX_INCLUDE_DIR "/Users/regnarts/Documents/androux/androux/system/include"
+#define PREFIX_INCLUDE_DIR "/home/anushruth/exps/androux/system/include"
 #endif
 
 
@@ -1717,7 +1717,7 @@
 
 /* Define if your target C library provides stack protector support */
 #ifndef USED_FOR_TARGET
-/* #undef TARGET_LIBC_PROVIDES_SSP */
+#define TARGET_LIBC_PROVIDES_SSP 1
 #endif
 
 

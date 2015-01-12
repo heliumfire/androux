@@ -2,7 +2,7 @@
 
 # libtool - Provide generalized library-building support services.
 # Generated automatically by config.status (mpfr) 3.1.2
-# Libtool was configured on host Anushruths-MacBook-Air.local:
+# Libtool was configured on host work:
 # NOTE: Changes made to this file will be lost: look at ltmain.sh.
 #
 #   Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2003, 2004, 2005,
@@ -62,7 +62,7 @@ build_old_libs=yes
 pic_mode=default
 
 # Whether or not to optimize for fast installation.
-fast_install=yes
+fast_install=needless
 
 # Shell to use when invoking shell scripts.
 SHELL="/bin/sh"
@@ -80,23 +80,23 @@ host_os=linux-androideabi
 
 # The build system.
 build_alias=
-build=i386-apple-darwin14.0.0
-build_os=darwin14.0.0
+build=x86_64-unknown-linux-gnu
+build_os=linux-gnu
 
 # A sed program that does not truncate output.
-SED="/usr/bin/sed"
+SED="/bin/sed"
 
 # Sed that helps us avoid accidentally triggering echo(1) options like -n.
 Xsed="$SED -e 1s/^X//"
 
 # A grep program that handles long lines.
-GREP="/usr/bin/grep"
+GREP="/bin/grep"
 
 # An ERE matcher.
-EGREP="/usr/bin/grep -E"
+EGREP="/bin/grep -E"
 
 # A literal string matcher.
-FGREP="/usr/bin/grep -F"
+FGREP="/bin/grep -F"
 
 # A BSD- or MS-compatible name lister.
 NM="arm-linux-androideabi-nm"
@@ -105,7 +105,7 @@ NM="arm-linux-androideabi-nm"
 LN_S="ln -s"
 
 # What is the maximum length of a command?
-max_cmd_len=196608
+max_cmd_len=1572864
 
 # Object file suffix (normally "o").
 objext=o
@@ -167,7 +167,7 @@ lock_old_archive_extraction=no
 LTCC="arm-linux-androideabi-gcc"
 
 # LTCC compiler flags.
-LTCFLAGS="-g -O2 -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm -ffloat-store"
+LTCFLAGS="-g -O2 -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm -ffloat-store"
 
 # Take the output of nm and produce a listing of raw symbols and C names.
 global_symbol_pipe="sed -n -e 's/^.*[	 ]\\([ABCDGIRSTW][ABCDGIRSTW]*\\)[	 ][	 ]*\\([_A-Za-z][_A-Za-z0-9]*\\)\$/\\1 \\2 \\2/p' | sed '/ __gnu_lto/d'"
@@ -243,7 +243,7 @@ runpath_var=LD_RUN_PATH
 shlibpath_var=LD_LIBRARY_PATH
 
 # Is shlibpath searched before the hard-coded library search path?
-shlibpath_overrides_runpath=no
+shlibpath_overrides_runpath=yes
 
 # Format of library name prefix.
 libname_spec="lib\$name"
@@ -275,10 +275,10 @@ finish_eval=""
 hardcode_into_libs=yes
 
 # Compile-time system search path for libraries.
-sys_lib_search_path_spec="/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8 /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/arm-linux-androideabi/lib "
+sys_lib_search_path_spec="/home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.8 /home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/lib/gcc /home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/arm-linux-androideabi/lib "
 
 # Run-time system search path for libraries.
-sys_lib_dlsearch_path_spec="/lib /usr/lib"
+sys_lib_dlsearch_path_spec="/lib /usr/lib /usr/lib/x86_64-linux-gnu/libfakeroot /usr/lib/i386-linux-gnu/mesa /lib/i386-linux-gnu /usr/lib/i386-linux-gnu /lib/i686-linux-gnu /usr/lib/i686-linux-gnu /usr/local/lib /lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/mesa-egl /usr/lib/x86_64-linux-gnu/mesa /lib32 /usr/lib32 "
 
 # Whether dlopen is supported.
 dlopen_support=unknown
@@ -295,7 +295,7 @@ striplib="arm-linux-androideabi-strip --strip-unneeded"
 
 
 # The linker used to build libraries.
-LD="/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/arm-linux-androideabi/bin/ld"
+LD="/home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/arm-linux-androideabi/bin/ld"
 
 # How to create reloadable object files.
 reload_flag=" -r"
@@ -1266,7 +1266,7 @@ exec_cmd=
 # Append VALUE to the end of shell variable VAR.
 func_append ()
 {
-eval "${1}+=\${2}"
+    eval "${1}+=\${2}"
 } # Extended-shell func_append implementation
 
 # func_append_quoted var value
@@ -1282,7 +1282,7 @@ func_append_quoted ()
 # func_arith arithmetic-term...
 func_arith ()
 {
-func_arith_result=$(( $* ))
+    func_arith_result=$(( $* ))
 } # Extended-shell func_arith implementation
 
 
@@ -1290,7 +1290,7 @@ func_arith_result=$(( $* ))
 # STRING may not start with a hyphen.
 func_len ()
 {
-func_len_result=${#1}
+    func_len_result=${#1}
 } # Extended-shell func_len implementation
 
 
@@ -1307,7 +1307,7 @@ func_lo2o ()
 # func_xform libobj-or-source
 func_xform ()
 {
-func_xform_result=${1%.*}.lo
+    func_xform_result=${1%.*}.lo
 } # Extended-shell func_xform implementation
 
 

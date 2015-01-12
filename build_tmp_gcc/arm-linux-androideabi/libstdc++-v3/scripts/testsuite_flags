@@ -24,9 +24,9 @@ EOF
 }
 
 # Establish configure-generated directory structure.
-BUILD_DIR=/Users/regnarts/Documents/androux/androux/build_tmp_gcc/arm-linux-androideabi/libstdc++-v3
-SRC_DIR=/Users/regnarts/Documents/androux/androux/gcc/libstdc++-v3
-PREFIX_DIR=/Users/regnarts/Documents/androux/androux/system
+BUILD_DIR=/home/anushruth/exps/androux/build_tmp_gcc/arm-linux-androideabi/libstdc++-v3
+SRC_DIR=/home/anushruth/exps/androux/gcc/libstdc++-v3
+PREFIX_DIR=/home/anushruth/exps/androux/system
 query=$1
 
 case ${query} in
@@ -35,7 +35,7 @@ case ${query} in
       echo ${INCLUDES}
       ;;
     --build-includes)
-      INCLUDES="-nostdinc++ -I/Users/regnarts/Documents/androux/androux/build_tmp_gcc/arm-linux-androideabi/libstdc++-v3/include/arm-linux-androideabi -I/Users/regnarts/Documents/androux/androux/build_tmp_gcc/arm-linux-androideabi/libstdc++-v3/include -I/Users/regnarts/Documents/androux/androux/gcc/libstdc++-v3/libsupc++ 
+      INCLUDES="-nostdinc++ -I/home/anushruth/exps/androux/build_tmp_gcc/arm-linux-androideabi/libstdc++-v3/include/arm-linux-androideabi -I/home/anushruth/exps/androux/build_tmp_gcc/arm-linux-androideabi/libstdc++-v3/include -I/home/anushruth/exps/androux/gcc/libstdc++-v3/libsupc++ 
                 -I${SRC_DIR}/include/backward -I${SRC_DIR}/testsuite/util"
       echo ${INCLUDES}
       ;;

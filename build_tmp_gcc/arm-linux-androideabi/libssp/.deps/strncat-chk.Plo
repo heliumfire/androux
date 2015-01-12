@@ -1,23 +1,23 @@
 strncat-chk.lo: ../../../gcc/libssp/strncat-chk.c config.h ssp/ssp.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/string.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/android/api-level.h \
- /Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stddef.h \
- /Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/malloc.h
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/string.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/android/api-level.h \
+ /home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stddef.h \
+ /home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/malloc.h
 
 config.h:
 
 ssp/ssp.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/string.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/string.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/android/api-level.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/android/api-level.h:
 
-/Users/regnarts/Documents/androux/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stddef.h:
+/home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.8/include/stddef.h:
 
-/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/malloc.h:
+/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/malloc.h:

@@ -33,7 +33,7 @@ CP = cp
 
 EXEEXT = 
 
-prefix = /Users/regnarts/Documents/androux/androux/system
+prefix = /home/anushruth/exps/androux/system
 
 srcdir = .
 VPATH = .
@@ -50,21 +50,21 @@ DESTDIR =
 
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
-BUILD_DIR = /Users/regnarts/Documents/androux/androux/bash
+BUILD_DIR = /home/anushruth/exps/androux/bash
 
 LIBBUILD = ${BUILD_DIR}/lib
 
 PROFILE_FLAGS = 
-CFLAGS = -g -O2 -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
+CFLAGS = -g -O2 -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm
 CFLAGS_FOR_BUILD = -g -DCROSS_COMPILING
-CPPFLAGS = -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/
+CPPFLAGS = -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/
 CPPFLAGS_FOR_BUILD = 
 LOCAL_CFLAGS =  ${DEBUG}
 DEFS = -DHAVE_CONFIG_H
 LOCAL_DEFS = -DSHELL
 
 LIBS = -ldl 
-LDFLAGS = -L/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/lib/ -L./lib/termcap $(LOCAL_LDFLAGS) $(CFLAGS)
+LDFLAGS = -L/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/lib/ -L./lib/termcap $(LOCAL_LDFLAGS) $(CFLAGS)
 LDFLAGS_FOR_BUILD =  $(LOCAL_LDFLAGS) $(CFLAGS_FOR_BUILD)
 LOCAL_LDFLAGS = -rdynamic
 LIBS_FOR_BUILD = 

@@ -19,9 +19,9 @@ top_srcdir = ..
 
 
 topdir = ..
-BUILD_DIR = /Users/regnarts/Documents/androux/androux/bash
+BUILD_DIR = /home/anushruth/exps/androux/bash
 
-prefix = /Users/regnarts/Documents/androux/androux/system
+prefix = /home/anushruth/exps/androux/system
 exec_prefix = ${prefix}
 
 datarootdir = ${prefix}/share
@@ -35,11 +35,11 @@ INSTALL_DATA = ${INSTALL} -m 644
 MKINSTALLDIRS = $(top_builddir)/./support/mkinstalldirs
 mkinstalldirs = $(SHELL) $(MKINSTALLDIRS)
 
-GMSGFMT = /opt/local/bin/msgfmt
-MSGFMT = /opt/local/bin/msgfmt
-XGETTEXT = /opt/local/bin/xgettext
+GMSGFMT = /usr/bin/msgfmt
+MSGFMT = /usr/bin/msgfmt
+XGETTEXT = /usr/bin/xgettext
 MSGMERGE = msgmerge
-MSGMERGE_UPDATE = /opt/local/bin/msgmerge --update
+MSGMERGE_UPDATE = /usr/bin/msgmerge --update
 MSGINIT = msginit
 MSGCONV = msgconv
 MSGFILTER = msgfilter

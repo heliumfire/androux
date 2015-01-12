@@ -1,1 +1,1 @@
-/Users/regnarts/Documents/androux/androux/gcc/libstdc++-v3/include/bits/c++0x_warning.h
+/home/anushruth/exps/androux/gcc/libstdc++-v3/include/bits/c++0x_warning.h

@@ -33,7 +33,7 @@ topdir = ..
 srcdir = .
 VPATH = .
 
-prefix = /Users/regnarts/Documents/androux/androux/system
+prefix = /home/anushruth/exps/androux/system
 exec_prefix = ${prefix}
 
 datarootdir = ${prefix}/share
@@ -58,7 +58,7 @@ man3dir = $(mandir)/$(manpfx)3
 
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
-BUILD_DIR = /Users/regnarts/Documents/androux/androux/bash
+BUILD_DIR = /home/anushruth/exps/androux/bash
 
 SUPPORT_SRCDIR = $(topdir)/support
 

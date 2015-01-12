@@ -45,7 +45,7 @@ PATH: /home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt
 ## Core tests. ##
 ## ----------- ##
 
-configure:2062: creating cache ../config.cache
+configure:2054: loading cache ../config.cache
 configure:3159: checking build system type
 configure:3173: result: x86_64-unknown-linux-gnu
 configure:3193: checking host system type
@@ -315,7 +315,7 @@ configure:4704: gcc -o conftest    conftest.c  >&5
 conftest.c:57:6: warning: conflicting types for built-in function 'fprintf_unlocked' [enabled by default]
  char fprintf_unlocked ();
       ^
-/tmp/ccRZWUmq.o: In function `main':
+/tmp/ccMlTXer.o: In function `main':
 conftest.c:(.text+0xa): undefined reference to `fprintf_unlocked'
 collect2: error: ld returned 1 exit status
 configure:4704: $? = 1

@@ -19,8 +19,8 @@ import gdb
 import os
 import os.path
 
-pythondir = '/Users/regnarts/Documents/androux/androux/system/share/gcc-4.6.4/python'
-libdir = '/Users/regnarts/Documents/androux/androux/system/lib'
+pythondir = '/home/anushruth/exps/androux/system/share/gcc-4.6.4/python'
+libdir = '/home/anushruth/exps/androux/system/lib'
 
 # This file might be loaded when there is no current objfile.  This
 # can happen if the user loads it manually.  In this case we don't

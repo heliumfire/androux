@@ -29,7 +29,7 @@
 topdir = ..
 srcdir = .
 VPATH = .
-BUILD_DIR = /Users/regnarts/Documents/androux/androux/bash
+BUILD_DIR = /home/anushruth/exps/androux/bash
 
 RM	= rm -f
 SHELL	= /bin/sh
@@ -43,9 +43,9 @@ EXEEXT =
 #
 PROFILE_FLAGS = 
 
-CFLAGS = -g -O2 -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
+CFLAGS = -g -O2 -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm
 CFLAGS_FOR_BUILD = -g
-CPPFLAGS = -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/
+CPPFLAGS = -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/
 CPPFLAGS_FOR_BUILD = 
 LOCAL_CFLAGS = 
 DEFS = -DHAVE_CONFIG_H
@@ -55,7 +55,7 @@ LIBS = -ldl
 LIBS_FOR_BUILD = ${LIBS}		# XXX
 
 LOCAL_LDFLAGS = -rdynamic
-LDFLAGS = -L/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/lib/ -L./lib/termcap $(LOCAL_LDFLAGS) $(CFLAGS)
+LDFLAGS = -L/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/lib/ -L./lib/termcap $(LOCAL_LDFLAGS) $(CFLAGS)
 LDFLAGS_FOR_BUILD =  $(LOCAL_LDFLAGS) $(CFLAGS_FOR_BUILD)
 
 INCLUDES = -I${BUILD_DIR} -I${topdir}

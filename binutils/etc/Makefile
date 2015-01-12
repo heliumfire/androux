@@ -4,7 +4,7 @@
 
 DESTDIR		=
 
-prefix 		= /Users/regnarts/Documents/androux/androux/system
+prefix 		= /home/anushruth/exps/androux/system
 exec_prefix 	= ${prefix}
 
 srcdir  = .

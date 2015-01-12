@@ -19,7 +19,7 @@
 #
 
 # Include some boilerplate Gnu makefile definitions.
-prefix = /Users/regnarts/Documents/androux/androux/system
+prefix = /home/anushruth/exps/androux/system
 exec_prefix = ${prefix}
 
 bindir = ${exec_prefix}/bin
@@ -30,7 +30,7 @@ includedir = ${prefix}/include
 datarootdir = ${prefix}/share
 
 topdir = ../../..
-BUILD_DIR = /Users/regnarts/Documents/androux/androux/bash
+BUILD_DIR = /home/anushruth/exps/androux/bash
 srcdir = .
 VPATH = .
 
@@ -42,7 +42,7 @@ SHELL = /bin/sh
 
 PERL5 = perl5
 
-CFLAGS = -g -O2 -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
+CFLAGS = -g -O2 -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm
 
 #
 # These values are generated for configure by ${topdir}/support/shobj-conf.

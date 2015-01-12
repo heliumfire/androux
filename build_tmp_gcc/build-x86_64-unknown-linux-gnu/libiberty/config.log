@@ -45,7 +45,7 @@ PATH: /home/anushruth/exps/androux/toolchains/arm-linux-androideabi-4.8/prebuilt
 ## Core tests. ##
 ## ----------- ##
 
-configure:2215: loading cache ../config.cache
+configure:2223: creating cache ../config.cache
 configure:2374: checking whether to enable maintainer-specific portions of Makefiles
 configure:2384: result: no
 configure:2399: checking for makeinfo
@@ -1326,7 +1326,7 @@ configure:5928: $? = 0
 configure:5928: result: yes
 configure:5928: checking for tmpnam
 configure:5928: gcc -o conftest    conftest.c  >&5
-/tmp/ccEYEDj7.o: In function `main':
+/tmp/ccxrIsRh.o: In function `main':
 conftest.c:(.text+0xa): warning: the use of `tmpnam' is dangerous, better use `mkstemp'
 configure:5928: $? = 0
 configure:5928: result: yes
@@ -1368,7 +1368,7 @@ configure:5928: $? = 0
 configure:5928: result: yes
 configure:5928: checking for setproctitle
 configure:5928: gcc -o conftest    conftest.c  >&5
-/tmp/cchgHwuL.o: In function `main':
+/tmp/ccD681SG.o: In function `main':
 conftest.c:(.text+0xa): undefined reference to `setproctitle'
 collect2: error: ld returned 1 exit status
 configure:5928: $? = 1
@@ -1759,7 +1759,7 @@ configure:6110: checking for working vfork
 configure:6220: result: yes
 configure:6279: checking for _doprnt
 configure:6279: gcc -o conftest    conftest.c  >&5
-/tmp/cc9i5776.o: In function `main':
+/tmp/cc3LEo13.o: In function `main':
 conftest.c:(.text+0xa): undefined reference to `_doprnt'
 collect2: error: ld returned 1 exit status
 configure:6279: $? = 1
@@ -1905,13 +1905,13 @@ configure: failed program was:
 configure:6279: result: no
 configure:6291: checking for sys_errlist
 configure:6310: gcc -o conftest    conftest.c  >&5
-/tmp/cc5EDUvd.o: In function `main':
+/tmp/cc5i6Aq6.o: In function `main':
 conftest.c:(.text+0xb): warning: `sys_errlist' is deprecated; use `strerror' or `strerror_r' instead
 configure:6310: $? = 0
 configure:6320: result: yes
 configure:6291: checking for sys_nerr
 configure:6310: gcc -o conftest    conftest.c  >&5
-/tmp/cct3ahHg.o: In function `main':
+/tmp/ccNIqjtb.o: In function `main':
 conftest.c:(.text+0xb): warning: `sys_nerr' is deprecated; use `strerror' or `strerror_r' instead
 configure:6310: $? = 0
 configure:6320: result: yes
@@ -2057,7 +2057,7 @@ configure:6363: $? = 0
 configure:6363: result: yes
 configure:6363: checking for getsysinfo
 configure:6363: gcc -o conftest    conftest.c  >&5
-/tmp/cckv2aBz.o: In function `main':
+/tmp/ccSpGVls.o: In function `main':
 conftest.c:(.text+0xa): undefined reference to `getsysinfo'
 collect2: error: ld returned 1 exit status
 configure:6363: $? = 1
@@ -2220,7 +2220,7 @@ configure:6363: $? = 0
 configure:6363: result: yes
 configure:6363: checking for pstat_getdynamic
 configure:6363: gcc -o conftest    conftest.c  >&5
-/tmp/ccWcgVxL.o: In function `main':
+/tmp/ccEBtnLE.o: In function `main':
 conftest.c:(.text+0xa): undefined reference to `pstat_getdynamic'
 collect2: error: ld returned 1 exit status
 configure:6363: $? = 1
@@ -2376,7 +2376,7 @@ configure: failed program was:
 configure:6363: result: no
 configure:6363: checking for pstat_getstatic
 configure:6363: gcc -o conftest    conftest.c  >&5
-/tmp/cc6gVEGP.o: In function `main':
+/tmp/ccSb2OGK.o: In function `main':
 conftest.c:(.text+0xa): undefined reference to `pstat_getstatic'
 collect2: error: ld returned 1 exit status
 configure:6363: $? = 1
@@ -2540,7 +2540,7 @@ configure:6363: $? = 0
 configure:6363: result: yes
 configure:6363: checking for spawnve
 configure:6363: gcc -o conftest    conftest.c  >&5
-/tmp/ccMs9a52.o: In function `main':
+/tmp/ccUBBhDV.o: In function `main':
 conftest.c:(.text+0xa): undefined reference to `spawnve'
 collect2: error: ld returned 1 exit status
 configure:6363: $? = 1
@@ -2698,7 +2698,7 @@ configure: failed program was:
 configure:6363: result: no
 configure:6363: checking for spawnvpe
 configure:6363: gcc -o conftest    conftest.c  >&5
-/tmp/cc8Runt8.o: In function `main':
+/tmp/ccwmCChX.o: In function `main':
 conftest.c:(.text+0xa): undefined reference to `spawnvpe'
 collect2: error: ld returned 1 exit status
 configure:6363: $? = 1
@@ -2872,7 +2872,7 @@ configure:6363: $? = 0
 configure:6363: result: yes
 configure:6363: checking for sysmp
 configure:6363: gcc -o conftest    conftest.c  >&5
-/tmp/ccx8JpPj.o: In function `main':
+/tmp/ccePoe4e.o: In function `main':
 conftest.c:(.text+0xa): undefined reference to `sysmp'
 collect2: error: ld returned 1 exit status
 configure:6363: $? = 1
@@ -3034,7 +3034,7 @@ configure: failed program was:
 configure:6363: result: no
 configure:6363: checking for table
 configure:6363: gcc -o conftest    conftest.c  >&5
-/tmp/ccBaElMu.o: In function `main':
+/tmp/cco4f3Dk.o: In function `main':
 conftest.c:(.text+0xa): undefined reference to `table'
 collect2: error: ld returned 1 exit status
 configure:6363: $? = 1

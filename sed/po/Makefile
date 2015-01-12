@@ -23,7 +23,7 @@ srcdir = .
 top_srcdir = ..
 
 
-prefix = /Users/regnarts/Documents/androux/androux/system
+prefix = /home/anushruth/exps/androux/system
 exec_prefix = ${prefix}
 datarootdir = ${prefix}/share
 datadir = ${datarootdir}
@@ -32,23 +32,23 @@ gettextsrcdir = $(datadir)/gettext/po
 
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
-mkinstalldirs = $(SHELL) $(SHELL) /Users/regnarts/Documents/androux/androux/sed/build-aux/install-sh -d
-mkdir_p = $(top_builddir)/build-aux/install-sh -c -d
+mkinstalldirs = $(SHELL) $(SHELL) /home/anushruth/exps/androux/sed/build-aux/install-sh -d
+mkdir_p = /bin/mkdir -p
 
-GMSGFMT_ = /opt/local/bin/msgfmt
-GMSGFMT_no = /opt/local/bin/msgfmt
-GMSGFMT_yes = /opt/local/bin/msgfmt
+GMSGFMT_ = /usr/bin/msgfmt
+GMSGFMT_no = /usr/bin/msgfmt
+GMSGFMT_yes = /usr/bin/msgfmt
 GMSGFMT = $(GMSGFMT_$(USE_MSGCTXT))
-MSGFMT_ = /opt/local/bin/msgfmt
-MSGFMT_no = /opt/local/bin/msgfmt
-MSGFMT_yes = /opt/local/bin/msgfmt
+MSGFMT_ = /usr/bin/msgfmt
+MSGFMT_no = /usr/bin/msgfmt
+MSGFMT_yes = /usr/bin/msgfmt
 MSGFMT = $(MSGFMT_$(USE_MSGCTXT))
-XGETTEXT_ = /opt/local/bin/xgettext
-XGETTEXT_no = /opt/local/bin/xgettext
-XGETTEXT_yes = /opt/local/bin/xgettext
+XGETTEXT_ = /usr/bin/xgettext
+XGETTEXT_no = /usr/bin/xgettext
+XGETTEXT_yes = /usr/bin/xgettext
 XGETTEXT = $(XGETTEXT_$(USE_MSGCTXT))
 MSGMERGE = msgmerge
-MSGMERGE_UPDATE = /opt/local/bin/msgmerge --update
+MSGMERGE_UPDATE = /usr/bin/msgmerge --update
 MSGINIT = msginit
 MSGCONV = msgconv
 MSGFILTER = msgfilter

@@ -32,7 +32,7 @@ srcdir = .
 SHELL = /bin/sh
 
 CC = arm-linux-androideabi-gcc
-CFLAGS = -g -I -O2 -I/Users/regnarts/Documents/androux/androux/binutils/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.6/include -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm -Wno-error
+CFLAGS = -g -I -O2 -I/home/anushruth/exps/androux/binutils/toolchains/arm-linux-androideabi-4.6/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.6/include -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm -Wno-error
 LIBCFLAGS = $(CFLAGS)
 
 # Multilib support variables.

@@ -43,7 +43,7 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-build_triplet = i386-apple-darwin14.0.0
+build_triplet = x86_64-unknown-linux-gnu
 host_triplet = arm-unknown-linux-gnu
 DIST_COMMON = $(noinst_HEADERS) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/gnulib.mk alloca.c
@@ -121,15 +121,15 @@ ETAGS = etags
 CTAGS = ctags
 DIST_SUBDIRS = $(SUBDIRS)
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /Users/regnarts/Documents/androux/androux/sed/build-aux/missing --run aclocal-1.10
+ACLOCAL = ${SHELL} /home/anushruth/exps/androux/sed/build-aux/missing --run aclocal-1.10
 ALLOCA = 
 ALLOCA_H = alloca.h
-AMTAR = ${SHELL} /Users/regnarts/Documents/androux/androux/sed/build-aux/missing --run tar
+AMTAR = ${SHELL} /home/anushruth/exps/androux/sed/build-aux/missing --run tar
 APPLE_UNIVERSAL_BUILD = 0
-AUTOCONF = ${SHELL} /Users/regnarts/Documents/androux/androux/sed/build-aux/missing --run autoconf
-AUTOHEADER = ${SHELL} /Users/regnarts/Documents/androux/androux/sed/build-aux/missing --run autoheader
-AUTOMAKE = ${SHELL} /Users/regnarts/Documents/androux/androux/sed/build-aux/missing --run automake-1.10
-AWK = awk
+AUTOCONF = ${SHELL} /home/anushruth/exps/androux/sed/build-aux/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/anushruth/exps/androux/sed/build-aux/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/anushruth/exps/androux/sed/build-aux/missing --run automake-1.10
+AWK = gawk
 BITSIZEOF_PTRDIFF_T = 32
 BITSIZEOF_SIG_ATOMIC_T = 32
 BITSIZEOF_SIZE_T = 32
@@ -137,16 +137,16 @@ BITSIZEOF_WCHAR_T = 32
 BITSIZEOF_WINT_T = 32
 CC = arm-linux-androideabi-gcc
 CCDEPMODE = depmode=gcc3
-CFLAGS = -g -O2 -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm
+CFLAGS = -g -O2 -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm
 CPP = arm-linux-androideabi-cpp
-CPPFLAGS = -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ -DHAVE_TTYNAME=0
+CPPFLAGS = -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ -DHAVE_TTYNAME=0
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
-ECHO_C = \c
-ECHO_N = 
+ECHO_C = 
+ECHO_N = -n
 ECHO_T = 
-EGREP = /usr/bin/grep -E
+EGREP = /bin/grep -E
 EMULTIHOP_HIDDEN = 
 EMULTIHOP_VALUE = 
 ENOLINK_HIDDEN = 
@@ -158,8 +158,8 @@ EXEEXT =
 GETOPT_H = getopt.h
 GETTEXT_MACRO_VERSION = 0.17
 GLIBC21 = no
-GMSGFMT = /opt/local/bin/msgfmt
-GMSGFMT_015 = /opt/local/bin/msgfmt
+GMSGFMT = /usr/bin/msgfmt
+GMSGFMT_015 = /usr/bin/msgfmt
 GNULIB_ATOLL = 0
 GNULIB_BTOWC = 1
 GNULIB_CALLOC_POSIX = 0
@@ -278,7 +278,7 @@ GNULIB_WCSRTOMBS = 0
 GNULIB_WCTOB = 1
 GNULIB_WCWIDTH = 0
 GNULIB_WRITE = 0
-GREP = /usr/bin/grep
+GREP = /bin/grep
 HAVE_ATOLL = 1
 HAVE_BTOWC = 1
 HAVE_CALLOC_POSIX = 1
@@ -380,7 +380,7 @@ INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 INTLLIBS = 
 INTL_MACOSX_LIBS = 
-LDFLAGS = -L/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/lib/ -L/Users/regnarts/Documents/androux/androux/system/lib -liberty
+LDFLAGS = -L/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/lib/ -L/home/anushruth/exps/androux/system/lib -liberty
 LIBICONV = 
 LIBINTL = 
 LIBOBJS = 
@@ -391,16 +391,16 @@ LIB_ACL =
 LOCALCHARSET_TESTS_ENVIRONMENT = CHARSETALIASDIR="$(top_builddir)/lib"
 LOCALE_FR = 
 LOCALE_FR_UTF8 = 
-LOCALE_JA = ja_JP.eucJP
+LOCALE_JA = none
 LOCALE_ZH_CN = none
 LTLIBICONV = 
 LTLIBINTL = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /Users/regnarts/Documents/androux/androux/sed/build-aux/missing --run makeinfo
-MKDIR_P = ../build-aux/install-sh -c -d
-MSGFMT = /opt/local/bin/msgfmt
-MSGFMT_015 = /opt/local/bin/msgfmt
-MSGMERGE = /opt/local/bin/msgmerge
+MAKEINFO = ${SHELL} /home/anushruth/exps/androux/sed/build-aux/missing --run makeinfo
+MKDIR_P = /bin/mkdir -p
+MSGFMT = /usr/bin/msgfmt
+MSGFMT_015 = /usr/bin/msgfmt
+MSGMERGE = /usr/bin/msgmerge
 NEXT_ERRNO_H = 
 NEXT_STDINT_H = <stdint.h>
 NEXT_STDIO_H = <stdio.h>
@@ -498,13 +498,13 @@ WCHAR_T_SUFFIX = u
 WCTYPE_H = 
 WINT_T_SUFFIX = u
 XFAIL_TESTS = 
-XGETTEXT = /opt/local/bin/xgettext
-XGETTEXT_015 = /opt/local/bin/xgettext
+XGETTEXT = /usr/bin/xgettext
+XGETTEXT_015 = /usr/bin/xgettext
 XGETTEXT_EXTRA_OPTIONS =  --flag=error:3:c-format --flag=error_at_line:5:c-format
-abs_builddir = /Users/regnarts/Documents/androux/androux/sed/lib
-abs_srcdir = /Users/regnarts/Documents/androux/androux/sed/lib
-abs_top_builddir = /Users/regnarts/Documents/androux/androux/sed
-abs_top_srcdir = /Users/regnarts/Documents/androux/androux/sed
+abs_builddir = /home/anushruth/exps/androux/sed/lib
+abs_srcdir = /home/anushruth/exps/androux/sed/lib
+abs_top_builddir = /home/anushruth/exps/androux/sed
+abs_top_srcdir = /home/anushruth/exps/androux/sed
 ac_ct_CC = 
 am__include = include
 am__leading_dot = .
@@ -512,11 +512,11 @@ am__quote =
 am__tar = ${AMTAR} chof - "$$tardir"
 am__untar = ${AMTAR} xf -
 bindir = ${exec_prefix}/bin
-build = i386-apple-darwin14.0.0
+build = x86_64-unknown-linux-gnu
 build_alias = 
-build_cpu = i386
-build_os = darwin14.0.0
-build_vendor = apple
+build_cpu = x86_64
+build_os = linux-gnu
+build_vendor = unknown
 builddir = .
 datadir = ${datarootdir}
 datarootdir = ${prefix}/share
@@ -535,16 +535,16 @@ host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = $(SHELL) /Users/regnarts/Documents/androux/androux/sed/build-aux/install-sh
+install_sh = $(SHELL) /home/anushruth/exps/androux/sed/build-aux/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
 localstatedir = ${prefix}/var
 mandir = ${datarootdir}/man
-mkdir_p = $(top_builddir)/build-aux/install-sh -c -d
+mkdir_p = /bin/mkdir -p
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /Users/regnarts/Documents/androux/androux/system
+prefix = /home/anushruth/exps/androux/system
 program_transform_name = s,x,x,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
@@ -1394,7 +1394,7 @@ string.h: string.in.h
 # We need the following in order to create <sys/stat.h> when the system
 # has one that is incomplete.
 sys/stat.h: sys_stat.in.h
-	../build-aux/install-sh -c -d sys
+	/bin/mkdir -p sys
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
 	  sed -e 's|@''INCLUDE_NEXT''@|$(INCLUDE_NEXT)|g' \
@@ -1414,7 +1414,7 @@ sys/stat.h: sys_stat.in.h
 # We need the following in order to create <sys/time.h> when the system
 # doesn't have one that works with the given compiler.
 sys/time.h: sys_time.in.h
-	../build-aux/install-sh -c -d sys
+	/bin/mkdir -p sys
 	rm -f $@-t $@
 	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
 	  sed -e 's/@''HAVE_SYS_TIME_H''@/$(HAVE_SYS_TIME_H)/g' \

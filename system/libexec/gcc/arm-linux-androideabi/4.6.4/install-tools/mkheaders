@@ -53,7 +53,7 @@ if [ x$1 != x ] ; then
   prefix=$1
   shift
 else
-  prefix=/Users/regnarts/Documents/androux/androux/system
+  prefix=/home/anushruth/exps/androux/system
 fi
 
 # Allow for alternate isysroot in which to find headers

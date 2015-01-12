@@ -29,7 +29,7 @@
 MACHINE="arm"
 OS="linux-androideabi"
 CC="arm-linux-androideabi-gcc"
-CFLAGS=" -DPROGRAM='bash' -DCONF_HOSTTYPE='arm' -DCONF_OSTYPE='linux-androideabi' -DCONF_MACHTYPE='arm-unknown-linux-androideabi' -DCONF_VENDOR='unknown' -DLOCALEDIR='/Users/regnarts/Documents/androux/androux/system/share/locale' -DPACKAGE='bash' -DSHELL -DHAVE_CONFIG_H   -I.  -I. -I./include -I./lib -I./lib/intl -I/Users/regnarts/Documents/androux/androux/bash/lib/intl -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ -g -O2 -I/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/Users/regnarts/Documents/androux/androux/platforms/android-9/arch-arm"
+CFLAGS=" -DPROGRAM='bash' -DCONF_HOSTTYPE='arm' -DCONF_OSTYPE='linux-androideabi' -DCONF_MACHTYPE='arm-unknown-linux-androideabi' -DCONF_VENDOR='unknown' -DLOCALEDIR='/home/anushruth/exps/androux/system/share/locale' -DPACKAGE='bash' -DSHELL -DHAVE_CONFIG_H   -I.  -I. -I./include -I./lib -I./lib/intl -I/home/anushruth/exps/androux/bash/lib/intl -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ -g -O2 -I/home/anushruth/exps/androux/platforms/android-9/arch-arm/usr/include/ --sysroot=/home/anushruth/exps/androux/platforms/android-9/arch-arm"
 RELEASE="4.3"
 PATCHLEVEL="0"
 RELSTATUS="release"
